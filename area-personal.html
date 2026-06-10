@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Personal - Osinergmin Mockup</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <span class="lc-box">LC</span>
+                <span>Osinergmin</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">Página Principal</a>
+                <a href="area-personal.html" class="nav-item active">Área personal</a>
+                <a href="mis-cursos.html" class="nav-item">Mis cursos</a>
+                <a href="#" class="nav-item">Oferta formativa</a>
+                <a href="#" class="nav-item">Webinars</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <i class="fa-regular fa-bell icon-btn"></i>
+            <i class="fa-regular fa-comment icon-btn"></i>
+            <div class="user-profile">
+                <div class="avatar">OP</div>
+                <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper" style="display: block;">
+        <main class="content-area" style="margin-left: 0; padding: 3rem 5rem; display: grid; grid-template-columns: 1fr 300px; gap: 2.5rem;">
+            <div>
+                <h1 style="font-size: 2rem; margin-bottom: 2rem;">Área personal</h1>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                    <!-- Stat 1 -->
+                    <div style="background-color: var(--bg-header); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 1rem;">
+                        <i class="fa-solid fa-book-open" style="font-size: 1.5rem; color: var(--accent-blue);"></i>
+                        <div>
+                            <p style="font-size: 1.5rem; font-weight: bold;">18</p>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary);">Cursos inscritos</p>
+                        </div>
+                    </div>
+                    <!-- Stat 2 -->
+                    <div style="background-color: var(--bg-header); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 1rem;">
+                        <i class="fa-solid fa-circle-check" style="font-size: 1.5rem; color: var(--accent-green);"></i>
+                        <div>
+                            <p style="font-size: 1.5rem; font-weight: bold;">8</p>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary);">Cursos completados</p>
+                        </div>
+                    </div>
+                    <!-- Stat 3 -->
+                    <div style="background-color: var(--bg-header); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 1rem;">
+                        <i class="fa-solid fa-chart-line" style="font-size: 1.5rem; color: #a855f7;"></i>
+                        <div>
+                            <p style="font-size: 1.5rem; font-weight: bold;">243</p>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary);">Actividades completadas</p>
+                        </div>
+                    </div>
+                    <!-- Stat 4 -->
+                    <div style="background-color: var(--bg-header); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 1rem;">
+                        <i class="fa-solid fa-clock-rotate-left" style="font-size: 1.5rem; color: #f59e0b;"></i>
+                        <div>
+                            <p style="font-size: 1.5rem; font-weight: bold;">155</p>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary);">Actividades pendientes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background-color: var(--bg-header); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem;">Línea de tiempo</h3>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                        <button style="background: #334155; border: none; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; cursor: pointer;">Todos</button>
+                        <button style="background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; cursor: pointer;">Ordenar por fecha</button>
+                    </div>
+                    <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <i class="fa-solid fa-calendar-xmark" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                        <p>No hay actividades próximas pendientes</p>
+                    </div>
+                </div>
+
+                <div style="background-color: var(--bg-header); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.1rem;">Calendario</h3>
+                        <button class="btn-primary" style="font-size: 0.8rem;">Nuevo evento</button>
+                    </div>
+                    <!-- Simplified Calendar Mockup -->
+                    <div style="background: var(--bg-main); border-radius: 8px; padding: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <i class="fa-solid fa-chevron-left"></i>
+                            <span style="font-weight: bold;">Junio 2026</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; text-align: center; font-size: 0.8rem;">
+                            <div style="color: var(--text-secondary);">Lun</div>
+                            <div style="color: var(--text-secondary);">Mar</div>
+                            <div style="color: var(--text-secondary);">Mié</div>
+                            <div style="color: var(--text-secondary);">Jue</div>
+                            <div style="color: var(--text-secondary);">Vie</div>
+                            <div style="color: var(--text-secondary);">Sáb</div>
+                            <div style="color: var(--text-secondary);">Dom</div>
+                            <!-- Days -->
+                            <div style="padding: 0.5rem;">1</div><div style="padding: 0.5rem;">2</div><div style="padding: 0.5rem; background: var(--accent-blue); border-radius: 4px; color: white;">3</div><div style="padding: 0.5rem;">4</div><div style="padding: 0.5rem;">5</div><div style="padding: 0.5rem;">6</div><div style="padding: 0.5rem;">7</div>
+                            <div style="padding: 0.5rem;">8</div><div style="padding: 0.5rem;">9</div><div style="padding: 0.5rem;">10</div><div style="padding: 0.5rem;">11</div><div style="padding: 0.5rem;">12</div><div style="padding: 0.5rem;">13</div><div style="padding: 0.5rem;">14</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside>
+                <div style="background-color: var(--bg-header); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 1.5rem;">
+                    <h4 style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; text-transform: uppercase;">Elementos accedidos recientemente</h4>
+                    <ul style="font-size: 0.85rem;">
+                        <li style="margin-bottom: 1rem; display: flex; gap: 0.8rem;">
+                            <div style="width: 40px; height: 40px; background: #be185d; border-radius: 4px; flex-shrink: 0;"></div>
+                            <div>
+                                <p style="font-weight: 500;">Trabajo de Aplicación</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Conociendo Osinergmin</p>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; gap: 0.8rem;">
+                            <div style="width: 40px; height: 40px; background: #7c3aed; border-radius: 4px; flex-shrink: 0;"></div>
+                            <div>
+                                <p style="font-weight: 500;">Sesión 01: Institucional</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Conociendo Osinergmin</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="background-color: var(--bg-header); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h4 style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; text-transform: uppercase;">Insignias recientes</h4>
+                    <div style="text-align: center; color: var(--text-secondary); font-size: 0.8rem; padding: 1rem;">
+                        No tiene insignias para mostrar
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            Copyright © 2026. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

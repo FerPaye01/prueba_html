@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Cursos - Osinergmin Mockup</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <span class="lc-box">LC</span>
+                <span>Osinergmin</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">Página Principal</a>
+                <a href="area-personal.html" class="nav-item">Área personal</a>
+                <a href="mis-cursos.html" class="nav-item active">Mis cursos</a>
+                <a href="#" class="nav-item">Oferta formativa</a>
+                <a href="#" class="nav-item">Webinars</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <i class="fa-regular fa-bell icon-btn"></i>
+            <i class="fa-regular fa-comment icon-btn"></i>
+            <div class="user-profile">
+                <div class="avatar">OP</div>
+                <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper" style="display: block;">
+        <main class="content-area" style="margin-left: 0; padding: 3rem 5rem;">
+            <h1 style="font-size: 2rem; margin-bottom: 2rem;">Mis cursos</h1>
+            
+            <div style="background-color: var(--bg-header); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 2rem;">
+                <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem;">Vista general de curso</h3>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 1rem;">
+                        <span style="color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); padding-bottom: 0.5rem; cursor: pointer;">Todos</span>
+                        <span style="color: var(--text-secondary); cursor: pointer;">En curso</span>
+                        <span style="color: var(--text-secondary); cursor: pointer;">Futuros</span>
+                        <span style="color: var(--text-secondary); cursor: pointer;">Pasados</span>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <div style="position: relative;">
+                            <input type="text" placeholder="Buscar" style="background: var(--bg-main); border: 1px solid var(--border-color); color: white; padding: 0.5rem 1rem 0.5rem 2.5rem; border-radius: 4px; width: 250px;">
+                            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary);"></i>
+                        </div>
+                        <div style="display: flex; gap: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.2rem;">
+                            <button style="background: #334155; border: none; color: white; padding: 0.3rem 0.6rem; border-radius: 2px; cursor: pointer;"><i class="fa-solid fa-grip"></i></button>
+                            <button style="background: transparent; border: none; color: var(--text-secondary); padding: 0.3rem 0.6rem; border-radius: 2px; cursor: pointer;"><i class="fa-solid fa-list"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
+                <!-- Card 1: Gobierno de Datos -->
+                <div onclick="window.location.href='index.html'" style="background-color: var(--bg-header); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s; cursor: pointer; position: relative;">
+                    <div style="height: 160px; background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 1rem;">
+                        <i class="fa-solid fa-server" style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.5;"></i>
+                        <p style="font-weight: bold; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px;">Gobierno de Datos</p>
+                        <div style="position: absolute; top: 1rem; left: 1rem; background: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.65rem; font-weight: bold; text-transform: uppercase;">Nuevo</div>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1rem; margin-bottom: 0.5rem; height: 3rem; overflow: hidden;">Estrategia y Gestión de Activos de Información</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">2 de 15 actividades completadas</p>
+                        <div class="progress-bar" style="margin-bottom: 1.5rem;">
+                            <div class="progress-fill" style="width: 15%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.85rem; font-weight: bold; color: var(--accent-blue);">15% completo</span>
+                            <a href="index.html" class="btn-primary" style="font-size: 0.8rem;">Ver curso</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div style="background-color: var(--bg-header); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s; cursor: pointer;">
+                    <div style="height: 160px; background: linear-gradient(45deg, #064e3b, #10b981); position: relative; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 1rem;">
+                        <p style="font-weight: bold; font-size: 1.2rem;">IA para todos</p>
+                        <div style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.5); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase;">Webinar</div>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1rem; margin-bottom: 0.5rem; height: 3rem;">IA generativa para todo el mundo</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">12 de 12 actividades completadas</p>
+                        <div class="progress-bar" style="margin-bottom: 1.5rem;">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.85rem; font-weight: bold; color: var(--accent-green);">100% completo</span>
+                            <a href="#" class="btn-primary" style="font-size: 0.8rem; background-color: #334155;">Ver curso</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div style="background-color: var(--bg-header); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s; cursor: pointer;">
+                    <div style="height: 160px; background: linear-gradient(45deg, #7c2d12, #f97316); position: relative; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 1rem;">
+                        <p style="font-weight: bold; font-size: 1.2rem;">Gestión Pública</p>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1rem; margin-bottom: 0.5rem; height: 3rem;">Gestión Pública en los sectores de Energía y Minería</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">1 de 15 actividades completadas</p>
+                        <div class="progress-bar" style="margin-bottom: 1.5rem;">
+                            <div class="progress-fill" style="width: 7%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.85rem; font-weight: bold; color: #ef4444;">7% completo</span>
+                            <a href="#" class="btn-primary" style="font-size: 0.8rem;">Ver curso</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <!-- Same footer as index.html -->
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre el Estado Peruano</h4>
+                <ul>
+                    <li>El Estado Peruano</li>
+                    <li>¿Qué es gob.pe?</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">
+                    <span class="lc-box">LC</span>
+                    <span>Osinergmin</span>
+                </div>
+                <h4>Síguenos</h4>
+                <div style="display: flex; gap: 1rem; font-size: 1.5rem; color: var(--text-secondary);">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Directorios nacionales</h4>
+                <ul>
+                    <li>Directorio Nacional de Funcionarios Públicos</li>
+                    <li>Directorio Nacional de Redes Sociales</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Copyright © 2026. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
