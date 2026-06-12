@@ -39,6 +39,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Handle URL parameters for loading specific module
+    const urlParams = new URLSearchParams(window.location.search);
+    const moduleParam = urlParams.get('module');
+    if (moduleParam) {
+        const targetItem = document.querySelector(`.module-item[data-module="${moduleParam}"]`);
+        if (targetItem) {
+            // Deactivate all others
+            moduleItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+                const subList = otherItem.querySelector('.sub-module-list');
+                if (subList) subList.style.display = 'none';
+            });
+            // Activate target
+            targetItem.classList.add('active');
+            const subList = targetItem.querySelector('.sub-module-list');
+            if (subList) subList.style.display = 'block';
+            updateContent(moduleParam);
+        }
+    }
+
     function updateContent(moduleId) {
         const title = document.querySelector('h1');
         const contentTitle = document.querySelector('h2');

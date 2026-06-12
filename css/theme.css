@@ -1,0 +1,158 @@
+/* ════════════════════════════════════════════════════════════
+   OSINERGMIN DESIGN SYSTEM — THEME VARIABLES
+   Orden de carga: este archivo PRIMERO, luego styles.css
+   ════════════════════════════════════════════════════════════ */
+
+/* ── LIGHT MODE (default) ── */
+:root {
+    /* Fondos */
+    --bg-main:        #f1f5f9;
+    --bg-header:      #ffffff;
+    --bg-sidebar:     #ffffff;
+    --bg-card:        #ffffff;
+    --bg-elevated:    #f8fafc;
+    --bg-input:       #f8fafc;
+    --bg-subtle:      rgba(0, 0, 0, 0.03);
+    --bg-user-pill:   #f1f5f9;
+
+    /* Texto */
+    --text-primary:   #1e293b;
+    --text-secondary: #64748b;
+    --text-muted:     #94a3b8;
+    --text-body:      #374151;
+    --text-invert:    #ffffff;
+
+    /* Acento */
+    --accent-blue:        #1e40af;
+    --accent-blue-hover:  #1d4ed8;
+    --accent-blue-subtle: #dbeafe;
+    --accent-green:       #16a34a;
+    --accent-green-subtle:#dcfce7;
+
+    /* Bordes y sombras */
+    --border-color:   #e2e8f0;
+    --border-focus:   #93c5fd;
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md:      0 4px 16px rgba(0,0,0,0.10);
+    --shadow-lg:      0 8px 32px rgba(0,0,0,0.12);
+
+    /* Progress */
+    --progress-bg:    #e2e8f0;
+    --progress-fill:  #22c55e;
+
+    /* Nav / Header */
+    --nav-item-color:  #64748b;
+    --nav-item-active: #1e293b;
+    --icon-color:      #64748b;
+    --logo-text:       #1e293b;
+    --header-border:   #e2e8f0;
+
+    /* Footer */
+    --footer-bg:       #1e293b;
+    --footer-text:     #94a3b8;
+    --footer-border:   #334155;
+
+    /* Badges / Pills (siempre oscuros en ambos modos) */
+    --badge-dark-bg:  #1e3a8a;
+    --badge-dark-txt: #ffffff;
+
+    /* Layout */
+    --header-height:  64px;
+    --sidebar-width:  280px;
+
+    /* Transición global */
+    --transition: 0.22s ease;
+}
+
+/* ── DARK MODE ── */
+[data-theme="dark"] {
+    /* Fondos */
+    --bg-main:        #0f172a;
+    --bg-header:      #1e293b;
+    --bg-sidebar:     #1e293b;
+    --bg-card:        #1e293b;
+    --bg-elevated:    #263347;
+    --bg-input:       #0f172a;
+    --bg-subtle:      rgba(255, 255, 255, 0.03);
+    --bg-user-pill:   #334155;
+
+    /* Texto */
+    --text-primary:   #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted:     #64748b;
+    --text-body:      #cbd5e1;
+    --text-invert:    #1e293b;
+
+    /* Acento */
+    --accent-blue:        #3b82f6;
+    --accent-blue-hover:  #60a5fa;
+    --accent-blue-subtle: rgba(59, 130, 246, 0.15);
+    --accent-green:       #10b981;
+    --accent-green-subtle:rgba(16, 185, 129, 0.15);
+
+    /* Bordes y sombras */
+    --border-color:   #334155;
+    --border-focus:   #3b82f6;
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md:      0 4px 16px rgba(0,0,0,0.4);
+    --shadow-lg:      0 8px 32px rgba(0,0,0,0.5);
+
+    /* Progress */
+    --progress-bg:    #334155;
+    --progress-fill:  #10b981;
+
+    /* Nav / Header */
+    --nav-item-color:  #94a3b8;
+    --nav-item-active: #f8fafc;
+    --icon-color:      #94a3b8;
+    --logo-text:       #f8fafc;
+    --header-border:   #334155;
+
+    /* Footer (igual en ambos modos) */
+    --footer-bg:       #0d1829;
+    --footer-text:     #94a3b8;
+    --footer-border:   #1e293b;
+
+    /* Badges (igual en ambos modos) */
+    --badge-dark-bg:  #1e3a8a;
+    --badge-dark-txt: #ffffff;
+}
+
+/* ── Transición suave al cambiar tema ── */
+*,
+*::before,
+*::after {
+    transition:
+        background-color var(--transition),
+        border-color    var(--transition),
+        color           var(--transition),
+        box-shadow      var(--transition);
+}
+
+/* Excluir transición en elementos que no deben animarse */
+img, video, svg, canvas,
+.fa-solid, .fa-regular, .fa-brands {
+    transition: none;
+}
+
+/* ── Toggle button ── */
+.theme-toggle-btn {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    color: var(--icon-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    transition: background var(--transition), color var(--transition), transform 0.2s;
+}
+.theme-toggle-btn:hover {
+    background: var(--accent-blue-subtle);
+    color: var(--accent-blue);
+    transform: rotate(15deg);
+}

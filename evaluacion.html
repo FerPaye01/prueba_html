@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación - Gobierno de Datos | Osinergmin</title>
+    <meta name="description" content="Evaluación de refuerzo del curso de Estrategia y Gestión de Activos de Información - Universidad Corporativa Osinergmin.">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background: var(--bg-main); color: var(--text-primary); }
+
+        /* ── Sidebar ── */
+        .sidebar-moodle {
+            width: var(--sidebar-width);
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            position: fixed; top: var(--header-height); left: 0;
+            height: calc(100vh - var(--header-height));
+            overflow-y: auto; z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        .sidebar-moodle::-webkit-scrollbar { width: 4px; }
+        .sidebar-moodle::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+        .sidebar-top-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem; border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; background: var(--bg-sidebar); z-index: 10;
+        }
+        .sidebar-top-bar h3 { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); }
+        .sidebar-top-bar .close-btn { cursor: pointer; color: var(--text-secondary); font-size: 1rem; }
+
+        .sidebar-section { border-bottom: 1px solid var(--border-color); }
+        .sidebar-section-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.75rem 1rem; cursor: pointer;
+            background: var(--bg-elevated); transition: background var(--transition); user-select: none;
+        }
+        .sidebar-section-header:hover { background: var(--accent-blue-subtle); }
+        .sidebar-section-header.active-section { background: var(--accent-blue-subtle); }
+        .sec-label { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); }
+        .chevron { font-size: 0.68rem; color: var(--text-secondary); transition: transform 0.25s; }
+        .sidebar-section-header.open .chevron { transform: rotate(180deg); }
+        .sidebar-section-body { display: none; background: var(--bg-sidebar); }
+        .sidebar-section-body.open { display: block; }
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.6rem;
+            padding: 0.5rem 1rem 0.5rem 1.3rem;
+            font-size: 0.82rem; color: var(--text-secondary);
+            cursor: pointer; transition: background var(--transition);
+        }
+        .sidebar-item:hover { background: var(--bg-elevated); color: var(--text-primary); }
+        .sidebar-item.active { color: var(--accent-blue); font-weight: 500; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-blue); flex-shrink: 0; }
+        .dot.empty { background: transparent; border: 1.5px solid var(--border-color); }
+        .subgroup-label { padding: 0.6rem 1rem 0.2rem 1rem; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+
+        /* ── Layout ── */
+        .main-wrapper { display: flex; margin-top: var(--header-height); min-height: calc(100vh - var(--header-height)); }
+        .content-area { flex: 1; margin-left: var(--sidebar-width); padding: 0; background: var(--bg-main); }
+
+        .player-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 4rem;
+        }
+
+        .player-breadcrumb {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.01em;
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .activity-header-icon {
+            width: 38px;
+            height: 38px;
+            background-color: #ec4899;
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .activity-header-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* ── Player Box ── */
+        .player-frame {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            min-height: 480px;
+        }
+        .player-frame-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.2rem;
+            background: var(--bg-elevated);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mode-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .btn-exit-activity {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .btn-exit-activity:hover {
+            background: var(--bg-elevated);
+            border-color: var(--text-secondary);
+        }
+
+        .quiz-body {
+            flex: 1;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(255,255,255,0.01) 100%);
+            position: relative;
+        }
+
+        /* ── Cover Card ── */
+        .cover-card {
+            max-width: 550px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.5rem;
+            background: rgba(236,72,153,0.04);
+            border: 1px dashed rgba(236,72,153,0.2);
+            border-radius: 12px;
+        }
+        .cover-card i {
+            font-size: 3rem;
+            color: #ec4899;
+        }
+        .cover-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-primary);
+        }
+        .cover-card p {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .btn-primary-action {
+            background: var(--accent-blue);
+            color: white;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 0.65rem 1.8rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .btn-primary-action:hover {
+            background: var(--accent-blue-hover);
+        }
+
+        /* ── Question Card ── */
+        .question-box {
+            width: 100%;
+            max-width: 680px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .question-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .question-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 0.4rem;
+        }
+        .option-btn {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.9rem 1.2rem;
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            text-align: left;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .option-btn:hover {
+            border-color: var(--accent-blue);
+            background: var(--bg-card);
+        }
+        .option-btn.selected {
+            border-color: var(--accent-blue);
+            background: rgba(59,130,246,0.08);
+            font-weight: 500;
+        }
+        .option-btn.selected i {
+            color: var(--accent-blue);
+        }
+        .option-btn i {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            transition: color var(--transition);
+        }
+
+        .action-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+            width: 100%;
+            max-width: 680px;
+        }
+
+        /* ── Progress and Score ── */
+        .quiz-progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--border-color);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .quiz-progress-fill {
+            height: 100%;
+            background: var(--accent-blue);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* ── Results view ── */
+        .results-box {
+            width: 100%;
+            max-width: 680px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+        .score-circle-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .score-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+        .score-circle.approved {
+            background: rgba(16,185,129,0.08);
+            border: 4px solid #10b981;
+            color: #10b981;
+        }
+        .score-circle.failed {
+            background: rgba(239,68,68,0.08);
+            border: 4px solid #ef4444;
+            color: #ef4444;
+        }
+        .score-num { font-size: 2.2rem; line-height: 1; }
+        .score-total { font-size: 0.88rem; color: var(--text-secondary); font-weight: 500; margin-top: 0.2rem; }
+        .score-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .score-label.approved { background: #10b981; color: white; }
+        .score-label.failed { background: #ef4444; color: white; }
+
+        .review-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+        .review-section h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        .review-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .review-q-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .review-opt {
+            font-size: 0.82rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.8rem;
+        }
+        .review-opt.correct-choice {
+            background: rgba(16,185,129,0.06);
+            border: 1px solid rgba(16,185,129,0.25);
+            color: #10b981;
+        }
+        .review-opt.incorrect-choice {
+            background: rgba(239,68,68,0.06);
+            border: 1px solid rgba(239,68,68,0.25);
+            color: #ef4444;
+        }
+        .review-opt.normal {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-secondary);
+        }
+        .review-feedback {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            border-left: 2px solid var(--border-color);
+            padding-left: 0.6rem;
+            margin-top: 0.2rem;
+        }
+
+        /* ── Downloads Modal ── */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: none; align-items: center; justify-content: center;
+            z-index: 1000; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+        .modal-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px; width: 90%; max-width: 550px;
+            box-shadow: var(--shadow-xl); overflow: hidden;
+            transform: scale(0.95); transition: transform 0.3s ease;
+            display: flex; flex-direction: column;
+        }
+        .modal-overlay.open .modal-container { transform: scale(1); }
+        .modal-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color);
+            background: var(--bg-elevated);
+        }
+        .modal-header h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+        .modal-close-btn { cursor: pointer; color: var(--text-secondary); font-size: 1.2rem; background: none; border: none; }
+        .modal-close-btn:hover { color: var(--text-primary); }
+        .modal-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.8rem; max-height: 400px; overflow-y: auto; }
+        .download-item-card {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 8px; padding: 0.8rem 1rem;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 1rem; transition: border-color var(--transition);
+        }
+        .download-item-card:hover { border-color: var(--accent-blue); }
+        .download-item-info { display: flex; align-items: flex-start; gap: 0.6rem; }
+        .download-item-info i { font-size: 1.2rem; color: var(--accent-blue); margin-top: 0.15rem; }
+        .download-item-title { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+        .download-item-desc { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.15rem; }
+        .download-action-btn {
+            background: var(--accent-blue); color: white;
+            font-size: 0.75rem; font-weight: 600; padding: 0.4rem 0.8rem;
+            border-radius: 4px; border: none; cursor: pointer;
+            display: flex; align-items: center; gap: 0.3rem; transition: background var(--transition);
+        }
+        .download-action-btn:hover { background: var(--accent-blue-hover); }
+
+        /* Footer */
+        footer { background: var(--footer-bg); padding: 2.5rem 2rem; color: var(--footer-text); }
+        .footer-content { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+        .footer-content h4 { color: white; font-size: 0.95rem; margin-bottom: 0.8rem; }
+        .footer-content li { font-size: 0.82rem; margin-bottom: 0.4rem; color: var(--footer-text); }
+        .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--footer-border); font-size: 0.78rem; }
+    </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="header">
+    <div class="header-left">
+        <div class="logo">
+            <span class="lc-box">LC</span>
+            <span>Osinergmin</span>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">Página Principal</a>
+            <a href="area-personal.html" class="nav-item">Área personal</a>
+            <a href="mis-cursos.html" class="nav-item active">Mis cursos</a>
+            <a href="#" class="nav-item">Oferta formativa</a>
+            <a href="#" class="nav-item">Webinars</a>
+            <a href="#" class="nav-item">Tutoriales aplicativos propios</a>
+            <a href="#" class="nav-item">¡Minutos de Conocimiento!</a>
+        </nav>
+    </div>
+    <div class="header-right">
+        <i class="fa-regular fa-bell icon-btn"></i>
+        <i class="fa-regular fa-comment icon-btn"></i>
+        <i class="fa-regular fa-envelope icon-btn"></i>
+        <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+        <div class="user-profile">
+            <div class="avatar">OP</div>
+            <i class="fa-solid fa-chevron-down" style="font-size:0.65rem;"></i>
+        </div>
+    </div>
+</header>
+
+<div class="main-wrapper">
+
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar-moodle">
+        <div class="sidebar-top-bar">
+            <h3>Menú del curso</h3>
+            <i class="fa-solid fa-xmark close-btn"></i>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-header open" onclick="toggleSection(this)">
+                <span class="sec-label" style="color:#94a3b8;font-size:0.7rem;"></span>
+                <i class="fa-solid fa-chevron-up chevron"></i>
+            </div>
+        </div>
+
+        <!-- 01. Estructura -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-header open" onclick="toggleSection(this)">
+                <span class="sec-label">01. Estructura del curso</span>
+                <i class="fa-solid fa-chevron-up chevron"></i>
+            </div>
+            <div class="sidebar-section-body open">
+                <div class="sidebar-item" onclick="window.location.href='seccion-01.html'">Introducción</div>
+                <div class="sidebar-item" onclick="window.location.href='curso.html'">
+                    <span class="dot empty"></span>
+                    1.1. Sílabo del curso
+                </div>
+            </div>
+        </div>
+
+        <!-- 02. Desarrollo -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-header open active-section" onclick="toggleSection(this)">
+                <span class="sec-label">02. Desarrollo del curso</span>
+                <i class="fa-solid fa-chevron-up chevron"></i>
+            </div>
+            <div class="sidebar-section-body open">
+                <div class="subgroup-label">Módulo 1: Fundamentos y Marco</div>
+                <div class="sidebar-item" id="side-mod1_1" onclick="window.location.href='index.html?module=1'"><span class="dot empty"></span>1.1. Introducción al Gobierno de Datos</div>
+                <div class="sidebar-item" onclick="openDownloadsModal('1')">&nbsp;&nbsp;&nbsp;&nbsp;1.2. Recursos y Normativa</div>
+                <div class="sidebar-item" id="side-mod1_3" onclick="window.location.href='evaluacion.html?module=1'"><span class="dot empty"></span>1.3. Evaluación</div>
+
+                <div class="subgroup-label">Módulo 2: Roles y Responsabilidades</div>
+                <div class="sidebar-item" id="side-mod2_1" onclick="window.location.href='index.html?module=2'"><span class="dot empty"></span>2.1. El Comité y el OGD</div>
+                <div class="sidebar-item" onclick="openDownloadsModal('2')">&nbsp;&nbsp;&nbsp;&nbsp;2.2. Recursos y Normativa</div>
+                <div class="sidebar-item" id="side-mod2_3" onclick="window.location.href='evaluacion.html?module=2'"><span class="dot empty"></span>2.3. Evaluación</div>
+
+                <div class="subgroup-label">Módulo 3: Arquitectura e Interop.</div>
+                <div class="sidebar-item" id="side-mod3_1" onclick="window.location.href='index.html?module=3'"><span class="dot empty"></span>3.1. Datos Maestros y PIDE</div>
+                <div class="sidebar-item" onclick="openDownloadsModal('3')">&nbsp;&nbsp;&nbsp;&nbsp;3.2. Recursos y Normativa</div>
+                <div class="sidebar-item" id="side-mod3_3" onclick="window.location.href='evaluacion.html?module=3'"><span class="dot empty"></span>3.3. Evaluación</div>
+
+                <div class="subgroup-label">Módulo 4: Gestión de la Calidad</div>
+                <div class="sidebar-item" id="side-mod4_1" onclick="window.location.href='index.html?module=4'"><span class="dot empty"></span>4.1. Dimensiones de Calidad</div>
+                <div class="sidebar-item" onclick="openDownloadsModal('4')">&nbsp;&nbsp;&nbsp;&nbsp;4.2. Recursos y Normativa</div>
+                <div class="sidebar-item" id="side-mod4_3" onclick="window.location.href='evaluacion.html?module=4'"><span class="dot empty"></span>4.3. Evaluación</div>
+
+                <div class="subgroup-label">Módulo 5: Metadatos y Trazabilidad</div>
+                <div class="sidebar-item" id="side-mod5_1" onclick="window.location.href='index.html?module=5'"><span class="dot empty"></span>5.1. ADN del Dato</div>
+                <div class="sidebar-item" onclick="openDownloadsModal('5')">&nbsp;&nbsp;&nbsp;&nbsp;5.2. Recursos y Normativa</div>
+                <div class="sidebar-item" id="side-mod5_3" onclick="window.location.href='evaluacion.html?module=5'"><span class="dot empty"></span>5.3. Evaluación</div>
+
+                <div class="subgroup-label">Módulo 6: Seguridad y Ética del Dato</div>
+                <div class="sidebar-item" id="side-mod6_1" onclick="window.location.href='index.html?module=6'"><span class="dot empty"></span>6.1. Anonimización y Privacidad</div>
+                <div class="sidebar-item" onclick="openDownloadsModal('6')">&nbsp;&nbsp;&nbsp;&nbsp;6.2. Recursos y Normativa</div>
+                <div class="sidebar-item" id="side-mod6_3" onclick="window.location.href='evaluacion.html?module=6'"><span class="dot empty"></span>6.3. Evaluación</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ══ MAIN CONTENT ══ -->
+    <main class="content-area">
+        <div class="player-container">
+            
+            <!-- Breadcrumb -->
+            <div class="player-breadcrumb" id="player-breadcrumb">
+                PI-GobDatos / 02. Desarrollo del curso / Evaluación del Módulo
+            </div>
+
+            <!-- Activity Header -->
+            <div class="activity-header">
+                <div class="activity-header-icon">
+                    <i class="fa-solid fa-square-check"></i>
+                </div>
+                <div class="activity-header-title" id="activity-title">
+                    Evaluación de Refuerzo
+                </div>
+            </div>
+
+            <!-- Quiz Box Panel -->
+            <div class="player-frame">
+                <div class="player-frame-top">
+                    <span class="mode-label">Modo Cuestionario</span>
+                    <button class="btn-exit-activity" id="btn-exit" onclick="exitActivity()">Salir del intento</button>
+                </div>
+
+                <!-- Slide Screen Area -->
+                <div class="quiz-body" id="quiz-body">
+                    <!-- Dynamic Content Loaded here -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div>
+            <h4>Sobre el Estado Peruano</h4>
+            <ul>
+                <li>El Estado Peruano</li>
+                <li>¿Qué es gob.pe?</li>
+            </ul>
+        </div>
+        <div style="text-align:center;">
+            <div class="logo" style="justify-content:center; margin-bottom:0.8rem;">
+                <span class="lc-box" style="background:#3b82f6;color:white;">LC</span>
+                <span style="color:white;font-weight:600;">Osinergmin</span>
+            </div>
+        </div>
+        <div>
+            <h4>Directorios nacionales</h4>
+            <ul>
+                <li>Directorio Nacional de Funcionarios Públicos</li>
+                <li>Directorio Nacional de Redes Sociales</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">Copyright © 2026. Todos los derechos reservados.</div>
+</footer>
+
+<script>
+    // ── DATABASE OF EVALUATION QUESTIONS (From .md files) ──
+    const moduleQuizzes = {
+        "1": {
+            moduleName: "Módulo 1: Fundamentos y Marco de Gobierno de Datos",
+            salirHash: "#mod1_1",
+            pool: [
+                {
+                    q: "¿Qué puntaje arrojó la última evaluación oficial de la PCM respecto al nivel de madurez de gestión de datos en las entidades públicas peruanas?",
+                    opts: ["4.50 (Nivel optimizado)", "3.00 (Nivel estandarizado)", "1.88 (Nivel inicial/formativo)", "5.00 (Nivel predictivo)"],
+                    correct: 2,
+                    feedback: "La última evaluación oficial PCM arrojó un promedio de 1.88 sobre 5, evidenciando un nivel de madurez formativo o inicial."
+                },
+                {
+                    q: "¿Qué significa que una institución tenga un nivel de madurez inicial respecto a sus datos?",
+                    opts: ["Que todos sus procesos de negocio están respaldados por algoritmos avanzados.", "Que opera con sistemas aislados, procesos manuales y silos de información.", "Que ha centralizado exitosamente toda su base de datos maestros.", "Que cuenta con una Oficina de Gobierno de Datos completamente automatizada."],
+                    correct: 1,
+                    feedback: "El nivel inicial (1.88) se caracteriza por la fragmentación de la información en silos independientes y procesos reactivos o manuales."
+                },
+                {
+                    q: "La normativa peruana que establece formalmente el marco de gobernanza y gestión de datos como activos estratégicos es:",
+                    opts: ["La Ley del Teletrabajo.", "La Ley de Transparencia Económica.", "La Ley de Gobierno Digital (Decreto Legislativo N° 1412).", "El Decreto Legislativo de Ciberdefensa."],
+                    correct: 2,
+                    feedback: "El Decreto Legislativo N° 1412 (Ley de Gobierno Digital) establece la obligatoriedad legal de gobernar y gestionar la información pública como activo."
+                },
+                {
+                    q: "Si una entidad busca compartir información estructurada para que la ciudadanía e investigadores la descarguen y reutilicen libremente, debe publicarla en:",
+                    opts: ["La Plataforma de Interoperabilidad del Estado (PIDE).", "La Plataforma Nacional de Datos Abiertos (PNDA).", "El Sistema Nacional de Archivos del Estado.", "Su intranet institucional privada."],
+                    correct: 1,
+                    feedback: "La PNDA es el portal central del Estado peruano para la publicación de conjuntos de datos en formatos abiertos (reutilizables)."
+                },
+                {
+                    q: "¿Qué plataforma nacional permite el intercambio de información y la comunicación segura en tiempo real entre los sistemas de diferentes entidades públicas (ej. consultas a RENIEC)?",
+                    opts: ["La plataforma GeoPerú.", "La Plataforma de Interoperabilidad del Estado (PIDE).", "La Plataforma Nacional de Datos Abiertos.", "La Mesa de Partes Virtual unificada."],
+                    correct: 1,
+                    feedback: "La PIDE es el engranaje de interoperabilidad del Estado, que permite consumir servicios web (APIs) de otras entidades públicas."
+                },
+                {
+                    q: "Según la Estrategia Nacional de Gobierno de Datos (2026-2030), el Perú busca posicionarse como referente regional. ¿Cuál es el enfoque que se le debe dar al dato según esta estrategia?",
+                    opts: ["Un residuo o subproducto burocrático del trámite.", "Un elemento exclusivamente a cargo del departamento de TI.", "Un activo estratégico que genera valor socioeconómico y público.", "Un archivo temporal a ser depurado cada año de forma obligatoria."],
+                    correct: 2,
+                    feedback: "La Estrategia Nacional propone tratar los datos como activos estratégicos de información generadores de valor público."
+                },
+                {
+                    q: "Según los estándares internacionales de DAMA Internacional, ¿cómo se define formalmente el Gobierno de Datos?",
+                    opts: ["La compra y mantenimiento de servidores y licencias de software de bases de datos.", "El ejercicio de autoridad y control (planificación, supervisión y cumplimiento) sobre la gestión de los activos de datos.", "La digitalización y eliminación de todos los registros históricos físicos en papel.", "La publicación irrestricta de datos personales de los ciudadanos por transparencia."],
+                    correct: 1,
+                    feedback: "DAMA define Data Governance como el ejercicio de autoridad y control político y operacional sobre la gestión de los datos."
+                },
+                {
+                    q: "La falta de Gobierno de Datos suele generar \"Silos de Información\". ¿Qué significa esto?",
+                    opts: ["Almacenar datos críticos en nubes públicas sin cifrar.", "Departamentos que gestionan y guardan sus datos en sistemas aislados sin integrarlos ni compartirlos con el resto de la entidad.", "Borrar información valiosa cada 30 días de forma automática para ahorrar espacio.", "Un repositorio centralizado y colaborativo de acceso universal."],
+                    correct: 1,
+                    feedback: "Los silos ocurren cuando las áreas guardan celosamente sus datos en sistemas propios que no conversan con los sistemas de otras áreas."
+                },
+                {
+                    q: "El Gobierno de Datos no es un proyecto de Tecnologías de la Información (TI), es una transformación que involucra fundamentalmente a:",
+                    opts: ["Hardware, Software y Redes.", "Personas, Procesos y Cultura (Visión Estratégica).", "Presupuesto, Auditoría y Sanciones reguladoras.", "Inteligencia Artificial y Algoritmos Predictivos."],
+                    correct: 1,
+                    feedback: "Al ser una estrategia de negocio, la gobernanza de datos gira en torno al cambio cultural de las personas y la normalización de procesos."
+                },
+                {
+                    q: "A diferencia de los recursos tradicionales (como el petróleo), un dato bien gobernado:",
+                    opts: ["Es más costoso de extraer, refinar and almacenar.", "Se gasta rápidamente con el uso y desaparece de la base de datos.", "Es expansivo y genera más valor cuanto más se utiliza, se analiza y se cruza con otros datos.", "No representa ningún valor en el largo plazo para las decisiones del Estado."],
+                    correct: 2,
+                    feedback: "A diferencia de los recursos físicos, la información es inagotable: su valor aumenta exponencialmente al cruzarse y analizarse."
+                }
+            ]
+        },
+        "2": {
+            moduleName: "Módulo 2: Roles, Responsabilidades y Modelos Operativos",
+            salirHash: "#mod2_3",
+            pool: [
+                {
+                    q: "En la analogía de la cadena de suministro de DataCamp, ¿qué rol corporativo representa el \"Distribuidor\" que transporta y asegura el almacenamiento en frío del alimento?",
+                    opts: ["El Analista o Científico de Datos.", "El Productor operativo de datos.", "El Custodio del Dato (Data Custodian), responsable de redes, copias de seguridad y servidores.", "El Oficial de Datos Personales."],
+                    correct: 2,
+                    feedback: "El Distribuidor representa al Custodio Técnico (TI), quien da soporte, almacenamiento e infraestructura de redes al dato."
+                },
+                {
+                    q: "De acuerdo con DataCamp, ¿qué característica define a un modelo operativo de gobernanza \"Federado o Híbrido\"?",
+                    opts: ["Cada departamento actúa con autonomía absoluta sin responder ante una estrategia común.", "El departamento de TI toma el 100% de las decisiones y definiciones de negocio.", "La Oficina central aporta la estrategia y herramientas comunes, pero permite a las líneas de negocio implementar la gobernanza de forma flexible según sus necesidades.", "Está estrictamente diseñado para organizaciones que no tienen ningún nivel de madurez técnica."],
+                    correct: 2,
+                    feedback: "El modelo federado combina lineamientos estratégicos comunes desde el centro con adaptabilidad e implementación local."
+                },
+                {
+                    q: "¿Cuál es el equivalente al \"Chef\" (quien limpia, prepara y cocina el ingrediente para obtener un resultado final de alto valor) en el ecosistema de roles de datos?",
+                    opts: ["El dueño de la infraestructura física del centro de datos.", "El Analista o Científico de Datos, que utiliza los datos limpios para generar reportes, dashboards e insights accionables.", "El Digitador que introduce datos desde ventanillas de atención.", "El Asesor Legal de la entidad."],
+                    correct: 1,
+                    feedback: "El analista es el Chef: toma la información gobernada (ingrediente limpio) y la procesa para servir visualizaciones o modelos avanzados."
+                },
+                {
+                    q: "Si una entidad pública utiliza un modelo operativo de gobernanza \"Centralizado\", ¿cuál es uno de sus principales retos a medida que la organización crece?",
+                    opts: ["Aumenta la anarquía en los procesos operativos de datos.", "Puede percibirse como demasiado burocrático y convertirse en un cuello de botella para la agilidad y eficiencia del negocio.", "Elimina automáticamente todos los requerimientos técnicos de ciberseguridad.", "Obliga a la institución a prescindir de la figura del OGD."],
+                    correct: 1,
+                    feedback: "El exceso de control centralizado tiende a ralentizar la respuesta ágil de las áreas operativas, convirtiéndose en cuello de botella."
+                },
+                {
+                    q: "Según el procedimiento interno PI-59 y las mejores prácticas, ¿quién asume la máxima responsabilidad por definir el propósito y aprobar las reglas de calidad de los datos de su gerencia?",
+                    opts: ["El Administrador de Base de Datos (DBA).", "El Analista de Business Intelligence (BI).", "El Dueño del Dato (Data Owner).", "El desarrollador del software transaccional."],
+                    correct: 2,
+                    feedback: "El Dueño del Dato (perfil de negocio) es el máximo responsable político e institucional de definir reglas y usos del dato."
+                },
+                {
+                    q: "¿Qué función asume el Oficial de Gobierno de Datos (OGD) en relación con el ecosistema humano de la entidad?",
+                    opts: ["Modificar y programar los códigos de acceso de la base de datos principal.", "Reemplazar funcionalmente al Jefe de la Oficina de TI.", "Actuar como \"director de orquesta\", articulando, facilitando y supervisando el cumplimiento de la estrategia de datos sin ser el dueño de la información.", "Borrar de forma manual los registros históricos de los ciudadanos para ahorrar espacio."],
+                    correct: 2,
+                    feedback: "El OGD es el director de orquesta transversal; no es dueño ni operador, sino el facilitador estratégico de la gobernanza."
+                },
+                {
+                    q: "¿Qué fenómeno organizacional se busca erradicar con la asignación clara de roles en el Gobierno de Datos?",
+                    opts: ["La transformación digital acelerada del Estado.", "La \"Propiedad Difusa\", donde todos usan un dato pero nadie se responsabiliza formalmente por su calidad.", "La interoperabilidad técnica y simplificación de trámites.", "Las políticas de seguridad de la información."],
+                    correct: 1,
+                    feedback: "La propiedad difusa provoca reprocesos y errores porque todos usan el dato de forma rutinaria pero nadie asume su definición semántica ni su calidad."
+                },
+                {
+                    q: "Según la normativa peruana, ¿quién es responsable de aprobar formalmente el Plan de Acción de Gobierno de Datos en la entidad pública?",
+                    opts: ["El Ministerio de Justicia y Derechos Humanos.", "El Comité de Gobierno y Transformación Digital de la entidad.", "El Jefe de la Oficina de Recursos Humanos.", "El Custodio Técnico del Dato."],
+                    correct: 1,
+                    feedback: "La Resolución PCM dictamina que es el Comité de Gobierno y Transformación Digital quien valida e institucionaliza el Plan de Acción."
+                },
+                {
+                    q: "De acuerdo con el enfoque de \"Gobierno de Datos No Invasivo\" de Robert S. Seiner, ¿qué es un \"Data Steward\" (Administrador o Gestor de Datos)?",
+                    opts: ["Un puesto de trabajo completamente nuevo que debe ser contratado externamente.", "Un software que limpia bases de datos de forma automática.", "Cualquier colaborador en la organización evaluado por su relación con los datos (quien los define, produce o usa) y que asume responsabilidad por ellos.", "El auditor externo del Gobierno encargado de las multas."],
+                    correct: 2,
+                    feedback: "En la gobernanza no invasiva, el steward es un rol funcional que formaliza las tareas que el colaborador ya realiza con los datos en su día a día."
+                },
+                {
+                    q: "¿Por qué el departamento de Tecnologías de la Información (TI) NO debe ser considerado el \"Dueño\" (Owner) de los datos del negocio?",
+                    opts: ["Porque el área de TI no cuenta con presupuesto propio de gobernanza.", "En la cadena de suministro, TI gestiona la infraestructura y los sistemas (el transporte), pero son las áreas usuarias de negocio quienes entienden el contexto y propósito de la información.", "Porque TI únicamente procesa datos no estructurados de redes sociales.", "Porque los lineamientos de la PCM le prohíben a los ingenieros de TI de forma expresa tomar decisiones de base de datos."],
+                    correct: 1,
+                    feedback: "TI custodia el contenedor técnico; el Negocio domina y define el contenido porque conoce el flujo y las reglas operacionales del trámite."
+                }
+            ]
+        },
+        "3": {
+            moduleName: "Módulo 3: Arquitectura, Plataformas e Interoperabilidad",
+            salirHash: "#mod3_3",
+            pool: [
+                {
+                    q: "Según las enseñanzas de DataCamp, ¿cuál es la principal diferencia entre un Glosario de Negocio y un Diccionario de Datos?",
+                    opts: ["El glosario es físico en papel y el diccionario es exclusivamente digital en la nube.", "No hay diferencia técnica ni organizativa, son sinónimos del mismo estándar.", "El glosario contiene descripciones en lenguaje empresarial para todos los usuarios, mientras que el diccionario contiene parámetros técnicos (formatos, tipos de datos) para los sistemas.", "El glosario lo define el área legal y el diccionario la Contraloría General."],
+                    correct: 2,
+                    feedback: "El Glosario está enfocado en definiciones claras para humanos (negocio); el Diccionario detalla tipos SQL, longitudes y campos para técnicos."
+                },
+                {
+                    q: "¿Qué herramienta tecnológica actúa como un \"mercado\" o \"biblioteca\" centralizada que enlaza el vocabulario de negocio con los metadatos técnicos para facilitar las búsquedas?",
+                    opts: ["La red privada virtual de TI (VPN).", "El cortafuegos (Firewall) perimetral.", "El Catálogo de Datos.", "La Plataforma de Mesa de Partes Virtual."],
+                    correct: 2,
+                    feedback: "El Catálogo de Datos es la ventanilla única de búsqueda donde convergen los términos de negocio y las tablas del diccionario técnico."
+                },
+                {
+                    q: "Si un científico de datos necesita saber por qué procesos de limpieza y transformación pasó un dato desde que se originó en la base de datos transaccional hasta que llegó a su dashboard, ¿qué herramienta de gobernanza debe consultar?",
+                    opts: ["El Glosario de Negocio corporativo.", "El Linaje de Datos (Data Lineage).", "El Registro de Compras Institucional.", "El Código de Ética de la institución."],
+                    correct: 1,
+                    feedback: "El Linaje de Datos (Data Lineage) provee la trazabilidad y procedencia de la información a lo largo de los sistemas."
+                },
+                {
+                    q: "De acuerdo con los enfoques de implementación descritos por DataCamp, ¿qué caracteriza al enfoque \"Colaborativo\"?",
+                    opts: ["Centraliza todo el poder y acceso de las bases de datos exclusivamente en un pequeño grupo de TI.", "Libera todos los datos en bruto a cualquier usuario sin aplicar reglas de privacidad ni seguridad.", "Equilibra las necesidades defensivas (control y cumplimiento normativo) con las ofensivas (analítica y democratización del dato) involucrando a los usuarios de negocio.", "Prohíbe totalmente el intercambio de información entre diferentes gerencias."],
+                    correct: 2,
+                    feedback: "El enfoque colaborativo es el balance ideal: asegura el cumplimiento regulatorio (defensa) y a la vez empodera la innovación (ofensiva)."
+                },
+                {
+                    q: "Para evitar pedirle a un ciudadano el mismo documento dos veces (como validar su identidad mediante DNI), ¿qué plataforma de la arquitectura digital peruana debemos integrar a nuestros sistemas?",
+                    opts: ["La Plataforma Nacional de Datos Abiertos (PNDA).", "La plataforma geográfica GeoPerú.", "La Plataforma de Interoperabilidad del Estado (PIDE).", "El Diario Oficial El Peruano."],
+                    correct: 2,
+                    feedback: "La PIDE habilita la interoperabilidad transaccional directa entre las entidades estatales peruanas de manera automática."
+                },
+                {
+                    q: "De acuerdo con el modelo de madurez y arquitectura de Osinergmin (PI-59), ¿qué sucede en la \"Capa Verde\" (Zona Plata/Trusted) de la pirámide de datos?",
+                    opts: ["Se archivan los expedientes físicos en cajas de cartón.", "Ingresan los datos crudos exactamente como vienen de las fuentes externas.", "Se alojan los datos que ya pasaron por procesos de limpieza, estandarización y eliminación de duplicados, formando la fuente única de verdad.", "Se eliminan todos los datos automáticamente a los 30 días para ahorrar espacio."],
+                    correct: 2,
+                    feedback: "La Capa Verde (Plata) es la zona de datos de confianza, limpia de inconsistencias semánticas e integrada bajo reglas de calidad."
+                },
+                {
+                    q: "Dentro de la arquitectura de datos, ¿qué se entiende por \"Datos Maestros\" (Master Data)?",
+                    opts: ["Datos temporales o residuales que se eliminan al final de cada jornada.", "Los datos críticos e indispensables (como DNI, RUC o Ubigeo) que representan el núcleo operativo y de información de una entidad.", "Exclusivamente las coordenadas de mapas y límites departamentales.", "Los manuales impresos de la institución y guías de usuario."],
+                    correct: 1,
+                    feedback: "Los Datos Maestros son los núcleos estables de información indispensables para que la organización opere de forma consistente."
+                },
+                {
+                    q: "A nivel de arquitectura de integración de datos, el estándar DMBOK2 recomienda un diseño \"Hub-and-Spoke\" (Centro y Radios) frente al \"Point-to-Point\" (Punto a Punto) porque:",
+                    opts: ["Es técnicamente más lento y consume más ancho de banda.", "Consolida los datos compartidos en un centro (Hub), reduciendo drásticamente la cantidad de interfaces requeridas y la complejidad técnica.", "Elimina la necesidad de contar con servidores de bases de datos.", "Permite que los ciudadanos modifiquen las bases de datos libremente desde la web."],
+                    correct: 1,
+                    feedback: "El modelo Hub-and-Spoke canaliza las integraciones de forma ordenada y escalable en lugar de crear conexiones caóticas cruzadas."
+                },
+                {
+                    q: "¿Qué problema principal soluciona el uso efectivo de la Plataforma de Interoperabilidad del Estado (PIDE) de cara al ciudadano?",
+                    opts: ["Permite descargar contenidos multimedia de forma gratuita.", "Evita requerirle al ciudadano documentos o información que el Estado ya posee en sus bases de datos, reduciendo las trabas burocráticas.", "Sirve como una red social interna para coordinar reuniones presenciales.", "Publica automáticamente las actas de contratación del presupuesto nacional."],
+                    correct: 1,
+                    feedback: "La PIDE implementa el principio de simplicidad: el ciudadano no debe entregar en ventanilla requisitos que ya existen en otra base de datos estatal."
+                },
+                {
+                    q: "De acuerdo con el modelo de Osinergmin, la \"Capa Azul\" (Oro / Refinada) del repositorio de datos se destina específicamente para:",
+                    opts: ["El consumo de datos por parte de Científicos de Datos para modelos predictivos, analítica avanzada, Inteligencia Artificial y Dashboards directivos.", "La recepción de datos crudos (Raw Data) desde las ventanillas de atención.", "Archivar expedientes físicos inactivos o listos para destrucción.", "Alojar copias de seguridad de sistemas legados."],
+                    correct: 0,
+                    feedback: "La Capa Azul (Oro) contiene los Productos de Datos terminados y optimizados listos para su explotación inteligente analítica."
+                }
+            ]
+        },
+        "4": {
+            moduleName: "Módulo 4: Gestión de la Calidad y Estandarización de Datos",
+            salirHash: "#mod4_3",
+            pool: [
+                {
+                    q: "Utilizando la analogía de DataCamp sobre la compra de un coche nuevo, ¿qué debemos exigir al momento de plantearnos usar datos en nuestra organización?",
+                    opts: ["Que los datos se almacenen en servidores físicos desconectados de internet.", "Asegurar una alta calidad evaluando la completitud, la exactitud, la consistencia, la validez, la puntualidad y la integridad.", "Que los datos sean propiedad exclusiva del departamento de TI.", "Que todos los datos se recopilen de forma manual sin intervención de software."],
+                    correct: 1,
+                    feedback: "La analogía exige no conducir a ciegas: no podemos tomar decisiones estratégicas de alto riesgo sin garantías y métricas de calidad de datos."
+                },
+                {
+                    q: "De acuerdo con DataCamp, ¿qué dimensión de la calidad de datos se encarga específicamente de garantizar que el dato sea exactamente el mismo en todos los sistemas de la empresa (evitando contradicciones)?",
+                    opts: ["Puntualidad (Timeliness).", "Validez (Validity).", "Coherencia / Consistencia.", "Integridad (Integrity)."],
+                    correct: 2,
+                    feedback: "La consistencia o coherencia exige que las variables tengan la misma definición y valor lógico a través de todas las plataformas."
+                },
+                {
+                    q: "¿Cuál es la recomendación principal de DataCamp para lograr sostener y escalar un programa de gobierno del dato a nivel de calidad?",
+                    opts: ["Contratar a más personal para corregir errores a mano en Excel los fines de semana.", "Imprimir todos los reportes de calidad para su revisión física y firma.", "Utilizar soluciones adecuadas y automatizadas mediante la creación de reglas, métricas e informes de excepciones, evitando los procesos manuales.", "Eliminar los estándares y dimensiones de calidad para que los datos fluyan rápido."],
+                    correct: 2,
+                    feedback: "DataCamp recalca que la calidad es insostenible si depende de revisiones y correcciones manuales; exige automatización de reglas."
+                },
+                {
+                    q: "Si una entidad pública implementa controles de validación en su sistema web para detectar \"errores operativos como los de introducción manual de datos\" en las ventanillas de atención, ¿qué dimensión de calidad está asegurando principalmente según DataCamp?",
+                    opts: ["La validez.", "La puntualidad.", "La protección.", "La privacidad."],
+                    correct: 0,
+                    feedback: "La validez de formato (ej. RUC de 11 dígitos, solo números en DNI) detiene e impide el ingreso del error operativo en origen."
+                },
+                {
+                    q: "Según el estándar ISO/IEC 25000 y el PI-59, ¿por qué es crítico realizar un análisis de \"causa raíz\" cuando detectamos valores nulos o inconsistentes?",
+                    opts: ["Para identificar y culpar públicamente al ciudadano o funcionario que digitó el campo.", "Para implementar una validación en el origen y pasar de un ciclo reactivo (corregir el error) a un ciclo de mejora continua proactivo (evitar que el error ingrese al sistema).", "Para justificar técnicamente la compra de una nueva base de datos.", "Para borrar la tabla de datos completa de la base de datos relacional."],
+                    correct: 1,
+                    feedback: "El objetivo de la causa raíz es arreglar el origen del problema (ej. cambiar el formulario) para prevenir errores futuros indefinidamente."
+                },
+                {
+                    q: "En el contexto del sector público (Eje 2 de la Estrategia Nacional), ¿qué impacto directo tiene la mala calidad de un dato maestro, como un DNI o un RUC mal digitado?",
+                    opts: ["Solo genera una alerta visual inofensiva en los servidores de TI.", "Acelera el tiempo de respuesta y la entrega de subsidios al saltar validaciones.", "Afecta directamente el derecho del ciudadano, pudiendo impedirle cobrar un bono, validar su identidad o realizar un trámite oficial.", "Mejora la privacidad de los usuarios al hacer inubicables sus registros."],
+                    correct: 2,
+                    feedback: "Un error en el dato maestro interrumpe el derecho del administrado, bloqueando trámites y provocando exclusiones dolorosas."
+                },
+                {
+                    q: "¿A qué se refiere la dimensión de \"Exactitud\" dentro de la calidad de datos?",
+                    opts: ["A que el dato esté almacenado localmente en computadoras portátiles.", "A que el dato represente, describa y refleje la realidad correctamente y sin errores.", "A que el dataset no tenga ningún valor duplicado en toda la columna.", "A que el dato sea compartido de forma abierta en redes sociales."],
+                    correct: 1,
+                    feedback: "Exactitud significa que los datos almacenados en los registros describen fielmente la realidad física del fenómeno de negocio."
+                },
+                {
+                    q: "Si en el formulario oficial de denuncias en línea el ciudadano deja en blanco el campo obligatorio \"Dirección del Incidente\", estamos ante un problema de:",
+                    opts: ["Consistencia.", "Completitud / Integridad.", "Seguridad.", "Trazabilidad."],
+                    correct: 1,
+                    feedback: "Completitud exige que la información obligatoria requerida esté efectivamente registrada en las bases de datos."
+                },
+                {
+                    q: "¿Qué es el \"Perfilamiento de Datos\" (Data Profiling) dentro del ciclo de calidad?",
+                    opts: ["El proceso de borrar la base de datos al final de cada año.", "El análisis proactivo para identificar anomalías, formatos incorrectos, valores nulos o duplicados en un dataset antes de usarlo.", "La publicación obligatoria del dato en el portal de transparencia.", "Asignar contraseñas seguras a los administradores del sistema."],
+                    correct: 1,
+                    feedback: "El perfilamiento es el examen preventivo de los datos para diagnosticar y catalogar las anomalías del dataset."
+                },
+                {
+                    q: "¿Por qué la calidad de datos es un requisito indispensable para implementar Inteligencia Artificial (IA) de manera exitosa?",
+                    opts: ["Reflejar en origen y luego automatizar la limpieza.", "Porque si la IA se entrena con datos sesgados o de mala calidad, las predicciones o decisiones automatizadas también serán erróneas (GIGO).", "Porque la calidad de datos aumenta el ancho de banda de red del servidor.", "Porque los algoritmos de IA exigen que todos los datos sean textos libres y sin estructura."],
+                    correct: 1,
+                    feedback: "El principio GIGO dictamina que un algoritmo inteligente entrenado con basura decidirá de forma errónea o sesgada."
+                }
+            ]
+        },
+        "5": {
+            moduleName: "Módulo 5: Metadatos, Documentación y Trazabilidad",
+            salirHash: "#mod5_1",
+            pool: [
+                {
+                    q: "¿Qué advierte DataCamp sobre la gestión de metadatos y documentación a medida que los datos de una institución crecen en volumen y complejidad?",
+                    opts: ["Que se debe contratar a más personal para llenar registros y Exceles manualmente.", "Que los metadatos deben ser eliminados periódicamente para ahorrar espacio en servidor.", "Que aumenta la necesidad de contar con soluciones técnicas integrales que ayuden a gestionar y gobernar los datos de forma automatizada.", "Que se debe imprimir toda la documentación en papel para mayor seguridad."],
+                    correct: 2,
+                    feedback: "DataCamp advierte que la documentación manual en Excel es insostenible al crecer el volumen; exige herramientas de catálogo automáticas."
+                },
+                {
+                    q: "¿Qué son exactamente los \"Metadatos\" en el contexto del Gobierno de Datos según las definiciones de ILDA y DAMA?",
+                    opts: ["La infraestructura física de cableado de los servidores.", "Los datos acerca de los datos; información que describe el contexto, versión, origen, significado y calidad de un conjunto de datos.", "Los datos obsoletos o erróneos que deben ser depurados.", "Un software antivirus encargado de proteger la red institucional."],
+                    correct: 1,
+                    feedback: "Los metadatos proveen el ADN: le dan significado, procedencia y contexto a los datos crudos."
+                },
+                {
+                    q: "Si un Oficial de Gobierno de Datos necesita auditar la historia de un dato, desde el sistema origen donde se capturó hasta el dashboard donde se consumió, ¿qué concepto está aplicando?",
+                    opts: ["Encriptación de extremo a extremo.", "Trazabilidad o Linaje del dato (Data Lineage).", "Eliminación de duplicados.", "Seudonimización."],
+                    correct: 1,
+                    feedback: "El linaje de datos es el mapa visual de la procedencia y transformaciones del dato en su flujo por los sistemas."
+                },
+                {
+                    q: "De acuerdo con ILDA, ¿por qué es vital conocer el \"versionado\" (la versión exacta) de un conjunto de datos en el contexto de la Inteligencia Artificial?",
+                    opts: ["Porque los datos más antiguos siempre garantizan una mayor eficiencia en el entrenamiento.", "Para saber qué versión específica del dataset alimentó el algoritmo y comprender con precisión cómo el modelo está tomando sus decisiones.", "Para asegurar que la Inteligencia Artificial borre de forma permanente las versiones anteriores.", "El versionado no tiene ninguna importancia práctica en el modelado de IA."],
+                    correct: 1,
+                    feedback: "Para auditar un algoritmo predictivo, es necesario saber qué versión de metadatos y variables lo alimentó originalmente."
+                },
+                {
+                    q: "¿Cuál es el estándar o vocabulario de catálogo de datos que la Secretaría de Gobierno y Transformación Digital (SGTD) de la PCM promueve para estructurar metadatos en la Plataforma Nacional de Datos Abiertos?",
+                    opts: ["ISO 9001.", "XML Básico de Datos.", "DCAT-AP.", "HTML5 estructurado."],
+                    correct: 2,
+                    feedback: "El lineamiento peruano exige basar la catalogación del PNDA en el estándar interoperable DCAT-AP."
+                }
+            ]
+        },
+        "6": {
+            moduleName: "Módulo 6: Seguridad, Privacidad, Anonimización y Ética",
+            salirHash: "#mod6_1",
+            pool: [
+                {
+                    q: "¿Qué norma peruana establece las directrices y sanciones (de 5 a 100 UIT) para proteger la intimidad personal frente al uso informático de los datos?",
+                    opts: ["La Ley de Transparencia y Acceso a la Información Pública.", "La Ley N° 29733 de Protección de Datos Personales.", "La Ley del Teletrabajo.", "El Decreto de Urgencia de Ciberdefensa."],
+                    correct: 1,
+                    feedback: "La Ley N° 29733 regula la protección de datos de carácter personal y es fiscalizada por la Autoridad Nacional de Datos Personales (ANPD)."
+                },
+                {
+                    q: "¿Cuál es la principal diferencia normativa entre anonimizar y seudonimizar un conjunto de datos?",
+                    opts: ["La anonimización es temporal y la seudonimización es permanente.", "Son exactamente lo mismo a nivel técnico y legal.", "La anonimización es irreversible y queda fuera de la Ley N° 29733; la seudonimización es reversible (con llave) y el dato sigue considerándose personal.", "La seudonimización es exclusiva para bases de datos físicas en papel."],
+                    correct: 2,
+                    feedback: "Al ser irreversible, la anonimización desliga al dato del ámbito de control restrictivo de la Ley 29733; el seudónimo conserva la llave de reversión."
+                },
+                {
+                    q: "Dentro de las dimensiones de seguridad de DAMA (Las 4 A's), ¿qué significa la \"Auditoría\" (Audit)?",
+                    opts: ["Permitir que cualquier persona modifique los datos sin control.", "Validar el nombre de usuario y contraseña al ingresar.", "Revisar las acciones de seguridad y el historial de actividad de los usuarios para asegurar el cumplimiento de normativas.", "Ocultar los logs del sistema a la alta gerencia."],
+                    correct: 2,
+                    feedback: "La Auditoría consiste en la inspección y verificación sistemática de logs para registrar quién, cómo y cuándo accedió a la información."
+                },
+                {
+                    q: "Si un Oficial de Gobierno de Datos decide reemplazar la fecha de nacimiento exacta \"15/04/1990\" por \"Abril 1990\", ¿qué técnica de protección está utilizando?",
+                    opts: ["Supresión de variables.", "Generalización.", "Encriptación de disco duro.", "Firma digital."],
+                    correct: 1,
+                    feedback: "La generalización sustituye valores exactos por rangos de valores para proteger identidades manteniendo el análisis estadístico."
+                },
+                {
+                    q: "El concepto de \"Linkage Attack\" (Ataque de enlace) representa un riesgo en la apertura de datos. ¿En qué consiste?",
+                    opts: ["Enviar miles de correos fraudulentos (phishing) a la entidad.", "Robar físicamente las cintas de backup de la institución.", "Combinar y cruzar diferentes conjuntos de datos presuntamente anónimos con fuentes externas para lograr reidentificar a las personas.", "Borrar los metadatos del catálogo nacional de datos abiertos."],
+                    correct: 2,
+                    feedback: "El linkage attack busca la reidentificación de personas al cruzar datos supuestamente anónimos con bases de datos complementarias públicas."
+                },
+                {
+                    q: "En el ecosistema de la entidad pública, ¿qué rol es el principal encargado de ser el enlace con el Ministerio de Justicia (ANPD) para velar por el cumplimiento de la Ley N° 29733?",
+                    opts: ["El Oficial de Gobierno de Datos.", "El Administrador de Base de Datos (DBA).", "El Oficial de Datos Personales (o Delegado de Protección de Datos).", "El Jefe de Recursos Humanos."],
+                    correct: 2,
+                    feedback: "El Oficial de Datos Personales o Delegado es el articulador del cumplimiento normativo de la ley de protección de datos personales."
+                },
+                {
+                    q: "¿Qué sucede si un modelo de Inteligencia Artificial (IA) para la selección de personal se entrena con datos históricos que excluyen o subrepresentan a cierto grupo demográfico?",
+                    opts: ["El modelo se vuelve automáticamente un 100% más preciso.", "El modelo hereda y amplifica los sesgos (discriminación) que venían implícitos en los datos de origen.", "La IA limpia los sesgos históricos de forma automática sin intervención humana.", "La base de datos del modelo se bloquea automáticamente por seguridad."],
+                    correct: 1,
+                    feedback: "Los modelos algorítmicos heredan los prejuicios humanos del pasado contenidos en las bases de datos históricas (efecto de sesgo)."
+                },
+                {
+                    q: "¿Por qué la técnica de \"Supresión de variables\" (ej. borrar solo el DNI y Nombre) suele ser insuficiente por sí sola para proteger un conjunto de datos público?",
+                    opts: ["Porque borra demasiada información útil y el archivo pierde validez.", "Porque mediante la combinación de variables indirectas restantes (ej. edad exacta + profesión poco común + distrito) se puede reidentificar a una persona.", "Porque la Ley prohíbe eliminar columnas de cualquier base de datos pública.", "Porque los metadatos de linaje se vuelven corruptos."],
+                    correct: 1,
+                    feedback: "La presencia de variables cuasi-identificadoras indirectas permite reconstruir la identidad mediante cruces analíticos."
+                },
+                {
+                    q: "El Decreto de Urgencia N° 007-2020 estructura el \"Marco de Confianza Digital\" en pilares fundamentales. ¿Cuál de los siguientes es uno de ellos?",
+                    opts: ["El aumento de recaudación tributaria digital.", "La eliminación de sistemas operativos de código abierto.", "La protección de datos personales y la ciberseguridad.", "La exportación y venta de datos a servidores extranjeros."],
+                    correct: 2,
+                    feedback: "El Marco de Confianza Digital de la PCM prioriza la ciberseguridad, la confianza, y la salvaguarda de la privacidad del ciudadano."
+                },
+                {
+                    q: "¿Qué dimensión de la seguridad (El pilar \"E\" moderno de DAMA) se enfoca en determinar si un individuo tiene el derecho o la necesidad legítima de acceder a un dato por la naturaleza de su trabajo, antes de otorgarle autorización?",
+                    opts: ["Encriptación (Encryption).", "Evaluación (Evaluation).", "Derecho/Adjudicación (Entitlement).", "Extracción (Extraction)."],
+                    correct: 2,
+                    feedback: "El Entitlement es el derecho reglamentario o necesidad comercial real que valida si el usuario debe acceder a la información."
+                }
+            ]
+        }
+    };
+
+    // ── INTERACTIVE QUIZ LOGIC ──
+    const urlParams = new URLSearchParams(window.location.search);
+    const moduleId = urlParams.get('module') && moduleQuizzes[urlParams.get('module')] ? urlParams.get('module') : "2";
+    const quizData = moduleQuizzes[moduleId];
+
+    let quizQuestions = [];
+    let currentQuestionIndex = 0;
+    let selectedOptionIndex = null;
+    let userAnswers = [];
+
+    // Helper to extract 5 random questions
+    function initializeQuiz() {
+        const fullPool = [...quizData.pool];
+        quizQuestions = [];
+        
+        // Shuffle pool
+        for (let i = fullPool.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [fullPool[i], fullPool[j]] = [fullPool[j], fullPool[i]];
+        }
+        
+        // Take up to 5 questions
+        quizQuestions = fullPool.slice(0, Math.min(5, fullPool.length));
+        currentQuestionIndex = 0;
+        selectedOptionIndex = null;
+        userAnswers = Array(quizQuestions.length).fill(null);
+    }
+
+    // Set UI Header Info
+    document.getElementById('activity-title').textContent = `Evaluación del Módulo ${moduleId}`;
+    document.getElementById('player-breadcrumb').textContent = `PI-GobDatos / 02. Desarrollo del curso / ${moduleId}.3. Evaluación`;
+    
+    // Highlight sidebar active item
+    document.querySelectorAll('.sidebar-item').forEach(item => {
+        item.classList.remove('active');
+        const dot = item.querySelector('.dot');
+        if (dot) dot.className = 'dot empty';
+    });
+    const activeSideItem = document.getElementById('side-mod' + moduleId + '_3');
+    if (activeSideItem) {
+        activeSideItem.classList.add('active');
+        const activeDot = activeSideItem.querySelector('.dot');
+        if (activeDot) activeDot.className = 'dot';
+    }
+
+    const quizBody = document.getElementById('quiz-body');
+
+    // Render Welcome cover card
+    function renderCover() {
+        quizBody.innerHTML = `
+            <div class="cover-card">
+                <i class="fa-solid fa-clipboard-question"></i>
+                <h3>${quizData.moduleName}</h3>
+                <p>Esta actividad de refuerzo consta de <strong>5 preguntas</strong> de opción múltiple seleccionadas al azar de nuestro banco oficial.<br><br>
+                Cada respuesta correcta equivale a <strong>4 puntos</strong>. Para aprobar la evaluación deberás obtener un mínimo de <strong>14/20 (70%)</strong>. Cuentas con intentos ilimitados.</p>
+                <button class="btn-primary-action" onclick="startQuiz()">
+                    <i class="fa-solid fa-play"></i> Iniciar Intento
+                </button>
+            </div>
+        `;
+    }
+
+    // Start Quiz
+    function startQuiz() {
+        initializeQuiz();
+        renderQuestion();
+    }
+
+    // Render single question
+    function renderQuestion() {
+        const q = quizQuestions[currentQuestionIndex];
+        selectedOptionIndex = null;
+
+        let optionsHtml = '';
+        q.opts.forEach((opt, idx) => {
+            optionsHtml += `
+                <button class="option-btn" id="opt-${idx}" onclick="selectOption(${idx})">
+                    <span>${opt}</span>
+                    <i class="fa-regular fa-circle" id="opt-icon-${idx}"></i>
+                </button>
+            `;
+        });
+
+        // Set content
+        quizBody.innerHTML = `
+            <div class="question-box">
+                <div class="question-header">
+                    <span>Pregunta ${currentQuestionIndex + 1} de ${quizQuestions.length}</span>
+                    <span>Puntaje: 4.00</span>
+                </div>
+                <h4 class="question-title">${q.q}</h4>
+                <div class="options-list">
+                    ${optionsHtml}
+                </div>
+            </div>
+            
+            <div class="action-row">
+                <button class="btn-primary-action" id="btn-next" onclick="nextQuestion()" style="opacity: 0.6; pointer-events: none;">
+                    ${currentQuestionIndex === quizQuestions.length - 1 ? 'Enviar Examen' : 'Siguiente'} <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="quiz-progress-bar">
+                <div class="quiz-progress-fill" style="width: ${(currentQuestionIndex / quizQuestions.length) * 100}%"></div>
+            </div>
+        `;
+    }
+
+    // Handle Option Selection
+    function selectOption(index) {
+        selectedOptionIndex = index;
+        userAnswers[currentQuestionIndex] = index;
+
+        // Reset option styles
+        document.querySelectorAll('.option-btn').forEach((btn, idx) => {
+            btn.classList.remove('selected');
+            const icon = document.getElementById(`opt-icon-${idx}`);
+            if (icon) {
+                icon.className = 'fa-regular fa-circle';
+            }
+        });
+
+        // Highlight selected
+        const selectedBtn = document.getElementById(`opt-${index}`);
+        if (selectedBtn) {
+            selectedBtn.classList.add('selected');
+        }
+        const selectedIcon = document.getElementById(`opt-icon-${index}`);
+        if (selectedIcon) {
+            selectedIcon.className = 'fa-regular fa-circle-dot';
+        }
+
+        // Enable next button
+        const nextBtn = document.getElementById('btn-next');
+        if (nextBtn) {
+            nextBtn.style.opacity = '1';
+            nextBtn.style.pointerEvents = 'auto';
+        }
+    }
+
+    // Advance to next question or submit
+    function nextQuestion() {
+        if (selectedOptionIndex === null) return;
+
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizQuestions.length) {
+            renderQuestion();
+        } else {
+            renderResults();
+        }
+    }
+
+    // Calculate score and show detailed review
+    function renderResults() {
+        let correctCount = 0;
+        let reviewHtml = '';
+
+        quizQuestions.forEach((q, idx) => {
+            const userAns = userAnswers[idx];
+            const isCorrect = userAns === q.correct;
+            if (isCorrect) correctCount++;
+
+            let optsReviewHtml = '';
+            q.opts.forEach((opt, optIdx) => {
+                let optClass = 'normal';
+                let iconHtml = '<i class="fa-regular fa-circle" style="font-size:0.75rem;"></i>';
+
+                if (optIdx === q.correct) {
+                    optClass = 'correct-choice';
+                    iconHtml = '<i class="fa-solid fa-circle-check" style="font-size:0.85rem;color:#10b981;"></i>';
+                } else if (optIdx === userAns) {
+                    optClass = 'incorrect-choice';
+                    iconHtml = '<i class="fa-solid fa-circle-xmark" style="font-size:0.85rem;color:#ef4444;"></i>';
+                }
+
+                optsReviewHtml += `
+                    <div class="review-opt ${optClass}">
+                        <span>${opt}</span>
+                        ${iconHtml}
+                    </div>
+                `;
+            });
+
+            reviewHtml += `
+                <div class="review-card">
+                    <div style="font-size: 0.68rem; font-weight:700; color:${isCorrect ? '#10b981' : '#ef4444'}; text-transform:uppercase;">
+                        Pregunta ${idx + 1}: ${isCorrect ? 'Correcta' : 'Incorrecta'}
+                    </div>
+                    <div class="review-q-title">${q.q}</div>
+                    <div style="display:flex; flex-direction:column; gap:0.4rem; margin-top:0.3rem;">
+                        ${optsReviewHtml}
+                    </div>
+                    <div class="review-feedback">
+                        <strong>Explicación:</strong> ${q.feedback}
+                    </div>
+                </div>
+            `;
+        });
+
+        const score = correctCount * 4;
+        const isApproved = score >= 14;
+
+        // Render Results UI
+        quizBody.innerHTML = `
+            <div class="results-box">
+                <div class="score-circle-container">
+                    <div class="score-circle ${isApproved ? 'approved' : 'failed'}">
+                        <span class="score-num">${score}</span>
+                        <span class="score-total">/ 20</span>
+                    </div>
+                    <span class="score-label ${isApproved ? 'approved' : 'failed'}">
+                        ${isApproved ? 'Aprobado' : 'Desaprobado'}
+                    </span>
+                </div>
+
+                <p style="text-align:center; font-size:0.88rem; color:var(--text-secondary); margin: 0; max-width: 480px;">
+                    ${isApproved 
+                        ? '¡Excelente trabajo! Has demostrado una comprensión sólida de los conceptos de este módulo.' 
+                        : 'No has alcanzado la nota mínima aprobatoria (14/20). Te recomendamos revisar el material interactivo e intentarlo nuevamente.'}
+                </p>
+
+                <div style="display:flex; gap:0.8rem;">
+                    <button class="btn-primary-action" onclick="startQuiz()" style="background:#64748b;">
+                        <i class="fa-solid fa-rotate-right"></i> Volver a Intentar
+                    </button>
+                    <button class="btn-primary-action" onclick="exitActivity()">
+                        <i class="fa-solid fa-arrow-left"></i> Regresar al Curso
+                    </button>
+                </div>
+
+                <div class="review-section">
+                    <h4>Revisión del Intento</h4>
+                    ${reviewHtml}
+                </div>
+            </div>
+
+            <div class="quiz-progress-bar">
+                <div class="quiz-progress-fill" style="width: 100%; background: ${isApproved ? '#10b981' : '#ef4444'};"></div>
+            </div>
+        `;
+    }
+
+    // Go back to course dashboard
+    function exitActivity() {
+        window.location.href = `seccion-02.html#mod${moduleId}_3`;
+    }
+
+    // Show initial cover
+    renderCover();
+
+    // ── SIDEBAR INTERACTION HELPER ──
+    function toggleSection(el) {
+        el.classList.toggle('open');
+        const body = el.nextElementSibling;
+        if (body && body.classList.contains('sidebar-section-body')) {
+            body.classList.toggle('open');
+        }
+    }
+</script>
+
+<!-- ── DOWNLOADS MODAL SYSTEM ── -->
+<script>
+    const moduleDownloads = {
+        "1": {
+            title: "Descargables - Módulo 1: Fundamentos y Marco",
+            items: [
+                { title: "Guía Internacional: DAMA-DMBOK2 - Capítulo 3", desc: "Data Management Body of Knowledge (Gobernanza de Datos)", type: "pdf" },
+                { title: "Marco Normativo de Referencia: Ley de Gobierno Digital", desc: "Decreto Legislativo N° 1412 y su marco de gobernanza y gestión", type: "pdf" },
+                { title: "Manual Interno: Procedimiento PI-59 Osinergmin", desc: "Procedimiento Interno de Gestión de Gobernanza de Datos adaptado", type: "pdf" }
+            ]
+        },
+        "2": {
+            title: "Descargables - Módulo 2: Roles y Responsabilidades",
+            items: [
+                { title: "Resolución de SGTD N° 001-2022-PCM/SGTD", desc: "Perfil y Responsabilidades del Oficial de Gobierno de Datos", type: "pdf" },
+                { title: "Resolución de SGTD N° 002-2023-PCM/SGTD", desc: "Perfil y Responsabilidades del Oficial de Seguridad y Confianza Digital", type: "pdf" },
+                { title: "Manual Corporativo Osinergmin: PI-59", desc: "Procedimiento Interno de Gestión de Gobernanza de Datos (Osinergmin)", type: "pdf" },
+                { title: "Lectura Complementaria: Non-Invasive Data Governance", desc: "Robert S. Seiner - Capítulos 7, 8 y 9 sobre capas de gobernanza", type: "pdf" }
+            ]
+        },
+        "3": {
+            title: "Descargables - Módulo 3: Arquitectura, Plataformas e Interoperabilidad",
+            items: [
+                { title: "Guía Internacional: DAMA-DMBOK2", desc: "Capítulo sobre Arquitectura e Integración de Datos", type: "pdf" },
+                { title: "Marco Legal: Decreto Legislativo N° 1246", desc: "Medidas de Simplificación Administrativa y lineamientos de PIDE", type: "pdf" },
+                { title: "Manual Corporativo Osinergmin: Procedimiento PI-59", desc: "Flujograma de implementación de Productos de Datos en Osinergmin", type: "pdf" }
+            ]
+        },
+        "4": {
+            title: "Descargables - Módulo 4: Gestión de la Calidad y Estandarización",
+            items: [
+                { title: "Guía Internacional: DAMA-DMBOK2 - Capítulo 13", desc: "Data Quality Management (Gestión de Calidad del Dato)", type: "pdf" },
+                { title: "Estándar Internacional: ISO/IEC 25000", desc: "Modelo general y dimensiones de calidad de datos", type: "pdf" },
+                { title: "Marco Legal Peruano: Estrategia Nacional de Gobierno de Datos 2026-2030", desc: "Eje 2: Calidad, gestión y privacidad en el Estado", type: "pdf" },
+                { title: "Manual Corporativo Osinergmin: PI-59 (Calidad)", desc: "Definiciones de Calidad de Datos Gobernados", type: "pdf" }
+            ]
+        },
+        "5": {
+            title: "Descargables - Módulo 5: Metadatos, Documentación y Trazabilidad",
+            items: [
+                { title: "Guía Internacional: DAMA-DMBOK2 - Capítulo 11", desc: "Metadata Management (Gestión de Metadatos)", type: "pdf" },
+                { title: "Estándar Peruano: Lineamientos para el uso del estándar DCAT-AP", desc: "Uso de DCAT-AP en la Plataforma Nacional de Datos Abiertos (PNDA)", type: "pdf" },
+                { title: "Manual Corporativo Osinergmin: Procedimiento PI-59", desc: "Gestión de Metadatos y Linajes en Osinergmin", type: "pdf" },
+                { title: "Documento de Referencia: Guías de la Iniciativa Latinoamericana (ILDA)", desc: "Estudio sobre el ciclo de vida del dato", type: "pdf" }
+            ]
+        },
+        "6": {
+            title: "Descargables - Módulo 6: Seguridad, Privacidad, Anonimización y Ética",
+            items: [
+                { title: "Guía Internacional: DAMA-DMBOK2 - Capítulo 7", desc: "Data Security (Las 4 A's de la Seguridad)", type: "pdf" },
+                { title: "Marco Legal Peruano: Ley N° 29733 & D.U. N° 007-2020", desc: "Ley de Protección de Datos Personales y Marco de Confianza Digital", type: "pdf" },
+                { title: "Manual Corporativo Osinergmin: Políticas PI-59", desc: "Políticas de Seguridad de la Información (SGI-PO-01) en Osinergmin", type: "pdf" }
+            ]
+        }
+    };
+
+    function openDownloadsModal(moduleId) {
+        const data = moduleDownloads[moduleId];
+        if (!data) return;
+        
+        let overlay = document.getElementById('downloads-modal-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'downloads-modal-overlay';
+            overlay.className = 'modal-overlay';
+            overlay.innerHTML = `
+                <div class="modal-container">
+                    <div class="modal-header">
+                        <h3 id="downloads-modal-title">Descargables</h3>
+                        <button class="modal-close-btn" onclick="closeDownloadsModal()">&times;</button>
+                    </div>
+                    <div class="modal-body" id="downloads-modal-body">
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeDownloadsModal();
+            });
+        }
+        
+        document.getElementById('downloads-modal-title').textContent = data.title;
+        
+        const body = document.getElementById('downloads-modal-body');
+        let html = '';
+        data.items.forEach(item => {
+            html += `
+                <div class="download-item-card">
+                    <div class="download-item-info">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <div>
+                            <div class="download-item-title">${item.title}</div>
+                            <div class="download-item-desc">${item.desc}</div>
+                        </div>
+                    </div>
+                    <button class="download-action-btn" onclick="simulateDownload('${item.title}')">
+                        <i class="fa-solid fa-download"></i> Descargar
+                    </button>
+                </div>
+            `;
+        });
+        body.innerHTML = html;
+        
+        overlay.style.display = 'flex';
+        setTimeout(() => {
+            overlay.classList.add('open');
+        }, 10);
+    }
+
+    function closeDownloadsModal() {
+        const overlay = document.getElementById('downloads-modal-overlay');
+        if (overlay) {
+            overlay.classList.remove('open');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 300);
+        }
+    }
+
+    function simulateDownload(title) {
+        const filename = title.replace(/[^a-zA-Z0-9]/g, '_') + '.pdf';
+        const blob = new Blob([`Mockup PDF de descarga para: ${title}\nUniversidad Corporativa Osinergmin\nCurso: Estrategia y Gestión de Activos de Información (Gobierno de Datos)`], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+</body>
+</html>

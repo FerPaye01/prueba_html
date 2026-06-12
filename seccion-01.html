@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01. Estructura del Curso - Gobierno de Datos | Osinergmin</title>
+    <meta name="description" content="Sección 01: Estructura del curso de Estrategia y Gestión de Activos de Información - Universidad Corporativa Osinergmin.">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background: var(--bg-main); color: var(--text-primary); }
+
+        /* ── Sidebar ── */
+        .sidebar-moodle {
+            width: var(--sidebar-width);
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            position: fixed; top: var(--header-height); left: 0;
+            height: calc(100vh - var(--header-height));
+            overflow-y: auto; z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        .sidebar-moodle::-webkit-scrollbar { width: 4px; }
+        .sidebar-moodle::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+        .sidebar-top-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem; border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; background: var(--bg-sidebar); z-index: 10;
+        }
+        .sidebar-top-bar h3 { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); }
+        .sidebar-top-bar .close-btn { cursor: pointer; color: var(--text-secondary); font-size: 1rem; }
+
+        .sidebar-section { border-bottom: 1px solid var(--border-color); }
+        .sidebar-section-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.75rem 1rem; cursor: pointer;
+            background: var(--bg-elevated); transition: background var(--transition); user-select: none;
+        }
+        .sidebar-section-header:hover { background: var(--accent-blue-subtle); }
+        .sidebar-section-header.active-section { background: var(--accent-blue-subtle); }
+        .sec-label { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); }
+        .chevron { font-size: 0.68rem; color: var(--text-secondary); transition: transform 0.25s; }
+        .sidebar-section-header.open .chevron { transform: rotate(180deg); }
+
+        .sidebar-section-body { display: none; background: var(--bg-sidebar); }
+        .sidebar-section-body.open { display: block; }
+
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.6rem;
+            padding: 0.5rem 1rem 0.5rem 1.3rem;
+            font-size: 0.82rem; color: var(--text-secondary);
+            cursor: pointer; transition: background var(--transition);
+        }
+        .sidebar-item:hover { background: var(--bg-elevated); color: var(--text-primary); }
+        .sidebar-item.active { color: var(--accent-blue); font-weight: 500; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-blue); flex-shrink: 0; }
+        .dot.empty { background: transparent; border: 1.5px solid var(--border-color); }
+        .subgroup-label { padding: 0.6rem 1rem 0.2rem 1rem; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+
+        /* ── Layout ── */
+        .main-wrapper { display: flex; margin-top: var(--header-height); min-height: calc(100vh - var(--header-height)); }
+        .content-area { flex: 1; margin-left: var(--sidebar-width); padding: 0; background: var(--bg-main); }
+
+        /* ── Hero (siempre oscuro — imagen de fondo) ── */
+        .course-hero { max-width: 860px; margin: 2rem auto 0; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-lg); }
+        .hero-img-area {
+            position: relative; width: 100%; aspect-ratio: 16/6;
+            background: linear-gradient(135deg, #0f2a5e 0%, #1e40af 50%, #1d4ed8 100%);
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .hero-img-area::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 25% 60%, rgba(99,102,241,0.35) 0%, transparent 55%);
+        }
+        .hero-lc { position: absolute; top: 1rem; right: 1rem; display: flex; align-items: center; gap: 0.4rem; }
+        .hero-lc .lc-box { background: white; color: #1e40af; font-weight: 800; font-size: 0.75rem; padding: 0.15rem 0.4rem; border-radius: 3px; }
+        .hero-lc span:last-child { font-size: 0.8rem; font-weight: 600; color: white; }
+        .hero-center-icon { font-size: 6rem; color: rgba(255,255,255,0.08); position: absolute; right: 12%; }
+        .hero-bottom {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%);
+            padding: 2rem 1.2rem 0.8rem;
+        }
+        .hero-badge { display: inline-block; background: rgba(16,185,129,0.88); color: white; font-size: 0.62rem; font-weight: 600; padding: 0.18rem 0.55rem; border-radius: 3px; margin-bottom: 0.5rem; }
+        .hero-bottom h2 { font-size: 1.3rem; font-weight: 700; color: white; margin-bottom: 0.6rem; }
+        .hero-sub { font-size: 0.75rem; color: rgba(255,255,255,0.65); margin-bottom: 0.7rem; }
+        .hero-progress-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; }
+        .hero-bar { flex: 1; height: 5px; background: rgba(255,255,255,0.2); border-radius: 3px; overflow: hidden; }
+        .hero-bar-fill { height: 100%; background: #22c55e; border-radius: 3px; }
+        .hero-pct { font-size: 0.73rem; color: rgba(255,255,255,0.85); white-space: nowrap; }
+        .btn-continuar {
+            display: inline-block; background: var(--accent-blue); color: white;
+            font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1.4rem; border-radius: 5px;
+            cursor: pointer; border: none; transition: background var(--transition);
+        }
+        .btn-continuar:hover { background: var(--accent-blue-hover); }
+
+        /* ── Tabs ── */
+        .course-tabs { max-width: 860px; margin: 0 auto; display: flex; border-bottom: 2px solid var(--border-color); margin-top: 1.5rem; }
+        .tab {
+            padding: 0.8rem 1.2rem; font-size: 0.88rem; color: var(--text-secondary);
+            cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px;
+            font-weight: 500; transition: color var(--transition), border-color var(--transition);
+        }
+        .tab:hover { color: var(--text-primary); }
+        .tab.active { color: var(--accent-blue); border-bottom-color: var(--accent-blue); }
+
+        /* ── Section content ── */
+        .section-body { max-width: 860px; margin: 0 auto; padding: 0 0 4rem; }
+        .section-title-row { display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; margin-bottom: 0.6rem; }
+        .section-title-row h2 { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+        .btn-next-section {
+            background: var(--accent-blue); color: white; font-size: 0.8rem; font-weight: 600;
+            padding: 0.45rem 1rem; border-radius: 5px; border: none; cursor: pointer;
+            display: flex; align-items: center; gap: 0.4rem; white-space: nowrap;
+            transition: background var(--transition);
+        }
+        .btn-next-section:hover { background: var(--accent-blue-hover); }
+        .section-progress-bar { height: 7px; background: var(--progress-bg); border-radius: 4px; overflow: hidden; margin-bottom: 1.5rem; }
+        .section-progress-fill { height: 100%; background: var(--progress-fill); border-radius: 4px; }
+        .section-progress-pct { font-size: 0.75rem; color: var(--text-secondary); margin-left: auto; width: fit-content; display: block; margin-bottom: 0.3rem; text-align: right; }
+
+        /* ── Content blocks ── */
+        .content-block { margin-bottom: 1.8rem; }
+        .block-badge {
+            display: block; width: 100%;
+            background: var(--badge-dark-bg); color: var(--badge-dark-txt);
+            font-size: 1rem; font-weight: 700;
+            padding: 0.65rem 1rem; border-radius: 5px;
+            margin-bottom: 1rem; letter-spacing: 0.02em;
+        }
+        .block-text { font-size: 0.9rem; color: var(--text-body); line-height: 1.85; text-align: justify; padding: 0 0.2rem; }
+        .block-text + .block-text { margin-top: 0.8rem; }
+        .block-text a { color: var(--accent-blue); text-decoration: underline; }
+
+        /* ── Syllabus card ── */
+        .syllabus-card {
+            display: flex; align-items: center; gap: 1.2rem;
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 8px; padding: 1.2rem 1.5rem;
+            margin-top: 1.5rem; cursor: pointer;
+            transition: box-shadow var(--transition), border-color var(--transition);
+            max-width: 380px;
+        }
+        .syllabus-card:hover { box-shadow: var(--shadow-md); border-color: var(--border-focus); }
+        .syllabus-icon {
+            width: 52px; height: 52px; background: var(--accent-blue-subtle); border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: var(--accent-blue); flex-shrink: 0;
+        }
+        .syllabus-label { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+
+        /* ── Misc ── */
+        .bottom-nav { display: flex; justify-content: flex-end; margin-top: 2.5rem; }
+        .content-scroll { padding: 0 2.5rem 0; }
+        .float-btns { position: fixed; right: 1.5rem; bottom: 2rem; display: flex; flex-direction: column; gap: 0.8rem; z-index: 200; }
+        .float-btn {
+            width: 44px; height: 44px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: var(--shadow-md);
+            font-size: 1rem; border: none; color: white;
+            transition: transform 0.2s;
+        }
+        .float-btn:hover { transform: scale(1.08); }
+        .float-btn.up { background: var(--text-secondary); }
+        .float-btn.expand, .float-btn.help { background: var(--accent-blue); }
+
+        footer { background: var(--footer-bg); padding: 2.5rem 2rem; }
+        .footer-content { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+        .footer-content h4 { color: white; font-size: 0.95rem; margin-bottom: 0.8rem; }
+        .footer-content li { font-size: 0.82rem; margin-bottom: 0.4rem; color: var(--footer-text); }
+        .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--footer-border); font-size: 0.78rem; color: var(--footer-text); }
+    </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="header">
+    <div class="header-left">
+        <div class="logo">
+            <span class="lc-box">LC</span>
+            <span>Osinergmin</span>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">Página Principal</a>
+            <a href="area-personal.html" class="nav-item">Área personal</a>
+            <a href="mis-cursos.html" class="nav-item active">Mis cursos</a>
+            <a href="#" class="nav-item">Oferta formativa</a>
+            <a href="#" class="nav-item">Webinars</a>
+            <a href="#" class="nav-item">Tutoriales aplicativos propios</a>
+            <a href="#" class="nav-item">¡Minutos de Conocimiento!</a>
+        </nav>
+    </div>
+    <div class="header-right">
+        <i class="fa-regular fa-bell icon-btn"></i>
+        <i class="fa-regular fa-comment icon-btn"></i>
+        <i class="fa-regular fa-envelope icon-btn"></i>
+        <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+        <div class="user-profile">
+            <div class="avatar">OP</div>
+            <i class="fa-solid fa-chevron-down" style="font-size:0.65rem;"></i>
+        </div>
+    </div>
+</header>
+
+<div class="main-wrapper">
+
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar-moodle">
+        <div class="sidebar-top-bar">
+            <h3>Menú del curso</h3>
+            <i class="fa-solid fa-xmark close-btn"></i>
+        </div>
+
+        <!-- Top blank section -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-header open" onclick="toggleSection(this)">
+                <span class="sec-label" style="color:#94a3b8;font-size:0.7rem;"></span>
+                <i class="fa-solid fa-chevron-up chevron"></i>
+            </div>
+        </div>
+
+        <!-- 01. Estructura -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-header open active-section" onclick="toggleSection(this)">
+                <span class="sec-label">01. Estructura del curso</span>
+                <i class="fa-solid fa-chevron-up chevron"></i>
+            </div>
+            <div class="sidebar-section-body open">
+                <div class="sidebar-item active" onclick="window.location.href='seccion-01.html'">Introducción</div>
+                <div class="sidebar-item" onclick="window.location.href='curso.html'">
+                    <span class="dot empty"></span>
+                    1.1. Sílabo del curso
+                </div>
+            </div>
+        </div>
+
+        <!-- 02. Desarrollo -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-header open" onclick="toggleSection(this)">
+                <span class="sec-label">02. Desarrollo del curso</span>
+                <i class="fa-solid fa-chevron-up chevron"></i>
+            </div>
+            <div class="sidebar-section-body open">
+                <div class="subgroup-label">Módulo 1: Fundamentos y Marco</div>
+                <div class="sidebar-item" onclick="window.location.href='index.html?module=1'"><span class="dot"></span>1.1. Introducción al Gobierno de Datos</div>
+                <div class="sidebar-item" onclick="window.location.href='seccion-02.html#mod1_2'">&nbsp;&nbsp;&nbsp;&nbsp;1.2. Recursos y Normativa</div>
+                <div class="sidebar-item" onclick="window.location.href='evaluacion.html?module=1'"><span class="dot"></span>1.3. Evaluación</div>
+ 
+                <div class="subgroup-label">Módulo 2: Roles y Responsabilidades</div>
+                <div class="sidebar-item" onclick="window.location.href='index.html?module=2'"><span class="dot"></span>2.1. El Comité y el OGD</div>
+                <div class="sidebar-item" onclick="window.location.href='seccion-02.html#mod2_2'">&nbsp;&nbsp;&nbsp;&nbsp;2.2. Recursos y Normativa</div>
+                <div class="sidebar-item" onclick="window.location.href='evaluacion.html?module=2'"><span class="dot"></span>2.3. Evaluación</div>
+ 
+                <div class="subgroup-label">Módulo 3: Arquitectura e Interop.</div>
+                <div class="sidebar-item" onclick="window.location.href='index.html?module=3'"><span class="dot"></span>3.1. Datos Maestros y PIDE</div>
+                <div class="sidebar-item" onclick="window.location.href='seccion-02.html#mod3_2'">&nbsp;&nbsp;&nbsp;&nbsp;3.2. Recursos y Normativa</div>
+                <div class="sidebar-item" onclick="window.location.href='evaluacion.html?module=3'"><span class="dot"></span>3.3. Evaluación</div>
+ 
+                <div class="subgroup-label">Módulo 4: Gestión de la Calidad</div>
+                <div class="sidebar-item" onclick="window.location.href='index.html?module=4'"><span class="dot"></span>4.1. Dimensiones de Calidad</div>
+                <div class="sidebar-item" onclick="window.location.href='seccion-02.html#mod4_2'">&nbsp;&nbsp;&nbsp;&nbsp;4.2. Recursos y Normativa</div>
+                <div class="sidebar-item" onclick="window.location.href='evaluacion.html?module=4'"><span class="dot"></span>4.3. Evaluación</div>
+ 
+                <div class="subgroup-label">Módulo 5: Metadatos y Trazabilidad</div>
+                <div class="sidebar-item" onclick="window.location.href='index.html?module=5'"><span class="dot"></span>5.1. ADN del Dato</div>
+                <div class="sidebar-item" onclick="window.location.href='seccion-02.html#mod5_2'">&nbsp;&nbsp;&nbsp;&nbsp;5.2. Recursos y Normativa</div>
+                <div class="sidebar-item" onclick="window.location.href='evaluacion.html?module=5'"><span class="dot"></span>5.3. Evaluación</div>
+ 
+                <div class="subgroup-label">Módulo 6: Seguridad y Ética del Dato</div>
+                <div class="sidebar-item" onclick="window.location.href='index.html?module=6'"><span class="dot empty"></span>6.1. Anonimización y Privacidad</div>
+                <div class="sidebar-item" onclick="window.location.href='seccion-02.html#mod6_2'">&nbsp;&nbsp;&nbsp;&nbsp;6.2. Recursos y Normativa</div>
+                <div class="sidebar-item" onclick="window.location.href='evaluacion.html?module=6'"><span class="dot"></span>6.3. Evaluación</div>
+            </div>
+        </div>
+
+        <!-- 03. Retroalimentación -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-header open" onclick="toggleSection(this)">
+                <span class="sec-label">03. Retroalimentación del cu...</span>
+                <i class="fa-solid fa-chevron-up chevron"></i>
+            </div>
+            <div class="sidebar-section-body open">
+                <div class="sidebar-item"><span class="dot"></span>3.1. Encuesta de valoración del c...</div>
+            </div>
+        </div>
+
+        <!-- 04. Acreditación -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-header open" onclick="toggleSection(this)">
+                <span class="sec-label">04. Acreditación del curso</span>
+                <i class="fa-solid fa-chevron-up chevron"></i>
+            </div>
+            <div class="sidebar-section-body open">
+                <div class="sidebar-item"><span class="dot"></span>Certificado de 6 horas cronológi...</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ══ MAIN CONTENT ══ -->
+    <main class="content-area">
+        <div class="content-scroll">
+
+            <!-- Hero -->
+            <div class="course-hero">
+                <div class="hero-img-area">
+                    <div class="hero-lc">
+                        <span class="lc-box">LC</span>
+                        <span>Universidad Corporativa Osinergmin</span>
+                    </div>
+                    <i class="fa-solid fa-database hero-center-icon"></i>
+                    <div class="hero-bottom">
+                        <span class="hero-badge">Programa de Inducción - Nuestra Energía por el Perú</span>
+                        <h2>Estrategia y Gestión de Activos de Información</h2>
+                        <p class="hero-sub">Curso desarrollado por la Oficina de Gobierno de Datos para Osinergmin</p>
+                        <div class="hero-progress-row">
+                            <div class="hero-bar"><div class="hero-bar-fill" style="width:15%;"></div></div>
+                            <span class="hero-pct">15% completo</span>
+                        </div>
+                        <button class="btn-continuar">Continuar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="course-tabs">
+                <div class="tab active">Curso</div>
+                <div class="tab">Participantes</div>
+                <div class="tab">Calificaciones</div>
+                <div class="tab">Competencias</div>
+            </div>
+
+            <!-- ── Section body ── -->
+            <div class="section-body">
+
+                <!-- Title row -->
+                <div class="section-title-row">
+                    <h2>01. Estructura del curso</h2>
+                    <button class="btn-next-section" onclick="window.location.href='seccion-02.html'">
+                        02. Desarrollo ... <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <span class="section-progress-pct">100%</span>
+                <div class="section-progress-bar">
+                    <div class="section-progress-fill" style="width:100%;"></div>
+                </div>
+
+                <!-- BLOQUE 1: Competencia del curso -->
+                <div class="content-block">
+                    <span class="block-badge">Competencia del curso</span>
+                    <p class="block-text">
+                        Al finalizar el curso, el participante será capaz de identificar y aplicar los principios, marcos normativos y mejores prácticas del Gobierno de Datos en el contexto del sector público peruano, con énfasis en la gestión de activos de información de Osinergmin.
+                    </p>
+                    <p class="block-text">
+                        Asimismo, podrá reconocer los roles y responsabilidades dentro de un ecosistema de Gobierno de Datos, comprender la importancia de la calidad, trazabilidad y seguridad del dato, y aplicar criterios éticos en el tratamiento de información institucional, contribuyendo a una gestión más transparente, eficiente e interoperable del Estado.
+                    </p>
+                </div>
+
+                <!-- BLOQUE 2: Introducción -->
+                <div class="content-block">
+                    <span class="block-badge">Introducción</span>
+                    <p class="block-text">
+                        En el contexto actual, donde la transformación digital del Estado avanza de manera acelerada, los datos se han convertido en el activo estratégico más valioso de las organizaciones públicas. Osinergmin, como organismo regulador del sector energético y minero, genera y gestiona grandes volúmenes de información que requieren ser tratados con rigor, coherencia y criterios técnicos bien definidos.
+                    </p>
+                    <p class="block-text">
+                        El curso de <strong>Estrategia y Gestión de Activos de Información</strong> ha sido diseñado para dotar a los colaboradores de Osinergmin con los conocimientos y herramientas necesarios para comprender qué es el Gobierno de Datos, por qué es prioritario en el marco normativo peruano vigente y cómo se implementa de forma práctica en una institución pública. Al concluir este recorrido formativo, cada participante estará en condiciones de contribuir activamente a una cultura organizacional basada en datos de calidad y uso responsable de la información.
+                    </p>
+                </div>
+
+                <!-- BLOQUE 3: Familiarización -->
+                <div class="content-block">
+                    <span class="block-badge">Familiarización</span>
+                    <p class="block-text">
+                        La Oficina de Gobierno de Datos de Osinergmin ha estructurado este curso en seis módulos temáticos que cubren de manera progresiva los pilares fundamentales de la disciplina: desde los fundamentos conceptuales y el marco normativo peruano, pasando por los roles y estructuras de gobernanza, hasta la arquitectura de datos, la gestión de la calidad, los metadatos y la seguridad ética de la información.
+                    </p>
+                    <p class="block-text">
+                        Cada módulo está diseñado para ser autónomo y práctico, con recursos interactivos, casos aplicados al contexto institucional y evaluaciones que permiten medir el avance del participante. Descarga el Sílabo para conocer en detalle los objetivos, tiempos estimados y actividades de cada módulo.
+                    </p>
+                </div>
+
+                <!-- TARJETA SÍLABO -->
+                <div class="syllabus-card" title="Descargar Sílabo del curso">
+                    <div class="syllabus-icon">
+                        <i class="fa-regular fa-file-lines"></i>
+                    </div>
+                    <span class="syllabus-label">1.1. Sílabo del curso</span>
+                </div>
+
+                <!-- Bottom next button -->
+                <div class="bottom-nav">
+                    <button class="btn-next-section" onclick="window.location.href='seccion-02.html'">
+                        02. Desarrollo ... <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+            </div><!-- /section-body -->
+        </div><!-- /content-scroll -->
+    </main>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div>
+            <h4>Sobre el Estado Peruano</h4>
+            <ul>
+                <li>El Estado Peruano</li>
+                <li>¿Qué es gob.pe?</li>
+            </ul>
+        </div>
+        <div style="text-align:center;">
+            <div class="logo" style="justify-content:center; margin-bottom:0.8rem;">
+                <span class="lc-box" style="background:#3b82f6;color:white;">LC</span>
+                <span style="color:white;font-weight:600;">Osinergmin</span>
+            </div>
+        </div>
+        <div>
+            <h4>Directorios nacionales</h4>
+            <ul>
+                <li>Directorio Nacional de Funcionarios Públicos</li>
+                <li>Directorio Nacional de Redes Sociales</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">Copyright © 2026. Todos los derechos reservados.</div>
+</footer>
+
+<!-- Floating buttons -->
+<div class="float-btns">
+    <button class="float-btn up" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+    <button class="float-btn expand" title="Pantalla completa">
+        <i class="fa-solid fa-expand"></i>
+    </button>
+    <button class="float-btn help" title="Ayuda">
+        <i class="fa-solid fa-question"></i>
+    </button>
+</div>
+
+<script>
+    function toggleSection(el) {
+        el.classList.toggle('open');
+        const body = el.nextElementSibling;
+        if (body && body.classList.contains('sidebar-section-body')) {
+            body.classList.toggle('open');
+        }
+    }
+</script>
+</body>
+</html>
