@@ -26,9 +26,9 @@ Cada guión debe ser didáctico, comprensivo, cercano y empático, explicando co
 ### DIRECTRICES Y TEMARIO POR MÓDULO (Para alineación con Ejercicios y Evaluaciones)
 
 #### MÓDULO 1: Fundamentos y Marco de Gobierno de Datos
-- Eje Teórico: Madurez de datos actual del Estado Peruano (1.88/5), silos de información y "propiedad difusa". DL N° 1412 (Ley de Gobierno Digital). Rol de PIDE, PNDA y GeoPerú.
+- Eje Teórico: Valor Público y Beneficios Estratégicos del Gobierno de Datos, toma de decisiones basada en evidencia y eficiencia operativa. DL N° 1412 (Ley de Gobierno Digital). Rol de PIDE, PNDA y GeoPerú.
 - Alineación Práctica (Para Ejercicios/Examen):
-  * Explicar claramente que la madurez de 1.88 es inicial/formativa y genera silos de información.
+  * Explicar claramente cómo el Gobierno de Datos genera valor y mejora la eficiencia.
   * Estandarizar que el Gobierno de Datos no es un proyecto de TI, sino de Personas, Procesos y Cultura para tratar la información como un "Activo Estratégico".
   * Definir PIDE (interoperabilidad segura / APIs), PNDA (datos abiertos y transparencia para investigadores) y GeoPerú (mapas y territorio).
   * Analogía: El Director de Orquesta que no toca todos los instrumentos, sino que asegura que toquen la misma partitura (políticas comunes).

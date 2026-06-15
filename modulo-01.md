@@ -21,12 +21,12 @@ Este material se presentará en la plataforma como un paquete interactivo tipo S
 
 ### 2. Texto Didáctico Específico del Curso:
 
-#### ¿De dónde partimos? La Brecha de Madurez y el Mandato de Cambio
-Para entender la urgencia del Gobierno de Datos, primero debemos saber dónde estamos parados. La última evaluación oficial liderada por la Presidencia del Consejo de Ministros (PCM) arrojó que el nivel de madurez de gestión de datos en el Estado peruano es de apenas **1.88 en una escala del 1 al 5**. 
+#### El Valor del Gobierno de Datos: Impacto Estratégico y Valor Público
+El Gobierno de Datos no debe entenderse como una carga administrativa o un simple requisito técnico, sino como el motor que impulsa la creación de **Valor Público**. En un Estado moderno, los datos son el combustible para diseñar servicios eficientes y políticas públicas que realmente resuelvan los problemas de la ciudadanía.
 
-Este puntaje revela que operamos en un estado casi formativo: dependemos de soluciones improvisadas, procesos manuales y sufrimos de una **"Propiedad Difusa"** (donde todos en la entidad usan un dato para trabajar, pero nadie es el responsable formal de su calidad ni sabe a quién rendirle cuentas). Esto genera **"silos de información"**, donde los datos viven fragmentados en las computadoras de distintos funcionarios o áreas que no dialogan entre sí. Sin embargo, este puntaje marca nuestra línea base para planificar mejoras estructuradas.
+Implementar un modelo de gobernanza permite pasar de un estado de "caos informativo" a uno de **decisiones basadas en evidencia**. Esto significa que los funcionarios cuentan con información confiable, oportuna y compartida, eliminando la incertidumbre y los errores derivados de datos inconsistentes. Además, la gobernanza garantiza la **eficiencia operativa**, reduciendo drásticamente el tiempo y los recursos invertidos en corregir datos duplicados o procesar información manualmente.
 
-El Gobierno de Datos ya no es una opción, es un mandato legal. La Ley de Gobierno Digital (Decreto Legislativo N° 1412) establece formalmente que el dato debe ser tratado como un **activo estratégico** de la institución. Para operativizar esto, contamos con la Estrategia Nacional de Gobierno de Datos 2026-2030, cuya visión es posicionar al Perú como un referente regional (alcanzar el nivel 4 de madurez) en el uso ético y seguro de la información.
+El Gobierno de Datos es un mandato legal bajo la Ley de Gobierno Digital (Decreto Legislativo N° 1412), que establece que el dato es un **activo estratégico**. La visión hacia el 2030 es posicionar a las instituciones públicas como entidades "Data-Driven" (impulsadas por datos), donde la información se gestiona con los mismos estándares de rigor que los recursos financieros o el talento humano.
 
 #### El Cambio de Paradigma: De "Archivo" a "Activo Estratégico"
 Históricamente, las organizaciones han visto a los datos como un simple residuo o subproducto de la burocracia: se llena un formulario, se archiva y el dato "muere" ahí. En un entorno moderno, los datos deben dejar de ser un residuo administrativo para convertirse en el activo estratégico más importante. 
@@ -36,7 +36,7 @@ El Gobierno de Datos se define como **el ejercicio de autoridad y control (plani
 A diferencia de los recursos tradicionales (como el petróleo o los minerales) que se agotan con el uso, un dato bien gobernado es un recurso expansivo y renovable: genera más valor cuanto más se utiliza, se analiza y se cruza con otros datos, construyendo una **Fuente Única de Verdad** (SSOT).
 
 #### Destruyendo los Silos mediante el Ecosistema del Estado
-Para dejar atrás los silos, el Estado ha dispuesto una infraestructura tecnológica transversal lista para usar, que evita que las entidades tengan que duplicar esfuerzos:
+Para generar valor real, es necesario romper los **"silos de información"**, donde los datos viven fragmentados y aislados. El Estado ha dispuesto una infraestructura tecnológica transversal que facilita esta integración:
 * **PIDE (Plataforma de Interoperabilidad del Estado):** Para conectar los sistemas internos de las entidades de forma segura en tiempo real.
 * **PNDA (Plataforma Nacional de Datos Abiertos):** Para publicar datos a la ciudadanía y promover la transparencia y la investigación.
 * **GeoPerú:** Para análisis territorial y superposición de capas geográficas.
@@ -46,9 +46,9 @@ Para dejar atrás los silos, el Estado ha dispuesto una infraestructura tecnoló
 ### 3. Diapositivas Específicas del Curso (Mockup Visual):
 
 * **Diapositiva 1:**
-  * **Visual:** Un termómetro marcando 1.88 sobre 5 en color ámbar, o un director de orquesta frente a sus músicos.
-  * **Título:** Del Caos a la Sinfonía.
-  * **Contenido:** Un nivel de madurez de 1.88 significa que dependemos de soluciones improvisadas y que nuestra información vive en "silos". El Gobierno de Datos actúa como el director de la orquesta: asegura que todos sigan la misma "partitura" (políticas comunes) para transformar el ruido y el desorden en una sinfonía de información confiable.
+  * **Visual:** Un gráfico de crecimiento ascendente o un engranaje dorado simbolizando valor estratégico.
+  * **Título:** Generando Valor Público.
+  * **Contenido:** El Gobierno de Datos transforma la información aislada en un activo estratégico. Sus beneficios principales son la toma de decisiones precisas basadas en evidencia real y la eficiencia operativa al eliminar la duplicidad y el retrabajo manual.
 * **Diapositiva 2:**
   * **Visual:** Un mazo de juez junto a un escudo protector, o un vehículo de alta gama saliendo de un concesionario.
   * **Título:** Confianza en nuestras Decisiones.
@@ -72,18 +72,18 @@ Para dejar atrás los silos, el Estado ha dispuesto una infraestructura tecnoló
   * *Información incompleta, desactualizada o duplicada en los registros.* $\rightarrow$ **Gestión de Calidad del Dato**
   * *Nadie asume la responsabilidad cuando un reporte oficial de la gerencia tiene errores.* $\rightarrow$ **Asignación de Roles / Dueño del Dato**
 
-### Ejercicio 2: Nivel Aplicar - "El Diagnóstico de Madurez" (Rellenar espacios en blanco)
+### Ejercicio 2: Nivel Aplicar - "Beneficios del Gobierno de Datos" (Rellenar espacios en blanco)
 * **Texto a completar:**
-  > "La última evaluación oficial de la PCM determinó que la madurez de gestión de datos en el Estado peruano es de apenas **[1.88]** sobre 5. Esto evidencia que operamos bajo **[silos de información]**, donde los datos están aislados y existe una **[propiedad difusa]**. Para revertir esto, el Gobierno de Datos no debe ser visto como un proyecto exclusivo de **[Tecnologías de la Información (TI)]**, sino como un programa de negocio para tratar la información como un **[Activo Estratégico]**."
+  > "El objetivo central del Gobierno de Datos es generar **[valor público]** mediante el uso de la información como un **[activo estratégico]**. Esto permite tomar **[decisiones precisas]** basadas en evidencia y mejorar la **[eficiencia operativa]** al eliminar la duplicidad. Para lograrlo, es fundamental romper los **[silos de información]** y establecer responsabilidades claras sobre la calidad de la información."
 
 ### Ejercicio 3: Nivel Analizar - "Decisión Estratégica" (Elige tu propia aventura)
 * **Escenario:**
   > "Como Director de Área en Osinergmin, notas que tu equipo gasta 2 horas diarias cruzando archivos Excel de forma manual para un reporte urgente de fiscalización porque los datos de tu área no coinciden con los de otra gerencia técnica."
 * **Opciones de decisión:**
   * **Opción A:** Contratar a un asistente adicional para que se dedique exclusivamente a cruzar los Exceles manualmente y entregar el reporte a tiempo.
-    * *Feedback (Incorrecto/Alto Riesgo):* ¡Cuidado! Estás creando un "héroe de los datos" para poner un parche reactivo. Esto consume presupuesto, no soluciona el problema de fondo y mantiene a la institución en un nivel formativo de madurez (1.88) sin romper los silos de información.
+    * *Feedback (Incorrecto/Alto Riesgo):* ¡Cuidado! Estás creando un "héroe de los datos" para poner un parche reactivo. Esto consume presupuesto y no soluciona el problema de fondo, manteniendo la ineficiencia operativa y el riesgo de errores por falta de gobernanza.
   * **Opción B:** Basarte en el Decreto Legislativo N° 1412 y convocar a las áreas involucradas para estandarizar el origen de la variable y automatizar su integración en los sistemas mediante una API.
-    * *Feedback (Correcto/Seguro):* ¡Excelente! Estás tratando el dato como un activo estratégico y apoyándote en el marco normativo peruano para construir una "Fuente Única de Verdad" (SSOT) institucional, previniendo reprocesos futuros.
+    * *Feedback (Correcto/Seguro):* ¡Excelente! Estás tratando el dato como un activo estratégico y apoyándote en el marco normativo peruano para construir una "Fuente Única de Verdad" (SSOT) institucional, potenciando la eficiencia y la precisión de los reportes.
 
 ---
 
@@ -92,18 +92,18 @@ Para dejar atrás los silos, el Estado ha dispuesto una infraestructura tecnoló
 El sistema seleccionará 5 preguntas al azar por cada intento del usuario.
 
 #### Pregunta 1
-¿Qué puntaje arrojó la última evaluación oficial de la PCM respecto al nivel de madurez de gestión de datos en las entidades públicas peruanas?
-* a) 4.50 (Nivel optimizado).
-* b) 3.00 (Nivel estandarizado).
-* **c) 1.88 (Nivel inicial/formativo).** (Correcta)
-* d) 5.00 (Nivel predictivo).
+¿Cuál es el beneficio principal de implementar un modelo de Gobierno de Datos en una entidad pública?
+* a) Incrementar el consumo de papel en las oficinas administrativas.
+* b) Mantener la información en silos aislados para mayor seguridad.
+* **c) Generar valor público mediante decisiones basadas en evidencia y eficiencia operativa.** (Correcta)
+* d) Eliminar la necesidad de personal en el área de TI.
 
 #### Pregunta 2
-¿Qué significa que una institución tenga un nivel de madurez inicial respecto a sus datos?
-* a) Que todos sus procesos de negocio están respaldados por algoritmos avanzados.
-* **b) Que opera con sistemas aislados, procesos manuales y silos de información.** (Correcta)
-* c) Que ha centralizado exitosamente toda su base de datos maestros.
-* d) Que cuenta con una Oficina de Gobierno de Datos completamente automatizada.
+¿Qué significa que una institución trate sus datos como un "Activo Estratégico"?
+* a) Que los datos se consideran un residuo o subproducto del trámite burocrático.
+* **b) Que la información es un recurso valioso que debe ser gestionado para generar valor y mejorar servicios.** (Correcta)
+* c) Que los datos son propiedad exclusiva de la oficina de informática.
+* d) Que la información debe ocultarse para evitar auditorías externas.
 
 #### Pregunta 3
 La normativa peruana que establece formalmente el marco de gobernanza y gestión de datos como activos estratégicos es:
@@ -183,11 +183,11 @@ En la "Rueda DAMA" (DAMA Wheel), ¿qué posición ocupa el Gobierno de Datos res
 * d) Publicación, Archivo o Eliminación.
 
 #### Pregunta 14
-El concepto de "Propiedad Difusa" es un problema común en el nivel de madurez 1.88. ¿A qué se refiere?
-* a) A que la titularidad y la propiedad de los servidores físicos no está clara entre TI y Finanzas.
-* **b) A que todos en la entidad usan un dato para trabajar, pero nadie es el responsable formal de su calidad ni sabe a quién rendirle cuentas.** (Correcta)
-* c) A la pérdida de información debido a ataques informáticos externos y de origen difuso.
-* d) Al uso de metadatos no estandarizados en la Plataforma Nacional de Datos Abiertos.
+Cuando decimos que el Gobierno de Datos mejora la "Eficiencia Operativa", nos referimos a:
+* a) Que los servidores funcionan más rápido sin necesidad de mantenimiento.
+* **b) La reducción de costos y tiempo al eliminar la duplicidad de datos y automatizar procesos manuales.** (Correcta)
+* c) Que los funcionarios deben trabajar más horas para ingresar datos al sistema.
+* d) La compra de computadoras más modernas para todos los empleados.
 
 #### Pregunta 15
 Construir una "Fuente Única de Verdad" (Single Source of Truth) permite a las entidades públicas:
