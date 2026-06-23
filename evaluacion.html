@@ -694,10 +694,10 @@
             salirHash: "#mod2_3",
             pool: [
                 {
-                    q: "En la analogía de la cadena de suministro de DataCamp, ¿qué rol corporativo representa el \"Distribuidor\" que transporta y asegura el almacenamiento en frío del alimento?",
-                    opts: ["El Analista o Científico de Datos.", "El Productor operativo de datos.", "El Custodio del Dato (Data Custodian), responsable de redes, copias de seguridad y servidores.", "El Oficial de Datos Personales."],
+                    q: "En la analogía de la cadena de suministro, ¿qué rol corporativo representa el \"Transportista/Logística\" que administra el almacenamiento seguro de la infraestructura?",
+                    opts: ["El Equipo BI / Analítica.", "El Usuario de Datos.", "El Custodio Técnico de Datos (Data Custodian), responsable de bases de datos, seguridad e infraestructura.", "El Oficial de Datos Personales."],
                     correct: 2,
-                    feedback: "El Distribuidor representa al Custodio Técnico (TI), quien da soporte, almacenamiento e infraestructura de redes al dato."
+                    feedback: "El Transportista representa al Custodio Técnico (Data Custodian), quien da soporte, almacenamiento e infraestructura de bases de datos al dato."
                 },
                 {
                     q: "De acuerdo con DataCamp, ¿qué característica define a un modelo operativo de gobernanza \"Federado o Híbrido\"?",
@@ -707,9 +707,9 @@
                 },
                 {
                     q: "¿Cuál es el equivalente al \"Chef\" (quien limpia, prepara y cocina el ingrediente para obtener un resultado final de alto valor) en el ecosistema de roles de datos?",
-                    opts: ["El dueño de la infraestructura física del centro de datos.", "El Analista o Científico de Datos, que utiliza los datos limpios para generar reportes, dashboards e insights accionables.", "El Digitador que introduce datos desde ventanillas de atención.", "El Asesor Legal de la entidad."],
+                    opts: ["El dueño de la infraestructura física del centro de datos.", "El Equipo BI / Analítica, que utiliza los datos limpios para generar reportes, dashboards e insights analíticos.", "El colaborador que introduce datos desde ventanillas de atención.", "El Asesor Legal de la entidad."],
                     correct: 1,
-                    feedback: "El analista es el Chef: toma la información gobernada (ingrediente limpio) y la procesa para servir visualizaciones o modelos avanzados."
+                    feedback: "El Equipo BI / Analítica es el Chef: toma la información gobernada (ingrediente limpio) y la procesa para servir visualizaciones o modelos avanzados."
                 },
                 {
                     q: "Si una entidad pública utiliza un modelo operativo de gobernanza \"Centralizado\", ¿cuál es uno de sus principales retos a medida que la organización crece?",
@@ -718,10 +718,10 @@
                     feedback: "El exceso de control centralizado tiende a ralentizar la respuesta ágil de las áreas operativas, convirtiéndose en cuello de botella."
                 },
                 {
-                    q: "Según el procedimiento interno PI-59 y las mejores prácticas, ¿quién asume la máxima responsabilidad por definir el propósito y aprobar las reglas de calidad de los datos de su gerencia?",
-                    opts: ["El Administrador de Base de Datos (DBA).", "El Analista de Business Intelligence (BI).", "El Dueño del Dato (Data Owner).", "El desarrollador del software transaccional."],
+                    q: "Según el procedimiento interno PI-59 y las mejores prácticas, ¿quién asume la máxima responsabilidad funcional por definir el propósito y aprobar las reglas de calidad de los datos de su gerencia?",
+                    opts: ["El Administrador de Base de Datos (DBA).", "El Analista de Business Intelligence (BI).", "El Dueño de Datos (Data Owner).", "El desarrollador del software transaccional."],
                     correct: 2,
-                    feedback: "El Dueño del Dato (perfil de negocio) es el máximo responsable político e institucional de definir reglas y usos del dato."
+                    feedback: "El Dueño de Datos (Data Owner) es el máximo responsable político e institucional de definir reglas y usos del dato."
                 },
                 {
                     q: "¿Qué función asume el Oficial de Gobierno de Datos (OGD) en relación con el ecosistema humano de la entidad?",
@@ -742,14 +742,14 @@
                     feedback: "La Resolución PCM dictamina que es el Comité de Gobierno y Transformación Digital quien valida e institucionaliza el Plan de Acción."
                 },
                 {
-                    q: "De acuerdo con el enfoque de \"Gobierno de Datos No Invasivo\" de Robert S. Seiner, ¿qué es un \"Data Steward\" (Administrador o Gestor de Datos)?",
+                    q: "De acuerdo con el enfoque de \"Gobierno de Datos No Invasivo\" de Robert S. Seiner, ¿qué es un \"Data Steward\" (Gestor de Datos)?",
                     opts: ["Un puesto de trabajo completamente nuevo que debe ser contratado externamente.", "Un software que limpia bases de datos de forma automática.", "Cualquier colaborador en la organización evaluado por su relación con los datos (quien los define, produce o usa) y que asume responsabilidad por ellos.", "El auditor externo del Gobierno encargado de las multas."],
                     correct: 2,
-                    feedback: "En la gobernanza no invasiva, el steward es un rol funcional que formaliza las tareas que el colaborador ya realiza con los datos en su día a día."
+                    feedback: "En la gobernanza no invasiva, el steward o gestor de datos es un rol funcional que formaliza las tareas que el colaborador ya realiza con los datos en su día a día."
                 },
                 {
-                    q: "¿Por qué el departamento de Tecnologías de la Información (TI) NO debe ser considerado el \"Dueño\" (Owner) de los datos del negocio?",
-                    opts: ["Porque el área de TI no cuenta con presupuesto propio de gobernanza.", "En la cadena de suministro, TI gestiona la infraestructura y los sistemas (el transporte), pero son las áreas usuarias de negocio quienes entienden el contexto y propósito de la información.", "Porque TI únicamente procesa datos no estructurados de redes sociales.", "Porque los lineamientos de la PCM le prohíben a los ingenieros de TI de forma expresa tomar decisiones de base de datos."],
+                    q: "¿Por qué el departamento de Tecnologías de la Información (TI) NO debe ser considerado el \"Dueño de Datos\" (Owner) de los datos del negocio?",
+                    opts: ["Porque el área de TI no cuenta con presupuesto propio de gobernanza.", "En la cadena de suministro, TI gestiona la infraestructura y los sistemas (el transporte/almacenamiento), pero son las áreas de negocio quienes entienden el contexto y propósito de la información.", "Porque TI únicamente procesa datos no estructurados de redes sociales.", "Porque los lineamientos de la PCM le prohíben a los ingenieros de TI de forma expresa tomar decisiones de base de datos."],
                     correct: 1,
                     feedback: "TI custodia el contenedor técnico; el Negocio domina y define el contenido porque conoce el flujo y las reglas operacionales del trámite."
                 }

@@ -20,18 +20,18 @@ Este material se presentará en la plataforma como un paquete interactivo tipo S
 
 ### 2. Texto Didáctico Específico del Curso:
 
-#### El Ecosistema Humano: La Cadena de Suministro del Dato
+#### El Ecosistema Humano: Los 8 Roles Clave en el Gobierno de Datos
 Implementar tecnología de punta sin definir roles es automatizar el desorden. En muchas entidades existe un fenómeno llamado **"Propiedad Difusa"**: todos los funcionarios usan un mismo dato, lo modifican y lo reportan, pero cuando ocurre un error, nadie es el responsable formal de su calidad ni sabe a quién rendirle cuentas.
 
-Para entender cómo solucionar esto y formalizar la gobernanza, los expertos de DataCamp nos proponen pensar en el ciclo de vida de un dato como **el viaje de un pimiento desde la granja hasta un plato gourmet en tu mesa**:
-* **El Dueño de la Granja (Dueño del Dato / Data Owner):** Supervisa los recursos y el cumplimiento normativo. En el negocio, es el máximo responsable de aprobar las reglas de calidad, propósito y acceso de un conjunto de datos. *¡TI no es el dueño de los datos del negocio!*
-* **El Trabajador del Campo (Productor del Dato):** Quien siembra y cosecha. En nuestra entidad, es el colaborador operativo que introduce los datos en el sistema desde el origen (ej. en ventanilla de atención) y debe evitar errores de captura.
-* **El Distribuidor (Custodio del Dato / Data Custodian):** Almacena y transporta el alimento de forma segura en camiones refrigerados. En el mundo digital, es el área de TI que asegura la infraestructura física, las redes, las copias de seguridad y los servidores.
-* **El Jefe de la Tienda (Gestor de Datos / Data Steward):** Organiza los alimentos en los estantes y orienta al público. En datos, es el experto de negocio encargado de normalizar, clasificar los metadatos y definir accesos.
-* **El Chef (Analista o Científico de Datos):** Limpia, prepara y cocina el ingrediente para obtener un resultado final de alto valor. En nuestra entidad, analiza los datos limpios para generar insights accionables y reportes gerenciales (*Business Intelligence*).
-
-#### El Oficial de Gobierno de Datos (OGD)
-En el centro de este modelo no está el departamento de TI, sino el OGD. El Oficial de Gobierno de Datos actúa exactamente como el **director de una orquesta**: no toca ningún instrumento ni conecta cables en los servidores; su labor es asegurar que todos los miembros de la entidad sigan la misma "partitura" (políticas de gobernanza) para transformar el ruido de los silos en una armonía perfecta.
+Para entender cómo solucionar esto y formalizar la gobernanza, los expertos nos proponen pensar en el ciclo de vida de un dato como la **cadena de suministro de un restaurante de alta cocina**:
+* **1. Alta Dirección (Nivel Estratégico y Patrocinio):** Los dueños o inversionistas de la marca. Aprueban el modelo de gobernanza de datos y aseguran los recursos necesarios. Priorizan iniciativas alineadas a los objetivos estratégicos.
+* **2. Oficial de Gobierno de Datos - OGD (El Articulador / Director de la Orquesta):** El Director de Operaciones. Supervisa la implementación general, define estándares, monitorea su cumplimiento y articula transversalmente con todas las áreas. Reporta a la Alta Dirección.
+* **3. Líder del Dato - Head of Data (Estratega del Dominio):** El Gerente de Categoría. Define la estrategia de datos de un dominio específico alineada al negocio y resuelve conflictos de definición y uso entre áreas.
+* **4. Dueño de Datos - Data Owner (Responsable Funcional):** El Dueño de la Granja (productor de ingredientes). Asume la responsabilidad legal y funcional sobre los datos críticos de su dominio. Define y valida reglas de calidad, metadatos y accesos. *¡TI no es el dueño de los datos!*
+* **5. Gestor de Datos - Data Steward (Gestor Operativo):** El Supervisor de Calidad/Inventario. Enlace directo entre Dueño y Custodio Técnico. Gestiona el diccionario de datos, el linaje en el Catálogo y ejecuta controles de calidad operativa.
+* **6. Custodio Técnico de Datos - Data Custodian (El Brazo Tecnológico):** El Transportista/Logística. Administra infraestructura, bases de datos y seguridad física. Habilita accesos únicamente bajo la aprobación del Dueño de Datos y ejecuta la ingesta (ETL).
+* **7. Equipo BI / Analítica (Los Creadores de Valor):** El Chef Gourmet. Diseñan y desarrollan dashboards, reportes y soluciones analíticas o de IA bajo estándares de calidad y con validación funcional del Dueño de Datos.
+* **8. Usuario de Datos - Data User (El Consumidor):** El Comensal/Cliente. Utilizan los datos y productos para su análisis diario. Tienen la obligación de respetar la confidencialidad y reportar inconsistencias al Gestor de Datos.
 
 #### Modelos Operativos de Gobernanza
 Para que estos roles interactúen y tomen decisiones sobre datos en la institución, las entidades adoptan "Modelos Operativos":
@@ -47,13 +47,13 @@ Gobernanza de datos no significa inventar una gran burocracia con nuevos cargos 
 ### 3. Diapositivas Específicas del Curso (Mockup Visual):
 
 * **Diapositiva 1:**
-  * **Visual:** De la Granja a la Mesa - Iconos de un agricultor, un camión de distribución, un mercado y un chef de cocina.
+  * **Visual:** De la Granja a la Mesa - Iconos de un agricultor/granja, un camión logístico, un supervisor en tienda y un chef de cocina.
   * **Título:** ¿Quién cocina nuestros datos?
-  * **Contenido:** Infografía que relaciona la historia de la cadena de suministro de DataCamp con los roles institucionales. Demuestra que TI (el camión distribuidor) solo transporta y almacena, pero el Negocio (el dueño de la granja) define las reglas de calidad y propósito.
+  * **Contenido:** Infografía que relaciona la cadena de suministro alimentaria con los 8 roles de Gobierno de Datos. Demuestra que TI (el transportista) solo gestiona infraestructura, mientras que el Negocio (el dueño de la granja) define el significado, propósito y reglas.
 * **Diapositiva 2:**
-  * **Visual:** Un director de orquesta frente a grupos de músicos con instrumentos separados.
-  * **Título:** El Oficial de Gobierno de Datos (OGD).
-  * **Contenido:** El OGD no es el dueño físico de la información ni programa bases de datos. Es el director de orquesta que coordina y articula la estrategia para que todas las gerencias sigan las políticas comunes de datos y los silos se conviertan en una sinfonía corporativa.
+  * **Visual:** Estructura y Jerarquía de Roles de Gobierno de Datos - Un organigrama interactivo que separa el Nivel Estratégico y de Coordinación (Alta Dirección, OGD, Líder del Dato) del Nivel Funcional de Negocio (Dueño, Gestor) y Técnico/Analítico/Consumo (Custodio, Equipo BI, Usuario).
+  * **Título:** El Organigrama y Oficial de Gobierno de Datos (OGD).
+  * **Contenido:** El OGD no programa bases de datos ni posee la información del negocio. Actúa como el director de la orquesta que coordina transversalmente a los demás roles para convertir los silos en una sinfonía corporativa.
 * **Diapositiva 3:**
   * **Visual:** Tres organigramas conceptuales (uno concentrado en un punto, otro disperso y uno interconectado en red).
   * **Título:** Eligiendo nuestro Modelo Operativo.
@@ -64,13 +64,13 @@ Gobernanza de datos no significa inventar una gran burocracia con nuevos cargos 
 ## COMPONENTE 2: EJERCICIOS INTERACTIVOS (Taxonomía de Bloom)
 
 ### Ejercicio 1: Nivel Comprender - "La Cocina de los Datos" (Drag & Drop)
-* **Instrucción:** Arrastra el rol de la cadena de suministro alimentaria de DataCamp hacia su equivalente y responsabilidad en el Gobierno de Datos.
+* **Instrucción:** Arrastra el rol de la cadena de suministro alimentaria hacia su equivalente y responsabilidad en el Gobierno de Datos.
 * **Asociaciones:**
-  * *Dueño de la granja (supervisa reglas, recursos y la producción).* $\rightarrow$ **Dueño del Dato / Data Owner** (Aprueba reglas de calidad e identifica términos).
-  * *Trabajador del campo (siembra y cosecha en origen evitando daños).* $\rightarrow$ **Productor del Dato** (Introduce datos en ventanillas).
-  * *Distribuidor (almacena y transporta seguro en camiones).* $\rightarrow$ **Custodio del Dato / Equipo de TI** (Respalda bases de datos y gestiona redes).
-  * *Jefe de la tienda (organiza los estantes y da acceso al público).* $\rightarrow$ **Gestor de Datos / Data Steward** (Normaliza, clasifica metadatos).
-  * *Chef (prepara y cocina el ingrediente para obtener un plato gourmet).* $\rightarrow$ **Analista o Científico de Datos / BI & BA** (Genera dashboards).
+  * *Dueño de la granja (dueño de los ingredientes de negocio).* $\rightarrow$ **Dueño de Datos / Data Owner** (Define reglas de calidad y aprueba accesos).
+  * *Supervisor de calidad (valida inventario y organiza el catálogo).* $\rightarrow$ **Gestor de Datos / Data Steward** (Enlace operativo, gestiona el diccionario de datos).
+  * *Transportista/Logística (almacena y transporta seguro en frío).* $\rightarrow$ **Custodio Técnico de Datos / Data Custodian** (Administra infraestructura y bases de datos).
+  * *Chef Gourmet (cocina y prepara platos de alto valor).* $\rightarrow$ **Equipo BI / Analítica** (Desarrolla dashboards, reportes y modelos predictivos).
+  * *Comensal/Cliente (consume los platos para alimentarse).* $\rightarrow$ **Usuario de Datos / Data User** (Consumidor final, reporta errores).
 
 ### Ejercicio 2: Nivel Aplicar - "Elige la Estructura y Formaliza" (Rellenar espacios en blanco)
 * **Texto a completar:**
@@ -92,10 +92,10 @@ Gobernanza de datos no significa inventar una gran burocracia con nuevos cargos 
 El sistema seleccionará 5 preguntas al azar por cada intento del usuario.
 
 #### Pregunta 1
-En la analogía de la cadena de suministro de DataCamp, ¿qué rol corporativo representa el "Distribuidor" que transporta y asegura el almacenamiento en frío del alimento?
-* a) El Analista o Científico de Datos.
-* b) El Productor operativo de datos.
-* **c) El Custodio del Dato (Data Custodian), responsable de redes, copias de seguridad y servidores.** (Correcta)
+En la analogía de la cadena de suministro, ¿qué rol corporativo representa el "Transportista/Logística" que administra el almacenamiento seguro de la infraestructura?
+* a) El Equipo BI / Analítica.
+* b) El Usuario de Datos.
+* **c) El Custodio Técnico de Datos (Data Custodian), responsable de bases de datos, seguridad e infraestructura.** (Correcta)
 * d) El Oficial de Datos Personales.
 
 #### Pregunta 2
@@ -108,8 +108,8 @@ De acuerdo con DataCamp, ¿qué característica define a un modelo operativo de 
 #### Pregunta 3
 ¿Cuál es el equivalente al "Chef" (quien limpia, prepara y cocina el ingrediente para obtener un resultado final de alto valor) en el ecosistema de roles de datos?
 * a) El dueño de la infraestructura física del centro de datos.
-* **b) El Analista o Científico de Datos, que utiliza los datos limpios para generar reportes, dashboards e insights accionables.** (Correcta)
-* c) El Digitador que introduce datos desde ventanillas de atención.
+* **b) El Equipo BI / Analítica, que utiliza los datos limpios para generar reportes, dashboards e insights analíticos.** (Correcta)
+* c) El colaborador que introduce datos desde ventanillas de atención.
 * d) El Asesor Legal de la entidad.
 
 #### Pregunta 4
@@ -120,10 +120,10 @@ Si una entidad pública utiliza un modelo operativo de gobernanza "Centralizado"
 * d) Obliga a la institución a prescindir de la figura del OGD.
 
 #### Pregunta 5
-Según el procedimiento interno PI-59 y las mejores prácticas, ¿quién asume la máxima responsabilidad por definir el propósito y aprobar las reglas de calidad de los datos de su gerencia?
+Según el procedimiento interno PI-59 y las mejores prácticas, ¿quién asume la máxima responsabilidad funcional por definir el propósito y aprobar las reglas de calidad de los datos de su gerencia?
 * a) El Administrador de Base de Datos (DBA).
 * b) El Analista de Business Intelligence (BI).
-* **c) El Dueño del Dato (Data Owner).** (Correcta)
+* **c) El Dueño de Datos (Data Owner).** (Correcta)
 * d) El desarrollador del software transaccional.
 
 #### Pregunta 6
@@ -148,16 +148,16 @@ Según la normativa peruana, ¿quién es responsable de aprobar formalmente el P
 * d) El Custodio Técnico del Dato.
 
 #### Pregunta 9
-De acuerdo con el enfoque de "Gobierno de Datos No Invasivo" de Robert S. Seiner, ¿qué es un "Data Steward" (Administrador o Gestor de Datos)?
+De acuerdo con el enfoque de "Gobierno de Datos No Invasivo" de Robert S. Seiner, ¿qué es un "Data Steward" (Gestor de Datos)?
 * a) Un puesto de trabajo completamente nuevo que debe ser contratado externamente.
 * b) Un software que limpia bases de datos de forma automática.
 * **c) Cualquier colaborador en la organización evaluado por su relación con los datos (quien los define, produce o usa) y que asume responsabilidad por ellos.** (Correcta)
 * d) El auditor externo del Gobierno encargado de las multas.
 
 #### Pregunta 10
-¿Por qué el departamento de Tecnologías de la Información (TI) NO debe ser considerado el "Dueño" (Owner) de los datos del negocio?
+¿Por qué el departamento de Tecnologías de la Información (TI) NO debe ser considerado el "Dueño de Datos" (Owner) de los datos del negocio?
 * a) Porque el área de TI no cuenta con presupuesto propio de gobernanza.
-* **b) En la cadena de suministro, TI gestiona la infraestructura y los sistemas (el transporte), pero son las áreas usuarias de negocio quienes entienden el contexto y propósito de la información.** (Correcta)
+* **b) En la cadena de suministro, TI gestiona la infraestructura y los sistemas (el transporte/almacenamiento), pero son las áreas de negocio quienes entienden el contexto y propósito de la información.** (Correcta)
 * c) Porque TI únicamente procesa datos no estructurados de redes sociales.
 * d) Porque los lineamientos de la PCM le prohíben a los ingenieros de TI de forma expresa tomar decisiones de base de datos.
 
@@ -185,7 +185,7 @@ Para que el Oficial de Gobierno de Datos proponga un Plan de Acción viable y co
 #### Pregunta 14
 Bajo la premisa de que "la calidad del dato es responsabilidad de todos", ¿quién es responsable si un dato se registra con errores de tipeo en la ventanilla de atención?
 * a) Únicamente el Oficial de Gobierno de Datos.
-* **b) El colaborador operativo que captura y digita la información (productor del dato), al no seguir las validaciones obligatorias.** (Correcta)
+* **b) El colaborador/usuario de datos que captura e introduce la información, al no seguir las validaciones obligatorias.** (Correcta)
 * c) El Director de TI de la entidad.
 * d) El proveedor externo del software de base de datos.
 

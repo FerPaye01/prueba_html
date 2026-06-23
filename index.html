@@ -1424,12 +1424,12 @@
                     contentHtml: `
                         <div class="comparison-container">
                             <div class="comparison-box blue-theme">
-                                <img src="imagenes/modulo-01/archivo-vs-activo.png" alt="Residuo" style="width:50px;height:50px;margin-bottom:0.8rem;object-fit:contain;">
+                                <img src="imagenes/modulo-01/archivo.png" alt="Residuo" style="width:110px;height:70px;margin-bottom:0.5rem;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.25));">
                                 <h4 style="font-size:0.9rem;font-weight:700;">Enfoque Tradicional: El Residuo</h4>
                                 <p style="font-size:0.75rem;color:rgba(255,255,255,0.7);line-height:1.4;">El dato como un simple subproducto de la burocracia. Se llena un formulario, se archiva físicamente y el dato 'muere' en el papel.</p>
                             </div>
                             <div class="comparison-box green-theme">
-                                <img src="imagenes/modulo-01/archivo-vs-activo.png" alt="Activo" style="width:50px;height:50px;margin-bottom:0.8rem;object-fit:contain;filter:hue-rotate(90deg) brightness(1.2);">
+                                <img src="imagenes/modulo-01/activo.png" alt="Activo" style="width:110px;height:70px;margin-bottom:0.5rem;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.25));">
                                 <h4 style="font-size:0.9rem;font-weight:700;">Enfoque Moderno: Activo Estratégico</h4>
                                 <p style="font-size:0.75rem;color:rgba(255,255,255,0.7);line-height:1.4;">Un recurso expansivo y renovable. A diferencia de los recursos físicos, el dato bien gobernado genera más valor cuanto más se utiliza y cruza con otros.</p>
                             </div>
@@ -1623,54 +1623,76 @@
                     title: "La Cadena de Suministro del Dato",
                     contentHtml: `
                         <div class="comparison-container" style="gap: 0.5rem; flex-wrap: wrap;">
-                            <div class="comparison-box blue-theme" style="padding:0.7rem;gap:0.2rem;flex:1 1 180px;">
-                                <i class="fa-solid fa-tractor comparison-icon" style="font-size:1.4rem;"></i>
-                                <h5 style="font-size:0.75rem;font-weight:700;margin:0;">Productor</h5>
-                                <p style="font-size:0.65rem;color:rgba(255,255,255,0.7);line-height:1.3;margin:0;">El sembrador. Introduce datos en ventanillas o sistemas evitando errores en el origen.</p>
+                            <div class="comparison-box blue-theme" style="padding:0.6rem;gap:0.2rem;flex:1 1 150px;">
+                                <i class="fa-solid fa-users comparison-icon" style="font-size:1.2rem;color:#38bdf8;"></i>
+                                <h5 style="font-size:0.72rem;font-weight:700;margin:0;">1. Alta Dirección</h5>
+                                <p style="font-size:0.62rem;color:rgba(255,255,255,0.7);line-height:1.2;margin:0;"><strong>Inversionistas/Dueños de la Marca:</strong> Aprueban el modelo de gobernanza y aseguran los recursos necesarios.</p>
                             </div>
-                            <div class="comparison-box blue-theme" style="padding:0.7rem;gap:0.2rem;flex:1 1 180px;">
-                                <i class="fa-solid fa-user-shield comparison-icon" style="font-size:1.4rem;"></i>
-                                <h5 style="font-size:0.75rem;font-weight:700;margin:0;">Dueño (Data Owner)</h5>
-                                <p style="font-size:0.65rem;color:rgba(255,255,255,0.7);line-height:1.3;margin:0;">Dueño de la granja. Responsable de negocio que aprueba las reglas de calidad y acceso.</p>
+                            <div class="comparison-box blue-theme" style="padding:0.6rem;gap:0.2rem;flex:1 1 150px;">
+                                <i class="fa-solid fa-user-tie comparison-icon" style="font-size:1.2rem;color:#c084fc;"></i>
+                                <h5 style="font-size:0.72rem;font-weight:700;margin:0;">2. Oficial de Gobierno (OGD)</h5>
+                                <p style="font-size:0.62rem;color:rgba(255,255,255,0.7);line-height:1.2;margin:0;"><strong>Director Operativo/Orquesta:</strong> Supervisa el modelo, estándares y articula las áreas.</p>
                             </div>
-                            <div class="comparison-box blue-theme" style="padding:0.7rem;gap:0.2rem;flex:1 1 180px;">
-                                <i class="fa-solid fa-truck-ramp-box comparison-icon" style="font-size:1.4rem;"></i>
-                                <h5 style="font-size:0.75rem;font-weight:700;margin:0;">Custodio Técnico</h5>
-                                <p style="font-size:0.65rem;color:rgba(255,255,255,0.7);line-height:1.3;margin:0;">El distribuidor. Asegura la infraestructura física, servidores, copias de seguridad y redes.</p>
+                            <div class="comparison-box blue-theme" style="padding:0.6rem;gap:0.2rem;flex:1 1 150px;">
+                                <i class="fa-solid fa-diagram-project comparison-icon" style="font-size:1.2rem;color:#818cf8;"></i>
+                                <h5 style="font-size:0.72rem;font-weight:700;margin:0;">3. Líder del Dato</h5>
+                                <p style="font-size:0.62rem;color:rgba(255,255,255,0.7);line-height:1.2;margin:0;"><strong>Gerente de Categoría:</strong> Define la estrategia de su dominio y resuelve conflictos de datos.</p>
                             </div>
-                            <div class="comparison-box blue-theme" style="padding:0.7rem;gap:0.2rem;flex:1 1 180px;">
-                                <i class="fa-solid fa-shop comparison-icon" style="font-size:1.4rem;"></i>
-                                <h5 style="font-size:0.75rem;font-weight:700;margin:0;">Gestor (Data Steward)</h5>
-                                <p style="font-size:0.65rem;color:rgba(255,255,255,0.7);line-height:1.3;margin:0;">Jefe de tienda. Normaliza, cataloga metadatos, clasifica términos y define accesos locales.</p>
+                            <div class="comparison-box blue-theme" style="padding:0.6rem;gap:0.2rem;flex:1 1 150px;">
+                                <i class="fa-solid fa-user-shield comparison-icon" style="font-size:1.2rem;color:#fb923c;"></i>
+                                <h5 style="font-size:0.72rem;font-weight:700;margin:0;">4. Dueño de Datos (Owner)</h5>
+                                <p style="font-size:0.62rem;color:rgba(255,255,255,0.7);line-height:1.2;margin:0;"><strong>Dueño de la Granja:</strong> Responsable funcional. Aprueba reglas de calidad y accesos.</p>
+                            </div>
+                        </div>
+                        <div class="comparison-container" style="gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
+                            <div class="comparison-box blue-theme" style="padding:0.6rem;gap:0.2rem;flex:1 1 150px;">
+                                <i class="fa-solid fa-clipboard-check comparison-icon" style="font-size:1.2rem;color:#f59e0b;"></i>
+                                <h5 style="font-size:0.72rem;font-weight:700;margin:0;">5. Gestor de Datos (Steward)</h5>
+                                <p style="font-size:0.62rem;color:rgba(255,255,255,0.7);line-height:1.2;margin:0;"><strong>Supervisor de Calidad:</strong> Enlace operativo. Gestiona el glosario, linaje y controles.</p>
+                            </div>
+                            <div class="comparison-box blue-theme" style="padding:0.6rem;gap:0.2rem;flex:1 1 150px;">
+                                <i class="fa-solid fa-database comparison-icon" style="font-size:1.2rem;color:#3b82f6;"></i>
+                                <h5 style="font-size:0.72rem;font-weight:700;margin:0;">6. Custodio Técnico</h5>
+                                <p style="font-size:0.62rem;color:rgba(255,255,255,0.7);line-height:1.2;margin:0;"><strong>El Transportista:</strong> Administra infraestructura, bases de datos y seguridad de accesos.</p>
+                            </div>
+                            <div class="comparison-box blue-theme" style="padding:0.6rem;gap:0.2rem;flex:1 1 150px;">
+                                <i class="fa-solid fa-chart-column comparison-icon" style="font-size:1.2rem;color:#34d399;"></i>
+                                <h5 style="font-size:0.72rem;font-weight:700;margin:0;">7. Equipo BI / Analítica</h5>
+                                <p style="font-size:0.62rem;color:rgba(255,255,255,0.7);line-height:1.2;margin:0;"><strong>El Chef Gourmet:</strong> Diseñan y desarrollan reportes, dashboards y soluciones analíticas o de IA.</p>
+                            </div>
+                            <div class="comparison-box blue-theme" style="padding:0.6rem;gap:0.2rem;flex:1 1 150px;">
+                                <i class="fa-solid fa-circle-user comparison-icon" style="font-size:1.2rem;color:#10b981;"></i>
+                                <h5 style="font-size:0.72rem;font-weight:700;margin:0;">8. Usuario de Datos</h5>
+                                <p style="font-size:0.62rem;color:rgba(255,255,255,0.7);line-height:1.2;margin:0;"><strong>El Comensal:</strong> Consume la información para decisiones diarias y reporta errores.</p>
                             </div>
                         </div>
                     `,
-                    script: "Implementar tecnología sin definir roles es automatizar el desorden. En muchas entidades existe la 'Propiedad Difusa': todos usan el dato pero nadie responde por su calidad. Para solucionarlo, pensemos en el ciclo de vida del dato como la cadena de suministro de un pimiento: el Productor siembra el dato en ventanilla, el Data Owner (de negocio, no de TI) aprueba las reglas de calidad y acceso, el Custodio (TI) lo almacena y transporta, y el Data Steward lo cataloga y clasifica."
+                    script: "Implementar tecnología sin definir roles es automatizar el desorden. En muchas entidades existe la 'Propiedad Difusa'. Para solucionarlo, pensemos en el ciclo de vida del dato como la cadena de suministro de un restaurante de alta cocina: desde los inversionistas, el director operativo, el gerente de categoría, el dueño de la granja, el supervisor de calidad, el transportista, el chef, hasta el comensal."
                 },
                 {
                     type: "content",
                     title: "El Oficial de Gobierno de Datos y la Gobernanza No Invasiva",
                     contentHtml: `
-                        <div style="display:flex;flex-direction:column;gap:0.6rem;width:100%;color:white;font-size:0.75rem;padding: 0.5rem 0;">
-                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.5rem 0.7rem;display:flex;align-items:center;gap:0.8rem;">
-                                <i class="fa-solid fa-user-tie" style="font-size:1.3rem;color:#38bdf8;width:24px;text-align:center;"></i>
-                                <div><strong>Oficial de Gobierno de Datos (OGD):</strong> El director de la orquesta. No posee la información ni programa servidores, sino que coordina y asegura que todos sigan la misma partitura estratégica.</div>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;width:100%;color:white;font-size:0.75rem;padding: 0.2rem 0;">
+                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.4rem 0.6rem;display:flex;align-items:center;gap:0.8rem;">
+                                <i class="fa-solid fa-user-tie" style="font-size:1.2rem;color:#c084fc;width:24px;text-align:center;"></i>
+                                <div><strong>Oficial de Gobierno de Datos (OGD) - El Articulador:</strong> Responsable de supervisar la implementación general, definir estándares y monitorear su cumplimiento de forma transversal.</div>
                             </div>
-                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.5rem 0.7rem;display:flex;align-items:center;gap:0.8rem;">
-                                <i class="fa-solid fa-user-shield" style="font-size:1.3rem;color:#f59e0b;width:24px;text-align:center;"></i>
-                                <div><strong>Dueño del Dato (Data Owner):</strong> Responsable del negocio (líder de área) que aprueba las reglas de calidad, propósito, seguridad y acceso para los conjuntos de datos bajo su competencia.</div>
+                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.4rem 0.6rem;display:flex;align-items:center;gap:0.8rem;">
+                                <i class="fa-solid fa-user-shield" style="font-size:1.2rem;color:#fb923c;width:24px;text-align:center;"></i>
+                                <div><strong>Dueño de Datos (Data Owner) - Responsable Funcional:</strong> Líder del negocio que asume la responsabilidad funcional de su dominio, definiendo reglas de calidad y aprobando accesos.</div>
                             </div>
-                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.5rem 0.7rem;display:flex;align-items:center;gap:0.8rem;">
-                                <i class="fa-solid fa-user-gear" style="font-size:1.3rem;color:#a78bfa;width:24px;text-align:center;"></i>
-                                <div><strong>Gestor de Datos (Data Steward):</strong> Experto de negocio encargado de documentar y normalizar los datos, clasificar metadatos, glosarios y asegurar la calidad en el día a día.</div>
+                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.4rem 0.6rem;display:flex;align-items:center;gap:0.8rem;">
+                                <i class="fa-solid fa-clipboard-check" style="font-size:1.2rem;color:#f59e0b;width:24px;text-align:center;"></i>
+                                <div><strong>Gestor de Datos (Data Steward) - Gestor Operativo:</strong> Enlace entre negocio y TI encargado de gestionar el diccionario, linaje y ejecutar los controles de calidad del dato.</div>
                             </div>
-                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.5rem 0.7rem;display:flex;align-items:center;gap:0.8rem;">
-                                <i class="fa-solid fa-feather-pointed" style="font-size:1.3rem;color:#10b981;width:24px;text-align:center;"></i>
-                                <div><strong>Enfoque No Invasivo (Robert S. Seiner):</strong> Evita crear burocracias pesadas o nuevos cargos. En su lugar, identifica las responsabilidades que las personas ya tienen con los datos en su día a día y las formaliza.</div>
+                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.4rem 0.6rem;display:flex;align-items:center;gap:0.8rem;">
+                                <i class="fa-solid fa-feather-pointed" style="font-size:1.2rem;color:#10b981;width:24px;text-align:center;"></i>
+                                <div><strong>Enfoque No Invasivo (Robert S. Seiner):</strong> Evita crear burocracias pesadas o nuevos cargos. Identifica y formaliza las responsabilidades que los colaboradores ya ejecutan en el día a día.</div>
                             </div>
                         </div>
                     `,
-                    script: "El Oficial de Gobierno de Datos coordina de manera transversal. Junto a él, el Data Owner o Dueño del Dato de negocio aprueba las políticas y reglas de calidad, mientras que el Data Steward o Gestor de Datos las aplica y normaliza en el día a día. Bajo un enfoque No Invasivo, formalizamos estas responsabilidades sin alterar los cargos tradicionales del personal."
+                    script: "El Oficial de Gobierno de Datos es el director de la orquesta, coordinando transversalmente. Junto a él, el Data Owner define y aprueba las reglas funcionales y de acceso de su dominio, mientras que el Data Steward se asegura de ejecutarlas y gestionarlas operacionalmente en el día a día."
                 },
                 {
                     type: "content",
@@ -1734,6 +1756,7 @@
                                         <div class="chart-card card-director">
                                             <i class="fa-solid fa-users card-icon" style="color:#38bdf8;"></i>
                                             <div class="card-title">Alta Dirección</div>
+                                            <div style="font-size:0.55rem; color:#94a3b8;">Nivel Estratégico y Patrocinio</div>
                                         </div>
                                     </div>
                                     
@@ -1746,6 +1769,7 @@
                                         <div class="chart-card card-ogd">
                                             <i class="fa-solid fa-user-tie card-icon purple-text"></i>
                                             <div class="card-title">Oficial de Gobierno de Datos</div>
+                                            <div style="font-size:0.55rem; color:#94a3b8;">El Articulador (OGD)</div>
                                         </div>
                                     </div>
                                     
@@ -1757,30 +1781,53 @@
                                     
                                     <!-- Columns below the split -->
                                     <div class="chart-columns">
-                                        <!-- Left Column: Business Roles -->
+                                        <!-- Left Column: Business & Strategy -->
                                         <div class="chart-column">
-                                            <div class="chart-card card-owner">
-                                                <i class="fa-solid fa-user card-icon orange-text"></i>
-                                                <div class="card-title">Dueño del dato (owner)</div>
+                                            <div class="chart-card" style="border-left: 3px solid #818cf8; margin-bottom: 0.3rem;">
+                                                <i class="fa-solid fa-diagram-project card-icon" style="color:#818cf8;"></i>
+                                                <div class="card-title">Líder del Dato (Head)</div>
+                                                <div style="font-size:0.55rem; color:#94a3b8;">Estratega del Dominio</div>
+                                            </div>
+                                            <div class="chart-line-arrow">
+                                                <i class="fa-solid fa-chevron-down"></i>
+                                            </div>
+                                            <div class="chart-card card-owner" style="margin-bottom: 0.3rem;">
+                                                <i class="fa-solid fa-user-shield card-icon" style="color:#fb923c;"></i>
+                                                <div class="card-title">Dueño de Datos (Owner)</div>
+                                                <div style="font-size:0.55rem; color:#94a3b8;">Responsable Funcional</div>
                                             </div>
                                             <div class="chart-line-arrow">
                                                 <i class="fa-solid fa-chevron-down"></i>
                                             </div>
                                             <div class="chart-card card-steward">
-                                                <i class="fa-solid fa-user card-icon orange-text"></i>
-                                                <div class="card-title">Custodio del dato (steward)</div>
+                                                <i class="fa-solid fa-clipboard-check card-icon" style="color:#f59e0b;"></i>
+                                                <div class="card-title">Gestor de Datos (Steward)</div>
+                                                <div style="font-size:0.55rem; color:#94a3b8;">Gestor Operativo</div>
                                             </div>
                                         </div>
                                         
-                                        <!-- Right Column: Technical Team -->
+                                        <!-- Right Column: Technical & Value -->
                                         <div class="chart-column">
-                                            <div class="chart-card card-technical">
-                                                <i class="fa-solid fa-users-gear card-icon orange-text"></i>
-                                                <div class="card-title" style="margin-bottom: 0.2rem;">Equipo técnico</div>
-                                                <div class="card-details">
-                                                    <div>• Gestor de sistemas</div>
-                                                    <div>• Ingeniero de datos</div>
-                                                </div>
+                                            <div class="chart-card" style="border-left: 3px solid #3b82f6; margin-bottom: 0.3rem;">
+                                                <i class="fa-solid fa-database card-icon" style="color:#3b82f6;"></i>
+                                                <div class="card-title">Custodio Técnico</div>
+                                                <div style="font-size:0.55rem; color:#94a3b8;">Brazo Tecnológico</div>
+                                            </div>
+                                            <div class="chart-line-arrow">
+                                                <i class="fa-solid fa-chevron-down"></i>
+                                            </div>
+                                            <div class="chart-card" style="border-left: 3px solid #34d399; margin-bottom: 0.3rem;">
+                                                <i class="fa-solid fa-chart-column card-icon" style="color:#34d399;"></i>
+                                                <div class="card-title">Equipo BI / Analítica</div>
+                                                <div style="font-size:0.55rem; color:#94a3b8;">Creadores de Valor</div>
+                                            </div>
+                                            <div class="chart-line-arrow">
+                                                <i class="fa-solid fa-chevron-down"></i>
+                                            </div>
+                                            <div class="chart-card" style="border-left: 3px solid #10b981;">
+                                                <i class="fa-solid fa-circle-user card-icon" style="color:#10b981;"></i>
+                                                <div class="card-title">Usuario de Datos (User)</div>
+                                                <div style="font-size:0.55rem; color:#94a3b8;">El Consumidor</div>
                                             </div>
                                         </div>
                                     </div>
@@ -1794,11 +1841,11 @@
                             
                             <h4 style="font-size:0.9rem;color:#10b981;font-weight:700;margin:0.4rem 0 0.1rem 0; text-align:center;">Organigrama de Gobierno de Datos</h4>
                             <p style="font-size:0.7rem;line-height:1.4;color:rgba(255,255,255,0.8);margin:0;text-align:justify;">
-                                El OGD no es el dueño físico de la información ni programa bases de datos. Es el director de orquesta que coordina de manera transversal a la <strong>Alta Dirección</strong>, los <strong>Dueños de Datos</strong>, los <strong>Custodios (stewards)</strong> y el <strong>Equipo Técnico</strong>, para convertir silos aislados en una sinfonía corporativa.
+                                El OGD actúa como el director de orquesta que coordina transversalmente a la <strong>Alta Dirección</strong>, los <strong>Líderes de Datos</strong>, los <strong>Dueños de Datos</strong>, los <strong>Gestores (stewards)</strong>, los <strong>Custodios Técnicos</strong>, el <strong>Equipo BI/Analítica</strong> y los <strong>Usuarios de Datos</strong>, para asegurar la alineación estratégica y operativa en Osinergmin.
                             </p>
                         </div>
                     `,
-                    script: "En la segunda diapositiva visual, vemos al Oficial de Gobierno de Datos como el director de la orquesta. No toca los instrumentos directamente, pero es quien asegura que todas las gerencias sigan las políticas comunes de datos para que los silos se transformen en una sinfonía corporativa. Como se muestra en el organigrama, el OGD es el enlace entre la Alta Dirección y los roles operativos del negocio y de TI."
+                    script: "En la segunda diapositiva, vemos el nuevo Organigrama de 8 Roles. El OGD coordina transversalmente desde el centro, comunicando la Alta Dirección y los Líderes del Dominio con los roles funcionales (Dueños y Gestores) y el brazo técnico/analítico (Custodio, BI y Usuarios de Datos)."
                 },
                 {
                     type: "content",
@@ -1820,20 +1867,20 @@
                 {
                     type: "dragdrop",
                     title: "Ejercicio 1: La Cocina de los Datos",
-                    instruction: "Arrastra el rol de la cadena de suministro alimentaria de DataCamp hacia su equivalente y responsabilidad en el Gobierno de Datos. (En móviles, puedes hacer clic en un elemento y luego en su destino).",
+                    instruction: "Arrastra el rol de la cadena de suministro alimentaria hacia su equivalente y responsabilidad en el Gobierno de Datos. (En móviles, puedes hacer clic en un elemento y luego en su destino).",
                     items: [
-                        { id: "item1", text: "Dueño de granja: Supervisa reglas, recursos y la producción.", match: "zone-owner" },
-                        { id: "item2", text: "Trabajador de campo: Siembra y cosecha en origen evitando daños.", match: "zone-producer" },
-                        { id: "item3", text: "Distribuidor: Almacena y transporta seguro en camiones.", match: "zone-custodian" },
-                        { id: "item4", text: "Jefe de tienda: Organiza estantes y da acceso al público.", match: "zone-steward" },
-                        { id: "item5", text: "Chef: Prepara y cocina el ingrediente para obtener un plato gourmet.", match: "zone-analyst" }
+                        { id: "item1", text: "Dueño de la granja (dueño de los ingredientes).", match: "zone-owner" },
+                        { id: "item2", text: "Supervisor de calidad (organiza estantes y valida inventario).", match: "zone-steward" },
+                        { id: "item3", text: "Transportista/Logística (almacena y transporta seguro en frío).", match: "zone-custodian" },
+                        { id: "item4", text: "Chef Gourmet (cocina y prepara platos de alto valor).", match: "zone-bi" },
+                        { id: "item5", text: "Comensal/Cliente (consume los platos para alimentarse).", match: "zone-user" }
                     ],
                     zones: [
-                        { id: "zone-owner", title: "Dueño del Dato", desc: "Data Owner" },
-                        { id: "zone-producer", title: "Productor del Dato", desc: "Captura de Datos" },
-                        { id: "zone-custodian", title: "Custodio Técnico", desc: "TI / Servidores" },
+                        { id: "zone-owner", title: "Dueño de Datos", desc: "Data Owner" },
                         { id: "zone-steward", title: "Gestor de Datos", desc: "Data Steward" },
-                        { id: "zone-analyst", title: "Analista de Datos", desc: "BI & Analytics" }
+                        { id: "zone-custodian", title: "Custodio Técnico", desc: "Data Custodian" },
+                        { id: "zone-bi", title: "Equipo BI / Analítica", desc: "Creadores de Valor" },
+                        { id: "zone-user", title: "Usuario de Datos", desc: "Data User" }
                     ],
                     feedbackSuccess: "¡Excelente! Has asociado correctamente cada metáfora con su equivalente de gobernanza y su responsabilidad organizativa.",
                     script: "Completa el primer ejercicio emparejando la metáfora de la cadena de suministro con el rol formal de datos en la institución."
