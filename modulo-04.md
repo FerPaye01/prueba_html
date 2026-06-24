@@ -17,7 +17,7 @@ Este material se presentará como un paquete interactivo tipo SCORM que incluye 
 * **Manual Corporativo Osinergmin:** 
   * PI-59: Procedimiento de Definiciones de Calidad de Datos Gobernados de Osinergmin.
 * **Material Didáctico Internacional:** 
-  * DataCamp - *Data Governance Concepts* (Calidad del Dato y Automatización).
+  * Estándares internacionales de Gobernanza de Datos (*Data Governance Concepts*: Calidad del Dato y Automatización).
 
 ### 2. Texto Didáctico Específico del Curso:
 
@@ -32,23 +32,23 @@ Para evitar esto, los programas de calidad de datos ayudan a garantizar que los 
 3. **La integridad:** Monitorizando posibles errores técnicos mientras el dato viaja.
 
 #### De la Corrección Manual a la Automatización Escalar
-Históricamente, las entidades públicas corrigen los errores a mano en hojas de cálculo una vez que se han detectado (enfoque reactivo). DataCamp advierte que esto no es sostenible ni escalable a largo plazo. 
+Históricamente, las entidades públicas corrigen los errores a mano en hojas de cálculo una vez que se han detectado (enfoque reactivo). Los expertos en gobernanza de datos advierten que esto no es sostenible ni escalable a largo plazo. 
 
 La gestión de la calidad de datos debe realizarse mediante la creación de reglas, métricas e informes de excepciones. Utilizar las soluciones tecnológicas adecuadas y automatizadas (como perfilamientos proactivos para descubrir valores nulos, registros duplicados o anomalías), en lugar de procesos manuales, ayudará a sostener y escalar con éxito nuestro programa de Gobierno de Datos a nivel corporativo.
 
 ---
 
-### 3. Diapositivas Específicas del Curso (Mockup Visual):
+### 3. Contenido Visual del Curso (Mockup):
 
-* **Diapositiva 1:**
+* **Pantalla 1:**
   * **Visual:** Un coche deportivo brillante vs. un coche averiado o un ciudadano frustrado en una ventanilla de atención.
   * **Título:** ¿Conducirías a ciegas? El Impacto de la Mala Calidad.
   * **Contenido:** Así como al buscar un coche nuevo el requisito mínimo es la alta calidad y fiabilidad, al utilizar datos para Osinergmin debemos exigir garantías. Tomar decisiones con datos sin evaluar es como conducir un coche averiado. Un error de tipeo no es solo un problema técnico; es un trámite rechazado, una subvención no cobrada y una insatisfacción directa del ciudadano.
-* **Diapositiva 2:**
+* **Pantalla 2:**
   * **Visual:** Un panel de control de un auto con 6 medidores iluminados.
   * **Título:** El Tablero de la Calidad (Dimensiones).
   * **Contenido:** Todo dato estratégico debe pasar la revisión de nuestros medidores: ¿Es exacto y completo? ¿Cumple con la validez de formato (ej. RUC de 11 dígitos)? ¿Mantiene su integridad y coherencia lógica al viajar por los distintos sistemas de la entidad?
-* **Diapositiva 3:**
+* **Pantalla 3:**
   * **Visual:** Un robot escaneando un radar en una fábrica vs. una persona barriendo con una escoba.
   * **Título:** Automatizar para Escalar (Mejora Continua).
   * **Contenido:** No podemos depender de correcciones manuales eternas. Para que la calidad del dato crezca, debemos usar soluciones automatizadas que detecten valores nulos de forma proactiva, perfilen la base de datos y reporten excepciones atacando siempre la causa raíz del error.
@@ -58,16 +58,16 @@ La gestión de la calidad de datos debe realizarse mediante la creación de regl
 ## COMPONENTE 2: EJERCICIOS INTERACTIVOS (Taxonomía de Bloom)
 
 ### Ejercicio 1: Nivel Comprender - "Los Medidores del Coche" (Drag & Drop)
-* **Instrucción:** Arrastra la situación de negocio hacia la dimensión o tipo de falla de calidad de DataCamp que representa.
+* **Instrucción:** Arrastra la situación de negocio hacia la dimensión o tipo de falla de calidad que representa.
 * **Asociaciones:**
-  * *Un ciudadano escribe su DNI, pero el sistema le acepta letras en lugar de solo números.* $\rightarrow$ **Falla de Validez**
-  * *El presupuesto total de la obra aparece con montos diferentes dependiendo de la base de datos o sistema que consultes.* $\rightarrow$ **Falla de Coherencia / Consistencia**
-  * *Hay una caída de red en el servidor y, al transferir la base de datos, se pierden campos técnicos vitales por el camino.* $\rightarrow$ **Falla de Integridad**
-  * *El sistema del Banco Central necesita la canasta básica de este mes para predecir la inflación, pero solo está disponible la del año pasado.* $\rightarrow$ **Falla de Oportunidad (Timeliness)**
+  * *El sistema de registro de estaciones de servicio acepta que el usuario guarde el campo de correo electrónico sin el símbolo @ y permite ingresar un RUC de solo 5 dígitos en lugar de 11.* $\rightarrow$ **Falla de Validez**
+  * *Al contrastar el padrón de empresas autorizadas, la Gerencia de Fiscalización encuentra que un mismo operador aparece activo con el estado de "Habilitado", pero en el sistema de Administración figura como "Inactivo".* $\rightarrow$ **Falla de Coherencia**
+  * *Durante la migración nocturna de los expedientes de sanciones hacia el repositorio central, el proceso falló a la mitad, dejando registros huérfanos sin su respectivo historial de resoluciones adjunto.* $\rightarrow$ **Falla de Integridad**
+  * *El equipo de analítica necesita calcular el índice de variación del precio de los combustibles de esta semana para un reporte de la Alta Dirección, pero la última actualización de la base de datos es de hace tres meses.* $\rightarrow$ **Falla de Oportunidad**
 
 ### Ejercicio 2: Nivel Aplicar - "Escalando la Calidad" (Rellenar espacios en blanco)
 * **Texto a completar:**
-  > "Según las mejores prácticas internacionales, para gestionar eficazmente la calidad de la información se debe priorizar la creación de reglas, métricas e informes de **[excepciones]**. DataCamp recomienda utilizar soluciones **[automatizadas]** (como perfiladores de datos), ya que depender de correcciones manuales en Excel impedirá, en última instancia, sostener y **[escalar]** nuestro programa de Gobierno de Datos, condenándonos a parches reactivos en lugar de una mejora continua en la **[causa raíz]**."
+  > "Según las mejores prácticas internacionales, para gestionar eficazmente la calidad de la información se debe priorizar la creación de reglas, métricas e informes de **[excepciones]**. Los estándares de gobernanza recomiendan utilizar soluciones **[automatizadas]** (como perfiladores de datos), ya que depender de correcciones manuales en Excel impedirá, en última instancia, sostener y **[escalar]** nuestro programa de Gobierno de Datos, condenándonos a parches reactivos en lugar de una mejora continua en la **[causa raíz]**."
 
 ### Ejercicio 3: Nivel Analizar - "Cortando el Problema de Raíz" (Elige tu propia aventura)
 * **Escenario:**
@@ -85,28 +85,28 @@ La gestión de la calidad de datos debe realizarse mediante la creación de regl
 El sistema seleccionará 5 preguntas al azar por cada intento del usuario.
 
 #### Pregunta 1
-Utilizando la analogía de DataCamp sobre la compra de un coche nuevo, ¿qué debemos exigir al momento de plantearnos usar datos en nuestra organización?
+Utilizando la analogía de la compra de un coche nuevo, ¿qué debemos exigir al momento de plantearnos usar datos en nuestra organización?
 * a) Que los datos se almacenen en servidores físicos desconectados de internet.
 * **b) Asegurar una alta calidad evaluando la completitud, la exactitud, la consistencia, la validez, la puntualidad y la integridad.** (Correcta)
 * c) Que los datos sean propiedad exclusiva del departamento de TI.
 * d) Que todos los datos se recopilen de forma manual sin intervención de software.
 
 #### Pregunta 2
-De acuerdo con DataCamp, ¿qué dimensión de la calidad de datos se encarga específicamente de garantizar que el dato sea exactamente el mismo en todos los sistemas de la empresa (evitando contradicciones)?
+De acuerdo con los estándares internacionales de calidad de datos, ¿qué dimensión se encarga específicamente de garantizar que el dato sea exactamente el mismo en todos los sistemas de la empresa (evitando contradicciones)?
 * a) Puntualidad (Timeliness).
 * b) Validez (Validity).
 * **c) Coherencia / Consistencia.** (Correcta)
 * d) Integridad (Integrity).
 
 #### Pregunta 3
-¿Cuál es la recomendación principal de DataCamp para lograr sostener y escalar un programa de gobierno del dato a nivel de calidad?
+¿Cuál es la recomendación principal de las mejores prácticas internacionales para lograr sostener y escalar un programa de gobierno del dato a nivel de calidad?
 * a) Contratar a más personal para corregir errores a mano en Excel los fines de semana.
 * b) Imprimir todos los reportes de calidad para su revisión física y firma.
 * **c) Utilizar soluciones adecuadas y automatizadas mediante la creación de reglas, métricas e informes de excepciones, evitando los procesos manuales.** (Correcta)
 * d) Eliminar los estándares y dimensiones de calidad para que los datos fluyan rápido.
 
 #### Pregunta 4
-Si una entidad pública implementa controles de validación en su sistema web para detectar "errores operativos como los de introducción manual de datos" en las ventanillas de atención, ¿qué dimensión de calidad está asegurando principalmente según DataCamp?
+Si una entidad pública implementa controles de validación en su sistema web para detectar "errores operativos como los de introducción manual de datos" en las ventanillas de atención, ¿qué dimensión de calidad está asegurando principalmente?
 * **a) La validez.** (Correcta)
 * b) La puntualidad.
 * c) La protección.

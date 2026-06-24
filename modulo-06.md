@@ -13,7 +13,7 @@ Este material se presentará como un paquete interactivo tipo SCORM que incluye 
   * Ley N° 29733 (Ley de Protección de Datos Personales).
   * Decreto de Urgencia N° 007-2020 (Marco de Confianza Digital).
 * **Material Didáctico Internacional:** 
-  * DataCamp - *Data Governance Concepts* (Estrategias Defensiva vs. Ofensiva en el Gobierno de Datos).
+  * Estándares internacionales de Gobernanza de Datos (*Data Governance Concepts*: Estrategias Defensiva vs. Ofensiva en el Gobierno de Datos).
   * Guía Internacional DAMA-DMBOK2 - Capítulo 7: *Data Security* (Las 4 A's de la Seguridad).
 * **Manual Corporativo Osinergmin:** 
   * PI-59: Procedimiento Interno de Gestión de Gobernanza de Datos.
@@ -22,7 +22,7 @@ Este material se presentará como un paquete interactivo tipo SCORM que incluye 
 ### 2. Texto Didáctico Específico del Curso:
 
 #### El Equilibrio Estratégico: Defensiva vs. Ofensiva
-Abrir datos y utilizar Inteligencia Artificial es vital para la modernización del Estado, pero nunca debe hacerse a costa de la privacidad del ciudadano. Según los expertos de DataCamp, todo Gobierno de Datos exitoso debe equilibrar dos grandes estrategias:
+Abrir datos y utilizar Inteligencia Artificial es vital para la modernización del Estado, pero nunca debe hacerse a costa de la privacidad del ciudadano. Según los estándares internacionales de Gobierno de Datos, todo programa exitoso debe equilibrar dos grandes estrategias:
 1. **La Estrategia Defensiva:** Está enfocada en minimizar riesgos operativos, evitar sanciones y garantizar el estricto cumplimiento normativo (como la Ley N° 29733 y el Marco de Confianza Digital). Es el "escudo" de la organización.
 2. **La Estrategia Ofensiva:** Está enfocada en apoyar los objetivos de la institución, utilizando los datos para generar insights accionables, innovación y valor público. Es el "motor" de la organización.
 
@@ -42,20 +42,28 @@ La gobernanza de datos asegura que la IA se utilice de forma ética, auditable y
 
 ---
 
-### 3. Diapositivas Específicas del Curso (Mockup Visual):
+### 3. Contenido Visual del Curso (Mockup):
 
-* **Diapositiva 1:**
-  * **Visual:** Una balanza que equilibra un megáfono de transparencia y un candado de privacidad, junto a un cohete despegando.
-  * **Título:** El Equilibrio: Defensa y Ofensiva.
-  * **Contenido:** Según DataCamp, no podemos ser 100% defensivos (parálisis burocrática) ni 100% ofensivos (caos y multas de hasta 100 UIT según la Ley 29733). El Gobierno de Datos equilibra la defensa con la ofensiva para generar valor público seguro.
-* **Diapositiva 2:**
-  * **Visual:** Un antifaz con una llave al lado vs. un documento triturado convertido en un gráfico estadístico.
-  * **Título:** Seudonimización vs. Anonimización.
-  * **Contenido:** La Seudonimización oculta la identidad temporalmente y es reversible (sigue bajo la ley). La Anonimización destruye el vínculo identificatorio de forma irreversible (listo para publicación abierta de datos).
-* **Diapositiva 3:**
-  * **Visual:** Un humano supervisando a un robot que clasifica expedientes, junto a un escudo con las letras "A" y "E".
-  * **Título:** Las 4 A's de DAMA, el Entitlement y la Ética.
-  * **Contenido:** Para asegurar los datos internamente, DAMA exige: Acceso, Auditoría, Autenticación y Autorización, sumando el *Entitlement* (derecho legítimo de uso). En IA, la estrategia ofensiva exige mantener al humano a cargo (*Human-in-the-loop*) para auditar los algoritmos y evitar sesgos de discriminación.
+* **Pantalla 1 (Seguridad, Privacidad y 'La Tormenta Perfecta'):**
+  * **Visual:** Recreación del Diagrama de Venn del Taller de Osinergmin (Slide 33) con tres círculos superpuestos: Gobernanza (Silos sin dueño), Seguridad (Ataques/Malware) y Privacidad (Retención excesiva). En el cruce central exacto se activa un ícono de fuego/alerta con el texto "La Tormenta Perfecta: Daño máximo institucional".
+  * **Título:** Seguridad, Privacidad y 'La Tormenta Perfecta'.
+  * **Guion de Locución:** "Es vital separar dos conceptos que a menudo se confunden: La Seguridad es el candado en la puerta; asegura que los hackers no entren. La Privacidad, regulada por la Ley N° 29733, define qué pueden ver las personas que ya están adentro de la casa. ¿Qué pasa cuando fallan los controles? Nuestro Taller de Sensibilización advierte sobre un riesgo crítico llamado 'La Tormenta Perfecta'. Esto ocurre cuando tres fallas se cruzan: Un error técnico extrae información personal (Falla de Seguridad), se retienen datos de ciudadanos sin su consentimiento o por más tiempo del debido (Falla de Privacidad), y la base de datos está alojada en un servidor olvidado sin un Data Owner claro (Falla de Gobernanza). El resultado es el daño máximo institucional: pérdida total de la confianza ciudadana y multas de hasta 100 UIT."
+* **Pantalla 2 (Soberanía en la Nube y Anonimización - Gap 4):**
+  * **Visual:** Interactivo de "Selección de Identidad" que muestra el rostro de un ciudadano. Al presionar "Seudonimizar", se le coloca un antifaz de superhéroe (proceso reversible con llave). Al presionar "Anonimizar", el rostro se pixela y se bloquea con un candado de forma irreversible.
+  * **Título:** Soberanía en la Nube y Anonimización (Gap 4).
+  * **Guion de Locución:** "Hoy en día, la modernización bajo el Marco de Confianza Digital (Decreto de Urgencia N° 007-2020) nos impulsa a utilizar la Nube. Pero, ¿cómo mantenemos la soberanía de los datos de los peruanos si los servidores de la nube están en el extranjero? La respuesta está en la responsabilidad compartida y en la protección desde el diseño. Antes de que un dato sensible salga de nuestra entidad, el Custodio Técnico debe aplicar técnicas de protección, coordinando con el Oficial de Datos Personales, quien es nuestro enlace oficial con la Autoridad Nacional de Protección de Datos (ANPD). Aquí es crucial no confundirse al momento de abrir datos: no es lo mismo seudonimizar que anonimizar. La Seudonimización es como ponerle una máscara a un ciudadano; si alguien tiene la llave o el código, puede quitarle la máscara y descubrir quién es. Esto sigue siendo un dato personal ante la ley. La Anonimización es destruir el molde irreversiblemente. Es imposible volver a identificar a la persona, quedando fuera del alcance de la Ley de Protección de Datos. Solo publicamos datos en formato abierto (como en la PNDA) cuando están total y estrictamente anonimizados."
+* **Pantalla 3 (La Capa Azul y la Analítica - El destino final del dato):**
+  * **Visual (Active Recall):** Muestra la Pirámide de Refinamiento del PPTX. Presenta un "Robot de IA" hambriento y tres tuberías: Amarilla (sucia/cruda), Verde (filtrada/plata) y Azul (refinada/oro). El usuario debe arrastrar y conectar la tubería correcta para alimentar al robot. Si conecta la Amarilla, el robot colapsa mostrando "Error: Basura entra, basura sale". Si conecta la Azul, el robot genera un "Dashboard de Decisiones Estratégicas".
+  * **Título:** La Capa Azul y la Analítica: El Destino Final del Dato.
+  * **Guion de Locución:** "Hemos llegado a la cima de nuestra Pirámide de Refinamiento: La Capa Azul o Capa de Oro. Después de que nuestros datos han sido capturados, organizados en dominios y limpiados matemáticamente, es el momento de generar valor. De acuerdo con la Fase 3 de nuestro PI-59, aquí entra en acción nuestro Equipo de BI y Analítica (los Científicos de Datos). Ellos toman esta 'Fuente Única de Verdad' para construir tableros de control y entrenar modelos predictivos. Pero debemos ser tajantes en una regla de oro: la Inteligencia Artificial no hace magia. Si ustedes alimentan a un modelo de IA con datos de la 'Capa Amarilla' (datos crudos, silos aislados o registros duplicados), la inteligencia artificial aprenderá esos errores, alucinará y multiplicará el caos a la velocidad de la luz. La analítica avanzada solo funciona si se construye sobre los cimientos sólidos de la gobernanza."
+* **Pantalla 4 (La IA en Políticas Públicas y el "Humano en el Circuito"):**
+  * **Visual:** Cabina de un avión de pasajeros con controles interactivos. Locución visual interactiva: "La IA es el piloto automático; puede procesar miles de variables de viento y velocidad por segundo (analítica). Pero tú eres el Capitán en la cabina; si hay turbulencia ética o riesgos para el ciudadano, tú tomas los controles."
+  * **Título:** La IA en Políticas Públicas y el "Humano en el Circuito".
+  * **Guion de Locución:** "La Inteligencia Artificial tiene un potencial transformador para el Estado: puede procesar el lenguaje natural de los ciudadanos, cruzar miles de variables georreferenciadas en GeoPerú y predecir dónde ocurrirá la próxima interrupción eléctrica antes de que suceda. Sin embargo, en el sector público, la máquina propone, pero el humano dispone. Aquí aplicamos el principio del 'Humano en el Circuito' (Human-in-the-loop). Un algoritmo puede recomendar a qué empresas fiscalizar o qué ciudadanos requieren atención prioritaria, pero la IA jamás debe ser el decisor final y autónomo. El Dueño del Dato (Data Owner) y el funcionario a cargo son quienes evalúan la evidencia, asumen la responsabilidad legal e institucional, y toman la decisión final para garantizar que no haya exclusiones injustas."
+* **Pantalla 5 (Ética, Transparencia y Rendición de Cuentas):**
+  * **Visual (Active Recall):** Muestra el "Núcleo de IA y Ética" de la diapositiva de Osinergmin con cuatro cuadrantes interactivos: Transparencia, Equidad, Privacidad y Rendición de Cuentas. Al pasar el mouse por "Rendición de Cuentas", se resalta el texto: "Si la IA falla, existe un humano responsable de auditar y reparar el impacto", conectándolo visualmente con el ícono del Dueño del Dato (Data Owner).
+  * **Título:** Ética, Transparencia y Rendición de Cuentas.
+  * **Guion de Locución:** "Finalmente, el uso de analítica y algoritmos nos obliga a mantener un estándar ético inquebrantable frente a la sociedad, basado en cuatro pilares: Transparencia, Equidad, Beneficio y Rendición de Cuentas. Si un ciudadano cuestiona por qué se tomó una decisión regulatoria o administrativa, no podemos responderle: 'Lo dijo la máquina'. Debemos evitar las 'cajas negras'. Gracias a los metadatos y a la trazabilidad que documenta nuestro Gestor de Datos (Data Steward), el Estado siempre debe poder explicar qué información se utilizó para entrenar el algoritmo, qué reglas se aplicaron y cómo se mitigan los sesgos o prejuicios históricos. La tecnología avanza, pero la vocación de servicio y la rendición de cuentas siempre serán profundamente humanas."
 
 ---
 
@@ -197,7 +205,7 @@ El principio de "Evaluaciones de Impacto" y "Mecanismos de Reparación" en la IA
 
 ---
 
-## ESTRATEGIAS SEGÚN DATACAMP
+## ESTRATEGIAS DE GOBIERNO DE DATOS
 
 ### Estrategia Defensiva
 * **Objetivo:** Minimizar el riesgo, cumplir con la regulación (Ley N° 29733, DU N° 007-2020), evitar filtraciones, ciberseguridad, encriptación, control de accesos e integridad técnica.

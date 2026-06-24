@@ -36,12 +36,12 @@ Cada guión debe ser didáctico, comprensivo, cercano y empático, explicando co
 #### MÓDULO 2: Roles, Responsabilidades y Modelos Operativos
 - Eje Teórico: Cadena de suministro de datos (Productor, Dueño/Owner, Custodio Técnico, Gestor/Steward, Analista). Modelos de Gobierno: Centralizado, Descentralizado y Federado (Híbrido). Gobernanza No Invasiva.
 - Alineación Práctica (Para Ejercicios/Examen):
-  * Analogía de la Cocina (DataCamp): Agricultor (Productor en ventanilla), Dueño de la Granja (Owner - define reglas de negocio), Distribuidor (Custodio técnico - TI/servidores), Jefe de tienda (Steward - clasifica metadatos), Chef (Analista - crea dashboards/insights).
+  * Analogía de la Cocina: Agricultor (Productor en ventanilla), Dueño de la Granja (Owner - define reglas de negocio), Distribuidor (Custodio técnico - TI/servidores), Jefe de tienda (Steward - clasifica metadatos), Chef (Analista - crea dashboards/insights).
   * Explicar el enfoque "No Invasivo" (Robert S. Seiner) de formalizar roles ya existentes en el día a día.
   * Comparar modelos: Centralizado (control inicial/cuellos de botella), Descentralizado (rapidez local/caos de silos), Federado (equilibrio estratégico central con agilidad e implementación local).
 
 #### MÓDULO 3: Arquitectura, Plataformas e Interoperabilidad
-- Eje Teórico: Datos Maestros. Catálogo de Datos, Glosario de Negocio (humanos), Diccionario de Datos (técnico SQL) y Linaje de Datos (trazabilidad). Capas de refinamiento de datos de Osinergmin (Bronce/Amarilla - origen, Plata/Verde - gobernada, Oro/Azul - explotación). Enfoque colaborativo de DataCamp.
+- Eje Teórico: Datos Maestros. Catálogo de Datos, Glosario de Negocio (humanos), Diccionario de Datos (técnico SQL) y Linaje de Datos (trazabilidad). Capas de refinamiento de datos de Osinergmin (Bronce/Amarilla - origen, Plata/Verde - gobernada, Oro/Azul - explotación). Enfoque colaborativo según estándares internacionales.
 - Alineación Práctica (Para Ejercicios/Examen):
   * Explicar el Glosario de Negocio (definición conceptual para el usuario) frente al Diccionario de Datos (parámetros SQL).
   * Definir Linaje como el mapa que detalla el camino histórico del dato.

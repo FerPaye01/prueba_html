@@ -18,7 +18,7 @@ Este material se presentará como un paquete interactivo tipo SCORM que incluye 
   * Procedimiento PI-59: Gestión de Gobernanza de Datos (Capas de Refinamiento de Datos).
   * Flujograma de implementación de Productos de Datos de Osinergmin.
 * **Material Didáctico Internacional:** 
-  * DataCamp - *Data Governance Concepts* (La Caja de Herramientas y Enfoques de Implementación: Top-Down, Bottom-Up y Colaborativo).
+  * Estándares internacionales de Gobernanza de Datos (*Data Governance Concepts*: La Caja de Herramientas y Enfoques de Implementación: Top-Down, Bottom-Up y Colaborativo).
 
 ### 2. Texto Didáctico Específico del Curso:
 
@@ -28,7 +28,9 @@ Para que el Gobierno de Datos funcione, la información debe fluir desde su orig
 * **PNDA (Datos Abiertos):** Permite publicar datos hacia la ciudadanía y democratizar la información para fomentar la investigación e innovación.
 * **GeoPerú:** Plataforma para análisis territorial y mapas geoespaciales.
 
-Para que los sistemas internos conversen, cada entidad debe identificar sus **Datos Maestros** (como el DNI administrado por RENIEC, el RUC por SUNAT, o el Ubigeo por el INEI). Además, según enseña DataCamp, toda institución necesita una **"Caja de Herramientas"** conceptual para que los usuarios comprendan qué están compartiendo:
+Para que los sistemas internos conversen, cada entidad debe identificar sus **Datos Maestros** (como el DNI administrado por RENIEC, el RUC por SUNAT, o el Ubigeo por el INEI). Asimismo, el estándar internacional **DAMA-DMBOK2** recomienda estructurar la integración mediante un diseño **Hub-and-Spoke** (Centro y Radios) en lugar de conexiones Punto a Punto (Point-to-Point), lo cual consolida los datos compartidos en un punto central reduciendo drásticamente la complejidad técnica y la cantidad de interfaces.
+
+Además, según establecen los estándares internacionales de gobernanza, toda institución necesita una **"Caja de Herramientas"** conceptual para que los usuarios comprendan qué están compartiendo:
 1. **Glosario de Negocio:** El vocabulario común de la organización. Contiene definiciones de negocio claras en lenguaje no técnico (Ej. ¿Qué significa exactamente "ciudadano activo" para nosotros?).
 2. **Diccionario de Datos:** Contiene información puramente técnica para los sistemas (Ej. formato de la fecha, nombre de la tabla SQL, tamaño del campo y tipos de datos `VARCHAR`).
 3. **Catálogo de Datos:** Funciona como una "biblioteca" o mercado centralizado. Enlaza el glosario (negocio) con el diccionario (técnico) para que los usuarios busquen y localicen fácilmente la información que necesitan.
@@ -40,56 +42,56 @@ Internamente, los datos pasan por tres "capas de refinamiento" según la arquite
 * **Capa Verde (Plata / Data Gobernada):** Zona de confianza (*Trusted*). El Custodio del Dato aplica reglas de limpieza, elimina registros duplicados y estandariza la información.
 * **Capa Azul (Oro / Refinado):** Datos listos para convertirse en "Productos de Datos" consumidos por Científicos de Datos para analítica avanzada, Inteligencia Artificial y dashboards directivos.
 
-#### Los Enfoques de Implementación (DataCamp)
-DataCamp advierte que existen tres enfoques de implementación para esta arquitectura:
+#### Los Enfoques de Implementación
+La literatura especializada en gobernanza de datos advierte que existen tres enfoques de implementación para esta arquitectura:
 * **Top-Down (De arriba a abajo):** Solo el área de TI controla todo. Es seguro, pero genera cuellos de botella e ineficiencia.
 * **Bottom-Up (De abajo a arriba):** Todos los usuarios acceden a los datos crudos libremente. Es ágil, pero riesgoso y caótico.
 * **Colaborativo:** El enfoque ideal. Equilibra la seguridad defensiva (cumplimiento normativo) con la agilidad ofensiva (democratización y análisis de datos), construyendo confianza conjunta.
 
 ---
 
-### 3. Diapositivas Específicas del Curso (Mockup Visual):
+### 3. Contenido Visual del Curso (Mockup):
 
-* **Diapositiva 1:**
-  * **Visual:** Tres engranajes conectados etiquetados como PIDE, PNDA y GeoPerú.
-  * **Título:** El Ecosistema Nacional de Plataformas.
-  * **Contenido:** PIDE para interconectar de forma automática nuestras entidades públicas (simplificación administrativa), PNDA para democratizar y publicar datos abiertos a la ciudadanía, y GeoPerú para territorializar la información mediante mapas y capas geográficas.
-* **Diapositiva 2:**
-  * **Visual:** Una biblioteca con dos secciones distintas (una de cuentos infantiles sencillos y otra de manuales técnicos) y un mapa de linaje en la pared.
-  * **Título:** Nuestra Caja de Herramientas.
-  * **Contenido:** El Catálogo de Datos es la biblioteca. Los libros de texto simple son el Glosario de Negocio (definiciones para humanos). Los manuales de código son el Diccionario de Datos (parámetros técnicos para sistemas). El Linaje de Datos es el mapa que describe de qué imprenta original vino cada libro.
-* **Diapositiva 3:**
-  * **Visual:** Una balanza equilibrando un candado metálico y una lupa analítica de exploración.
-  * **Título:** El Enfoque Colaborativo de DataCamp.
-  * **Contenido:** No podemos bloquear todos los datos por exceso de control (Top-Down) ni liberar información sensible sin filtros (Bottom-Up). El enfoque colaborativo equilibra la defensa (seguridad y control) con la ofensiva (analítica e innovación).
+* **Pantalla 1:**
+  * **Visual:** Diagrama del ciclo de vida del dato del PI-59 (Generación -> Dominios -> Maestros -> Productos -> Analítica) al lado de un esquema que representa la Deuda Técnica (casa antigua/legacy conectada mediante tuberías iluminadas/APIs a un servidor moderno).
+  * **Título:** El Ciclo de Vida del Dato (PI-59) y la "Deuda Técnica".
+  * **Contenido:** Cómo gestionar la transición de sistemas antiguos o legacy construyendo integraciones (APIs) externas para no detener la operación diaria mientras se extraen datos de valor.
+* **Pantalla 2:**
+  * **Visual:** Ejercicio interactivo (Drag & Drop) donde un ciudadano lleva una torre de papeles y el alumno debe arrastrar la opción C (Conectarse a la PIDE) para conectarlo digitalmente a RENIEC, haciendo desaparecer la carga física.
+  * **Título:** Interoperabilidad (PIDE) y el Fin del "Mensajero No Remunerado".
+  * **Contenido:** Uso de la PIDE como mensajería digital segura entre entidades estatales para eliminar el papel físico y agilizar trámites en milisegundos con valor legal.
+* **Pantalla 3:**
+  * **Visual:** Pantalla dividida. A la izquierda (PNDA), conversión de tablas/CSV a gráficos interactivos. A la derecha (GeoPerú), un visor interactivo del mapa del Perú con pines calientes territoriales.
+  * **Título:** Arquitectura de Apertura (PNDA y GeoPerú).
+  * **Contenido:** Publicación de datos abiertos no confidenciales en formato CSV para investigadores (PNDA) e integración espacial territorial para georreferenciación de eventos (GeoPerú).
 
 ---
 
 ## COMPONENTE 2: EJERCICIOS INTERACTIVOS (Taxonomía de Bloom)
 
 ### Ejercicio 1: Nivel Comprender - "Ordenando la Caja de Herramientas" (Drag & Drop)
-* **Instrucción:** Arrastra la necesidad de negocio o técnica hacia la herramienta tecnológica correspondiente.
+* **Instrucción:** Asocia cada situación o necesidad operativa de Osinergmin con la herramienta tecnológica o plataforma gubernamental adecuada.
 * **Asociaciones:**
-  * *Define en lenguaje claro y corporativo qué significa el término "proveedor".* $\rightarrow$ **Glosario de Negocio**
-  * *Detalla que el campo "proveedor" es un valor alfanumérico de 11 dígitos (VARCHAR).* $\rightarrow$ **Diccionario de Datos**
-  * *Funciona como un mercado centralizado donde puedo buscar y localizar las dos definiciones anteriores.* $\rightarrow$ **Catálogo de Datos**
-  * *Me muestra gráficamente por cuántos sistemas y transformaciones pasó el dato del proveedor antes de llegar a mi reporte.* $\rightarrow$ **Linaje de Datos**
-  * *Un periodista necesita descargar en Excel el presupuesto gastado en obras públicas.* $\rightarrow$ **PNDA (Plataforma Nacional de Datos Abiertos)**
-  * *El área de licencias necesita consultar automáticamente si el DNI del solicitante es válido en el sistema de RENIEC.* $\rightarrow$ **PIDE (Interoperabilidad)**
-  * *Un analista quiere superponer en un mapa la ubicación de colegios y las zonas de riesgo de inundación.* $\rightarrow$ **GeoPerú**
+  * *El área de Fiscalización de Hidrocarburos y el área de Administración no se ponen de acuerdo sobre si el término "Usuario" se refiere a la empresa concesionaria o al ciudadano final.* $\rightarrow$ **Glosario de Negocio**
+  * *El equipo de desarrollo de software necesita saber con precisión la longitud, el tipo de dato y las restricciones de clave primaria de la tabla GFIS_EMPRESAS para realizar una migración.* $\rightarrow$ **Diccionario de Datos**
+  * *Un nuevo analista de TI necesita un motor de búsqueda único para indexar y localizar rápidamente en qué servidores o bases de datos se encuentran guardados todos los activos de información de la institución.* $\rightarrow$ **Catálogo de Datos**
+  * *Tras detectar un error en el Tablero de Control de Cobranzas, el equipo técnico necesita rastrear hacia atrás todo el camino del dato para ver en qué etapa de la extracción o transformación (ETL) se corrompió.* $\rightarrow$ **Linaje de Datos**
+  * *El área de Planeamiento institucional debe disponibilizar las estadísticas de sanciones anuales en formatos CSV o JSON para cumplir con la Ley de Transparencia y permitir que la ciudadanía las descargue de forma libre.* $\rightarrow$ **PNDA (Plataforma Nacional de Datos Abiertos)**
+  * *Para agilizar el proceso de reclamos, el sistema de atención al usuario de Osinergmin necesita validar en tiempo real los antecedentes de una empresa conectándose directamente con los servidores del Ministerio de la Producción.* $\rightarrow$ **PIDE (Interoperabilidad)**
+  * *La Alta Dirección requiere visualizar sobre un mapa interactivo la densidad de las denuncias de usuarios comerciales cruzadas con los distritos en estado de emergencia.* $\rightarrow$ **GeoPerú**
 
 ### Ejercicio 2: Nivel Aplicar - "El Enfoque Correcto y las Capas" (Rellenar espacios en blanco)
 * **Texto a completar:**
-  > "Si el área de TI asume el control total y actúa como el único guardián de las bases de datos, estamos aplicando un enfoque **[Top-Down (De arriba a abajo)]**, lo cual crea cuellos de botella para el negocio. Para escalar con éxito sin violar leyes de privacidad, DataCamp recomienda adoptar un enfoque **[Colaborativo]**, donde se equilibre el cumplimiento normativo con el acceso a los datos. Asimismo, los datos recién extraídos ingresan a la **[Capa Amarilla]** (Bronce) y, tras aplicarse las reglas del catálogo, se consolidan en la **[Capa Verde]** (Plata) como data gobernada."
+  > "Si el área de TI asume el control total y actúa como el único guardián de las bases de datos, estamos aplicando un enfoque **[Top-Down (De arriba a abajo)]**, lo cual crea cuellos de botella para el negocio. Para escalar con éxito sin violar leyes de privacidad, las mejores prácticas recomiendan adoptar un enfoque **[Colaborativo]**, donde se equilibre el cumplimiento normativo con el acceso a los datos. Asimismo, los datos recién extraídos ingresan a la **[Capa Amarilla]** (Bronce) y, tras aplicarse las reglas del catálogo, se consolidan en la **[Capa Verde]** (Plata) como data gobernada."
 
 ### Ejercicio 3: Nivel Analizar - "Decisión Arquitectónica" (Elige tu propia aventura)
 * **Escenario:**
-  > "Estás diseñando un nuevo trámite digital para los ciudadanos en tu institución. Para completarlo, el sistema necesita comprobar que el usuario no tiene antecedentes penales (Poder Judicial) y que su empresa existe formalmente en registros públicos (SUNARP). ¿Cómo diseñas el flujo tecnológico?"
+  > "Estás diseñando un nuevo trámite digital para los ciudadanos en tu institución. Para completarlo, el sistema necesita comprobar que el usuario no tiene antecedentes penales (Poder Judicial) y que su empresa existe formalmente en registros públicos (SUNARP). ¿Cómo diseñas la arquitectura del flujo tecnológico?"
 * **Opciones de decisión:**
-  * **Opción A:** Habilito dos botones de carga de archivos para que el ciudadano escanee y suba los certificados en PDF de ambos documentos a nuestro sistema, encargando a un revisor su validación manual.
-    * *Feedback (Incorrecto/Alto Riesgo):* ¡Cuidado! Estás trasladando la carga burocrática al ciudadano y creando silos de información obsoleta, además de añadir costos y tiempos de validación manual propensos a errores.
-  * **Opción B:** Conecto el formulario de registro a la plataforma PIDE para consumir mediante APIs los Datos Maestros de la SUNARP y el Poder Judicial en tiempo real, validando la información al instante.
-    * *Feedback (Correcto/Seguro):* ¡Excelente! Aplicas el principio "Once-Only" (Una sola vez). Mejoras drásticamente la experiencia del ciudadano, reduces costos operativos y utilizas la arquitectura digital interoperable del Estado peruano.
+  * **Opción A (Enfoque Descentralizado / En Tiempo Real):** Configurar el formulario web para que realice peticiones síncronas por cada trámite iniciado, conectándose directamente a las APIs del Poder Judicial y de la SUNARP a través de la plataforma PIDE, validando los datos en caliente durante la sesión del ciudadano.
+    * *Feedback (Correcto/Seguro):* ¡Excelente! El Modelo de Interoperabilidad del Estado Peruano promueve el consumo síncrono en tiempo real vía PIDE. Esto evita la duplicidad de repositorios o bases de datos locales, garantizando que siempre se consulte la fuente única y oficial de la información sin crear silos redundantes.
+  * **Opción B (Enfoque de Réplica / Por Lotes):** Establecer un convenio de intercambio de datos para descargar semanalmente el subconjunto de datos maestros actualizados de SUNARP y Poder Judicial a un servidor local seguro, permitiendo que el sistema realice las consultas internamente sin depender de la latencia o disponibilidad de las redes externas.
+    * *Feedback (Incorrecto/Alto Riesgo):* ¡Cuidado! Aunque parezca una opción para mitigar problemas de latencia, almacenar réplicas locales de datos maestros externos duplica repositorios e incumple las directivas del Modelo de Interoperabilidad, el cual exige el consumo síncrono desde la fuente oficial para evitar datos desactualizados e inconsistencias legales.
 
 ---
 
@@ -98,7 +100,7 @@ DataCamp advierte que existen tres enfoques de implementación para esta arquite
 El sistema seleccionará 5 preguntas al azar por cada intento del usuario.
 
 #### Pregunta 1
-Según las enseñanzas de DataCamp, ¿cuál es la principal diferencia entre un Glosario de Negocio y un Diccionario de Datos?
+Según los estándares internacionales de gobernanza de datos, ¿cuál es la principal diferencia entre un Glosario de Negocio y un Diccionario de Datos?
 * a) El glosario es físico en papel y el diccionario es exclusivamente digital en la nube.
 * b) No hay diferencia técnica ni organizativa, son sinónimos del mismo estándar.
 * **c) El glosario contiene descripciones en lenguaje empresarial para todos los usuarios, mientras que el diccionario contiene parámetros técnicos (formatos, tipos de datos) para los sistemas.** (Correcta)
@@ -119,7 +121,7 @@ Si un científico de datos necesita saber por qué procesos de limpieza y transf
 * d) El Código de Ética de la institución.
 
 #### Pregunta 4
-De acuerdo con los enfoques de implementación descritos por DataCamp, ¿qué caracteriza al enfoque "Colaborativo"?
+De acuerdo con los enfoques de implementación descritos por la literatura especializada en gobernanza de datos, ¿qué caracteriza al enfoque "Colaborativo"?
 * a) Centraliza todo el poder y acceso de las bases de datos exclusivamente en un pequeño grupo de TI.
 * b) Libera todos los datos en bruto a cualquier usuario sin aplicar reglas de privacidad ni seguridad.
 * **c) Equilibra las necesidades defensivas (control y cumplimiento normativo) con las ofensivas (analítica y democratización del dato) involucrando a los usuarios de negocio.** (Correcta)

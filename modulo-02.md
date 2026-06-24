@@ -15,23 +15,23 @@ Este material se presentará en la plataforma como un paquete interactivo tipo S
 * **Manual Corporativo Osinergmin:** 
   * PI-59: Procedimiento Interno de Gestión de Gobernanza de Datos (Osinergmin).
 * **Material Didáctico e Internacional:** 
-  * DataCamp - *Data Governance Concepts* (Roles de Datos y Modelos Operativos).
+  * Estándares internacionales de Gobernanza de Datos (*Data Governance Concepts*: Roles de Datos y Modelos Operativos).
   * *Non-Invasive Data Governance* de Robert S. Seiner (Capítulos 7, 8 y 9 sobre capas operativas, tácticas y estratégicas).
 
 ### 2. Texto Didáctico Específico del Curso:
 
-#### El Ecosistema Humano: Los 8 Roles Clave en el Gobierno de Datos
-Implementar tecnología de punta sin definir roles es automatizar el desorden. En muchas entidades existe un fenómeno llamado **"Propiedad Difusa"**: todos los funcionarios usan un mismo dato, lo modifican y lo reportan, pero cuando ocurre un error, nadie es el responsable formal de su calidad ni sabe a quién rendirle cuentas.
+#### El Ecosistema Humano: Los 8 Roles Clave en el Gobierno de Datos (PI-59)
+Implementar tecnología sin definir roles es simplemente automatizar el desorden. En muchas entidades públicas sufrimos del síndrome de la **"Propiedad Difusa"**: todos modifican y usan la información, pero cuando hay un error crítico, nadie rinde cuentas. Para solucionar esto y asegurar la calidad, nuestro Procedimiento Interno PI-59 establece 8 roles oficiales.
 
-Para entender cómo solucionar esto y formalizar la gobernanza, los expertos nos proponen pensar en el ciclo de vida de un dato como la **cadena de suministro de un restaurante de alta cocina**:
-* **1. Alta Dirección (Nivel Estratégico y Patrocinio):** Los dueños o inversionistas de la marca. Aprueban el modelo de gobernanza de datos y aseguran los recursos necesarios. Priorizan iniciativas alineadas a los objetivos estratégicos.
-* **2. Oficial de Gobierno de Datos - OGD (El Articulador / Director de la Orquesta):** El Director de Operaciones. Supervisa la implementación general, define estándares, monitorea su cumplimiento y articula transversalmente con todas las áreas. Reporta a la Alta Dirección.
-* **3. Líder del Dato - Head of Data (Estratega del Dominio):** El Gerente de Categoría. Define la estrategia de datos de un dominio específico alineada al negocio y resuelve conflictos de definición y uso entre áreas.
-* **4. Dueño de Datos - Data Owner (Responsable Funcional):** El Dueño de la Granja (productor de ingredientes). Asume la responsabilidad legal y funcional sobre los datos críticos de su dominio. Define y valida reglas de calidad, metadatos y accesos. *¡TI no es el dueño de los datos!*
-* **5. Gestor de Datos - Data Steward (Gestor Operativo):** El Supervisor de Calidad/Inventario. Enlace directo entre Dueño y Custodio Técnico. Gestiona el diccionario de datos, el linaje en el Catálogo y ejecuta controles de calidad operativa.
-* **6. Custodio Técnico de Datos - Data Custodian (El Brazo Tecnológico):** El Transportista/Logística. Administra infraestructura, bases de datos y seguridad física. Habilita accesos únicamente bajo la aprobación del Dueño de Datos y ejecuta la ingesta (ETL).
-* **7. Equipo BI / Analítica (Los Creadores de Valor):** El Chef Gourmet. Diseñan y desarrollan dashboards, reportes y soluciones analíticas o de IA bajo estándares de calidad y con validación funcional del Dueño de Datos.
-* **8. Usuario de Datos - Data User (El Consumidor):** El Comensal/Cliente. Utilizan los datos y productos para su análisis diario. Tienen la obligación de respetar la confidencialidad y reportar inconsistencias al Gestor de Datos.
+Para entenderlos sin tecnicismos, asociemos el ciclo de vida de nuestros datos con la cadena de suministro de un restaurante de alta cocina:
+* **1. Alta Dirección (Los Inversionistas):** Aprueban el modelo de gobernanza y priorizan los recursos.
+* **2. Oficial de Gobierno de Datos - OGD (El Director Operativo):** Articula a todas las áreas y supervisa que el restaurante funcione, pero no cocina. Reporta directamente a la Alta Dirección.
+* **3. Líder del Dato - Head of Data (El Gerente de Categoría):** Define la estrategia del menú y resuelve conflictos funcionales entre áreas.
+* **4. Dueño de Datos - Data Owner (El Dueño de la Granja):** Asume la responsabilidad legal, decide quién accede a sus ingredientes y aprueba sus reglas de calidad.
+* **5. Gestor de Datos - Data Steward (El Supervisor de Calidad):** Ejecuta los controles operativos día a día y coordina con las áreas usuarias.
+* **6. Custodio Técnico de Datos - Data Custodian (El Transportista y Jefe de Seguridad):** Administra los servidores, implementa respaldos y habilita accesos técnicos protegiendo la carga.
+* **7. Equipo de Analítica (El Chef):** Toma los ingredientes limpios y diseña soluciones visuales para el negocio.
+* **8. Usuario de Datos - Data User (El Comensal):** Consume la información bajo estrictas políticas de confidencialidad y uso correcto.
 
 #### Modelos Operativos de Gobernanza
 Para que estos roles interactúen y tomen decisiones sobre datos en la institución, las entidades adoptan "Modelos Operativos":
@@ -39,22 +39,26 @@ Para que estos roles interactúen y tomen decisiones sobre datos en la instituci
 2. **Modelo Descentralizado:** Cada gerencia tiene autonomía total sobre sus datos. Ofrece flexibilidad local, pero es lento y difícil lograr consensos corporativos.
 3. **Modelo Federado o Híbrido:** El enfoque ideal. La oficina central provee la estrategia, lineamientos y herramientas comunes, pero cada línea de negocio tiene la flexibilidad para implementarla según sus necesidades operativas diarias.
 
-#### El Enfoque "No Invasivo" (Robert S. Seiner)
-Gobernanza de datos no significa inventar una gran burocracia con nuevos cargos que paralicen la entidad. Un enfoque "No Invasivo" reconoce que las personas ya interactúan con los datos todos los días. El objetivo es identificar quiénes definen, producen y usan los datos, y formalizar su nivel de responsabilidad (rendición de cuentas) manteniendo sus cargos y títulos originales.
+#### El Enfoque "No Invasivo" (Robert S. Seiner) y el OGD
+El Oficial de Gobierno de Datos (OGD) no es el dueño absoluto de toda la información de la entidad; actúa como el **Director de una Orquesta Sinfónica**: se asegura de que el Dueño, el Gestor y el Custodio sigan la misma partitura de calidad, pero él no toca ningún instrumento. 
+
+Este rol está estrictamente respaldado por la Presidencia del Consejo de Ministros mediante las **Resoluciones SGTD N° 001-2022-PCM/SGTD y 002-2023-PCM/SGTD**, y operativizado en Osinergmin a través de nuestro **PI-59**, exigiendo un reporte directo a la Alta Dirección.
+
+Bajo el enfoque de **Gobernanza de Datos No Invasiva** (Robert S. Seiner), no se crean nuevas burocracias ni puestos de trabajo adicionales; se formalizan las responsabilidades y rendición de cuentas que los colaboradores ya ejercen sobre la información en su día a día ("Formalizar lo que ya haces"). Si defines, produces o consumes datos, ya tienes un rol en la gobernanza. El modelo simplemente oficializa y reconoce tu rol para garantizar la trazabilidad y la transparencia en beneficio del ciudadano.
 
 ---
 
-### 3. Diapositivas Específicas del Curso (Mockup Visual):
+### 3. Contenido Visual del Curso (Mockup):
 
-* **Diapositiva 1:**
+* **Pantalla 1:**
   * **Visual:** De la Granja a la Mesa - Iconos de un agricultor/granja, un camión logístico, un supervisor en tienda y un chef de cocina.
   * **Título:** ¿Quién cocina nuestros datos?
   * **Contenido:** Infografía que relaciona la cadena de suministro alimentaria con los 8 roles de Gobierno de Datos. Demuestra que TI (el transportista) solo gestiona infraestructura, mientras que el Negocio (el dueño de la granja) define el significado, propósito y reglas.
-* **Diapositiva 2:**
+* **Pantalla 2:**
   * **Visual:** Estructura y Jerarquía de Roles de Gobierno de Datos - Un organigrama interactivo que separa el Nivel Estratégico y de Coordinación (Alta Dirección, OGD, Líder del Dato) del Nivel Funcional de Negocio (Dueño, Gestor) y Técnico/Analítico/Consumo (Custodio, Equipo BI, Usuario).
   * **Título:** El Organigrama y Oficial de Gobierno de Datos (OGD).
   * **Contenido:** El OGD no programa bases de datos ni posee la información del negocio. Actúa como el director de la orquesta que coordina transversalmente a los demás roles para convertir los silos en una sinfonía corporativa.
-* **Diapositiva 3:**
+* **Pantalla 3:**
   * **Visual:** Tres organigramas conceptuales (uno concentrado en un punto, otro disperso y uno interconectado en red).
   * **Título:** Eligiendo nuestro Modelo Operativo.
   * **Contenido:** Comparación rápida de los enfoques Centralizado, Descentralizado y Federado (Híbrido) para la toma de decisiones ágiles sobre datos en la institución pública.
@@ -63,14 +67,14 @@ Gobernanza de datos no significa inventar una gran burocracia con nuevos cargos 
 
 ## COMPONENTE 2: EJERCICIOS INTERACTIVOS (Taxonomía de Bloom)
 
-### Ejercicio 1: Nivel Comprender - "La Cocina de los Datos" (Drag & Drop)
-* **Instrucción:** Arrastra el rol de la cadena de suministro alimentaria hacia su equivalente y responsabilidad en el Gobierno de Datos.
+### Ejercicio 1: Nivel Comprender - "De la Cocina a los Roles Reales" (Drag & Drop)
+* **Instrucción:** Asocia cada responsabilidad específica de Osinergmin con su correspondiente rol técnico en el Gobierno de Datos, usando la analogía de la cocina como marco narrativo.
 * **Asociaciones:**
-  * *Dueño de la granja (dueño de los ingredientes de negocio).* $\rightarrow$ **Dueño de Datos / Data Owner** (Define reglas de calidad y aprueba accesos).
-  * *Supervisor de calidad (valida inventario y organiza el catálogo).* $\rightarrow$ **Gestor de Datos / Data Steward** (Enlace operativo, gestiona el diccionario de datos).
-  * *Transportista/Logística (almacena y transporta seguro en frío).* $\rightarrow$ **Custodio Técnico de Datos / Data Custodian** (Administra infraestructura y bases de datos).
-  * *Chef Gourmet (cocina y prepara platos de alto valor).* $\rightarrow$ **Equipo BI / Analítica** (Desarrolla dashboards, reportes y modelos predictivos).
-  * *Comensal/Cliente (consume los platos para alimentarse).* $\rightarrow$ **Usuario de Datos / Data User** (Consumidor final, reporta errores).
+  * *Es el líder del área que rinde cuentas legalmente por la existencia y seguridad de la información (ej. la base de datos de empresas supervisadas). Es el dueño de los insumos.* $\rightarrow$ **DUEÑO DE DATOS (Data Owner)**
+  * *Es quien define las reglas del negocio, traduce las normas legales a formatos técnicos y se asegura de que los datos tengan la calidad adecuada en el día a día. Organiza el estante.* $\rightarrow$ **GESTOR DE DATOS (Data Steward)**
+  * *Es el administrador de TI o el ingeniero de infraestructura que se encarga del almacenamiento seguro, los respaldos (backups) y los accesos a los servidores. Transporta y almacena en frío.* $\rightarrow$ **CUSTODIO TÉCNICO (Data Custodian)**
+  * *Es el equipo técnico que transforma los datos crudos en tableros de control (Dashboards), reportes de analítica e indicadores para la toma de decisiones. Cocina el plato de alto valor.* $\rightarrow$ **EQUIPO BI / ANALÍTICA (Creadores de Valor)**
+  * *Son los fiscalizadores, analistas o usuarios finales que consultan los reportes listos para realizar sus tareas diarias y operativos en la institución. El comensal.* $\rightarrow$ **USUARIO DE DATOS (Data User)**
 
 ### Ejercicio 2: Nivel Aplicar - "Elige la Estructura y Formaliza" (Rellenar espacios en blanco)
 * **Texto a completar:**
@@ -80,10 +84,10 @@ Gobernanza de datos no significa inventar una gran burocracia con nuevos cargos 
 * **Escenario:**
   > "Como Oficial de Gobierno de Datos, detectas que hay un grave error recurrente en los reportes de cobranzas de Osinergmin porque los usuarios ingresan las fechas en distintos formatos y con errores de tipeo. ¿A quién acudes primero para resolver la regla de negocio?"
 * **Opciones de decisión:**
-  * **Opción A:** Le exijo al Gerente de TI (Custodio de la base de datos) que cambie la estructura de la base de datos inmediatamente.
-    * *Feedback (Incorrecto/Alto Riesgo):* ¡Cuidado! TI es el Custodio técnico, no el Dueño del Dato. Si pides a TI que altere reglas de negocio por su cuenta, estarás promoviendo la "Propiedad Difusa" y TI no podrá adivinar el impacto comercial en el área usuaria.
-  * **Opción B:** Me reúno con el Gerente de Cobranzas (Dueño del Dato) para que defina el formato de fecha oficial requerido y luego coordinamos con TI (Custodio) para programar las reglas de validez correspondientes.
-    * *Feedback (Correcto/Seguro):* ¡Excelente! Has aplicado el engranaje de colaboración. El Dueño define la regla y el Custodio la ejecuta técnicamente en los sistemas.
+  * **Opción A (Enfoque Tecnológico):** Coordinar con la Jefatura de TI para que implemente restricciones técnicas obligatorias y máscaras de entrada en el formulario del sistema, bloqueando cualquier formato de fecha que no sea estandarizado.
+    * *Feedback (Incorrecto):* ¡Cuidado! Aunque implementar una restricción técnica es necesario, la Jefatura de TI (Custodio Técnico) no debe definir la regla de negocio de manera aislada sin la participación del área dueña de los datos. Hacerlo podría generar fricción y parches técnicos sin alineación operativa.
+  * **Opción B (Enfoque de Negocio):** Convocar a la Gerencia de Cobranzas para establecer la regla de negocio del formato oficial de fecha requerido, validando el impacto que tendrá esta estandarización en sus operaciones diarias.
+    * *Feedback (Correcto):* ¡Excelente! Bajo los principios de Gobierno de Datos, la Gerencia de Cobranzas (Dueño de Datos) es quien debe definir primero la regla de negocio y evaluar su impacto. Posteriormente, TI (Custodio Técnico) automatizará y habilitará el control en los sistemas.
 
 ---
 
@@ -99,7 +103,7 @@ En la analogía de la cadena de suministro, ¿qué rol corporativo representa el
 * d) El Oficial de Datos Personales.
 
 #### Pregunta 2
-De acuerdo con DataCamp, ¿qué característica define a un modelo operativo de gobernanza "Federado o Híbrido"?
+De acuerdo con las mejores prácticas internacionales de gobernanza de datos, ¿qué característica define a un modelo operativo de gobernanza "Federado o Híbrido"?
 * a) Cada departamento actúa con autonomía absoluta sin responder ante una estrategia común.
 * b) El departamento de TI toma el 100% de las decisiones y definiciones de negocio.
 * **c) La Oficina central aporta la estrategia y herramientas comunes, pero permite a las líneas de negocio implementar la gobernanza de forma flexible según sus necesidades.** (Correcta)

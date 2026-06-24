@@ -6,7 +6,7 @@ Este documento recopila la información teórica, metodológica y los recursos p
 
 ## COMPONENTE 1: FUENTE DE CONOCIMIENTO (Material de Estudio)
 
-Este material se presentará en la plataforma como un paquete interactivo tipo SCORM que incluye lecturas, normativas descargables y diapositivas.
+Este material se presentará en la plataforma como un paquete interactivo tipo SCORM que incluye lecturas, normativas descargables y recursos visuales.
 
 ### 1. Fuentes Normativas y Manuales (Sección de "Descargables"):
 * **Guía Internacional:** 
@@ -43,17 +43,17 @@ Para generar valor real, es necesario romper los **"silos de información"**, do
 
 ---
 
-### 3. Diapositivas Específicas del Curso (Mockup Visual):
+### 3. Contenido Visual del Curso (Mockup):
 
-* **Diapositiva 1:**
+* **Pantalla 1:**
   * **Visual:** Un gráfico de crecimiento ascendente o un engranaje dorado simbolizando valor estratégico.
   * **Título:** Generando Valor Público.
   * **Contenido:** El Gobierno de Datos transforma la información aislada en un activo estratégico. Sus beneficios principales son la toma de decisiones precisas basadas en evidencia real y la eficiencia operativa al eliminar la duplicidad y el retrabajo manual.
-* **Diapositiva 2:**
+* **Pantalla 2:**
   * **Visual:** Un mazo de juez junto a un escudo protector, o un vehículo de alta gama saliendo de un concesionario.
   * **Título:** Confianza en nuestras Decisiones.
   * **Contenido:** La Ley de Gobierno Digital (DL 1412) y la Estrategia 2026-2030 nos obligan a gestionar los datos como un Activo Estratégico de Osinergmin. Así como no comprarías un auto nuevo si no cumple con estándares mínimos de frenos y seguridad, no podemos tomar decisiones institucionales con datos que no han sido validados. El Gobierno de Datos es nuestra garantía de calidad.
-* **Diapositiva 3:**
+* **Pantalla 3:**
   * **Visual:** Tres engranajes conectados etiquetados como PNDA, GeoPerú y PIDE.
   * **Título:** El Ecosistema del Estado.
   * **Contenido:** Destruir los silos es posible integrando las herramientas nacionales preexistentes: compartimos datos públicos en la PNDA, analizamos el territorio en GeoPerú y conectamos sistemas transaccionales a través de la PIDE.

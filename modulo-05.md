@@ -10,7 +10,7 @@ Este material se presentará como un paquete interactivo tipo SCORM que incluye 
 
 ### 1. Fuentes Normativas y Manuales (Sección de "Descargables"):
 * **Guía Internacional y Didáctica:** 
-  * DataCamp - *Data Governance Concepts* (Soluciones Técnicas, Glosarios y Automatización).
+  * Estándares internacionales de Gobernanza de Datos (*Data Governance Concepts*: Soluciones Técnicas, Glosarios y Automatización).
   * Guía Internacional DAMA-DMBOK2 - Capítulo 11: *Metadata Management*.
 * **Estándar Normativo Peruano:** 
   * Lineamientos de la Secretaría de Gobierno y Transformación Digital (SGTD) para el uso del estándar DCAT-AP en la Plataforma Nacional de Datos Abiertos (PNDA).
@@ -29,27 +29,39 @@ Aquí es donde entran los **Metadatos**, definidos como "los datos acerca de los
 #### Trazabilidad (Linaje): La Historia de Vida del Dato
 Si los metadatos son el ADN, la **Trazabilidad** (Linaje de Datos o *Data Lineage*) es su historial médico completo. La trazabilidad nos permite conocer el origen exacto del dato, las transformaciones de limpieza y consolidación que sufrió en el camino, sus diferentes versiones y su consumo final en reportes o dashboards. Sin trazabilidad, no podemos auditar nuestros procesos ni garantizar que los algoritmos de Inteligencia Artificial se estén alimentando con versiones correctas y actualizadas de la información institucional.
 
-#### La Lección de DataCamp: Automatizar para Sobrevivir
-Podríamos intentar documentar todo esto a mano en hojas de cálculo tradicionales, pero los expertos de DataCamp nos advierten: a medida que los datos crecen en volumen y complejidad, también aumenta la necesidad de contar con soluciones técnicas integrales que ayuden a gestionar y gobernar los datos de forma más automatizada. 
+#### La Necesidad de Automatizar para Sostener la Gobernanza
+Podríamos intentar documentar todo esto a mano en hojas de cálculo tradicionales, pero los expertos en gobernanza de datos nos advierten: a medida que los datos crecen en volumen y complejidad, también aumenta la necesidad de contar con soluciones técnicas integrales que ayuden a gestionar y gobernar los datos de forma más automatizada. 
 
 Para evitar que la documentación quede obsoleta a las pocas semanas de escribirse, las entidades deben evolucionar hacia herramientas de catálogos automatizados (como Collibra, Atlan o Informatica) que mantengan vivo el linaje y el glosario de términos sin depender de la memoria o el esfuerzo manual de las personas.
 
 ---
 
-### 3. Diapositivas Específicas del Curso (Mockup Visual):
+### 3. Contenido Visual del Curso (Mockup):
 
-* **Diapositiva 1:**
-  * **Visual:** Una cadena de ADN formada por etiquetas de código y texto.
-  * **Título:** Los Metadatos: El ADN de nuestra Información.
-  * **Contenido:** Un número "10" por sí solo no significa nada. El metadato le da el contexto: nos dice que son "10 kilogramos", recolectados el "15 de marzo" por el "Área de Operaciones". El metadato da vida y significado al dato para evitar interpretaciones erróneas.
-* **Diapositiva 2:**
+* **Pantalla 1 (Los Metadatos - El ADN del Dato):**
+  * **Visual:** Una lata de conservas sin etiqueta a la izquierda (representando un Excel sin contexto). Al interactuar (hacer clic), se le pega una etiqueta nutricional de metadatos detallando Ingredientes (Origen), Vigencia, Reglas de Negocio y Confidencialidad.
+  * **Título:** Los Metadatos: El ADN del Dato.
+  * **Guion de Locución:** "Imagina que vas al supermercado y compras una lata de conservas que no tiene etiqueta. No sabes si contiene atún, duraznos o algo a lo que eres alérgico. ¿Te la comerías? Probablemente no. Lo mismo ocurre con nuestra información. Un conjunto de datos sin contexto es solo una matriz de números y letras sin sentido. Aquí entran los Metadatos: son el ADN del dato. De acuerdo con nuestro PI-59, los metadatos documentan el origen, la vigencia, las reglas de negocio y el nivel de confidencialidad de la información. Sin metadatos, sufrimos de amnesia institucional. Si el experto que creó el reporte renuncia o se jubila, la institución pierde la capacidad de entender su propia información. Registrar metadatos no es una tarea opcional de Sistemas; es una obligación del Gestor de Datos (Data Steward) y del Dueño de Datos para asegurar que la información sea reutilizable."
+* **Pantalla 2:**
   * **Visual:** Un mapa de ruta con paradas desde una fábrica hasta un supermercado.
   * **Título:** Trazabilidad (Linaje del Dato).
   * **Contenido:** Es la historia del dato. Nos permite rastrear un reporte gerencial o un dashboard hacia atrás, paso a paso, hasta descubrir exactamente en qué sistema de origen, en qué base de datos y por qué funcionario se originó la información.
-* **Diapositiva 3:**
+* **Pantalla 3:**
   * **Visual:** Una persona abrumada y rodeada de miles de papeles vs. un software organizando carpetas automáticamente.
   * **Título:** Automatizando la Memoria Institucional.
-  * **Contenido:** Según DataCamp, el volumen de datos hace imposible documentar a mano de manera sostenible. Necesitamos soluciones técnicas automatizadas (Catálogos y Linaje digital) para que la confianza en nuestras decisiones no dependa de si un funcionario clave se fue de vacaciones.
+  * **Contenido:** Según los estándares internacionales de gobernanza, el volumen de datos hace imposible documentar a mano de manera sostenible. Necesitamos soluciones técnicas automatizadas (Catálogos y Linaje digital) para que la confianza en nuestras decisiones no dependa de si un funcionario clave se fue de vacaciones.
+* **Pantalla 4 (La Capa Azul y la Analítica - Active Recall):**
+  * **Visual:** Un "Robot de IA" hambriento con tres tuberías interactivas: Amarilla (datos crudos/Bronce), Verde (datos gobernados/Plata) y Azul (Fuente Única de Verdad/Oro). El usuario selecciona la tubería para alimentar al robot. Si conecta la Amarilla, el robot colapsa con "Error: Basura entra, basura sale". Si conecta la Azul, genera un "Dashboard de Decisiones Estratégicas".
+  * **Título:** La Capa Azul y la Analítica: El Destino Final del Dato.
+  * **Guion de Locución:** "Hemos llegado a la cima de nuestra Pirámide de Refinamiento: La Capa Azul o Capa de Oro. De acuerdo con la Fase 3 de nuestro PI-59, aquí entra en acción el Equipo de BI y Analítica. Ellos toman esta Fuente Única de Verdad para construir tableros de control y entrenar modelos predictivos. La regla de oro: la Inteligencia Artificial no hace magia. Si alimentas a un modelo con datos crudos de la Capa Amarilla, la IA aprenderá esos errores y multiplicará el caos a velocidad de la luz. La analítica avanzada solo funciona sobre los cimientos sólidos de la gobernanza."
+* **Pantalla 5 (La IA en Políticas Públicas y el 'Humano en el Circuito'):**
+  * **Visual:** Cabina de avión interactiva (Cockpit) con dos modos: "Piloto IA" (activa el piloto automático con radar y telemetría) y "Capitán Humano" (el funcionario toma el control). Al cambiar de modo se actualiza el panel de estado.
+  * **Título:** La IA en Políticas Públicas y el "Humano en el Circuito".
+  * **Guion de Locución:** "La IA tiene un potencial transformador: puede procesar el lenguaje natural de los ciudadanos, cruzar miles de variables en GeoPerú y predecir interrupciones eléctricas. Sin embargo, en el sector público: la máquina propone, pero el humano dispone. El principio del 'Humano en el Circuito' (Human-in-the-loop) exige que el Dueño del Dato y el funcionario evalúen la evidencia, asuman la responsabilidad legal e institucional, y tomen la decisión final para garantizar que no haya exclusiones injustas."
+* **Pantalla 6 (Ética, Transparencia y Rendición de Cuentas - Active Recall):**
+  * **Visual:** El "Núcleo de IA y Ética" con cuatro cuadrantes interactivos: Transparencia, Equidad, Privacidad y Rendición de Cuentas. Al hacer clic en cada cuadrante, el panel derecho muestra el detalle del pilar. El cuadrante "Rendición de Cuentas" tiene un borde rojo pulsante, resaltando el vínculo con el Dueño del Dato (Data Owner).
+  * **Título:** Ética, Transparencia y Rendición de Cuentas.
+  * **Guion de Locución:** "El uso de analítica y algoritmos nos obliga a un estándar ético inquebrantable, basado en cuatro pilares: Transparencia, Equidad, Privacidad y Rendición de Cuentas. No podemos responder a un ciudadano: 'Lo dijo la máquina'. Debemos evitar las 'cajas negras'. Gracias a los metadatos y a la trazabilidad del Gestor de Datos, el Estado debe poder explicar qué información se usó para entrenar el algoritmo y cómo se mitigan los sesgos históricos. La tecnología avanza, pero la rendición de cuentas siempre será profundamente humana."
 
 ---
 
@@ -60,12 +72,12 @@ Para evitar que la documentación quede obsoleta a las pocas semanas de escribir
 * **Asociaciones:**
   * *Son los "datos sobre los datos", proporcionan el contexto (quién, cómo, cuándo).* $\rightarrow$ **Metadatos**
   * *Es el historial completo y el camino que el dato ha recorrido desde su origen.* $\rightarrow$ **Trazabilidad / Linaje**
-  * *Tipo de solución recomendada por DataCamp cuando el volumen de datos crece y la documentación manual falla.* $\rightarrow$ **Soluciones técnicas automatizadas / Catálogos de software**
+  * *Tipo de solución recomendada por las mejores prácticas en gobernanza cuando el volumen de datos crece y la documentación manual falla.* $\rightarrow$ **Soluciones técnicas automatizadas / Catálogos de software**
   * *Es el estándar europeo de vocabulario de catálogo de datos que usa el Perú para la interoperabilidad.* $\rightarrow$ **DCAT-AP**
 
 ### Ejercicio 2: Nivel Aplicar - "La Regla de Oro" (Rellenar espacios en blanco)
 * **Texto a completar:**
-  > "De acuerdo con ILDA, si publicamos un dato sin su respectiva **[documentación]**, impedimos su correcta reutilización por parte de otras áreas. Asimismo, DataCamp nos enseña que a medida que los datos crecen en **[volumen y complejidad]**, debemos abandonar los registros manuales en Excel e implementar **[soluciones técnicas automatizadas]** para mantener viva la trazabilidad, de forma que los dashboards finales mantengan siempre la **[confianza]** institucional."
+  > "De acuerdo con ILDA, si publicamos un dato sin su respectiva **[documentación]**, impedimos su correcta reutilización por parte de otras áreas. Asimismo, los estándares internacionales de gobernanza nos enseñan que a medida que los datos crecen en **[volumen y complejidad]**, debemos abandonar los registros manuales en Excel e implementar **[soluciones técnicas automatizadas]** para mantener viva la trazabilidad, de forma que los dashboards finales mantengan siempre la **[confianza]** institucional."
 
 ### Ejercicio 3: Nivel Analizar - "La Auditoría Inesperada" (Elige tu propia aventura)
 * **Escenario:**
@@ -83,7 +95,7 @@ Para evitar que la documentación quede obsoleta a las pocas semanas de escribir
 El sistema seleccionará 5 preguntas al azar por cada intento del usuario.
 
 #### Pregunta 1
-¿Qué advierte DataCamp sobre la gestión de metadatos y documentación a medida que los datos de una institución crecen en volumen y complejidad?
+¿Qué advierten los expertos en gobernanza de datos sobre la gestión de metadatos y documentación a medida que los datos de una institución crecen en volumen y complejidad?
 * a) Que se debe contratar a más personal para llenar registros y Exceles manualmente.
 * b) Que los metadatos deben ser eliminados periódicamente para ahorrar espacio en servidor.
 * **c) Que aumenta la necesidad de contar con soluciones técnicas integrales que ayuden a gestionar y gobernar los datos de forma automatizada.** (Correcta)
@@ -111,7 +123,7 @@ De acuerdo con ILDA, ¿por qué es vital conocer el "versionado" (la versión ex
 * d) El versionado no tiene ninguna importancia práctica en el modelado de IA.
 
 #### Pregunta 5
-DataCamp menciona herramientas especializadas del mercado como Collibra, Atlan o Informatica. ¿Cuál es el propósito principal de estas herramientas en la gobernanza?
+Herramientas especializadas del mercado como Collibra, Atlan o Informatica son ampliamente recomendadas por los estándares internacionales. ¿Cuál es el propósito principal de estas herramientas en la gobernanza?
 * a) Diseñar y maquetar interfaces de páginas web institucionales.
 * **b) Servir como soluciones técnicas integrales y automatizadas para gestionar catálogos de metadatos, linajes y glosarios a gran escala.** (Correcta)
 * c) Emitir recibos de pago internos y facturas electrónicas de compras.

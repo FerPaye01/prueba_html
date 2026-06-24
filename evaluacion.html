@@ -700,7 +700,7 @@
                     feedback: "El Transportista representa al Custodio Técnico (Data Custodian), quien da soporte, almacenamiento e infraestructura de bases de datos al dato."
                 },
                 {
-                    q: "De acuerdo con DataCamp, ¿qué característica define a un modelo operativo de gobernanza \"Federado o Híbrido\"?",
+                    q: "De acuerdo con las mejores prácticas internacionales de gobernanza de datos, ¿qué característica define a un modelo operativo de gobernanza \"Federado o Híbrido\"?",
                     opts: ["Cada departamento actúa con autonomía absoluta sin responder ante una estrategia común.", "El departamento de TI toma el 100% de las decisiones y definiciones de negocio.", "La Oficina central aporta la estrategia y herramientas comunes, pero permite a las líneas de negocio implementar la gobernanza de forma flexible según sus necesidades.", "Está estrictamente diseñado para organizaciones que no tienen ningún nivel de madurez técnica."],
                     correct: 2,
                     feedback: "El modelo federado combina lineamientos estratégicos comunes desde el centro con adaptabilidad e implementación local."
@@ -760,7 +760,7 @@
             salirHash: "#mod3_3",
             pool: [
                 {
-                    q: "Según las enseñanzas de DataCamp, ¿cuál es la principal diferencia entre un Glosario de Negocio y un Diccionario de Datos?",
+                    q: "Según los estándares internacionales de gobernanza de datos, ¿cuál es la principal diferencia entre un Glosario de Negocio y un Diccionario de Datos?",
                     opts: ["El glosario es físico en papel y el diccionario es exclusivamente digital en la nube.", "No hay diferencia técnica ni organizativa, son sinónimos del mismo estándar.", "El glosario contiene descripciones en lenguaje empresarial para todos los usuarios, mientras que el diccionario contiene parámetros técnicos (formatos, tipos de datos) para los sistemas.", "El glosario lo define el área legal y el diccionario la Contraloría General."],
                     correct: 2,
                     feedback: "El Glosario está enfocado en definiciones claras para humanos (negocio); el Diccionario detalla tipos SQL, longitudes y campos para técnicos."
@@ -778,7 +778,7 @@
                     feedback: "El Linaje de Datos (Data Lineage) provee la trazabilidad y procedencia de la información a lo largo de los sistemas."
                 },
                 {
-                    q: "De acuerdo con los enfoques de implementación descritos por DataCamp, ¿qué caracteriza al enfoque \"Colaborativo\"?",
+                    q: "De acuerdo con los enfoques de implementación descritos por la literatura especializada en gobernanza de datos, ¿qué caracteriza al enfoque \"Colaborativo\"?",
                     opts: ["Centraliza todo el poder y acceso de las bases de datos exclusivamente en un pequeño grupo de TI.", "Libera todos los datos en bruto a cualquier usuario sin aplicar reglas de privacidad ni seguridad.", "Equilibra las necesidades defensivas (control y cumplimiento normativo) con las ofensivas (analítica y democratización del dato) involucrando a los usuarios de negocio.", "Prohíbe totalmente el intercambio de información entre diferentes gerencias."],
                     correct: 2,
                     feedback: "El enfoque colaborativo es el balance ideal: asegura el cumplimiento regulatorio (defensa) y a la vez empodera la innovación (ofensiva)."
@@ -826,25 +826,25 @@
             salirHash: "#mod4_3",
             pool: [
                 {
-                    q: "Utilizando la analogía de DataCamp sobre la compra de un coche nuevo, ¿qué debemos exigir al momento de plantearnos usar datos en nuestra organización?",
+                    q: "Utilizando la analogía de la compra de un coche nuevo, ¿qué debemos exigir al momento de plantearnos usar datos en nuestra organización?",
                     opts: ["Que los datos se almacenen en servidores físicos desconectados de internet.", "Asegurar una alta calidad evaluando la completitud, la exactitud, la consistencia, la validez, la puntualidad y la integridad.", "Que los datos sean propiedad exclusiva del departamento de TI.", "Que todos los datos se recopilen de forma manual sin intervención de software."],
                     correct: 1,
                     feedback: "La analogía exige no conducir a ciegas: no podemos tomar decisiones estratégicas de alto riesgo sin garantías y métricas de calidad de datos."
                 },
                 {
-                    q: "De acuerdo con DataCamp, ¿qué dimensión de la calidad de datos se encarga específicamente de garantizar que el dato sea exactamente el mismo en todos los sistemas de la empresa (evitando contradicciones)?",
+                    q: "De acuerdo con los estándares internacionales de calidad de datos, ¿qué dimensión se encarga específicamente de garantizar que el dato sea exactamente el mismo en todos los sistemas de la empresa (evitando contradicciones)?",
                     opts: ["Puntualidad (Timeliness).", "Validez (Validity).", "Coherencia / Consistencia.", "Integridad (Integrity)."],
                     correct: 2,
                     feedback: "La consistencia o coherencia exige que las variables tengan la misma definición y valor lógico a través de todas las plataformas."
                 },
                 {
-                    q: "¿Cuál es la recomendación principal de DataCamp para lograr sostener y escalar un programa de gobierno del dato a nivel de calidad?",
+                    q: "¿Cuál es la recomendación principal de las mejores prácticas internacionales para lograr sostener y escalar un programa de gobierno del dato a nivel de calidad?",
                     opts: ["Contratar a más personal para corregir errores a mano en Excel los fines de semana.", "Imprimir todos los reportes de calidad para su revisión física y firma.", "Utilizar soluciones adecuadas y automatizadas mediante la creación de reglas, métricas e informes de excepciones, evitando los procesos manuales.", "Eliminar los estándares y dimensiones de calidad para que los datos fluyan rápido."],
                     correct: 2,
-                    feedback: "DataCamp recalca que la calidad es insostenible si depende de revisiones y correcciones manuales; exige automatización de reglas."
+                    feedback: "Las mejores prácticas recalcan que la calidad es insostenible si depende de revisiones y correcciones manuales; exige automatización de reglas."
                 },
                 {
-                    q: "Si una entidad pública implementa controles de validación en su sistema web para detectar \"errores operativos como los de introducción manual de datos\" en las ventanillas de atención, ¿qué dimensión de calidad está asegurando principalmente según DataCamp?",
+                    q: "Si una entidad pública implementa controles de validación en su sistema web para detectar \"errores operativos como los de introducción manual de datos\" en las ventanillas de atención, ¿qué dimensión de calidad está asegurando principalmente?",
                     opts: ["La validez.", "La puntualidad.", "La protección.", "La privacidad."],
                     correct: 0,
                     feedback: "La validez de formato (ej. RUC de 11 dígitos, solo números en DNI) detiene e impide el ingreso del error operativo en origen."
@@ -892,10 +892,10 @@
             salirHash: "#mod5_1",
             pool: [
                 {
-                    q: "¿Qué advierte DataCamp sobre la gestión de metadatos y documentación a medida que los datos de una institución crecen en volumen y complejidad?",
+                    q: "¿Qué advierten los expertos en gobernanza de datos sobre la gestión de metadatos y documentación a medida que los datos de una institución crecen en volumen y complejidad?",
                     opts: ["Que se debe contratar a más personal para llenar registros y Exceles manualmente.", "Que los metadatos deben ser eliminados periódicamente para ahorrar espacio en servidor.", "Que aumenta la necesidad de contar con soluciones técnicas integrales que ayuden a gestionar y gobernar los datos de forma automatizada.", "Que se debe imprimir toda la documentación en papel para mayor seguridad."],
                     correct: 2,
-                    feedback: "DataCamp advierte que la documentación manual en Excel es insostenible al crecer el volumen; exige herramientas de catálogo automáticas."
+                    feedback: "Los expertos advierten que la documentación manual en Excel es insostenible al crecer el volumen; exige herramientas de catálogo automáticas."
                 },
                 {
                     q: "¿Qué son exactamente los \"Metadatos\" en el contexto del Gobierno de Datos según las definiciones de ILDA y DAMA?",
