@@ -22,45 +22,75 @@ Este material se presentará como un paquete interactivo tipo SCORM que incluye 
 ### 2. Texto Didáctico Específico del Curso:
 
 #### El Equilibrio Estratégico: Defensiva vs. Ofensiva
-Abrir datos y utilizar Inteligencia Artificial es vital para la modernización del Estado, pero nunca debe hacerse a costa de la privacidad del ciudadano. Según los estándares internacionales de Gobierno de Datos, todo programa exitoso debe equilibrar dos grandes estrategias:
-1. **La Estrategia Defensiva:** Está enfocada en minimizar riesgos operativos, evitar sanciones y garantizar el estricto cumplimiento normativo (como la Ley N° 29733 y el Marco de Confianza Digital). Es el "escudo" de la organización.
-2. **La Estrategia Ofensiva:** Está enfocada en apoyar los objetivos de la institución, utilizando los datos para generar insights accionables, innovación y valor público. Es el "motor" de la organización.
+El gobierno de datos es un acto de equilibrio entre jugar a la "defensiva" y a la "ofensiva". Jugar a la defensiva significa proteger a la institución y al ciudadano. Aquí las reglas son estrictas, porque si fallamos, las consecuencias son devastadoras. Exponer información personal no solo destruye la confianza pública, sino que vulnera la **Ley N° 29733 de Protección de Datos Personales**. Un error aquí puede resultar en que la **Autoridad Nacional de Protección de Datos (ANPD)** nos imponga multas gravísimas de hasta **100 UIT**.
+
+Por otro lado, jugar a la ofensiva significa usar los datos limpios para innovar, crear tableros analíticos y mejorar nuestros servicios. Pero no puedes tener una buena ofensiva (innovación) si tu defensiva (seguridad) es frágil y expone a la entidad a riesgos legales. Un equipo sin defensa pierde por goleada legal; un equipo sin ofensiva no genera valor al ciudadano.
 
 > [!IMPORTANT]
 > Si una entidad es puramente defensiva, bloquea todo y se paraliza (parálisis burocrática). Si es puramente ofensiva, expone información sensible, comete infracciones legales y destruye la confianza de la sociedad en las instituciones. El equilibrio se logra aplicando seguridad desde el diseño.
 
 #### Técnicas de Protección para Habilitar la Ofensiva
-Para poder hacer "ofensiva" (publicar datos y usar IA) sin romper la "defensa" (privacidad), debemos aplicar técnicas de desidentificación clave:
-* **Seudonimización (Defensa interna):** Consiste en reemplazar identificadores (como un nombre o DNI) por un alias, código o token. Es un proceso reversible si se tiene la "llave" para descifrarlo. Por lo tanto, el dato sigue siendo considerado personal y sujeto a la Ley N° 29733.
-* **Anonimización (Habilita la ofensiva):** Elimina por completo y de forma irreversible la posibilidad de identificar a una persona. Al ser irreversible, este dato queda fuera del ámbito restrictivo de la Ley de Protección de Datos y es libre para su publicación en la Plataforma Nacional de Datos Abiertos o para entrenar Inteligencia Artificial de forma ética.
-  * *Técnicas comunes:* **Supresión de variables** (eliminar columnas como el DNI y teléfono) y la **Generalización** (reemplazar datos exactos como "34 años" por rangos "30-39 años", o salarios exactos por rangos amplios).
+Para poder hacer "ofensiva" (publicar datos y usar IA) sin romper la "defensa" (privacidad), debemos aplicar técnicas de desidentificación clave. Aprende a distinguirlas con ejemplos concretos:
+
+* **Seudonimización (Defensa interna):** Reemplaza identificadores directos (nombre, DNI) por un alias, código o token. Es **reversible**: se guarda una "tabla de mapeo" en un servidor restringido para poder recuperar el dato original si es necesario para auditorías. El dato sigue siendo considerado personal y sujeto a la Ley N° 29733.
+  * *Ejemplo:* "María López Rojas" → `ID_USU_8392` (la tabla de mapeo con el nombre real se almacena en un servidor aislado).
+
+* **Anonimización (Habilita la ofensiva):** Elimina por completo y de forma **irreversible** la posibilidad de identificar a una persona. Al ser irreversible, este dato queda fuera del ámbito restrictivo de la Ley de Protección de Datos y es libre para su publicación o para entrenar IA.
+  * *Técnicas comunes:*
+    * **Supresión de variables:** Borrar columnas enteras (DNI, teléfono, correo electrónico).
+    * **Generalización:** Reemplazar valores exactos por rangos o categorías. Por ejemplo: fecha exacta "15/04/1990" → solo "Abril 1990"; salario "S/ 4,732" → rango "S/ 4,000 - 5,000"; edad "34 años" → "30-39 años".
 
 #### La Ética en la Era de la Inteligencia Artificial
 La seguridad no solo abarca evitar hackeos. Hoy en día, los datos alimentan algoritmos de Inteligencia Artificial que toman decisiones. Si entrenamos estos modelos con datos históricos que contienen sesgos o discriminación del pasado, la máquina amplificará esa discriminación en el futuro. 
 
+**Ejemplo concreto:** Si una institución ha contratado mayoritariamente hombres durante los últimos 20 años (90% hombres, 10% mujeres), y entrenamos una IA con esos datos históricos, la máquina aprenderá a preferir perfiles masculinos aunque le borremos la columna "género" del dataset. Esto ocurre porque la IA detecta variables proxy como la universidad de procedencia o el distrito de residencia para inferir el género indirectamente.
+
 La gobernanza de datos asegura que la IA se utilice de forma ética, auditable y transparente, manteniendo siempre la supervisión humana activa (**Human-in-the-loop**) para auditar los algoritmos y reparar posibles daños o alucinaciones.
+
+#### Las 4 A's de la Seguridad y el Ataque de Enlace (Linkage Attack)
+Para garantizar la protección de los datos, todo acceso a la información en el Estado debe regirse por cuatro pilares de seguridad conocidos como las **4 A's**:
+
+1. **Autenticación (Authentication):** Confirmar que realmente eres quien dices ser (ej. usar tu credencial, token o huella digital).
+2. **Autorización (Authorization):** Definir qué nivel de información tienes permitido ver según tu rol y necesidad del cargo.
+3. **Acceso (Access):** La puerta tecnológica real por donde entras al dato (sistema, base de datos, API).
+4. **Auditoría (Audit):** El registro inmutable de todo lo que hiciste mientras estuviste adentro del sistema (logs de consultas, modificaciones y exportaciones).
+
+Juntas, estas 4 A's definen tu **Entitlement** o derecho de uso legítimo de la información.
+
+> **Ataque de Enlace (Linkage Attack):** Un riesgo crítico al abrir datos. Ocurre cuando un actor malicioso cruza un dataset supuestamente anónimo con otras fuentes públicas (ej. padrón electoral, redes sociales) y logra reidentificar a las personas. Por ejemplo, si un dataset anónimo contiene "Edad: 34, Distrito: Miraflores, Profesión: Ingeniero" y se cruza con el padrón electoral de Miraflores, se puede reidentificar a una persona específica. Para evitarlo, el Custodio de Datos y el Dueño del Dato deben asegurar que las técnicas de anonimización aplicadas destruyan irreversiblemente cualquier patrón que permita rastrear a una persona.
 
 ---
 
 ### 3. Contenido Visual del Curso (Mockup):
 
-* **Pantalla 1 (Seguridad, Privacidad y 'La Tormenta Perfecta'):**
+* **Pantalla 1 (El Equilibrio Estratégico: Defensiva vs. Ofensiva):**
+  * **Visual:** Analogía del Equipo de Fútbol. A la izquierda (La Defensa): un escudo bloqueando ataques de hackers y multas de la ANPD (100 UIT). A la derecha (La Ofensiva): delanteros anotando goles que se transforman en "Valor Público" y "Mejores Decisiones". Mensaje visual: "Un equipo sin defensa pierde por goleada legal; un equipo sin ofensiva no genera valor al ciudadano."
+  * **Título:** El Equilibrio Estratégico: Defensiva vs. Ofensiva.
+  * **Guion de Locución:** "El gobierno de datos es un acto de equilibrio entre jugar a la defensiva y a la ofensiva. Jugar a la defensiva significa proteger a la institución y al ciudadano. Aquí las reglas son estrictas, porque si fallamos, las consecuencias son devastadoras. Exponer información personal no solo destruye la confianza pública, sino que vulnera la Ley N° 29733 de Protección de Datos Personales. Un error aquí puede resultar en que la Autoridad Nacional de Protección de Datos (ANPD) nos imponga multas gravísimas de hasta 100 UIT. Por otro lado, jugar a la ofensiva significa usar los datos limpios para innovar, crear tableros analíticos y mejorar nuestros servicios. Pero recuerda: no puedes tener una buena ofensiva (innovación) si tu defensiva (seguridad) es frágil y expone a la entidad a riesgos legales."
+
+* **Pantalla 2 (Las 4 A's de la Seguridad, el Entitlement y el Ataque de Enlace):**
+  * **Visual:** Cuatro tarjetas interactivas representando las 4 A's (Autenticación, Autorización, Acceso, Auditoría) que al unirse forman una llave de "Entitlement". Debajo, un visual de "Ataque de Enlace" donde dos piezas de rompecabezas (Dataset Anónimo A + Dato Público B) se unen revelando el rostro y DNI de un ciudadano con una alerta roja: "ALERTA: ATAQUE DE ENLACE. Anonimización Vulnerada".
+  * **Título:** Las 4 A's de la Seguridad, el Entitlement y el Ataque de Enlace.
+  * **Guion de Locución:** "Para garantizar esta protección, todo acceso a la información en el Estado debe regirse por los pilares de la seguridad, conocidos como las 4 A's: Autenticación: Confirmar que realmente eres quien dices ser (ej. usar tu credencial). Autorización: Definir qué nivel de información tienes permitido ver. Acceso: La puerta tecnológica real por donde entras al dato. Auditoría: El registro inmutable de todo lo que hiciste mientras estuviste adentro. Juntas, estas 4 A's definen tu Entitlement o derecho de uso legítimo. Pero la seguridad tecnológica debe ir acompañada de la ética, especialmente al abrir datos a la ciudadanía. Imagina que publicamos un dataset supuestamente anónimo, pero alguien cruza esa información con otro registro público y logra reidentificar a un ciudadano. A esto se le llama Ataque de Enlace (Linkage Attack). Para evitarlo, nuestro Custodio de Datos y Dueño del Dato deben asegurar que las técnicas de anonimización aplicadas destruyan irreversiblemente cualquier patrón que permita rastrear a una persona."
+
+* **Pantalla 3 (Seguridad, Privacidad y 'La Tormenta Perfecta'):**
   * **Visual:** Recreación del Diagrama de Venn del Taller de Osinergmin (Slide 33) con tres círculos superpuestos: Gobernanza (Silos sin dueño), Seguridad (Ataques/Malware) y Privacidad (Retención excesiva). En el cruce central exacto se activa un ícono de fuego/alerta con el texto "La Tormenta Perfecta: Daño máximo institucional".
   * **Título:** Seguridad, Privacidad y 'La Tormenta Perfecta'.
   * **Guion de Locución:** "Es vital separar dos conceptos que a menudo se confunden: La Seguridad es el candado en la puerta; asegura que los hackers no entren. La Privacidad, regulada por la Ley N° 29733, define qué pueden ver las personas que ya están adentro de la casa. ¿Qué pasa cuando fallan los controles? Nuestro Taller de Sensibilización advierte sobre un riesgo crítico llamado 'La Tormenta Perfecta'. Esto ocurre cuando tres fallas se cruzan: Un error técnico extrae información personal (Falla de Seguridad), se retienen datos de ciudadanos sin su consentimiento o por más tiempo del debido (Falla de Privacidad), y la base de datos está alojada en un servidor olvidado sin un Data Owner claro (Falla de Gobernanza). El resultado es el daño máximo institucional: pérdida total de la confianza ciudadana y multas de hasta 100 UIT."
-* **Pantalla 2 (Soberanía en la Nube y Anonimización - Gap 4):**
+* **Pantalla 4 (Soberanía en la Nube y Anonimización - Gap 4):**
+  * **Visual:** Recuadros informativos que destacan el **Decreto de Urgencia N° 007-2020 (Marco de Confianza Digital)** y el rol del **Oficial de Datos Personales** como enlace con la ANPD, junto al interactivo de selección de identidad (Seudonimizar vs Anonimizar).
   * **Visual:** Interactivo de "Selección de Identidad" que muestra el rostro de un ciudadano. Al presionar "Seudonimizar", se le coloca un antifaz de superhéroe (proceso reversible con llave). Al presionar "Anonimizar", el rostro se pixela y se bloquea con un candado de forma irreversible.
   * **Título:** Soberanía en la Nube y Anonimización (Gap 4).
   * **Guion de Locución:** "Hoy en día, la modernización bajo el Marco de Confianza Digital (Decreto de Urgencia N° 007-2020) nos impulsa a utilizar la Nube. Pero, ¿cómo mantenemos la soberanía de los datos de los peruanos si los servidores de la nube están en el extranjero? La respuesta está en la responsabilidad compartida y en la protección desde el diseño. Antes de que un dato sensible salga de nuestra entidad, el Custodio Técnico debe aplicar técnicas de protección, coordinando con el Oficial de Datos Personales, quien es nuestro enlace oficial con la Autoridad Nacional de Protección de Datos (ANPD). Aquí es crucial no confundirse al momento de abrir datos: no es lo mismo seudonimizar que anonimizar. La Seudonimización es como ponerle una máscara a un ciudadano; si alguien tiene la llave o el código, puede quitarle la máscara y descubrir quién es. Esto sigue siendo un dato personal ante la ley. La Anonimización es destruir el molde irreversiblemente. Es imposible volver a identificar a la persona, quedando fuera del alcance de la Ley de Protección de Datos. Solo publicamos datos en formato abierto (como en la PNDA) cuando están total y estrictamente anonimizados."
-* **Pantalla 3 (La Capa Azul y la Analítica - El destino final del dato):**
+* **Pantalla 5 (La Capa Azul y la Analítica - El destino final del dato):**
   * **Visual (Active Recall):** Muestra la Pirámide de Refinamiento del PPTX. Presenta un "Robot de IA" hambriento y tres tuberías: Amarilla (sucia/cruda), Verde (filtrada/plata) y Azul (refinada/oro). El usuario debe arrastrar y conectar la tubería correcta para alimentar al robot. Si conecta la Amarilla, el robot colapsa mostrando "Error: Basura entra, basura sale". Si conecta la Azul, el robot genera un "Dashboard de Decisiones Estratégicas".
   * **Título:** La Capa Azul y la Analítica: El Destino Final del Dato.
   * **Guion de Locución:** "Hemos llegado a la cima de nuestra Pirámide de Refinamiento: La Capa Azul o Capa de Oro. Después de que nuestros datos han sido capturados, organizados en dominios y limpiados matemáticamente, es el momento de generar valor. De acuerdo con la Fase 3 de nuestro PI-59, aquí entra en acción nuestro Equipo de BI y Analítica (los Científicos de Datos). Ellos toman esta 'Fuente Única de Verdad' para construir tableros de control y entrenar modelos predictivos. Pero debemos ser tajantes en una regla de oro: la Inteligencia Artificial no hace magia. Si ustedes alimentan a un modelo de IA con datos de la 'Capa Amarilla' (datos crudos, silos aislados o registros duplicados), la inteligencia artificial aprenderá esos errores, alucinará y multiplicará el caos a la velocidad de la luz. La analítica avanzada solo funciona si se construye sobre los cimientos sólidos de la gobernanza."
-* **Pantalla 4 (La IA en Políticas Públicas y el "Humano en el Circuito"):**
+* **Pantalla 6 (La IA en Políticas Públicas y el "Humano en el Circuito"):**
   * **Visual:** Cabina de un avión de pasajeros con controles interactivos. Locución visual interactiva: "La IA es el piloto automático; puede procesar miles de variables de viento y velocidad por segundo (analítica). Pero tú eres el Capitán en la cabina; si hay turbulencia ética o riesgos para el ciudadano, tú tomas los controles."
   * **Título:** La IA en Políticas Públicas y el "Humano en el Circuito".
   * **Guion de Locución:** "La Inteligencia Artificial tiene un potencial transformador para el Estado: puede procesar el lenguaje natural de los ciudadanos, cruzar miles de variables georreferenciadas en GeoPerú y predecir dónde ocurrirá la próxima interrupción eléctrica antes de que suceda. Sin embargo, en el sector público, la máquina propone, pero el humano dispone. Aquí aplicamos el principio del 'Humano en el Circuito' (Human-in-the-loop). Un algoritmo puede recomendar a qué empresas fiscalizar o qué ciudadanos requieren atención prioritaria, pero la IA jamás debe ser el decisor final y autónomo. El Dueño del Dato (Data Owner) y el funcionario a cargo son quienes evalúan la evidencia, asumen la responsabilidad legal e institucional, y toman la decisión final para garantizar que no haya exclusiones injustas."
-* **Pantalla 5 (Ética, Transparencia y Rendición de Cuentas):**
+* **Pantalla 7 (Ética, Transparencia y Rendición de Cuentas):**
   * **Visual (Active Recall):** Muestra el "Núcleo de IA y Ética" de la diapositiva de Osinergmin con cuatro cuadrantes interactivos: Transparencia, Equidad, Privacidad y Rendición de Cuentas. Al pasar el mouse por "Rendición de Cuentas", se resalta el texto: "Si la IA falla, existe un humano responsable de auditar y reparar el impacto", conectándolo visualmente con el ícono del Dueño del Dato (Data Owner).
   * **Título:** Ética, Transparencia y Rendición de Cuentas.
   * **Guion de Locución:** "Finalmente, el uso de analítica y algoritmos nos obliga a mantener un estándar ético inquebrantable frente a la sociedad, basado en cuatro pilares: Transparencia, Equidad, Beneficio y Rendición de Cuentas. Si un ciudadano cuestiona por qué se tomó una decisión regulatoria o administrativa, no podemos responderle: 'Lo dijo la máquina'. Debemos evitar las 'cajas negras'. Gracias a los metadatos y a la trazabilidad que documenta nuestro Gestor de Datos (Data Steward), el Estado siempre debe poder explicar qué información se utilizó para entrenar el algoritmo, qué reglas se aplicaron y cómo se mitigan los sesgos o prejuicios históricos. La tecnología avanza, pero la vocación de servicio y la rendición de cuentas siempre serán profundamente humanas."
@@ -69,28 +99,27 @@ La gobernanza de datos asegura que la IA se utilice de forma ética, auditable y
 
 ## COMPONENTE 2: EJERCICIOS INTERACTIVOS (Taxonomía de Bloom)
 
-### Ejercicio 1: Nivel Comprender - "Clasificando la Protección y Estrategia" (Drag & Drop)
-* **Instrucción:** Arrastra la técnica de protección de datos o iniciativa institucional hacia su definición/categoría correcta.
+### Ejercicio 1: Nivel Comprender - "Casos Prácticos de Seguridad y Privacidad" (Drag & Drop)
+* **Instrucción:** Arrastra cada escenario operativo de la izquierda hacia la estrategia o técnica de seguridad que le corresponde en la derecha.
 * **Asociaciones:**
-  * *Reemplazo un nombre por un código, pero guardo la llave para revertirlo.* $\rightarrow$ **Seudonimización**
-  * *Elimino permanentemente la columna del DNI y teléfono de la base de datos.* $\rightarrow$ **Supresión de variables**
-  * *Reemplazo el salario exacto de "4,732 soles" por el rango "De 4,000 a 5,000 soles".* $\rightarrow$ **Generalización**
-  * *Aplicar enmascaramiento dinámico a la base de datos de pacientes para cumplir con la Ley 29733.* $\rightarrow$ **Estrategia Defensiva**
-  * *Utilizar los datos históricos para crear un modelo de Inteligencia Artificial que prediga zonas de alta criminalidad.* $\rightarrow$ **Estrategia Ofensiva**
-  * *Asegurarse de que el equipo de TI mantenga las copias de seguridad cifradas.* $\rightarrow$ **Estrategia Defensiva**
+  * *Para un entorno de pruebas de desarrollo, el sistema debe reemplazar los nombres reales de los representantes legales por identificadores alfanuméricos aleatorios (ID_9482), almacenando la tabla de mapeo original en un servidor aislado y altamente restringido para auditorías futuras.* $\rightarrow$ **Seudonimización**
+  * *Al transferir una base de datos histórica a un centro de investigación externo, la Oficina de Asesoría Jurídica determina que las columnas que contienen números de DNI y números telefónicos fijos deben borrarse por completo del esquema para evitar cualquier riesgo de reidentificación.* $\rightarrow$ **Supresión de variables**
+  * *Al publicar un reporte estadístico sobre las multas impuestas a las empresas de hidrocarburos, se decide agrupar los montos exactos de las penalizaciones en bloques (ej. "De 10 a 50 UIT", "De 51 a 100 UIT") para proteger la confidencialidad comercial de los pequeños operadores.* $\rightarrow$ **Generalización**
+  * *Implementar políticas estrictas de control de accesos, cifrado de datos en reposo y auditorías automáticas de logs en el sistema informático de la institución con la finalidad exclusiva de prevenir fugas de información y cumplir con las sanciones de la Autoridad Nacional de Protección de Datos Personales (ANPD).* $\rightarrow$ **Estrategia Defensiva**
+  * *Utilizar los datos históricos de consumo de energía y denuncias de usuarios comerciales para entrenar un modelo analítico de Machine Learning que permita predecir qué zonas geográficas sufrirán mayores índices de saturación de red, optimizando la asignación de las cuadrillas de fiscalización.* $\rightarrow$ **Estrategia Ofensiva**
 
 ### Ejercicio 2: Nivel Aplicar - "El Escudo y el Motor" (Rellenar espacios en blanco)
 * **Texto a completar:**
   > "Bajo el Marco de **[Confianza Digital]** (DU N° 007-2020), la publicación de datos no debe vulnerar la Ley N° 29733 de Protección de Datos Personales. Si el Estado se enfoca únicamente en la Estrategia **[Defensiva]**, corremos el riesgo de paralizar la innovación por exceso de controles. Por otro lado, aplicar una Estrategia **[Ofensiva]** sin cuidado puede derivar en multas severas de hasta 100 UIT. El equilibrio se logra aplicando técnicas como la **[Anonimización]**, la cual garantiza que la identificación del ciudadano sea **[irreversible]**, permitiendo que la información genere valor público sin riesgos legales."
 
-### Ejercicio 3: Nivel Analizar - "Decisión Ética" (Elige tu propia aventura)
+### Ejercicio 3: Nivel Analizar - "Dilema de Ética Algorítmica: Ceguera vs Gobernanza Activa" (Elige tu propia aventura)
 * **Escenario:**
-  > "Tu equipo de Inteligencia Artificial está creando un modelo para automatizar el primer filtro de contratación de personal en Osinergmin. Te piden la base de datos histórica de los últimos 20 años de contrataciones, que contiene las direcciones exactas de los candidatos, género y edades."
+  > "Tu equipo de Inteligencia Artificial está creando un modelo para automatizar el primer filtro de contratación de personal en Osinergmin. Te piden la base de datos histórica de los últimos 20 años de contrataciones, que contiene variables como la universidad de procedencia, código postal, género y edad. ¿Cómo tratas estas variables para evitar que el algoritmo discrimine?"
 * **Opciones de decisión:**
-  * **Opción A:** Les entrego la base de datos completa inmediatamente para que el algoritmo sea lo más exacto posible.
-    * *Feedback (Incorrecto/Alto Riesgo):* ¡Alto riesgo ético y legal! Si entregas datos históricos sin auditar, la IA aprenderá y amplificará los sesgos de contratación del pasado, además de estar violando la privacidad de las personas al entregar datos personales no generalizados ni anonimizados.
-  * **Opción B:** Ejecuto un proceso de generalización de variables (rango de edades y distritos de residencia) y audito la calidad del dato para asegurar que el modelo no genere discriminación antes de entrenarlo.
-    * *Feedback (Correcto/Seguro):* ¡Excelente decisión! Estás garantizando el uso ético de la IA, aplicando privacidad y seguridad desde el diseño, y mitigando riesgos regulatorios y de sesgo algorítmico.
+  * **Opción A (Enfoque de Supresión / Ceguera - Trampa Intuitiva):** Eliminar por completo las columnas de 'género' y 'edad' del conjunto de datos antes de entregarlo al equipo de IA. Si el algoritmo no puede ver estos datos sensibles durante su entrenamiento, es matemáticamente imposible que tome decisiones discriminatorias basadas en ellos.
+    * *Feedback (Incorrecto):* ¡Cuidado! Esta es la trampa de la 'Ceguera de Datos'. Aunque suene lógico, la IA puede inferir el género o la edad a través de variables proxy como la universidad de procedencia o el código postal (distritos históricamente segregados). Si borras los datos sensibles pero no auditas el modelo, la IA discriminará igual y tú no podrás detectarlo porque eliminaste las variables de control.
+  * **Opción B (Enfoque de Generalización y Auditoría - Correcta):** Aplicar generalización de variables (convertir edades en rangos amplios y direcciones en macrorregiones). Además, mantener la variable 'género' en un entorno de prueba aislado estrictamente para medir y corregir los sesgos históricos que el algoritmo intente replicar a través de variables secundarias (como la universidad de procedencia).
+    * *Feedback (Correcto/Seguro):* ¡Excelente decisión! Has aplicado 'Gobernanza Activa'. Al generalizar los datos sensibles y conservar una muestra controlada para auditar, puedes detectar si la IA está usando variables proxy para discriminar indirectamente. Esto es lo que exige la ética algorítmica real: no ceguera, sino transparencia y medición activa del sesgo (Human-in-the-loop).
 
 ---
 

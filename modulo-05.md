@@ -21,13 +21,15 @@ Este material se presentará como un paquete interactivo tipo SCORM que incluye 
 
 ### 2. Texto Didáctico Específico del Curso:
 
-#### La Infraestructura Invisible: El Dato sobre el Dato
-Publicar un archivo de Excel no es suficiente. Los datos no son absolutos; cambian a través del tiempo y provienen de un contexto específico. Si no entendemos ese contexto, simplemente no podemos confiar en la información. 
+#### La Infraestructura Invisible: El Dato sobre el Dato (DCAT-AP)
+Imagina entrar a la Biblioteca Nacional y descubrir que ningún libro tiene título, lomo, autor ni índice. Encontrar la información sería imposible. Los **Metadatos** ("datos sobre datos") son exactamente esas fichas bibliográficas: nos responden quién creó el dato, cuándo se actualizó, qué metodología se usó y bajo qué licencia se puede reutilizar.
 
-Aquí es donde entran los **Metadatos**, definidos como "los datos acerca de los datos". Nos responden preguntas fundamentales: ¿quién creó este dato?, ¿cuándo se actualizó?, ¿qué metodología se usó para recolectarlo? y ¿bajo qué licencia de uso libre se puede utilizar? Los metadatos son la infraestructura invisible de la gobernanza de datos. En el Estado peruano, para asegurar que los sistemas se comuniquen correctamente, utilizamos estándares internacionales como el **DCAT-AP** para organizar nuestros catálogos en la Plataforma Nacional de Datos Abiertos.
+Para evitar que la **Plataforma Nacional de Datos Abiertos (PNDA)** se convierta en una biblioteca caótica, el Perú no inventa sus propias reglas. La **Secretaría de Gobierno y Transformación Digital (SGTD)** de la PCM promueve el uso del estándar internacional **DCAT-AP** (Data Catalog Vocabulary - Application Profile). Es el "idioma universal" de los catálogos: garantiza que cuando Osinergmin publica un dataset, los sistemas de otros ministerios, investigadores o plataformas europeas puedan leer, entender y cruzar nuestras categorías de forma automática.
 
-#### Trazabilidad (Linaje): La Historia de Vida del Dato
-Si los metadatos son el ADN, la **Trazabilidad** (Linaje de Datos o *Data Lineage*) es su historial médico completo. La trazabilidad nos permite conocer el origen exacto del dato, las transformaciones de limpieza y consolidación que sufrió en el camino, sus diferentes versiones y su consumo final en reportes o dashboards. Sin trazabilidad, no podemos auditar nuestros procesos ni garantizar que los algoritmos de Inteligencia Artificial se estén alimentando con versiones correctas y actualizadas de la información institucional.
+#### Trazabilidad (Linaje), Versionado y Auditoría de IA
+Si los metadatos son el ADN, la **Trazabilidad** (Linaje de Datos o *Data Lineage*) es su historial médico completo. Nos permite conocer el origen exacto del dato, las transformaciones que sufrió, sus diferentes versiones y su consumo final en dashboards.
+
+**Regla de oro: El Versionado de los Datasets.** Hoy la información alimenta modelos de IA para fiscalización. Si un algoritmo toma hoy una decisión equivocada basándose en un dataset que publicamos hace un año, debemos poder auditarlo. Si el Custodio de Datos no guardó la "versión exacta" (Dataset v1.0) con la que la IA aprendió, no podemos auditar la decisión. El versionado no es solo almacenamiento técnico; es una **exigencia de ética algorítmica y reproducibilidad** que permite abrir la caja negra de la IA y rendir cuentas al ciudadano.
 
 #### La Necesidad de Automatizar para Sostener la Gobernanza
 Podríamos intentar documentar todo esto a mano en hojas de cálculo tradicionales, pero los expertos en gobernanza de datos nos advierten: a medida que los datos crecen en volumen y complejidad, también aumenta la necesidad de contar con soluciones técnicas integrales que ayuden a gestionar y gobernar los datos de forma más automatizada. 
@@ -38,15 +40,19 @@ Para evitar que la documentación quede obsoleta a las pocas semanas de escribir
 
 ### 3. Contenido Visual del Curso (Mockup):
 
-* **Pantalla 1 (Los Metadatos - El ADN del Dato):**
+* **Pantalla 1 (La Infraestructura Invisible: DCAT-AP):**
+  * **Visual:** Estantes de biblioteca con libros sin etiquetas (datos sin metadatos). Una lupa pasa sobre ellos y revela etiquetas doradas con las siglas DCAT-AP. Al instante, la etiqueta se despliega mostrando: Autor, Fecha de actualización, Licencia de uso y Formato, conectándose mediante líneas brillantes con otras bibliotecas (Interoperabilidad).
+  * **Título:** La Infraestructura Invisible: DCAT-AP y el Ecosistema de Metadatos.
+  * **Guion de Locución:** "Todos hemos escuchado que los metadatos son 'datos sobre otros datos', pero llevemos esto a la realidad. Imaginen entrar a la Biblioteca Nacional y descubrir que ningún libro tiene título, lomo, autor ni índice. Encontrar la información que necesitan sería imposible. Los metadatos son exactamente esas fichas bibliográficas. Para evitar que la Plataforma Nacional de Datos Abiertos (PNDA) se convierta en una biblioteca caótica, el Perú no inventa sus propias reglas. La Secretaría de Gobierno y Transformación Digital (SGTD) de la PCM promueve el uso del estándar internacional DCAT-AP (Data Catalog Vocabulary - Application Profile). No se asusten por las siglas; piénsenlo como el 'idioma universal' de los catálogos. Usar DCAT-AP garantiza que cuando Osinergmin publica un dataset, los sistemas de otros ministerios, investigadores o plataformas europeas puedan leer, entender y cruzar nuestras categorías de forma automática y sin intervención humana."
+* **Pantalla 2 (Trazabilidad, Versionado y Auditoría de IA):**
+  * **Visual:** Tres tarjetas informativas (Linaje, Versionado para IA, Automatización). Debajo, un interactivo de "Auditoría Algorítmica": un robot inspector que emitió una multa errónea. El alumno debe elegir entre tres carpetas (Dataset Actual, Código Fuente, Dataset Versión 1.0) para auditar la falla. La respuesta correcta es "Dataset Versión 1.0".
+  * **Título:** Trazabilidad, Versionado y Auditoría de IA.
+  * **Guion de Locución:** "El segundo pilar de este módulo es la Trazabilidad o Linaje del Dato (Data Lineage). Esto es, básicamente, el pasaporte que cuenta la historia completa del dato: dónde nació, quién lo modificó y hacia dónde viaja. Aquí existe una regla de oro que muchas entidades olvidan: El Versionado de los Datasets. Hoy en día, nuestra información alimenta modelos de Inteligencia Artificial para agilizar procesos. Pero, ¿qué pasa si un algoritmo de fiscalización toma una decisión equivocada o discriminatoria hoy, basándose en un dataset que publicamos hace un año? Si nuestro Custodio de Datos no guardó la 'versión exacta' de los datos con los que esa IA aprendió en ese momento específico, no podremos auditar la decisión. El versionado no es solo un tema de almacenamiento para el área de TI; es una exigencia de ética algorítmica y reproducibilidad. Nos permite abrir la caja negra de la IA y asegurar que el Estado rinda cuentas ante el ciudadano por cada decisión automatizada."
+* **Pantalla 3 (El ADN del Dato - Caso Práctico):**
   * **Visual:** Una lata de conservas sin etiqueta a la izquierda (representando un Excel sin contexto). Al interactuar (hacer clic), se le pega una etiqueta nutricional de metadatos detallando Ingredientes (Origen), Vigencia, Reglas de Negocio y Confidencialidad.
   * **Título:** Los Metadatos: El ADN del Dato.
   * **Guion de Locución:** "Imagina que vas al supermercado y compras una lata de conservas que no tiene etiqueta. No sabes si contiene atún, duraznos o algo a lo que eres alérgico. ¿Te la comerías? Probablemente no. Lo mismo ocurre con nuestra información. Un conjunto de datos sin contexto es solo una matriz de números y letras sin sentido. Aquí entran los Metadatos: son el ADN del dato. De acuerdo con nuestro PI-59, los metadatos documentan el origen, la vigencia, las reglas de negocio y el nivel de confidencialidad de la información. Sin metadatos, sufrimos de amnesia institucional. Si el experto que creó el reporte renuncia o se jubila, la institución pierde la capacidad de entender su propia información. Registrar metadatos no es una tarea opcional de Sistemas; es una obligación del Gestor de Datos (Data Steward) y del Dueño de Datos para asegurar que la información sea reutilizable."
-* **Pantalla 2:**
-  * **Visual:** Un mapa de ruta con paradas desde una fábrica hasta un supermercado.
-  * **Título:** Trazabilidad (Linaje del Dato).
-  * **Contenido:** Es la historia del dato. Nos permite rastrear un reporte gerencial o un dashboard hacia atrás, paso a paso, hasta descubrir exactamente en qué sistema de origen, en qué base de datos y por qué funcionario se originó la información.
-* **Pantalla 3:**
+* **Pantalla 4 (Automatizando la Memoria Institucional):**
   * **Visual:** Una persona abrumada y rodeada de miles de papeles vs. un software organizando carpetas automáticamente.
   * **Título:** Automatizando la Memoria Institucional.
   * **Contenido:** Según los estándares internacionales de gobernanza, el volumen de datos hace imposible documentar a mano de manera sostenible. Necesitamos soluciones técnicas automatizadas (Catálogos y Linaje digital) para que la confianza en nuestras decisiones no dependa de si un funcionario clave se fue de vacaciones.
@@ -71,9 +77,9 @@ Para evitar que la documentación quede obsoleta a las pocas semanas de escribir
 * **Instrucción:** Arrastra el concepto hacia su definición correcta.
 * **Asociaciones:**
   * *Son los "datos sobre los datos", proporcionan el contexto (quién, cómo, cuándo).* $\rightarrow$ **Metadatos**
-  * *Es el historial completo y el camino que el dato ha recorrido desde su origen.* $\rightarrow$ **Trazabilidad / Linaje**
+  * *Es el historial completo y el camino que el dato ha recorrido desde su origen, incluyendo sus versiones.* $\rightarrow$ **Trazabilidad / Linaje**
   * *Tipo de solución recomendada por las mejores prácticas en gobernanza cuando el volumen de datos crece y la documentación manual falla.* $\rightarrow$ **Soluciones técnicas automatizadas / Catálogos de software**
-  * *Es el estándar europeo de vocabulario de catálogo de datos que usa el Perú para la interoperabilidad.* $\rightarrow$ **DCAT-AP**
+  * *Es el estándar internacional promovido por la SGTD para que los catálogos de datos del Estado peruano sean interoperables.* $\rightarrow$ **DCAT-AP**
 
 ### Ejercicio 2: Nivel Aplicar - "La Regla de Oro" (Rellenar espacios en blanco)
 * **Texto a completar:**

@@ -23,18 +23,28 @@ Este material se presentará como un paquete interactivo tipo SCORM que incluye 
 ### 2. Texto Didáctico Específico del Curso:
 
 #### Construyendo las Tuberías y la Caja de Herramientas
-Para que el Gobierno de Datos funcione, la información debe fluir desde su origen hasta la toma de decisiones sin estancarse en "silos". En el Estado peruano, utilizamos plataformas nacionales y transversales:
-* **PIDE (Interoperabilidad):** Permite que las entidades intercambien datos seguros de *back-office* en tiempo real mediante APIs. Evita requerirle al ciudadano documentos físicos que el Estado ya posee.
+
+Para que el Gobierno de Datos funcione, la información debe fluir desde su origen hasta la toma de decisiones sin estancarse en "silos". En el Perú, la interoperabilidad no es solo una buena idea, es un mandato. El **Decreto Legislativo N° 1246** establece el principio de simplificación administrativa o el principio de **"Una Sola Vez" (Once-Only)**. Esto significa que está estrictamente prohibido exigirle al ciudadano un documento físico cuya información el Estado ya posee en sus bases de datos.
+
+Para lograrlo, contamos con tres plataformas nacionales transversales:
+* **PIDE (Interoperabilidad):** Permite que las entidades intercambien datos seguros de *back-office* en tiempo real mediante APIs, utilizando formatos universales como **JSON y XML**. Evita requerirle al ciudadano documentos físicos que el Estado ya posee.
 * **PNDA (Datos Abiertos):** Permite publicar datos hacia la ciudadanía y democratizar la información para fomentar la investigación e innovación.
 * **GeoPerú:** Plataforma para análisis territorial y mapas geoespaciales.
 
-Para que los sistemas internos conversen, cada entidad debe identificar sus **Datos Maestros** (como el DNI administrado por RENIEC, el RUC por SUNAT, o el Ubigeo por el INEI). Asimismo, el estándar internacional **DAMA-DMBOK2** recomienda estructurar la integración mediante un diseño **Hub-and-Spoke** (Centro y Radios) en lugar de conexiones Punto a Punto (Point-to-Point), lo cual consolida los datos compartidos en un punto central reduciendo drásticamente la complejidad técnica y la cantidad de interfaces.
+¿Y qué viaja por estas carreteras digitales? Principalmente **Datos Maestros**. Los datos maestros son la versión única, oficial y central de una entidad. Por ejemplo:
+* El **DNI** es administrado por **RENIEC**.
+* El **RUC** es administrado por **SUNAT**.
+* El **Ubigeo** es administrado por el **INEI**.
 
-Además, según establecen los estándares internacionales de gobernanza, toda institución necesita una **"Caja de Herramientas"** conceptual para que los usuarios comprendan qué están compartiendo:
-1. **Glosario de Negocio:** El vocabulario común de la organización. Contiene definiciones de negocio claras en lenguaje no técnico (Ej. ¿Qué significa exactamente "ciudadano activo" para nosotros?).
-2. **Diccionario de Datos:** Contiene información puramente técnica para los sistemas (Ej. formato de la fecha, nombre de la tabla SQL, tamaño del campo y tipos de datos `VARCHAR`).
-3. **Catálogo de Datos:** Funciona como una "biblioteca" o mercado centralizado. Enlaza el glosario (negocio) con el diccionario (técnico) para que los usuarios busquen y localicen fácilmente la información que necesitan.
-4. **Linaje de Datos (Data Lineage):** El mapa visual que describe cómo fluye el dato desde su origen, pasando por sus transformaciones de limpieza, hasta su reporte final.
+Nuestros sistemas no inventan estos datos; los consultan directamente a la entidad dueña a través de la PIDE.
+
+Asimismo, el estándar internacional **DAMA-DMBOK2** recomienda estructurar la integración mediante un diseño **Hub-and-Spoke** (Centro y Radios) en lugar de conexiones Punto a Punto (Point-to-Point), lo cual consolida los datos compartidos en un punto central reduciendo drásticamente la complejidad técnica y la cantidad de interfaces.
+
+Finalmente, para gobernar todo este flujo dentro de Osinergmin, nuestro Procedimiento Interno **PI-59** nos exige organizar nuestra propia **"Caja de Herramientas"**. Imaginen que los datos son libros en una inmensa biblioteca:
+1. **Glosario de Negocio:** El acuerdo que define qué significa cada término para que todos hablemos el mismo idioma (Ej. ¿Qué significa exactamente "ciudadano activo" para nosotros?).
+2. **Diccionario de Datos:** La ficha técnica que describe la estructura, el tipo de formato (SQL, `VARCHAR`) y las reglas de esos datos.
+3. **Catálogo de Datos:** El sistema de búsqueda interactivo que nos permite saber exactamente qué información tenemos disponible y quién es el responsable.
+4. **Linaje de Datos (Data Lineage):** El "pasaporte" del dato: nos cuenta la historia de dónde nació la información, cómo se transformó y por qué sistemas viajó hasta llegar a nuestro reporte final.
 
 #### La Pirámide de Refinamiento de Datos
 Internamente, los datos pasan por tres "capas de refinamiento" según la arquitectura de Osinergmin:
@@ -52,18 +62,39 @@ La literatura especializada en gobernanza de datos advierte que existen tres enf
 
 ### 3. Contenido Visual del Curso (Mockup):
 
-* **Pantalla 1:**
+* **Pantalla 1 — Construyendo las Tuberías y la Caja de Herramientas:**
+  * **Visual (Parte 1 — Interoperabilidad):** Banner destacado con el texto "DL N° 1246 — Una Sola Vez". Diagrama donde los logos de RENIEC (DNI), SUNAT (RUC) e INEI (Ubigeo) se conectan hacia Osinergmin a través de un túnel brillante etiquetado "PIDE (JSON/XML)". Pequeñas tarjetas de PIDE, PNDA y GeoPerú.
+  * **Visual (Parte 2 — Active Recall Caja de Herramientas):** Caja de herramientas abierta en el centro. Alrededor cuatro objetos: un libro de idiomas, una ficha de especificaciones técnicas, una lupa de búsqueda y un pasaporte con sellos. El alumno arrastra cada objeto a su concepto:
+    * Libro de idiomas → **Glosario de Negocio**
+    * Ficha técnica → **Diccionario de Datos**
+    * Lupa → **Catálogo de Datos**
+    * Pasaporte → **Linaje de Datos**
+  * **Título:** Construyendo las Tuberías y la Caja de Herramientas.
+  * **Contenido:** Marco legal DL 1246 (Once-Only), plataformas PIDE/PNDA/GeoPerú, Datos Maestros del Estado (RENIEC, SUNAT, INEI), formatos de intercambio JSON/XML, Caja de Herramientas del PI-59 (Glosario, Diccionario, Catálogo, Linaje) y arquitectura Hub-and-Spoke.
+* **Pantalla 2 — El Ciclo de Vida del Dato (PI-59) y la "Deuda Técnica":**
   * **Visual:** Diagrama del ciclo de vida del dato del PI-59 (Generación -> Dominios -> Maestros -> Productos -> Analítica) al lado de un esquema que representa la Deuda Técnica (casa antigua/legacy conectada mediante tuberías iluminadas/APIs a un servidor moderno).
   * **Título:** El Ciclo de Vida del Dato (PI-59) y la "Deuda Técnica".
   * **Contenido:** Cómo gestionar la transición de sistemas antiguos o legacy construyendo integraciones (APIs) externas para no detener la operación diaria mientras se extraen datos de valor.
-* **Pantalla 2:**
+* **Pantalla 3 — Interoperabilidad (PIDE) y el Fin del "Mensajero No Remunerado":**
   * **Visual:** Ejercicio interactivo (Drag & Drop) donde un ciudadano lleva una torre de papeles y el alumno debe arrastrar la opción C (Conectarse a la PIDE) para conectarlo digitalmente a RENIEC, haciendo desaparecer la carga física.
   * **Título:** Interoperabilidad (PIDE) y el Fin del "Mensajero No Remunerado".
   * **Contenido:** Uso de la PIDE como mensajería digital segura entre entidades estatales para eliminar el papel físico y agilizar trámites en milisegundos con valor legal.
-* **Pantalla 3:**
+* **Pantalla 4 — Arquitectura de Apertura (PNDA y GeoPerú):**
   * **Visual:** Pantalla dividida. A la izquierda (PNDA), conversión de tablas/CSV a gráficos interactivos. A la derecha (GeoPerú), un visor interactivo del mapa del Perú con pines calientes territoriales.
   * **Título:** Arquitectura de Apertura (PNDA y GeoPerú).
   * **Contenido:** Publicación de datos abiertos no confidenciales en formato CSV para investigadores (PNDA) e integración espacial territorial para georreferenciación de eventos (GeoPerú).
+
+---
+
+### 4. Guion de Locución (Script Oral) — Slide 3
+
+> "Para que el gobierno de datos funcione, necesitamos conectar la teoría con la arquitectura real. En el Perú, la interoperabilidad no es solo una buena idea, es un mandato. El Decreto Legislativo N° 1246 establece el principio de simplificación administrativa o el principio de 'Una Sola Vez'. Esto significa que está estrictamente prohibido exigirle al ciudadano un documento físico cuya información el Estado ya posee en sus bases de datos. No podemos seguir utilizando al ciudadano como nuestro mensajero no remunerado.
+>
+> Para lograrlo, utilizamos la Plataforma de Interoperabilidad del Estado (PIDE). Piensen en la PIDE como un sistema de carreteras digitales seguras. A través de estas carreteras, nuestros sistemas se comunican mediante conectores llamados APIs, utilizando formatos de texto universales y ligeros como JSON o XML.
+>
+> ¿Y qué viaja por estas carreteras? Principalmente Datos Maestros. Los datos maestros son la versión única, oficial y central de una entidad. Por ejemplo, en Osinergmin no inventamos la identidad de una persona; si necesitamos validarla, nuestro sistema consulta el DNI directamente a RENIEC, quien es el dueño oficial de ese dato maestro. Si validamos una empresa, consultamos el RUC a SUNAT, y para ubicar un distrito, usamos el Ubigeo oficial del INEI.
+>
+> Finalmente, para gobernar todo este flujo dentro de Osinergmin, nuestro Procedimiento Interno PI-59 nos exige organizar nuestra propia 'Caja de Herramientas'. Imaginen que los datos son libros en una inmensa biblioteca: El Glosario de Negocio es el acuerdo que define qué significa cada término para que todos hablemos el mismo idioma. El Diccionario de Datos es la ficha técnica que describe la estructura, el tipo de formato y las reglas de esos datos. El Catálogo de Datos es el sistema de búsqueda interactivo que nos permite saber exactamente qué información tenemos disponible y quién es el responsable. Y el Linaje de Datos (Data Lineage) es el 'pasaporte' del dato: nos cuenta la historia de dónde nació la información, cómo se transformó y por qué sistemas viajó hasta llegar a nuestro reporte final."
 
 ---
 

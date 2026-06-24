@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reproductor SCORM - Gobierno de Datos | Osinergmin</title>
-    <meta name="description" content="Reproductor interactivo SCORM para el curso de Estrategia y Gestión de Activos de Información - Universidad Corporativa Osinergmin.">
+    <meta name="description" content="Reproductor interactivo SCORM para el curso de Gobierno de Datos: Fundamentos y Aplicaciones - Universidad Corporativa Osinergmin.">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/theme.js"></script>
@@ -540,6 +540,35 @@
             outline: none;
         }
         .fullscreen-float-btn:hover {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            transform: scale(1.12);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+        }
+
+        .tts-float-btn {
+            position: absolute;
+            right: 2.5rem;
+            bottom: 0.6rem;
+            width: 1.65rem;
+            height: 1.65rem;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            padding: 0;
+            outline: none;
+        }
+        .tts-float-btn:hover {
             background: rgba(15, 23, 42, 0.8);
             border-color: rgba(255, 255, 255, 0.3);
             color: #ffffff;
@@ -1555,7 +1584,10 @@
                     <button class="nav-arrow prev-arrow" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
                     <button class="nav-arrow next-arrow" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
 
-                    <!-- Floating Fullscreen Button -->
+                    <!-- TTS & Fullscreen Buttons -->
+                    <button class="tts-float-btn tts-btn" onclick="readCurrentScript()" title="Escuchar">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
                     <button class="fullscreen-float-btn" id="btn-fullscreen-slide" onclick="toggleFullscreen()" title="Pantalla completa">
                         <i class="fa-solid fa-expand"></i>
                     </button>
@@ -1568,7 +1600,13 @@
                 <!-- Narrator Script Section -->
                 <div class="script-section">
                     <div class="script-header">
-                        <i class="fa-solid fa-comment-dots"></i> Script de Narración (Mockup Temporal)
+                        <i class="fa-solid fa-comment-dots"></i> Script de Narración
+                        <button onclick="TTS.configure()" title="Configurar API Key" style="margin-left:0.4rem;background:transparent;border:1px solid var(--border-color);color:var(--text-secondary);border-radius:4px;padding:0.2rem 0.4rem;cursor:pointer;font-size:0.65rem;">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+                        <button class="tts-btn" onclick="readCurrentScript()" title="Escuchar" style="margin-left:auto;background:transparent;border:1px solid var(--border-color);color:var(--text-secondary);border-radius:4px;padding:0.2rem 0.6rem;cursor:pointer;font-size:0.75rem;display:flex;align-items:center;gap:0.3rem;">
+                            <i class="fa-solid fa-volume-high"></i> Escuchar
+                        </button>
                     </div>
                     <div class="script-body" id="narrator-script">
                         Bienvenido al Módulo 1.
@@ -1608,7 +1646,12 @@
     <div class="footer-bottom">Copyright © 2026. Todos los derechos reservados.</div>
 </footer>
 
+<script src="js/tts.js"></script>
 <script>
+    function readCurrentScript() {
+        const scriptEl = document.getElementById('narrator-script');
+        if (scriptEl) TTS.toggle(scriptEl.textContent);
+    }
     // Slide show mock database for all 6 modules
     const modulesSlidesData = {
         "1": {
@@ -1621,7 +1664,7 @@
                     title: "Gobierno de Datos",
                     subtitle: "Introducción y Marco de Trabajo",
                     buttonText: "COMPLETO<br><span style='font-size:0.75rem;font-weight:normal;'>haz clic para iniciar</span>",
-                    script: "Bienvenido al Módulo 1 del curso 'Estrategia y Gestión de Activos de Información'. Haz clic en el botón circular en el centro para iniciar la lección."
+                    script: "Bienvenido al Módulo 1 del curso 'Gobierno de Datos: Fundamentos y Aplicaciones'. Haz clic en el botón circular en el centro para iniciar la lección."
                 },
                 {
                     type: "intro",
@@ -1860,7 +1903,7 @@
                     title: "Gobierno de Datos",
                     subtitle: "El Ecosistema Humano: Roles y Responsabilidades",
                     buttonText: "COMPLETO<br><span style='font-size:0.75rem;font-weight:normal;'>haz clic para iniciar</span>",
-                    script: "Bienvenido al Módulo 2 del curso 'Estrategia y Gestión de Activos de Información'. Haz clic en el botón circular en el centro para iniciar la lección sobre el Ecosistema Humano y sus roles."
+                    script: "Bienvenido al Módulo 2 del curso 'Gobierno de Datos: Fundamentos y Aplicaciones'. Haz clic en el botón circular en el centro para iniciar la lección sobre el Ecosistema Humano y sus roles."
                 },
                 {
                     type: "intro",
@@ -2088,42 +2131,48 @@
                     `,
                     script: "Es fundamental entender que el Oficial de Gobierno de Datos (OGD) no es el dueño absoluto de toda la información de la entidad. En realidad, actúa como el Director de una Orquesta Sinfónica: se asegura de que el Dueño, el Gestor y el Custodio sigan exactamente la misma partitura de calidad, pero él no toca ningún instrumento. Este rol está estrictamente respaldado por la Presidencia del Consejo de Ministros mediante las Resoluciones SGTD N° 001-2022 y 002-2023, y operativizado en Osinergmin a través de nuestro PI-59, exigiendo un reporte directo a la Alta Dirección. Asimismo, es el Comité de Gobierno y Transformación Digital de la entidad el encargado de aprobar formalmente el Plan de Acción de Gobierno de Datos. ¿Significa esto que crearemos nuevas burocracias o amenazaremos la cultura de la institución? Absolutamente no. Aquí aplicamos el principio de la Gobernanza de Datos No Invasiva. No estamos inventando puestos de trabajo adicionales; estamos identificando y formalizando las responsabilidades que ustedes, como colaboradores, ya ejercen sobre la información en su día a día. En palabras simples: si por tu función actual ya defines, produces o consumes datos, en la práctica ya eres un custodio. El modelo simplemente oficializa y reconoce tu rol para garantizar la trazabilidad y la transparencia en beneficio del ciudadano."
                 },
-                {
-                    type: "content",
-                    title: "Modelos Operativos de Gobierno",
-                    contentHtml: `
-                        <div class="comparison-container">
-                            <div class="comparison-box blue-theme" style="padding:0.8rem;">
-                                <h5 style="font-size:0.8rem;font-weight:700;margin:0 0 0.3rem 0;">Centralizado</h5>
-                                <p style="font-size:0.68rem;color:rgba(255,255,255,0.7);line-height:1.3;margin:0;">Una sola oficina dicta todas las directrices. Excelente para iniciar con baja madurez, pero genera cuellos de botella al escalar.</p>
-                            </div>
-                            <div class="comparison-box blue-theme" style="padding:0.8rem;">
-                                <h5 style="font-size:0.8rem;font-weight:700;margin:0 0 0.3rem 0;">Descentralizado</h5>
-                                <p style="font-size:0.68rem;color:rgba(255,255,255,0.7);line-height:1.3;margin:0;">Cada gerencia actúa con autonomía total. Ofrece máxima agilidad local, pero dificulta la integración y crea silos.</p>
-                            </div>
-                            <div class="comparison-box green-theme" style="padding:0.8rem;">
-                                <h5 style="font-size:0.8rem;font-weight:700;color:#10b981;margin:0 0 0.3rem 0;">Federado / Híbrido</h5>
-                                <p style="font-size:0.68rem;color:rgba(255,255,255,0.7);line-height:1.3;margin:0;">El modelo ideal. La oficina central define lineamientos comunes, pero cada gerencia los implementa con agilidad y flexibilidad local.</p>
-                            </div>
-                        </div>
-                    `,
-                    script: "Las entidades públicas adoptan modelos operativos para tomar decisiones sobre datos. Mientras el modelo centralizado da un fuerte control inicial y el descentralizado da rapidez a costa de consistencia, el modelo federado o híbrido es el recomendado por lograr un balance entre directrices corporativas y flexibilidad de cada gerencia."
-                },
+
                 {
                     type: "content",
                     title: "¿Quién cocina nuestros datos?",
                     contentHtml: `
-                        <div class="slide-visual-mockup" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:1.2rem;">
-                            <div class="slide-image-frame" style="width: 100%; max-width: 32rem; height: 15rem; margin-bottom: 0.6rem;">
-                                <img src="imagenes/modulo-02/granja-mesa.png" alt="De la Granja a la Mesa">
+                        <div style="display:flex;flex-direction:column;align-items:center;width:100%;color:white;font-size:0.75rem;gap:0.6rem;">
+                            <h4 style="font-size:1rem;color:#f59e0b;font-weight:700;margin:0;text-transform:uppercase;letter-spacing:1px;">¿Quién cocina nuestros datos?</h4>
+                            <div style="display:flex;align-items:center;justify-content:center;gap:0;width:100%;max-width:38rem;">
+                                <div style="display:flex;flex-direction:column;align-items:center;gap:0.25rem;flex:1;">
+                                    <div style="background:rgba(251,191,36,0.12);border:2px solid #f59e0b;border-radius:50%;width:3.8rem;height:3.8rem;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fa-solid fa-wheat-awn" style="font-size:1.6rem;color:#fbbf24;"></i>
+                                    </div>
+                                    <div style="font-weight:700;color:#fbbf24;font-size:0.6rem;text-transform:uppercase;">🌾 Granja (Negocio)</div>
+                                    <div style="font-size:0.5rem;color:rgba(255,255,255,0.6);text-align:center;max-width:6rem;line-height:1.3;">Define reglas de calidad y el propósito del dato</div>
+                                </div>
+                                <div style="display:flex;align-items:center;justify-content:center;flex-shrink:0;width:2rem;">
+                                    <i class="fa-solid fa-arrow-right" style="color:rgba(255,255,255,0.25);font-size:1.1rem;"></i>
+                                </div>
+                                <div style="display:flex;flex-direction:column;align-items:center;gap:0.25rem;flex:1;">
+                                    <div style="background:rgba(59,130,246,0.12);border:2px solid #3b82f6;border-radius:50%;width:3.8rem;height:3.8rem;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fa-solid fa-truck" style="font-size:1.6rem;color:#60a5fa;"></i>
+                                    </div>
+                                    <div style="font-weight:700;color:#60a5fa;font-size:0.6rem;text-transform:uppercase;">🚚 Transporte (TI)</div>
+                                    <div style="font-size:0.5rem;color:rgba(255,255,255,0.6);text-align:center;max-width:6rem;line-height:1.3;">Gestiona almacenamiento, respaldos y accesos</div>
+                                </div>
+                                <div style="display:flex;align-items:center;justify-content:center;flex-shrink:0;width:2rem;">
+                                    <i class="fa-solid fa-arrow-right" style="color:rgba(255,255,255,0.25);font-size:1.1rem;"></i>
+                                </div>
+                                <div style="display:flex;flex-direction:column;align-items:center;gap:0.25rem;flex:1;">
+                                    <div style="background:rgba(16,185,129,0.12);border:2px solid #10b981;border-radius:50%;width:3.8rem;height:3.8rem;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fa-solid fa-utensils" style="font-size:1.6rem;color:#34d399;"></i>
+                                    </div>
+                                    <div style="font-weight:700;color:#34d399;font-size:0.6rem;text-transform:uppercase;">🍽️ Mesa (Consumidor)</div>
+                                    <div style="font-size:0.5rem;color:rgba(255,255,255,0.6);text-align:center;max-width:6rem;line-height:1.3;">Usuario final / Ciudadano beneficiado</div>
+                                </div>
                             </div>
-                            <h4 style="font-size:1.15rem;color:#f59e0b;font-weight:700;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:1px;">¿Quién cocina nuestros datos?</h4>
-                            <p style="font-size:0.82rem;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;max-width:90%;text-align:justify;">
-                                La cadena de suministro de datos relaciona los roles del negocio y técnicos. El Negocio (el dueño de la granja) define las reglas de calidad y el propósito del dato, mientras que TI (el camión distribuidor) se encarga de transportarlo y almacenarlo con seguridad en los servidores, sin ser dueño de su significado.
-                            </p>
+                            <div style="width:100%;max-width:36rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0.4rem 0.6rem;text-align:center;font-size:0.58rem;color:rgba(255,255,255,0.75);line-height:1.4;">
+                                <strong style="color:#f59e0b;">Lección clave:</strong> TI no es dueño del significado del dato. Solo el Negocio (Dueño/Gestor) define las reglas de calidad y el propósito.
+                            </div>
                         </div>
                     `,
-                    script: "Para entender los roles de gobernanza, utilicemos la analogía de la preparación de alimentos. Aquí vemos el viaje del dato de la granja a la mesa, asociando los roles del restaurante con la gobernanza: el productor de ingredientes es el Negocio que define las reglas, y el transportista es TI que solo gestiona la infraestructura."
+                    script: "Para entender los roles de gobernanza, utilicemos la analogía de la preparación de alimentos. Así como el productor de ingredientes es el Negocio que define las reglas del dato, el transportista es TI que solo gestiona la infraestructura sin ser dueño de su significado. El consumidor final es el ciudadano que recibe el servicio."
                 },
                 {
                     type: "content",
@@ -2250,17 +2299,30 @@
                     type: "content",
                     title: "Eligiendo nuestro Modelo Operativo",
                     contentHtml: `
-                        <div class="slide-visual-mockup" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:1.2rem;">
-                            <div class="slide-image-frame" style="width: 100%; max-width: 32rem; height: 15rem; margin-bottom: 0.6rem;">
-                                <img src="imagenes/modulo-02/modelos-operativos.png" alt="Modelos Operativos de Gobernanza">
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;width:100%;color:white;font-size:0.75rem;">
+                            <div style="display:flex;gap:0.4rem;align-items:stretch;">
+                                <div style="flex:1;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.25);border-radius:8px;padding:0.5rem 0.4rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.3rem;">
+                                    <i class="fa-solid fa-building-columns" style="font-size:1.3rem;color:#60a5fa;"></i>
+                                    <div style="font-weight:700;color:#60a5fa;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;">Centralizado</div>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.75);line-height:1.35;">Una sola oficina dicta todas las directrices. Excelente para iniciar con baja madurez, pero genera cuellos de botella al escalar.</div>
+                                    <div style="margin-top:auto;font-size:0.5rem;color:rgba(239,68,68,0.6);font-weight:600;">⚠️ Cuello de botella</div>
+                                </div>
+                                <div style="flex:1;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:0.5rem 0.4rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.3rem;">
+                                    <i class="fa-solid fa-sitemap" style="font-size:1.3rem;color:#fbbf24;"></i>
+                                    <div style="font-weight:700;color:#fbbf24;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;">Descentralizado</div>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.75);line-height:1.35;">Cada gerencia actúa con autonomía total. Ofrece máxima agilidad local, pero dificulta la integración y crea silos.</div>
+                                    <div style="margin-top:auto;font-size:0.5rem;color:rgba(239,68,68,0.6);font-weight:600;">⚠️ Silos de información</div>
+                                </div>
+                                <div style="flex:1;background:rgba(16,185,129,0.06);border:2px solid #10b981;border-radius:8px;padding:0.5rem 0.4rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.3rem;">
+                                    <i class="fa-solid fa-scale-balanced" style="font-size:1.3rem;color:#34d399;"></i>
+                                    <div style="font-weight:700;color:#34d399;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;">Federado / Híbrido ⭐</div>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.75);line-height:1.35;">El modelo ideal. La oficina central define lineamientos comunes, pero cada gerencia los implementa con agilidad y flexibilidad local.</div>
+                                    <div style="margin-top:auto;font-size:0.5rem;color:#34d399;font-weight:700;">✅ Modelo recomendado</div>
+                                </div>
                             </div>
-                            <h4 style="font-size:1.15rem;color:#c084fc;font-weight:700;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:1px;">Eligiendo nuestro Modelo Operativo</h4>
-                            <p style="font-size:0.82rem;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;max-width:90%;text-align:justify;">
-                                El Gobierno de Datos requiere definir cómo se toman decisiones organizacionales. El modelo centralizado concentra el control en una oficina; el descentralizado da autonomía total a las gerencias a costa de la integración; y el federado (híbrido) equilibra directrices corporativas con flexibilidad e implementación local.
-                            </p>
                         </div>
                     `,
-                    script: "A continuación, se presenta la comparación de los enfoques Centralizado, Descentralizado y Federado o Híbrido, que es el recomendado por lograr un balance entre directrices corporativas y flexibilidad local en Osinergmin."
+                    script: "Al elegir un modelo operativo debemos balancear control central vs. autonomía local. El modelo federado o híbrido es el recomendado porque permite directrices unificadas desde la oficina de gobierno de datos, mientras cada gerencia mantiene la agilidad para implementar según su realidad."
                 },
                 {
                     type: "dragdrop",
@@ -2363,30 +2425,55 @@
                     type: "content",
                     title: "Construyendo las Tuberías y la Caja de Herramientas",
                     contentHtml: `
-                        <div style="display:flex;flex-direction:column;gap:0.5rem;width:100%;color:white;font-size:0.75rem;">
-                            <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:0.5rem;">
-                                <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:5px;padding:0.5rem;text-align:center;">
-                                    <strong style="color:#38bdf8;font-size:0.7rem;text-transform:uppercase;">PIDE</strong>
-                                    <div style="font-size:0.6rem;color:rgba(255,255,255,0.7);margin-top:0.15rem;">Intercambio seguro en tiempo real mediante APIs.</div>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;width:100%;color:white;font-size:0.7rem;">
+                            <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:5px;padding:0.45rem 0.6rem;display:flex;align-items:center;gap:0.4rem;">
+                                <i class="fa-solid fa-gavel" style="color:#ef4444;font-size:0.8rem;"></i>
+                                <div><strong style="color:#fca5a5;">DL N° 1246</strong> — Principio de <strong style="color:#fca5a5;">"Una Sola Vez"</strong>: prohibido exigir al ciudadano documentos que el Estado ya posee.</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:0.4rem;">
+                                <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:5px;padding:0.4rem;text-align:center;">
+                                    <strong style="color:#38bdf8;font-size:0.65rem;text-transform:uppercase;">PIDE</strong>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.7);margin-top:0.1rem;">Intercambio seguro en tiempo real mediante APIs con formato <strong>JSON / XML</strong>.</div>
                                 </div>
-                                <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:5px;padding:0.5rem;text-align:center;">
-                                    <strong style="color:#10b981;font-size:0.7rem;text-transform:uppercase;">PNDA</strong>
-                                    <div style="font-size:0.6rem;color:rgba(255,255,255,0.7);margin-top:0.15rem;">Publicación de datos abiertos para la ciudadanía.</div>
+                                <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:5px;padding:0.4rem;text-align:center;">
+                                    <strong style="color:#10b981;font-size:0.65rem;text-transform:uppercase;">PNDA</strong>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.7);margin-top:0.1rem;">Publicación de datos abiertos para la ciudadanía en CSV/JSON.</div>
                                 </div>
-                                <div style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);border-radius:5px;padding:0.5rem;text-align:center;">
-                                    <strong style="color:#c084fc;font-size:0.7rem;text-transform:uppercase;">GeoPerú</strong>
-                                    <div style="font-size:0.6rem;color:rgba(255,255,255,0.7);margin-top:0.15rem;">Plataforma nacional de análisis geográfico y territorial.</div>
+                                <div style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);border-radius:5px;padding:0.4rem;text-align:center;">
+                                    <strong style="color:#c084fc;font-size:0.65rem;text-transform:uppercase;">GeoPerú</strong>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.7);margin-top:0.1rem;">Plataforma nacional de análisis geográfico y territorial.</div>
                                 </div>
                             </div>
-                            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:5px;padding:0.5rem 0.7rem;line-height:1.35;">
-                                Para que los sistemas conversen, identificamos <strong>Datos Maestros</strong> (DNI en RENIEC, RUC en SUNAT) y usamos herramientas conceptuales: 
-                                el <strong>Glosario de Negocio</strong> (definición simple), el <strong>Diccionario de Datos</strong> (parámetros técnicos SQL), 
-                                el <strong>Catálogo de Datos</strong> (portal de búsqueda) y el <strong>Linaje de Datos</strong> (trazabilidad).
-                                Asimismo, el estándar internacional <strong>DAMA-DMBOK2</strong> recomienda un diseño de integración <strong>Hub-and-Spoke</strong> (centro y radios) frente al Punto a Punto (Point-to-Point) para consolidar los datos compartidos y reducir la complejidad de las interfaces.
+                            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:5px;padding:0.45rem 0.6rem;line-height:1.35;">
+                                <strong>Datos Maestros del Estado:</strong> Nuestros sistemas consultan el <strong>DNI</strong> directamente a <i class="fa-solid fa-building-columns" style="color:#38bdf8;"></i> <strong>RENIEC</strong>, el <strong>RUC</strong> a <i class="fa-solid fa-building-columns" style="color:#10b981;"></i> <strong>SUNAT</strong> y el <strong>Ubigeo</strong> a <i class="fa-solid fa-building-columns" style="color:#c084fc;"></i> <strong>INEI</strong>, todo a través de la PIDE con APIs.
+                            </div>
+                            <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:5px;padding:0.45rem 0.6rem;line-height:1.35;">
+                                <strong style="color:#fcd34d;">Nuestra Caja de Herramientas (PI-59):</strong> Los datos son como libros en una biblioteca:
+                                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.3rem;margin-top:0.3rem;">
+                                    <div style="background:rgba(255,255,255,0.04);border-radius:4px;padding:0.25rem 0.4rem;display:flex;align-items:center;gap:0.35rem;">
+                                        <i class="fa-solid fa-book" style="color:#38bdf8;font-size:0.7rem;"></i>
+                                        <div><strong style="color:#38bdf8;">Glosario</strong> — el acuerdo del idioma común.</div>
+                                    </div>
+                                    <div style="background:rgba(255,255,255,0.04);border-radius:4px;padding:0.25rem 0.4rem;display:flex;align-items:center;gap:0.35rem;">
+                                        <i class="fa-solid fa-clipboard-list" style="color:#10b981;font-size:0.7rem;"></i>
+                                        <div><strong style="color:#10b981;">Diccionario</strong> — la ficha técnica de los datos.</div>
+                                    </div>
+                                    <div style="background:rgba(255,255,255,0.04);border-radius:4px;padding:0.25rem 0.4rem;display:flex;align-items:center;gap:0.35rem;">
+                                        <i class="fa-solid fa-magnifying-glass" style="color:#c084fc;font-size:0.7rem;"></i>
+                                        <div><strong style="color:#c084fc;">Catálogo</strong> — el buscador de activos.</div>
+                                    </div>
+                                    <div style="background:rgba(255,255,255,0.04);border-radius:4px;padding:0.25rem 0.4rem;display:flex;align-items:center;gap:0.35rem;">
+                                        <i class="fa-solid fa-passport" style="color:#f59e0b;font-size:0.7rem;"></i>
+                                        <div><strong style="color:#f59e0b;">Linaje</strong> — el pasaporte del dato.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:5px;padding:0.35rem 0.6rem;line-height:1.3;font-size:0.65rem;">
+                                <i class="fa-solid fa-diagram-project" style="color:#38bdf8;"></i> El estándar <strong>DAMA-DMBOK2</strong> recomienda el diseño <strong>Hub-and-Spoke</strong> (centro y radios) frente a conexiones punto a punto, reduciendo la complejidad técnica.
                             </div>
                         </div>
                     `,
-                    script: "Para que la información fluya sin silos, aplicamos el Decreto Legislativo 1246 y el principio de 'Una sola vez', usando la PIDE para interoperar Datos Maestros mediante APIs. Para entendernos, nuestra caja de herramientas incluye: el Glosario de Negocio para definiciones humanas, el Diccionario de Datos para formatos técnicos, el Catálogo como biblioteca y el Linaje como mapa del viaje del dato. Además, el estándar DMBOK2 nos enseña que para conectar estos sistemas debemos preferir una arquitectura Hub-and-Spoke o de centro y radios, evitando el caos de conexiones directas punto a punto."
+                    script: "Para que el gobierno de datos funcione, necesitamos conectar la teoría con la arquitectura real. En el Perú, la interoperabilidad no es solo una buena idea, es un mandato. El Decreto Legislativo N° 1246 establece el principio de simplificación administrativa o el principio de 'Una Sola Vez'. Esto significa que está estrictamente prohibido exigirle al ciudadano un documento físico cuya información el Estado ya posee en sus bases de datos. No podemos seguir utilizando al ciudadano como nuestro mensajero no remunerado. Para lograrlo, utilizamos la Plataforma de Interoperabilidad del Estado (PIDE). Piensen en la PIDE como un sistema de carreteras digitales seguras. A través de estas carreteras, nuestros sistemas se comunican mediante conectores llamados APIs, utilizando formatos de texto universales y ligeros como JSON o XML. ¿Y qué viaja por estas carreteras? Principalmente Datos Maestros. Los datos maestros son la versión única, oficial y central de una entidad. Por ejemplo, en Osinergmin no inventamos la identidad de una persona; si necesitamos validarla, nuestro sistema consulta el DNI directamente a RENIEC, quien es el dueño oficial de ese dato maestro. Si validamos una empresa, consultamos el RUC a SUNAT, y para ubicar un distrito, usamos el Ubigeo oficial del INEI. Finalmente, para gobernar todo este flujo dentro de Osinergmin, nuestro Procedimiento Interno PI-59 nos exige organizar nuestra propia 'Caja de Herramientas'. Imaginen que los datos son libros en una inmensa biblioteca: El Glosario de Negocio es el acuerdo que define qué significa cada término para que todos hablemos el mismo idioma. El Diccionario de Datos es la ficha técnica que describe la estructura, el tipo de formato y las reglas de esos datos. El Catálogo de Datos es el sistema de búsqueda interactivo que nos permite saber exactamente qué información tenemos disponible y quién es el responsable. Y el Linaje de Datos (Data Lineage) es el 'pasaporte' del dato: nos cuenta la historia de dónde nació la información, cómo se transformó y por qué sistemas viajó hasta llegar a nuestro reporte final."
                 },
                 {
                     type: "content",
@@ -2726,31 +2813,40 @@
                     type: "content",
                     title: "La Calidad y el Impacto en el Ciudadano",
                     contentHtml: `
-                        <div class="content-split">
-                            <div class="content-split-left" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.25);">
-                                <i class="fa-solid fa-trash-can" style="font-size:2.8rem;color:#ef4444;margin-bottom:0.5rem;"></i>
-                                <div style="font-weight:bold;color:#ef4444;font-size:0.85rem;text-transform:uppercase;">Efecto GIGO</div>
-                                <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);margin-top:0.2rem;">Garbage In, Garbage Out. Si ingresamos basura, las políticas públicas serán basura.</div>
+                        <div class="content-split" style="gap:0.5rem;">
+                            <div class="content-split-left" style="background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:0.35rem;">
+                                <i class="fa-solid fa-water" style="font-size:2.5rem;color:#60a5fa;"></i>
+                                <div style="font-weight:bold;color:#60a5fa;font-size:0.85rem;text-transform:uppercase;">Analogía: Planta de Tratamiento</div>
+                                <div style="font-size:0.65rem;color:rgba(255,255,255,0.75);line-height:1.4;max-width:90%;">
+                                    Tú no beberías agua directamente de un río turbio ni se la darías a tu familia. Necesitas una planta de tratamiento (el Programa Institucional de Calidad) para filtrarla. Los datos son iguales: requieren filtros antes de ser consumidos por la Alta Dirección o los ciudadanos.
+                                </div>
+                                <div style="display:flex;gap:0.3rem;font-size:0.55rem;flex-wrap:wrap;justify-content:center;">
+                                    <span style="background:rgba(96,165,250,0.15);padding:0.15rem 0.4rem;border-radius:4px;">🌊 Río turbio</span>
+                                    <span style="color:rgba(255,255,255,0.3);font-size:0.7rem;">→</span>
+                                    <span style="background:rgba(16,185,129,0.15);padding:0.15rem 0.4rem;border-radius:4px;">🧪 Planta (PI-59)</span>
+                                    <span style="color:rgba(255,255,255,0.3);font-size:0.7rem;">→</span>
+                                    <span style="background:rgba(251,191,36,0.15);padding:0.15rem 0.4rem;border-radius:4px;">🚰 Agua potable</span>
+                                </div>
                             </div>
-                            <div class="content-split-right">
+                            <div class="content-split-right" style="display:flex;flex-direction:column;gap:0.4rem;">
                                 <div class="list-card" style="padding:0.5rem 0.7rem;">
-                                    <i class="fa-solid fa-car-on" style="color:#38bdf8;"></i>
+                                    <i class="fa-solid fa-file-shield" style="color:#38bdf8;"></i>
                                     <div>
-                                        <div class="list-card-title" style="font-size:0.75rem;">Garantías de Calidad</div>
-                                        <div style="color:rgba(255,255,255,0.7);font-size:0.68rem;">Al igual que exiges fiabilidad en un coche nuevo, debemos asegurar completitud, exactitud, consistencia, validez, puntualidad e integridad en los datos.</div>
+                                        <div class="list-card-title" style="font-size:0.75rem;">Programa Institucional de Calidad (PI-59)</div>
+                                        <div style="color:rgba(255,255,255,0.7);font-size:0.68rem;">Alineado a ISO/IEC 25000 y al Eje 2 de la Estrategia Nacional de Gobierno de Datos 2026-2030. Nuestro procedimiento que asegura la calidad desde el origen.</div>
                                     </div>
                                 </div>
                                 <div class="list-card" style="padding:0.5rem 0.7rem;">
                                     <i class="fa-solid fa-user-xmark" style="color:#ef4444;"></i>
                                     <div>
                                         <div class="list-card-title" style="font-size:0.75rem;">Impacto en el Ciudadano</div>
-                                        <div style="color:rgba(255,255,255,0.7);font-size:0.68rem;">Un simple error de tipeo en un DNI o nombre en un padrón de asistencia bloquea la entrega de bonos, afectando directamente al administrado.</div>
+                                        <div style="color:rgba(255,255,255,0.7);font-size:0.68rem;">Coordenadas erróneas envían inspectores a lugares equivocados; un nombre mal escrito en un padrón bloquea el cobro de un bono. La mala calidad no es un problema informático, es un problema de servicio público.</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     `,
-                    script: "La fiabilidad de los datos es vital bajo el Eje 2 de la Estrategia Nacional y el estándar ISO 25000. Si ingresamos datos erróneos en origen, las decisiones resultantes también fallarán (efecto GIGO). En Osinergmin, una mala calidad no es solo un error técnico; se traduce en un trámite ciudadano bloqueado o un beneficio perdido."
+                    script: "Tener datos almacenados no sirve de nada si estos están contaminados. Por ello, el Eje 2 de la Estrategia Nacional de Gobierno de Datos 2026-2030 nos exige asegurar la calidad de la información desde su origen. En Osinergmin, alineamos nuestro esfuerzo a la norma internacional ISO/IEC 25000 y lo aterrizamos en nuestro propio Programa Institucional de Calidad de Datos a través del procedimiento PI-59. ¿Por qué somos tan estrictos con esto? Porque los errores de datos impactan directamente en el ciudadano. Imagina que enviamos inspectores a una planta basándonos en coordenadas erróneas, o que un ciudadano no puede cobrar un beneficio porque su nombre está mal escrito en nuestra base de datos. La mala calidad no es un problema informático; es un problema de servicio público."
                 },
                 {
                     type: "content",
@@ -2760,7 +2856,7 @@
                             <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.6rem;display:flex;flex-direction:column;gap:0.4rem;font-size:0.75rem;">
                                 <strong style="color:#38bdf8;text-transform:uppercase;font-size:0.7rem;">Controles Clave</strong>
                                 <div><strong>La Validez:</strong> Detectar errores operativos al introducir los datos manualmente.</div>
-                                <div><strong>La Coherencia:</strong> Asegurar que el dato coincida en todos los sistemas.</div>
+                                <div><strong>La Consistencia:</strong> Asegurar que el dato coincida en todos los sistemas.</div>
                                 <div><strong>La Integridad:</strong> Monitorear posibles errores técnicos durante la transferencia.</div>
                             </div>
                             <div style="flex:1.2;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.6rem;display:flex;flex-direction:column;gap:0.4rem;font-size:0.75rem;">
@@ -2777,7 +2873,7 @@
                     title: "¿Conducirías a ciegas? El Impacto de la Mala Calidad",
                     contentHtml: `
                         <div class="slide-visual-mockup" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:1.2rem;">
-                            <div class="slide-image-frame" style="width: 100%; max-width: 22rem; height: 9rem; margin-bottom: 0.6rem;">
+                            <div class="slide-image-frame" style="width: 100%; max-width: 30rem; height: 16rem; margin-bottom: 0.6rem;">
                                 <img src="imagenes/modulo-04/coche-calidad.png" alt="¿Conducirías a ciegas?">
                             </div>
                             <h4 style="font-size:1.15rem;color:#f59e0b;font-weight:700;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:1px;">¿Conducirías a ciegas? El Impacto de la Mala Calidad</h4>
@@ -2792,24 +2888,78 @@
                     type: "content",
                     title: "El Tablero de la Calidad (Dimensiones)",
                     contentHtml: `
-                        <div class="slide-visual-mockup" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:1.2rem;">
-                            <div class="slide-image-frame" style="width: 100%; max-width: 22rem; height: 9rem; margin-bottom: 0.6rem;">
-                                <img src="imagenes/modulo-04/panel-medidores.png" alt="El Tablero de la Calidad">
+                        <style>
+                        @keyframes dimPulse { 0%,100% { border-color:#3b82f6; } 50% { border-color:#10b981; } }
+                        .dim-caso-selected { border-color:#60a5fa !important; background:rgba(96,165,250,0.12) !important; box-shadow:0 0 10px rgba(96,165,250,0.3); }
+                        </style>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;width:100%;color:white;font-size:0.75rem;">
+                            <!-- 6 Dimension cards grid -->
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.3rem;">
+                                <div style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:6px;padding:0.3rem 0.4rem;text-align:left;">
+                                    <div style="font-weight:700;color:#818cf8;font-size:0.6rem;text-transform:uppercase;margin-bottom:0.15rem;">🔍 Exactitud</div>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.7);">¿El dato refleja la realidad?<br><span style="color:rgba(255,255,255,0.35);font-style:italic;">Ej: Coordenadas de estación apuntan al mar en vez de su ubicación real.</span></div>
+                                </div>
+                                <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:6px;padding:0.3rem 0.4rem;text-align:left;">
+                                    <div style="font-weight:700;color:#34d399;font-size:0.6rem;text-transform:uppercase;margin-bottom:0.15rem;">📋 Completitud</div>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.7);">¿Falta algún campo obligatorio?<br><span style="color:rgba(255,255,255,0.35);font-style:italic;">Ej: Expediente de reclamo sin número de teléfono de contacto.</span></div>
+                                </div>
+                                <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:6px;padding:0.3rem 0.4rem;text-align:left;">
+                                    <div style="font-weight:700;color:#fbbf24;font-size:0.6rem;text-transform:uppercase;margin-bottom:0.15rem;">🔗 Consistencia</div>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.7);">¿El dato coincide en todos los sistemas?<br><span style="color:rgba(255,255,255,0.35);font-style:italic;">Ej: Operador "Habilitado" en Fiscalización pero "Inactivo" en Administración.</span></div>
+                                </div>
+                                <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:6px;padding:0.3rem 0.4rem;text-align:left;">
+                                    <div style="font-weight:700;color:#f87171;font-size:0.6rem;text-transform:uppercase;margin-bottom:0.15rem;">⏱️ Oportunidad</div>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.7);">¿El dato está disponible a tiempo para decidir?<br><span style="color:rgba(255,255,255,0.35);font-style:italic;">Ej: Precio de combustibles de hace 3 años para un análisis actual.</span></div>
+                                </div>
+                                <div style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);border-radius:6px;padding:0.3rem 0.4rem;text-align:left;">
+                                    <div style="font-weight:700;color:#a78bfa;font-size:0.6rem;text-transform:uppercase;margin-bottom:0.15rem;">✅ Validez</div>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.7);">¿El formato y tipo son correctos?<br><span style="color:rgba(255,255,255,0.35);font-style:italic;">Ej: RUC registrado con solo 5 dígitos en vez de 11.</span></div>
+                                </div>
+                                <div style="background:rgba(236,72,153,0.08);border:1px solid rgba(236,72,153,0.2);border-radius:6px;padding:0.3rem 0.4rem;text-align:left;">
+                                    <div style="font-weight:700;color:#f472b6;font-size:0.6rem;text-transform:uppercase;margin-bottom:0.15rem;">👥 Unicidad</div>
+                                    <div style="font-size:0.55rem;color:rgba(255,255,255,0.7);">¿Hay registros duplicados?<br><span style="color:rgba(255,255,255,0.35);font-style:italic;">Ej: Una misma estación de servicio aparece 2 veces con IDs distintos.</span></div>
+                                </div>
                             </div>
-                            <h4 style="font-size:1.15rem;color:#10b981;font-weight:700;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:1px;">El Tablero de la Calidad (Dimensiones)</h4>
-                            <p style="font-size:0.82rem;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;max-width:90%;text-align:justify;">
-                                Todo dato estratégico debe pasar la revisión de nuestros medidores: ¿Es exacto y completo? ¿Cumple con la validez de formato (ej. RUC de 11 dígitos)? ¿Mantiene su integridad y coherencia lógica al viajar por los distintos sistemas de la entidad?
-                            </p>
+                            <!-- Interactive: Diagnóstico de Dimensiones -->
+                            <div style="width:100%;background:rgba(15,23,42,0.5);border:2px dashed rgba(59,130,246,0.3);border-radius:8px;padding:0.5rem;text-align:center;margin-top:0.15rem;">
+                                <div style="font-size:0.6rem;color:#60a5fa;font-weight:700;text-transform:uppercase;margin-bottom:0.3rem;">🧪 Diagnóstico Rápido: ¿Qué dimensión falla?</div>
+                                <div style="display:flex;gap:0.4rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.4rem;">
+                                    <div id="dim-caso-a" class="dim-caso" style="flex:1;min-width:7rem;max-width:8.5rem;padding:0.3rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);border-radius:6px;cursor:pointer;transition:all 0.3s;font-size:0.55rem;" onclick="window.seleccionarCaso('A')">
+                                        <div style="font-weight:700;color:#f8fafc;margin-bottom:0.2rem;font-size:0.6rem;">📄 Caso A</div>
+                                        <div style="color:rgba(255,255,255,0.7);font-size:0.5rem;line-height:1.3;">El formulario web de registro de estaciones permite guardar el campo "RUC" aunque tenga solo 5 dígitos.</div>
+                                    </div>
+                                    <div id="dim-caso-b" class="dim-caso" style="flex:1;min-width:7rem;max-width:8.5rem;padding:0.3rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);border-radius:6px;cursor:pointer;transition:all 0.3s;font-size:0.55rem;" onclick="window.seleccionarCaso('B')">
+                                        <div style="font-weight:700;color:#f8fafc;margin-bottom:0.2rem;font-size:0.6rem;">📄 Caso B</div>
+                                        <div style="color:rgba(255,255,255,0.7);font-size:0.5rem;line-height:1.3;">Un operador logístico figura como "Habilitado" en el sistema de Fiscalización pero como "Inactivo" en Administración.</div>
+                                    </div>
+                                    <div id="dim-caso-c" class="dim-caso" style="flex:1;min-width:7rem;max-width:8.5rem;padding:0.3rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);border-radius:6px;cursor:pointer;transition:all 0.3s;font-size:0.55rem;" onclick="window.seleccionarCaso('C')">
+                                        <div style="font-weight:700;color:#f8fafc;margin-bottom:0.2rem;font-size:0.6rem;">📄 Caso C</div>
+                                        <div style="color:rgba(255,255,255,0.7);font-size:0.5rem;line-height:1.3;">Las coordenadas GPS de una estación de servicio apuntan al océano Pacífico en vez de la Av. Principal registrada en el expediente.</div>
+                                    </div>
+                                </div>
+                                <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);margin-bottom:0.25rem;">Haz clic en un caso y luego elige la dimensión que corresponde:</div>
+                                <div style="display:flex;gap:0.25rem;justify-content:center;flex-wrap:wrap;">
+                                    <button onclick="window.diagnosticarDimension('exactitud')" class="dim-btn" data-dim="exactitud" style="padding:0.25rem 0.5rem;background:rgba(99,102,241,0.1);border:1px solid #6366f1;border-radius:4px;color:#a5b4fc;font-size:0.5rem;font-weight:600;cursor:pointer;transition:all 0.3s;">Exactitud</button>
+                                    <button onclick="window.diagnosticarDimension('completitud')" class="dim-btn" data-dim="completitud" style="padding:0.25rem 0.5rem;background:rgba(16,185,129,0.1);border:1px solid #10b981;border-radius:4px;color:#6ee7b7;font-size:0.5rem;font-weight:600;cursor:pointer;transition:all 0.3s;">Completitud</button>
+                                    <button onclick="window.diagnosticarDimension('consistencia')" class="dim-btn" data-dim="consistencia" style="padding:0.25rem 0.5rem;background:rgba(245,158,11,0.1);border:1px solid #f59e0b;border-radius:4px;color:#fcd34d;font-size:0.5rem;font-weight:600;cursor:pointer;transition:all 0.3s;">Consistencia</button>
+                                    <button onclick="window.diagnosticarDimension('oportunidad')" class="dim-btn" data-dim="oportunidad" style="padding:0.25rem 0.5rem;background:rgba(239,68,68,0.1);border:1px solid #ef4444;border-radius:4px;color:#fca5a5;font-size:0.5rem;font-weight:600;cursor:pointer;transition:all 0.3s;">Oportunidad</button>
+                                    <button onclick="window.diagnosticarDimension('validez')" class="dim-btn" data-dim="validez" style="padding:0.25rem 0.5rem;background:rgba(168,85,247,0.1);border:1px solid #a855f7;border-radius:4px;color:#c084fc;font-size:0.5rem;font-weight:600;cursor:pointer;transition:all 0.3s;">Validez</button>
+                                    <button onclick="window.diagnosticarDimension('unicidad')" class="dim-btn" data-dim="unicidad" style="padding:0.25rem 0.5rem;background:rgba(236,72,153,0.1);border:1px solid #ec4899;border-radius:4px;color:#f9a8d4;font-size:0.5rem;font-weight:600;cursor:pointer;transition:all 0.3s;">Unicidad</button>
+                                </div>
+                                <div id="dim-diagnostic-feedback" style="margin-top:0.35rem;font-size:0.55rem;color:rgba(255,255,255,0.5);min-height:1.3rem;">
+                                    Selecciona un caso clicando en él y luego elige la dimensión.
+                                </div>
+                            </div>
                         </div>
                     `,
-                    script: "Este tablero mide las seis dimensiones de calidad de datos: Exactitud para reflejar la realidad; Completitud para evitar campos vacíos; Validez de formato como un RUC de 11 dígitos; Coherencia lógica entre sistemas de la entidad; Oportunidad para tener la información a tiempo; e Integridad técnica para evitar pérdidas de datos en transmisiones."
+                    script: "Para medir la salud de nuestra información, el PI-59 establece dimensiones de calidad específicas que debemos evaluar en nuestro Tablero Institucional. Conozcamos las principales: Exactitud — el dato debe reflejar la realidad, como que una instalación activa figure como 'Activa' y no como 'Inactiva'. Completitud — no deben faltar datos obligatorios; un registro de contacto no sirve si el campo de teléfono está vacío. Consistencia — los datos no deben contradecirse entre sistemas; el sistema de multas no puede decir que una empresa debe 100 soles y el de cobranzas decir que debe 50. Oportunidad — el dato debe estar actualizado; un precio de combustible de hace tres años no nos sirve hoy. Validez — el dato debe cumplir los formatos acordados, como un RUC que obligatoriamente debe tener 11 dígitos. Unicidad — no deben existir registros duplicados sin control. Ahora practica con el diagnóstico interactivo de abajo: selecciona cada caso y elige la dimensión que corresponde."
                 },
                 {
                     type: "content",
                     title: "Automatizar para Escalar (Mejora Continua)",
                     contentHtml: `
                         <div class="slide-visual-mockup" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:1.2rem;">
-                            <div class="slide-image-frame" style="width: 100%; max-width: 22rem; height: 9rem; margin-bottom: 0.6rem;">
+                            <div class="slide-image-frame" style="width: 100%; max-width: 30rem; height: 16rem; margin-bottom: 0.6rem;">
                                 <img src="imagenes/modulo-04/automatizacion-calidad.png" alt="Automatizar para Escalar">
                             </div>
                             <h4 style="font-size:1.15rem;color:#c084fc;font-weight:700;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:1px;">Automatizar para Escalar (Mejora Continua)</h4>
@@ -2826,15 +2976,19 @@
                     instruction: "Arrastra la situación de negocio de la izquierda hacia la dimensión o tipo de falla de calidad que representa de la derecha. (En móviles, puedes hacer clic en un elemento y luego en su destino).",
                     items: [
                         { id: "item1", text: "El sistema de registro de estaciones de servicio acepta que el usuario guarde el campo de correo electrónico sin el símbolo @ y permite ingresar un RUC de solo 5 dígitos en lugar de 11.", match: "zone-validez" },
-                        { id: "item2", text: "Al contrastar el padrón de empresas autorizadas, la Gerencia de Fiscalización encuentra que un mismo operador aparece activo con el estado de \"Habilitado\", pero en el sistema de Administración figura como \"Inactivo\".", match: "zone-coherencia" },
-                        { id: "item3", text: "Durante la migración nocturna de los expedientes de sanciones hacia el repositorio central, el proceso falló a la mitad, dejando registros huérfanos sin su respectivo historial de resoluciones adjunto.", match: "zone-integridad" },
-                        { id: "item4", text: "El equipo de analítica necesita calcular el índice de variación del precio de los combustibles de esta semana para un reporte de la Alta Dirección, pero la última actualización de la base de datos es de hace tres meses.", match: "zone-oportunidad" }
+                        { id: "item2", text: "Al contrastar el padrón de empresas autorizadas, la Gerencia de Fiscalización encuentra que un mismo operador aparece activo con el estado de \"Habilitado\", pero en el sistema de Administración figura como \"Inactivo\".", match: "zone-consistencia" },
+                        { id: "item3", text: "Al revisar el padrón de estaciones de servicio, el analista detecta que la 'Estación Los Olivos' aparece registrada 3 veces con códigos distintos y direcciones ligeramente diferentes.", match: "zone-unicidad" },
+                        { id: "item4", text: "El equipo de analítica necesita calcular el índice de variación del precio de los combustibles de esta semana para un reporte de la Alta Dirección, pero la última actualización de la base de datos es de hace tres meses.", match: "zone-oportunidad" },
+                        { id: "item5", text: "El equipo de catastro encuentra que las coordenadas GPS registradas para 15 estaciones de servicio apuntan al océano Pacífico, a 3 km de la ubicación real verificada en campo.", match: "zone-exactitud" },
+                        { id: "item6", text: "Al revisar la base de datos de reclamos, el analista descubre que el campo 'Dirección del Domicilio del Reclamante' está vacío en el 40% de los registros del último trimestre.", match: "zone-completitud" }
                     ],
                     zones: [
                         { id: "zone-validez", title: "Falla de Validez", desc: "" },
-                        { id: "zone-coherencia", title: "Falla de Coherencia", desc: "" },
-                        { id: "zone-integridad", title: "Falla de Integridad", desc: "" },
-                        { id: "zone-oportunidad", title: "Falla de Oportunidad", desc: "" }
+                        { id: "zone-consistencia", title: "Falla de Consistencia", desc: "" },
+                        { id: "zone-unicidad", title: "Falla de Unicidad", desc: "" },
+                        { id: "zone-oportunidad", title: "Falla de Oportunidad", desc: "" },
+                        { id: "zone-exactitud", title: "Falla de Exactitud", desc: "" },
+                        { id: "zone-completitud", title: "Falla de Completitud", desc: "" }
                     ],
                     feedbackSuccess: "¡Excelente! Has asociado correctamente cada escenario con la dimensión de calidad afectada.",
                     script: "Resuelve el primer ejercicio clasificando las anomalías de calidad de la información según su dimensión técnica."
@@ -2914,54 +3068,103 @@
                 },
                 {
                     type: "content",
-                    title: "La Infraestructura Invisible: El Dato sobre el Dato",
+                    title: "La Infraestructura Invisible (DCAT-AP y el Ecosistema de Metadatos)",
                     contentHtml: `
-                        <div class="content-split">
-                            <div class="content-split-left" style="background:rgba(59,130,246,0.06);border-color:rgba(59,130,246,0.2);">
-                                <i class="fa-solid fa-dna" style="font-size:2.8rem;color:#3b82f6;margin-bottom:0.5rem;"></i>
-                                <div style="font-weight:bold;color:#3b82f6;font-size:0.85rem;text-transform:uppercase;">ADN del Dato</div>
-                                <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);margin-top:0.2rem;">Los metadatos son 'los datos sobre los datos'. Brindan el contexto necesario para darles significado.</div>
-                            </div>
-                            <div class="content-split-right">
-                                <div class="list-card" style="padding:0.6rem 0.8rem;">
-                                    <i class="fa-solid fa-circle-info" style="color:#38bdf8;"></i>
-                                    <div>
-                                        <div class="list-card-title">Infraestructura Invisible</div>
-                                        <div style="color:rgba(255,255,255,0.7);font-size:0.7rem;">Un simple número '10' no significa nada. El metadato explica que representa '10 kg de peso', registrado en cierta fecha y por tal autor.</div>
+                        <style>
+                        @keyframes glowPulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+                        @keyframes slideInRight { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
+                        </style>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;width:100%;padding:0.2rem 0;">
+                            <!-- Library analogy top -->
+                            <div style="display:flex;gap:0.6rem;align-items:center;width:100%;">
+                                <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0.6rem;text-align:center;">
+                                    <div style="display:flex;gap:0.2rem;justify-content:center;margin-bottom:0.3rem;">
+                                        <div style="width:0.8rem;height:1.4rem;background:rgba(148,163,184,0.3);border-radius:2px;border:1px solid rgba(255,255,255,0.1);"></div>
+                                        <div style="width:0.8rem;height:1.4rem;background:rgba(148,163,184,0.3);border-radius:2px;border:1px solid rgba(255,255,255,0.1);"></div>
+                                        <div style="width:0.8rem;height:1.4rem;background:rgba(148,163,184,0.3);border-radius:2px;border:1px solid rgba(255,255,255,0.1);"></div>
                                     </div>
+                                    <div style="font-size:0.55rem;color:#94a3b8;font-weight:600;">📚 Datos sin metadatos</div>
+                                    <div style="font-size:0.42rem;color:rgba(255,255,255,0.4);">Libros sin título ni autor</div>
                                 </div>
-                                <div class="list-card" style="padding:0.6rem 0.8rem;">
-                                    <i class="fa-solid fa-globe" style="color:#10b981;"></i>
-                                    <div>
-                                        <div class="list-card-title">Estándar DCAT-AP</div>
-                                        <div style="color:rgba(255,255,255,0.7);font-size:0.7rem;">Lineamiento oficial peruano para estructurar los catálogos en la Plataforma Nacional de Datos Abiertos.</div>
+                                <div style="font-size:1.2rem;color:#fbbf24;">→</div>
+                                <div style="flex:1;background:rgba(16,185,129,0.06);border:1px solid #10b981;border-radius:8px;padding:0.6rem;text-align:center;box-shadow:0 0 10px rgba(16,185,129,0.1);">
+                                    <div style="display:flex;gap:0.2rem;justify-content:center;margin-bottom:0.2rem;">
+                                        <div style="width:0.8rem;height:1.4rem;background:rgba(16,185,129,0.2);border-radius:2px;border:1px solid #10b981;position:relative;">
+                                            <div style="position:absolute;bottom:-1px;left:0;right:0;font-size:0.3rem;color:#10b981;line-height:1;">🔖</div>
+                                        </div>
+                                        <div style="width:0.8rem;height:1.4rem;background:rgba(16,185,129,0.2);border-radius:2px;border:1px solid #10b981;position:relative;">
+                                            <div style="position:absolute;bottom:-1px;left:0;right:0;font-size:0.3rem;color:#10b981;line-height:1;">🔖</div>
+                                        </div>
+                                        <div style="width:0.8rem;height:1.4rem;background:rgba(16,185,129,0.2);border-radius:2px;border:1px solid #10b981;position:relative;">
+                                            <div style="position:absolute;bottom:-1px;left:0;right:0;font-size:0.3rem;color:#10b981;line-height:1;">🔖</div>
+                                        </div>
                                     </div>
+                                    <div style="font-size:0.55rem;color:#10b981;font-weight:700;">Con metadatos (DCAT-AP)</div>
+                                    <div style="font-size:0.42rem;color:rgba(255,255,255,0.5);">Autor · Actualización · Licencia · Formato</div>
+                                </div>
+                            </div>
+                            <!-- DCAT-AP details -->
+                            <div style="display:flex;gap:0.4rem;width:100%;">
+                                <div style="flex:1;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2);border-radius:6px;padding:0.35rem 0.5rem;text-align:center;">
+                                    <div style="font-size:0.5rem;color:#93c5fd;font-weight:600;">📋 ¿Qué es DCAT-AP?</div>
+                                    <div style="font-size:0.48rem;color:rgba(255,255,255,0.7);">Estándar internacional (SGTD-PCM) para catalogar datos en la PNDA. Como el "idioma universal" de los catálogos.</div>
+                                </div>
+                                <div style="flex:1;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:6px;padding:0.35rem 0.5rem;text-align:center;">
+                                    <div style="font-size:0.5rem;color:#6ee7b7;font-weight:600;">🔄 ¿Para qué sirve?</div>
+                                    <div style="font-size:0.48rem;color:rgba(255,255,255,0.7);">Permite que ministerios, investigadores y plataformas internacionales lean y crucen datos automáticamente.</div>
                                 </div>
                             </div>
                         </div>
                     `,
-                    script: "El metadato es la infraestructura invisible que da sentido, autoría y contexto a la información, alineados al estándar DAMA DMBOK2. En el Perú, la Secretaría de Gobierno y Transformación Digital de la PCM exige usar el estándar internacional DCAT-AP (Perfil de Aplicación de Vocabulario de Catálogos de Datos) para estructurar metadatos, garantizando que cualquiera pueda entender y reutilizar la información de manera uniforme."
+                    script: "Todos hemos escuchado que los metadatos son 'datos sobre otros datos', pero llevemos esto a la realidad. Imaginen entrar a la Biblioteca Nacional y descubrir que ningún libro tiene título, lomo, autor ni índice. Encontrar la información que necesitan sería imposible. Los metadatos son exactamente esas fichas bibliográficas. Para evitar que la Plataforma Nacional de Datos Abiertos (PNDA) se convierta en una biblioteca caótica, el Perú no inventa sus propias reglas. La Secretaría de Gobierno y Transformación Digital (SGTD) de la PCM promueve el uso del estándar internacional DCAT-AP (Data Catalog Vocabulary - Application Profile). No se asusten por las siglas; piénsenlo como el 'idioma universal' de los catálogos. Usar DCAT-AP garantiza que cuando Osinergmin publica un dataset, los sistemas de otros ministerios, investigadores o plataformas europeas puedan leer, entender y cruzar nuestras categorías de forma automática y sin intervención humana."
                 },
                 {
                     type: "content",
-                    title: "Trazabilidad de Datos (Data Lineage)",
+                    title: "Trazabilidad, Versionado y Auditoría de IA",
                     contentHtml: `
-                        <div style="display:flex;flex-direction:column;gap:0.7rem;width:100%;color:white;font-size:0.78rem;">
-                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.6rem 0.8rem;display:flex;align-items:center;gap:0.8rem;">
-                                <i class="fa-solid fa-route" style="font-size:1.4rem;color:#f43f5e;width:24px;text-align:center;"></i>
-                                <div><strong>Linaje del Dato (Trazabilidad):</strong> Mapa visual que describe la historia de vida del dato: desde su sistema transaccional origen, sus filtros en las bases de datos, hasta el dashboard final.</div>
+                        <style>
+                        @keyframes borderPulse { 0%,100% { border-color:#3b82f6; } 50% { border-color:#10b981; } }
+                        </style>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;width:100%;color:white;font-size:0.75rem;">
+                            <!-- Row 1: Linaje -->
+                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.4rem 0.6rem;display:flex;align-items:center;gap:0.6rem;">
+                                <i class="fa-solid fa-route" style="font-size:1.2rem;color:#f43f5e;width:22px;text-align:center;"></i>
+                                <div><strong>Linaje del Dato:</strong> El pasaporte que cuenta la historia completa del dato: dónde nació, quién lo modificó y hacia dónde viaja.<br>
+                                <span style="font-size:0.5rem;color:rgba(255,255,255,0.5);font-style:italic;">Ej: Sistema de Reclamos → ETL → Base Refinada → Dashboard de Fiscalización</span></div>
                             </div>
-                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.6rem 0.8rem;display:flex;align-items:center;gap:0.8rem;">
-                                <i class="fa-solid fa-clock-rotate-left" style="font-size:1.4rem;color:#10b981;width:24px;text-align:center;"></i>
-                                <div><strong>Auditoría de IA:</strong> La trazabilidad permite documentar qué versiones de bases de datos alimentaron a los algoritmos de Inteligencia Artificial para auditar la lógica de sus predicciones.</div>
+                            <!-- Row 2: Versionado -->
+                            <div style="background:rgba(16,185,129,0.06);border:1px solid #10b981;border-radius:6px;padding:0.4rem 0.6rem;display:flex;align-items:flex-start;gap:0.6rem;">
+                                <i class="fa-solid fa-clock-rotate-left" style="font-size:1.2rem;color:#10b981;width:22px;text-align:center;margin-top:0.1rem;"></i>
+                                <div><strong>Versionado de Datasets para IA:</strong> Si un algoritmo de fiscalización toma hoy una decisión equivocada basándose en datos que publicamos hace un año, debemos poder auditar qué versión exacta del dataset lo alimentó. Sin versionado, no podemos abrir la caja negra de la IA.<br>
+                                <span style="font-size:0.5rem;color:rgba(255,255,255,0.5);font-style:italic;">Regla de oro: Dataset v1.0 que entrenó la IA ≠ Dataset actual. Guardar ambas versiones es una exigencia de ética algorítmica.</span></div>
                             </div>
-                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.6rem 0.8rem;display:flex;align-items:center;gap:0.8rem;">
-                                <i class="fa-solid fa-microchip" style="font-size:1.4rem;color:#38bdf8;width:24px;text-align:center;"></i>
-                                <div><strong>Automatización de Metadatos:</strong> El volumen obliga a usar catálogos vivos de metadatos (Collibra, Atlan) para que la documentación no quede obsoleta.</div>
+                            <!-- Row 3: Automatización -->
+                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.4rem 0.6rem;display:flex;align-items:center;gap:0.6rem;">
+                                <i class="fa-solid fa-microchip" style="font-size:1.2rem;color:#38bdf8;width:22px;text-align:center;"></i>
+                                <div><strong>Automatización:</strong> Catálogos vivos (Collibra, Atlan, Informatica) para que la trazabilidad no dependa de memorias humanas ni archivos Excel.</div>
+                            </div>
+
+                            <!-- Interactive: Auditoría Algorítmica -->
+                            <div style="width:100%;background:rgba(15,23,42,0.5);border:2px dashed rgba(239,68,68,0.3);border-radius:8px;padding:0.5rem;text-align:center;margin-top:0.2rem;">
+                                <div style="font-size:0.6rem;color:#f87171;font-weight:700;text-transform:uppercase;margin-bottom:0.3rem;">🤖 Auditoría Algorítmica: La IA falló. ¿Qué versión del dataset revisas?</div>
+                                <div style="display:flex;gap:0.4rem;justify-content:center;flex-wrap:wrap;">
+                                    <button onclick="window.auditarVersion('actual')" style="flex:1;padding:0.35rem 0.3rem;background:rgba(239,68,68,0.1);border:1px solid #ef4444;border-radius:6px;color:#fca5a5;font-size:0.55rem;font-weight:700;cursor:pointer;transition:all 0.3s;min-width:6rem;">
+                                        📁 Dataset Actual
+                                    </button>
+                                    <button onclick="window.auditarVersion('codigo')" style="flex:1;padding:0.35rem 0.3rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:rgba(255,255,255,0.6);font-size:0.55rem;font-weight:700;cursor:pointer;transition:all 0.3s;min-width:6rem;">
+                                        📄 Código Fuente
+                                    </button>
+                                    <button onclick="window.auditarVersion('v1')" id="btn-version-v1" style="flex:1;padding:0.35rem 0.3rem;background:rgba(16,185,129,0.1);border:1px solid #10b981;border-radius:6px;color:#6ee7b7;font-size:0.55rem;font-weight:700;cursor:pointer;transition:all 0.3s;min-width:6rem;">
+                                        📚 Dataset Versión 1.0
+                                    </button>
+                                </div>
+                                <div id="audit-feedback" style="margin-top:0.3rem;font-size:0.55rem;color:rgba(255,255,255,0.5);min-height:1.2rem;">
+                                    Selecciona la carpeta que necesitas para auditar la decisión errónea de la IA.
+                                </div>
                             </div>
                         </div>
                     `,
-                    script: "El Linaje es el historial del dato, permitiendo auditar su viaje desde el origen. Esto es crucial para atender auditorías de Contraloría y para el versionado de datasets en Inteligencia Artificial, asegurando que los modelos se entrenen de forma ética y transparente. Gestionar esto a mano en Excel es insostenible y requiere soluciones técnicas de catálogo automatizadas."
+                    script: "El segundo pilar de este módulo es la Trazabilidad o Linaje del Dato (Data Lineage). Esto es, básicamente, el pasaporte que cuenta la historia completa del dato: dónde nació, quién lo modificó y hacia dónde viaja. Aquí existe una regla de oro que muchas entidades olvidan: El Versionado de los Datasets. Hoy en día, nuestra información alimenta modelos de Inteligencia Artificial para agilizar procesos. Pero, ¿qué pasa si un algoritmo de fiscalización toma una decisión equivocada o discriminatoria hoy, basándose en un dataset que publicamos hace un año? Si nuestro Custodio de Datos no guardó la 'versión exacta' de los datos con los que esa IA aprendió en ese momento específico, no podremos auditar la decisión. El versionado no es solo un tema de almacenamiento para el área de TI; es una exigencia de ética algorítmica y reproducibilidad. Nos permite abrir la caja negra de la IA y asegurar que el Estado rinda cuentas ante el ciudadano por cada decisión automatizada."
                 },
                 {
                     type: "content",
@@ -3367,41 +3570,53 @@
                     type: "content",
                     title: "El Equilibrio Estratégico: Defensiva vs. Ofensiva",
                     contentHtml: `
-                        <div class="comparison-container">
-                            <div class="comparison-box blue-theme" style="border-top: 4px solid #ef4444; padding: 1rem 0.8rem;">
-                                <i class="fa-solid fa-shield-halved comparison-icon" style="color:#ef4444;"></i>
-                                <h4 style="font-size:0.85rem;font-weight:700;margin:0 0 0.2rem 0;">Estrategia Defensiva</h4>
-                                <p style="font-size:0.68rem;color:rgba(255,255,255,0.7);line-height:1.3;margin:0;">El <strong>escudo</strong> de la entidad. Minimiza riesgos operativos, evita multas de hasta 100 UIT y garantiza el cumplimiento de la Ley N° 29733.</p>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;width:100%;align-items:center;padding:0.2rem 0;">
+                            <div style="display:flex;width:100%;gap:0.8rem;align-items:stretch;">
+                                <div style="flex:1;background:rgba(239,68,68,0.1);border:2px solid #ef4444;border-radius:8px;padding:0.8rem;text-align:center;">
+                                    <div style="font-size:2rem;margin-bottom:0.3rem;">🛡️</div>
+                                    <h4 style="font-size:0.85rem;font-weight:700;margin:0 0 0.3rem 0;color:#ef4444;">ESTRATEGIA DEFENSIVA</h4>
+                                    <p style="font-size:0.62rem;color:rgba(255,255,255,0.8);line-height:1.35;margin:0;">Protege a la institución y al ciudadano. Cumple la <strong>Ley N° 29733</strong> y evita multas de la <strong>ANPD</strong> de hasta <strong>100 UIT</strong>. Un error aquí destruye la confianza pública.</p>
+                                </div>
+                                <div style="flex:1;background:rgba(16,185,129,0.1);border:2px solid #10b981;border-radius:8px;padding:0.8rem;text-align:center;">
+                                    <div style="font-size:2rem;margin-bottom:0.3rem;">⚽</div>
+                                    <h4 style="font-size:0.85rem;font-weight:700;margin:0 0 0.3rem 0;color:#10b981;">ESTRATEGIA OFENSIVA</h4>
+                                    <p style="font-size:0.62rem;color:rgba(255,255,255,0.8);line-height:1.35;margin:0;">Usa datos limpios para innovar, crear tableros analíticos y mejorar servicios. Genera <strong>Valor Público</strong> y <strong>Mejores Decisiones</strong> para el ciudadano.</p>
+                                </div>
                             </div>
-                            <div class="comparison-box green-theme" style="border-top: 4px solid #10b981; padding: 1rem 0.8rem;">
-                                <i class="fa-solid fa-rocket comparison-icon" style="color:#10b981;"></i>
-                                <h4 style="font-size:0.85rem;font-weight:700;margin:0 0 0.2rem 0;">Estrategia Ofensiva</h4>
-                                <p style="font-size:0.68rem;color:rgba(255,255,255,0.7);line-height:1.3;margin:0;">El <strong>motor</strong> de la entidad. Utiliza los datos para tomar decisiones inteligentes, impulsar modelos analíticos y generar valor público.</p>
+                            <div style="width:100%;text-align:center;background:rgba(255,255,255,0.04);border:1px dashed rgba(255,255,255,0.15);border-radius:6px;padding:0.4rem 0.6rem;">
+                                <p style="font-size:0.6rem;color:#fbbf24;margin:0;font-weight:600;">⚖️ Un equipo sin defensa pierde por goleada legal; un equipo sin ofensiva no genera valor al ciudadano.</p>
                             </div>
                         </div>
                     `,
-                    script: "Los estándares internacionales de gobernanza explican que todo programa exitoso debe equilibrar la defensa (ciberseguridad, cifrado y cumplimiento de la Ley 29733 para evitar multas de hasta 100 UIT) con la ofensiva (generar valor analítico e innovación). Si somos cien por ciento defensivos, bloqueamos la innovación; si somos cien por ciento ofensivos, violamos la privacidad del ciudadano y destruimos la confianza digital."
+                    script: "El gobierno de datos es un acto de equilibrio entre jugar a la defensiva y a la ofensiva. Jugar a la defensiva significa proteger a la institución y al ciudadano. Aquí las reglas son estrictas, porque si fallamos, las consecuencias son devastadoras. Exponer información personal no solo destruye la confianza pública, sino que vulnera la Ley N° 29733 de Protección de Datos Personales. Un error aquí puede resultar en que la Autoridad Nacional de Protección de Datos (ANPD) nos imponga multas gravísimas de hasta 100 UIT. Por otro lado, jugar a la ofensiva significa usar los datos limpios para innovar, crear tableros analíticos y mejorar nuestros servicios. Pero recuerda: no puedes tener una buena ofensiva (innovación) si tu defensiva (seguridad) es frágil y expone a la entidad a riesgos legales."
                 },
                 {
                     type: "content",
                     title: "Técnicas de Protección y Ética en IA",
                     contentHtml: `
+                        <style>
+                        .tech-example { font-size:0.5rem;color:rgba(255,255,255,0.5);font-style:italic;margin-top:0.1rem;line-height:1.2; }
+                        </style>
                         <div style="display:flex;flex-direction:column;gap:0.6rem;width:100%;color:white;font-size:0.75rem;">
-                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:0.4rem 0.6rem;display:flex;align-items:center;gap:0.6rem;">
-                                <i class="fa-solid fa-mask" style="color:#eab308;font-size:1.2rem;width:24px;text-align:center;"></i>
-                                <div><strong>Seudonimización:</strong> Reemplaza el identificador por un alias reversible (sigue bajo la Ley 29733).</div>
+                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:0.4rem 0.6rem;display:flex;align-items:flex-start;gap:0.6rem;">
+                                <i class="fa-solid fa-mask" style="color:#eab308;font-size:1.2rem;width:24px;text-align:center;margin-top:0.1rem;"></i>
+                                <div><strong>Seudonimización:</strong> Reemplaza el identificador por un alias reversible. El dato sigue bajo la Ley 29733 porque se guarda la llave de reversión.<br>
+                                <span class="tech-example">Ej: "María López Rojas" → ID_USU_8392 (tabla de mapeo en servidor restringido)</span></div>
                             </div>
-                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:0.4rem 0.6rem;display:flex;align-items:center;gap:0.6rem;">
-                                <i class="fa-solid fa-user-slash" style="color:#10b981;font-size:1.2rem;width:24px;text-align:center;"></i>
-                                <div><strong>Anonimización:</strong> Proceso irreversible (supresión y generalización) que quita el dato del ámbito restrictivo de la ley.</div>
+                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:0.4rem 0.6rem;display:flex;align-items:flex-start;gap:0.6rem;">
+                                <i class="fa-solid fa-user-slash" style="color:#10b981;font-size:1.2rem;width:24px;text-align:center;margin-top:0.1rem;"></i>
+                                <div><strong>Anonimización:</strong> Proceso irreversible que elimina toda posibilidad de identificar a una persona. Fuera del ámbito restrictivo de la ley. Dos técnicas clave:<br>
+                                <span class="tech-example">• Supresión: Borrar columnas enteras (DNI, teléfono, correo)<br>
+                                • Generalización: Reemplazar valores exactos por rangos ("15/04/1990" → "Abril 1990"; "S/ 4,732" → "S/ 4,000 - 5,000")</span></div>
                             </div>
-                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:0.4rem 0.6rem;display:flex;align-items:center;gap:0.6rem;">
-                                <i class="fa-solid fa-users-gear" style="color:#38bdf8;font-size:1.2rem;width:24px;text-align:center;"></i>
-                                <div><strong>Ética e IA:</strong> Debemos evitar sesgos y discriminación en los datos históricos. Exige supervisión humana activa (<strong>Human-in-the-loop</strong>).</div>
+                            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:0.4rem 0.6rem;display:flex;align-items:flex-start;gap:0.6rem;">
+                                <i class="fa-solid fa-users-gear" style="color:#38bdf8;font-size:1.2rem;width:24px;text-align:center;margin-top:0.1rem;"></i>
+                                <div><strong>Ética e IA:</strong> Los datos históricos pueden contener sesgos del pasado. Si entrenas una IA con ellos, la máquina amplificará esos sesgos automáticamente. Exige supervisión humana (<strong>Human-in-the-loop</strong>).<br>
+                                <span class="tech-example">Ej: Si el 90% de contrataciones históricas fueron hombres, la IA descartará mujeres aunque borres el campo "género"</span></div>
                             </div>
                         </div>
                     `,
-                    script: "Para habilitar la ofensiva sin descuidar la defensa, aplicamos desidentificación. Mientras la seudonimización es reversible, la anonimización es un proceso irreversible mediante supresión de columnas sensibles o generalización por rangos. En modelos de Inteligencia Artificial, la ética exige mantener supervisión humana para evitar sesgos discriminatorios."
+                    script: "Para habilitar la ofensiva sin descuidar la defensa, aplicamos desidentificación. Mientras la seudonimización es reversible (ejemplo: convertimos nombres en códigos como ID_USU_8392 y guardamos la tabla de mapeo en un servidor seguro), la anonimización es un proceso irreversible que aplica dos técnicas: la supresión de columnas sensibles (como borrar el DNI o el teléfono) y la generalización por rangos (como convertir una fecha exacta '15/04/1990' en solo 'Abril 1990' para proteger la identidad sin perder el análisis estadístico). Finalmente, al trabajar con Inteligencia Artificial, recuerda que los datos históricos heredan sesgos humanos del pasado. Por ejemplo, si durante 20 años contratamos mayoritariamente hombres, la IA aprenderá a preferirlos aunque le borremos la columna 'género'. Por eso la ética exige mantener supervisión humana activa: el Human-in-the-loop."
                 },
                 {
                     type: "content",
@@ -3525,49 +3740,106 @@
                                             Haz clic en los botones de protección para experimentar la diferencia: ¿Es un cambio de identidad temporal o se destruye el molde de manera permanente?
                                         </p>
                                     </div>
+                                    <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+                                        <div style="flex:1;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:4px;padding:0.25rem 0.35rem;text-align:center;">
+                                            <div style="font-size:0.45rem;color:#93c5fd;font-weight:600;">📋 Marco Normativo</div>
+                                            <div style="font-size:0.5rem;color:white;">DU N° 007-2020<br><span style="color:rgba(255,255,255,0.5);font-size:0.42rem;">Confianza Digital</span></div>
+                                        </div>
+                                        <div style="flex:1;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:4px;padding:0.25rem 0.35rem;text-align:center;">
+                                            <div style="font-size:0.45rem;color:#c4b5fd;font-weight:600;">👤 Rol Clave</div>
+                                            <div style="font-size:0.5rem;color:white;">Oficial de Datos<br>Personales<br><span style="color:rgba(255,255,255,0.5);font-size:0.42rem;">Enlace ANPD</span></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     `,
-                    script: "Hoy en día, la modernización bajo el Marco de Confianza Digital (Decreto de Urgencia N° 007-2020) nos impulsa a utilizar la Nube. Pero, ¿cómo mantenemos la soberanía de los datos de los peruanos si los servidores de la nube están en el extranjero? La respuesta está en la responsabilidad compartida y en la protección desde el diseño. Antes de que un dato sensible salga de nuestra entidad, el Custodio Técnico debe aplicar técnicas de protección, coordinando con el Oficial de Datos Personales, quien es nuestro enlace oficial con la Autoridad Nacional de Protección de Datos (ANPD). Aquí es crucial no confundirse al momento de abrir datos: no es lo mismo seudonimizar que anonimizar. La Seudonimización es como ponerle una máscara a un ciudadano; si alguien tiene la llave o el código, puede quitarle la máscara y descubrir quién es. Esto sigue siendo un dato personal ante la ley. La Anonimización es destruir el molde irreversiblemente. Es imposible volver a identificar a la persona, quedando fuera del alcance de la Ley de Protección de Datos. Solo publicamos datos en formato abierto (como en la PNDA) cuando están total y estrictamente anonimizados."
+                    script: "Hoy en día, la modernización bajo el Marco de Confianza Digital (Decreto de Urgencia N° 007-2020) nos impulsa a utilizar la Nube. Pero, ¿cómo mantenemos la soberanía de los datos de los peruanos si los servidores de la nube están en el extranjero? La respuesta está en la responsabilidad compartida y en la protección desde el diseño. Antes de que un dato sensible salga de nuestra entidad, el Custodio Técnico debe aplicar técnicas de protección, coordinando con el Oficial de Datos Personales, quien es nuestro enlace oficial con la Autoridad Nacional de Protección de Datos (ANPD). Recuerda este rol: el Oficial de Datos Personales es el encargado de velar por el cumplimiento de la Ley N° 29733 y de articular con la ANPD. Aquí es crucial no confundirse al momento de abrir datos: no es lo mismo seudonimizar que anonimizar. La Seudonimización es como ponerle una máscara a un ciudadano; si alguien tiene la llave o el código, puede quitarle la máscara y descubrir quién es. Esto sigue siendo un dato personal ante la ley. La Anonimización es destruir el molde irreversiblemente. Es imposible volver a identificar a la persona, quedando fuera del alcance de la Ley de Protección de Datos. Solo publicamos datos en formato abierto (como en la PNDA) cuando están total y estrictamente anonimizados."
                 },
                 {
                     type: "content",
-                    title: "Las 4 A's de DAMA, el Entitlement y la Ética",
+                    title: "Las 4 A's de DAMA, el Entitlement y el Ataque de Enlace",
                     contentHtml: `
-                        <div class="slide-visual-mockup" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:1.2rem;">
-                            <div class="slide-image-frame" style="width: 100%; max-width: 22rem; height: 9rem; margin-bottom: 0.6rem;">
-                                <img src="imagenes/modulo-06/human-in-the-loop.png" alt="Las 4 A's y la Ética">
+                        <style>
+                        @keyframes glowPulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+                        @keyframes shakeAlert { 0%,100% { transform:translateX(0); } 25% { transform:translateX(-4px); } 75% { transform:translateX(4px); } }
+                        </style>
+                        <div style="display:flex;flex-direction:column;gap:0.6rem;width:100%;padding:0.2rem 0;">
+                            <!-- Part 1: Las 4 A's -->
+                            <div style="display:flex;flex-direction:column;gap:0.3rem;width:100%;">
+                                <h4 style="font-size:0.8rem;color:#c084fc;font-weight:700;margin:0;text-transform:uppercase;letter-spacing:1px;text-align:center;">Las 4 A's de la Seguridad</h4>
+                                <div style="display:flex;gap:0.4rem;width:100%;">
+                                    <div style="flex:1;text-align:center;background:rgba(56,189,248,0.1);border:1px solid #38bdf8;border-radius:6px;padding:0.35rem 0.2rem;">
+                                        <div style="font-size:1.1rem;">🔑</div>
+                                        <div style="font-size:0.55rem;font-weight:700;color:#38bdf8;">Autenticación</div>
+                                        <div style="font-size:0.45rem;color:rgba(255,255,255,0.65);">¿Quién eres?</div>
+                                    </div>
+                                    <div style="flex:1;text-align:center;background:rgba(16,185,129,0.1);border:1px solid #10b981;border-radius:6px;padding:0.35rem 0.2rem;">
+                                        <div style="font-size:1.1rem;">📋</div>
+                                        <div style="font-size:0.55rem;font-weight:700;color:#10b981;">Autorización</div>
+                                        <div style="font-size:0.45rem;color:rgba(255,255,255,0.65);">¿Qué puedes ver?</div>
+                                    </div>
+                                    <div style="flex:1;text-align:center;background:rgba(251,191,36,0.1);border:1px solid #fbbf24;border-radius:6px;padding:0.35rem 0.2rem;">
+                                        <div style="font-size:1.1rem;">🚪</div>
+                                        <div style="font-size:0.55rem;font-weight:700;color:#fbbf24;">Acceso</div>
+                                        <div style="font-size:0.45rem;color:rgba(255,255,255,0.65);">¿Por dónde entras?</div>
+                                    </div>
+                                    <div style="flex:1;text-align:center;background:rgba(239,68,68,0.1);border:1px solid #ef4444;border-radius:6px;padding:0.35rem 0.2rem;">
+                                        <div style="font-size:1.1rem;">📝</div>
+                                        <div style="font-size:0.55rem;font-weight:700;color:#ef4444;">Auditoría</div>
+                                        <div style="font-size:0.45rem;color:rgba(255,255,255,0.65);">¿Qué hiciste?</div>
+                                    </div>
+                                </div>
+                                <div style="text-align:center;font-size:0.6rem;color:#a78bfa;font-weight:600;padding:0.2rem 0;border-top:1px dashed rgba(255,255,255,0.1);">🔐 Las 4 A's juntas definen tu <strong>Entitlement</strong> (derecho legítimo de uso)</div>
                             </div>
-                            <h4 style="font-size:1.15rem;color:#c084fc;font-weight:700;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:1px;">Las 4 A's de DAMA, el Entitlement y la Ética</h4>
-                            <p style="font-size:0.82rem;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;max-width:90%;text-align:justify;">
-                                Para asegurar los datos internamente, DAMA exige: Acceso, Auditoría, Autenticación y Autorización, sumando el Entitlement (derecho legítimo de uso). En IA, la estrategia ofensiva exige mantener al humano a cargo (Human-in-the-loop) para auditar los algoritmos y evitar sesgos de discriminación.
-                            </p>
+
+                            <!-- Part 2: Linkage Attack -->
+                            <div style="display:flex;flex-direction:column;gap:0.4rem;width:100%;text-align:center;">
+                                <h4 style="font-size:0.8rem;color:#f87171;font-weight:700;margin:0;text-transform:uppercase;letter-spacing:1px;">Riesgo: Ataque de Enlace</h4>
+                                <div style="display:flex;gap:0.6rem;align-items:center;justify-content:center;">
+                                    <div style="background:rgba(16,185,129,0.1);border:1px solid #10b981;border-radius:6px;padding:0.3rem 0.5rem;text-align:center;width:7rem;">
+                                        <div style="font-size:0.7rem;color:#10b981;">Dataset Anónimo A</div>
+                                        <div style="font-size:0.45rem;color:rgba(255,255,255,0.6);">Edad: 34<br>Distrito: Miraflores<br>Profesión: Ingeniero</div>
+                                    </div>
+                                    <div style="font-size:1.2rem;color:#fbbf24;">+</div>
+                                    <div style="background:rgba(56,189,248,0.1);border:1px solid #38bdf8;border-radius:6px;padding:0.3rem 0.5rem;text-align:center;width:7rem;">
+                                        <div style="font-size:0.7rem;color:#38bdf8;">Dato Público B</div>
+                                        <div style="font-size:0.45rem;color:rgba(255,255,255,0.6);">Padrón Electoral<br>Miraflores<br>Ingenieros 34 años</div>
+                                    </div>
+                                    <div style="font-size:1.2rem;color:#ef4444;animation:shakeAlert 0.5s infinite;">=</div>
+                                    <div style="background:rgba(239,68,68,0.15);border:2px solid #ef4444;border-radius:6px;padding:0.3rem 0.5rem;text-align:center;width:7rem;animation:glowPulse 2s infinite;">
+                                        <div style="font-size:0.7rem;color:#ef4444;font-weight:700;">⚠️ REIDENTIFICADO</div>
+                                        <div style="font-size:0.45rem;color:#fca5a5;">Juan Pérez Romero<br>DNI: 45789210</div>
+                                    </div>
+                                </div>
+                                <div style="font-size:0.55rem;color:rgba(255,255,255,0.7);padding:0.2rem 0.4rem;background:rgba(239,68,68,0.05);border-radius:4px;">
+                                    <strong style="color:#fca5a5;">Linkage Attack:</strong> El cruce de datasets aparentemente anónimos con fuentes externas puede reidentificar a las personas. El Custodio y el Dueño del Dato deben garantizar una anonimización irreversible.
+                                </div>
+                            </div>
                         </div>
                     `,
-                    script: "A continuación, se detallan las 4 A's de DAMA para la seguridad del dato: Acceso, Auditoría, Autenticación y Autorización, además del 'Entitlement' o derecho legítimo de uso, mitigando riesgos de reidentificación por cruce de datos o ataques de enlace. Asimismo, en IA, la ética exige mantener supervisión humana activa (Human-in-the-loop) para prevenir sesgos históricos de discriminación."
+                    script: "Para garantizar esta protección, todo acceso a la información en el Estado debe regirse por los pilares de la seguridad, conocidos como las 4 A's: Autenticación: Confirmar que realmente eres quien dices ser (ej. usar tu credencial). Autorización: Definir qué nivel de información tienes permitido ver. Acceso: La puerta tecnológica real por donde entras al dato. Auditoría: El registro inmutable de todo lo que hiciste mientras estuviste adentro. Juntas, estas 4 A's definen tu Entitlement o derecho de uso legítimo. Pero la seguridad tecnológica debe ir acompañada de la ética, especialmente al abrir datos a la ciudadanía. Imagina que publicamos un dataset supuestamente anónimo, pero alguien cruza esa información con otro registro público y logra reidentificar a un ciudadano. A esto se le llama Ataque de Enlace (Linkage Attack). Para evitarlo, nuestro Custodio de Datos y Dueño del Dato deben asegurar que las técnicas de anonimización aplicadas destruyan irreversiblemente cualquier patrón que permita rastrear a una persona."
                 },
                 {
                     type: "dragdrop",
-                    title: "Ejercicio 1: Clasificando la Protección y Estrategia",
-                    instruction: "Arrastra la técnica de protección de datos o iniciativa institucional de la izquierda hacia su definición/categoría correcta de la derecha. (En móviles, puedes hacer clic en un elemento y luego en su destino).",
+                    title: "Ejercicio 1: Casos Prácticos de Seguridad y Privacidad",
+                    instruction: "Arrastra cada escenario operativo de la izquierda hacia la estrategia o técnica de seguridad que le corresponde en la derecha. (En móviles, puedes hacer clic en un elemento y luego en su destino).",
                     items: [
-                        { id: "item1", text: "Reemplazo un nombre por un código, pero guardo la llave para revertirlo.", match: "zone-seudo" },
-                        { id: "item2", text: "Elimino permanentemente la columna del DNI y teléfono de la base de datos.", match: "zone-supresion" },
-                        { id: "item3", text: "Reemplazo el salario exacto de '4,732 soles' por el rango 'De 4,000 a 5,000 soles'.", match: "zone-generalizacion" },
-                        { id: "item4", text: "Aplicar enmascaramiento dinámico a la base de datos de pacientes para cumplir con la Ley 29733.", match: "zone-defensa" },
-                        { id: "item5", text: "Utilizar los datos históricos para crear un modelo de Inteligencia Artificial que prediga zonas de alta criminalidad.", match: "zone-ofensiva" },
-                        { id: "item6", text: "Asegurarse de que el equipo de TI mantenga las copias de seguridad cifradas.", match: "zone-defensa" }
+                        { id: "item1", text: "Para un entorno de pruebas de desarrollo, el sistema debe reemplazar los nombres reales de los representantes legales por identificadores alfanuméricos aleatorios (ID_9482), almacenando la tabla de mapeo original en un servidor aislado y altamente restringido para auditorías futuras.", match: "zone-seudo" },
+                        { id: "item2", text: "Al transferir una base de datos histórica a un centro de investigación externo, la Oficina de Asesoría Jurídica determina que las columnas que contienen números de DNI y números telefónicos fijos deben borrarse por completo del esquema para evitar cualquier riesgo de reidentificación.", match: "zone-supresion" },
+                        { id: "item3", text: "Al publicar un reporte estadístico sobre las multas impuestas a las empresas de hidrocarburos, se decide agrupar los montos exactos de las penalizaciones en bloques (ej. 'De 10 a 50 UIT', 'De 51 a 100 UIT') para proteger la confidencialidad comercial de los pequeños operadores.", match: "zone-generalizacion" },
+                        { id: "item4", text: "Implementar políticas estrictas de control de accesos, cifrado de datos en reposo y auditorías automáticas de logs en el sistema informático de la institución con la finalidad exclusiva de prevenir fugas de información y cumplir con las sanciones de la Autoridad Nacional de Protección de Datos Personales (ANPD).", match: "zone-defensa" },
+                        { id: "item5", text: "Utilizar los datos históricos de consumo de energía y denuncias de usuarios comerciales para entrenar un modelo analítico de Machine Learning que permita predecir qué zonas geográficas sufrirán mayores índices de saturación de red, optimizando la asignación de las cuadrillas de fiscalización.", match: "zone-ofensiva" }
                     ],
                     zones: [
-                        { id: "zone-seudo", title: "Seudonimización", desc: "Ocultamiento reversible" },
-                        { id: "zone-supresion", title: "Supresión de variables", desc: "Eliminación permanente" },
-                        { id: "zone-generalizacion", title: "Generalización", desc: "Sustitución por rangos" },
-                        { id: "zone-defensa", title: "Estrategia Defensiva", desc: "Mitigación de riesgos" },
-                        { id: "zone-ofensiva", title: "Estrategia Ofensiva", desc: "Generación de valor" }
+                        { id: "zone-seudo", title: "Seudonimización", desc: "" },
+                        { id: "zone-supresion", title: "Supresión de variables", desc: "" },
+                        { id: "zone-generalizacion", title: "Generalización", desc: "" },
+                        { id: "zone-defensa", title: "Estrategia Defensiva", desc: "" },
+                        { id: "zone-ofensiva", title: "Estrategia Ofensiva", desc: "" }
                     ],
-                    feedbackSuccess: "¡Correcto! Has emparejado cada técnica de seguridad y desidentificación de forma impecable.",
-                    script: "Realiza el primer ejercicio interactivo final clasificando las técnicas de seguridad e iniciativas según correspondan."
+                    feedbackSuccess: "¡Correcto! Has identificado correctamente cada técnica de seguridad y privacidad aplicada a casos reales de Osinergmin.",
+                    script: "Realiza el primer ejercicio interactivo clasificando cada escenario operativo de Osinergmin según la técnica o estrategia de seguridad que corresponde."
                 },
                 {
                     type: "fillin",
@@ -3601,23 +3873,23 @@
                 },
                 {
                     type: "adventure",
-                    title: "Ejercicio 3: Caso Práctico - Decisión Ética en IA",
-                    instruction: "Analiza el escenario ético y selecciona el curso de acción que cumpla con los principios de privacidad y equidad en Osinergmin.",
-                    scenario: "Tu equipo de Inteligencia Artificial está creando un modelo para automatizar el primer filtro de contratación de personal en Osinergmin. Te piden la base de datos histórica de los últimos 20 años de contrataciones, que contiene las direcciones exactas de los candidatos, género y edades.",
+                    title: "Ejercicio 3: Dilema de Ética Algorítmica - Ceguera vs Gobernanza Activa",
+                    instruction: "Analiza el escenario ético y selecciona el curso de acción que realmente evite la discriminación algorítmica en Osinergmin.",
+                    scenario: "Tu equipo de Inteligencia Artificial está creando un modelo para automatizar el primer filtro de contratación de personal en Osinergmin. Te piden la base de datos histórica de los últimos 20 años de contrataciones, que contiene variables como la universidad de procedencia, código postal, género y edad. ¿Cómo tratas estas variables para evitar que el algoritmo discrimine?",
                     options: [
                         {
-                            text: "Les entrego la base de datos completa inmediatamente para que el algoritmo sea lo más exacto posible.",
+                            text: "Eliminar por completo las columnas de 'género' y 'edad' del conjunto de datos antes de entregarlo al equipo de IA. Si el algoritmo no puede ver estos datos sensibles durante su entrenamiento, es matemáticamente imposible que tome decisiones discriminatorias basadas en ellos.",
                             correct: false,
-                            feedback: "¡Cuidado! Si entregas datos históricos crudos, la IA heredará y amplificará de forma invisible los sesgos de género o demográficos del pasado, discriminando a los nuevos postulantes, además de violar la Ley 29733 al exponer datos personales innecesarios."
+                            feedback: "¡Cuidado! Esta es la trampa de la 'Ceguera de Datos'. Aunque suene lógico, la IA puede inferir el género o la edad a través de variables proxy como la universidad de procedencia o el código postal (distritos históricamente segregados). Si borras los datos sensibles pero no auditas el modelo, la IA discriminará igual y tú no podrás detectarlo porque eliminaste las variables de control. La opción correcta no es borrar, sino generalizar y auditar."
                         },
                         {
-                            text: "Ejecuto un proceso de generalización de variables (rango de edades y distritos de residencia) y audito la calidad del dato para asegurar que el modelo no genere discriminación antes de entrenarlo.",
+                            text: "Aplicar generalización de variables (convertir edades en rangos amplios y direcciones en macrorregiones). Además, mantener la variable 'género' en un entorno de prueba aislado estrictamente para medir y corregir los sesgos históricos que el algoritmo intente replicar a través de variables secundarias (como la universidad de procedencia).",
                             correct: true,
-                            feedback: "¡Excelente decisión! Estás garantizando el uso ético y equitativo de la IA, aplicando privacidad y seguridad desde el diseño, y mitigando el riesgo regulatorio y de sesgo algorítmico mediante control humano (Human-in-the-loop)."
+                            feedback: "¡Excelente decisión! Has aplicado 'Gobernanza Activa'. Al generalizar los datos sensibles y conservar una muestra controlada para auditar, puedes detectar si la IA está usando variables proxy para discriminar indirectamente. Esto es lo que exige la ética algorítmica real: no ceguera, sino transparencia y medición activa del sesgo (Human-in-the-loop)."
                         }
                     ],
-                    feedbackSuccess: "¡Felicitaciones! Has culminado el curso asegurando la protección integral del ciudadano y la gobernanza ética en Osinergmin.",
-                    script: "Finalmente, lee el escenario del filtro algorítmico y toma la decisión de gobernanza ética y control de sesgo."
+                    feedbackSuccess: "¡Felicitaciones! Has comprendido el verdadero dilema de la ética algorítmica: no se trata de ocultar datos, sino de auditar activamente para evitar que la IA replique discriminación histórica mediante variables proxy.",
+                    script: "Finalmente, lee el escenario del filtro algorítmico y elige entre la 'Ceguera de Datos' (trampa intuitiva) y la 'Gobernanza Activa' (solución correcta) que enseña el concepto de variables proxy en IA."
                 },
                 {
                     type: "completion",
@@ -4252,7 +4524,7 @@
         setTimeout(() => {
             buttonEl.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #22c55e;"></i> <span>¡Listo!</span>`;
             
-            const blob = new Blob([`Mockup PDF de descarga para: ${filename}\nUniversidad Corporativa Osinergmin\nCurso: Estrategia y Gestión de Activos de Información (Gobierno de Datos)`], { type: 'text/plain' });
+            const blob = new Blob([`Mockup PDF de descarga para: ${filename}\nUniversidad Corporativa Osinergmin\nCurso: Gobierno de Datos: Fundamentos y Aplicaciones (Gobierno de Datos)`], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -4558,6 +4830,76 @@
                 button.style.transform = 'scale(0.9)';
                 setTimeout(() => { button.style.transform = 'none'; }, 150);
             }
+        }
+    };
+
+    window.auditarVersion = function(opt) {
+        const feedback = document.getElementById('audit-feedback');
+        const btnActual = document.querySelector('button[onclick*=\"actual\"]');
+        const btnCodigo = document.querySelector('button[onclick*=\"codigo\"]');
+        const btnV1 = document.getElementById('btn-version-v1');
+        
+        if (opt === 'v1') {
+            feedback.innerHTML = '<span style=\"color:#10b981;font-weight:700;\">✅ ¡Correcto! Solo a través del versionado exacto (Dataset Versión 1.0) podemos auditar qué información histórica sesgó o desvió la predicción del algoritmo. El versionado es una exigencia de ética algorítmica y reproducibilidad.</span>';
+            document.getElementById('btn-version-v1').style.borderColor = '#10b981';
+            document.getElementById('btn-version-v1').style.background = 'rgba(16,185,129,0.2)';
+        } else if (opt === 'actual') {
+            feedback.innerHTML = '<span style=\"color:#f87171;font-weight:700;\">❌ Incorrecto. El Dataset Actual contiene datos nuevos que la IA no usó para entrenarse. No puedes auditar una decisión pasada con datos del presente. Necesitas la versión histórica exacta.</span>';
+        } else {
+            feedback.innerHTML = '<span style=\"color:#f87171;font-weight:700;\">❌ Incorrecto. El Código Fuente te dice cómo procesa la IA, pero no qué datos específicos la alimentaron. Sin el dataset exacto de la versión 1.0, no puedes auditar si el error vino de los datos históricos.</span>';
+        }
+    };
+
+    // Módulo 4: Interactive Dimension Diagnostic
+    window._casoSeleccionado = null;
+    window.seleccionarCaso = function(caso) {
+        document.querySelectorAll('.dim-caso').forEach(el => {
+            el.classList.remove('dim-caso-selected');
+            el.style.borderColor = 'rgba(255,255,255,0.15)';
+        });
+        const el = document.getElementById('dim-caso-' + caso.toLowerCase());
+        if (el) {
+            el.classList.add('dim-caso-selected');
+            el.style.borderColor = '#60a5fa';
+        }
+        window._casoSeleccionado = caso;
+        const fb = document.getElementById('dim-diagnostic-feedback');
+        if (fb) fb.innerHTML = 'Caso ' + caso + ' seleccionado. Ahora elige la dimensión.';
+    };
+    window.diagnosticarDimension = function(dim) {
+        const caso = window._casoSeleccionado;
+        const fb = document.getElementById('dim-diagnostic-feedback');
+        if (!caso) {
+            if (fb) fb.innerHTML = '<span style=\"color:#f87171;\">⚠️ Primero haz clic en un caso (A, B o C).</span>';
+            return;
+        }
+        const respuestas = { A: 'validez', B: 'consistencia', C: 'exactitud' };
+        const casoEl = document.getElementById('dim-caso-' + caso.toLowerCase());
+        const correcta = respuestas[caso];
+        if (dim === correcta) {
+            if (casoEl) {
+                casoEl.style.background = 'rgba(16,185,129,0.15)';
+                casoEl.style.borderColor = '#10b981';
+                casoEl.style.cursor = 'default';
+                casoEl.onclick = null;
+            }
+            if (fb) fb.innerHTML = '<span style=\"color:#10b981;font-weight:700;\">✅ ¡Correcto! Caso ' + caso + ' es una falla de <strong>' + dim.charAt(0).toUpperCase() + dim.slice(1) + '</strong>.</span>';
+            window._casoSeleccionado = null;
+            // Check if all 3 solved
+            const restantes = document.querySelectorAll('.dim-caso[onclick]');
+            if (restantes.length === 0 && fb) {
+                fb.innerHTML = '<span style=\"color:#34d399;font-weight:700;\">🎉 ¡Diagnóstico completo! Has clasificado correctamente los 3 casos. Ahora sabes identificar Exactitud, Consistencia y Validez en escenarios reales de Osinergmin.</span>';
+            }
+        } else {
+            if (casoEl) {
+                casoEl.style.background = 'rgba(239,68,68,0.15)';
+                casoEl.style.borderColor = '#ef4444';
+                setTimeout(() => {
+                    casoEl.style.background = 'rgba(255,255,255,0.04)';
+                    casoEl.style.borderColor = 'rgba(255,255,255,0.15)';
+                }, 600);
+            }
+            if (fb) fb.innerHTML = '<span style=\"color:#f87171;font-weight:700;\">❌ Incorrecto. El Caso ' + caso + ' no corresponde a <strong>' + dim.charAt(0).toUpperCase() + dim.slice(1) + '</strong>. Relee el escenario e intenta de nuevo.</span>';
         }
     };
 

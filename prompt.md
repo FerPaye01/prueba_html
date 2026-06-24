@@ -10,7 +10,7 @@ Este artefacto contiene el **prompt exacto y estructurado** listo para copiar y 
 ## Copia y Pega el Siguiente Prompt en la IA Externa:
 
 ```text
-Actúa como un Diseñador Instruccional Senior y Guionista Experto en Aprendizaje Corporativo y Sector Público. Tu objetivo es redactar los guiones de locución y video (de 3 a 5 minutos por módulo) para los 6 módulos del curso "Estrategia y Gestión de Activos de Información" (Gobierno de Datos) de la institución Osinergmin.
+Actúa como un Diseñador Instruccional Senior y Guionista Experto en Aprendizaje Corporativo y Sector Público. Tu objetivo es redactar los guiones de locución y video (de 3 a 5 minutos por módulo) para los 6 módulos del curso "Gobierno de Datos: Fundamentos y Aplicaciones" (Gobierno de Datos) de la institución Osinergmin.
 
 Cada guión debe ser didáctico, comprensivo, cercano y empático, explicando conceptos complejos mediante analogías cotidianas y preparándolos directamente para resolver los ejercicios interactivos y las evaluaciones correspondientes.
 
@@ -49,10 +49,10 @@ Cada guión debe ser didáctico, comprensivo, cercano y empático, explicando co
   * Desarrollar el principio Once-Only (Una sola vez) para trámites de interoperabilidad.
 
 #### MÓDULO 4: Gestión de la Calidad y Estandarización
-- Eje Teórico: Dimensiones de calidad (exactitud, completitud, validez de formato, coherencia lógica, oportunidad, integridad técnica). Efecto GIGO (Garbage In, Garbage Out) en ventanillas públicas. Automatización vs parches en Excel.
+- Eje Teórico: Dimensiones de calidad (exactitud, completitud, consistencia, oportunidad, validez, unicidad). Efecto GIGO (Garbage In, Garbage Out) en ventanillas públicas. Automatización vs parches en Excel.
 - Alineación Práctica (Para Ejercicios/Examen):
   * Explicar el efecto GIGO: si ingresas basura al sistema, obtendrás reportes y políticas "basura".
-  * Explicar las fallas de calidad más comunes: Validez (letras en campos de DNI), Coherencia (datos que no cuadran en distintos sistemas), Integridad (pérdida de datos en el viaje/caída de red) y Oportunidad (datos desactualizados).
+  * Explicar las fallas de calidad más comunes: Validez (letras en campos de DNI), Consistencia (datos que no cuadran en distintos sistemas), Unicidad (registros duplicados sin control) y Oportunidad (datos desactualizados).
   * Destacar que corregir Exceles manualmente es insostenible; se deben usar validaciones automatizadas y atacar la causa raíz del error en el formulario de origen.
 
 #### MÓDULO 5: Metadatos, Documentación y Trazabilidad

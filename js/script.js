@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 videoLabel: "VALOR Y CONFIANZA",
                 desc: "En este módulo aprenderás que la calidad del dato es lo que determina su verdadero valor estratégico.",
                 details: [
-                    { title: "6 Dimensiones", icon: "fa-vial-circle-check", color: "var(--accent-blue)", text: "Exactitud, integridad, consistencia, validez, oportunidad y unicidad." },
+                    { title: "6 Dimensiones", icon: "fa-vial-circle-check", color: "var(--accent-blue)", text: "Exactitud, completitud, consistencia, validez, oportunidad y unicidad." },
                     { title: "Limpieza (Cleansing)", icon: "fa-broom", color: "var(--accent-green)", text: "Técnicas para mitigar valores nulos y registros duplicados." },
                     { title: "Mejora Continua", icon: "fa-arrows-rotate", color: "#a855f7", text: "Pasar de correcciones reactivas a un control proactivo automatizado." }
                 ]

@@ -51,17 +51,13 @@ Bajo el enfoque de **Gobernanza de Datos No Invasiva** (Robert S. Seiner), no se
 ### 3. Contenido Visual del Curso (Mockup):
 
 * **Pantalla 1:**
-  * **Visual:** De la Granja a la Mesa - Iconos de un agricultor/granja, un camión logístico, un supervisor en tienda y un chef de cocina.
+  * **Visual:** Pipeline CSS con 3 etapas: Granja (icono trigo + etiqueta "Negocio") → flecha → Camión (icono truck + "TI") → flecha → Mesa (icono cubiertos + "Consumidor"). Cada etapa tiene un círculo con borde de color y texto descriptivo.
   * **Título:** ¿Quién cocina nuestros datos?
-  * **Contenido:** Infografía que relaciona la cadena de suministro alimentaria con los 8 roles de Gobierno de Datos. Demuestra que TI (el transportista) solo gestiona infraestructura, mientras que el Negocio (el dueño de la granja) define el significado, propósito y reglas.
+  * **Contenido:** La cadena de suministro de datos desde el Negocio (define reglas) hasta el ciudadano, pasando por TI (infraestructura). Lección clave: TI no es dueño del significado del dato.
 * **Pantalla 2:**
-  * **Visual:** Estructura y Jerarquía de Roles de Gobierno de Datos - Un organigrama interactivo que separa el Nivel Estratégico y de Coordinación (Alta Dirección, OGD, Líder del Dato) del Nivel Funcional de Negocio (Dueño, Gestor) y Técnico/Analítico/Consumo (Custodio, Equipo BI, Usuario).
-  * **Título:** El Organigrama y Oficial de Gobierno de Datos (OGD).
-  * **Contenido:** El OGD no programa bases de datos ni posee la información del negocio. Actúa como el director de la orquesta que coordina transversalmente a los demás roles para convertir los silos en una sinfonía corporativa.
-* **Pantalla 3:**
-  * **Visual:** Tres organigramas conceptuales (uno concentrado en un punto, otro disperso y uno interconectado en red).
+  * **Visual:** Tres tarjetas CSS (Centralizado = azul con icono de edificio, Descentralizado = ámbar con icono de silos, Federado/Híbrido = verde con icono de balanza, destacado con borde doble). Cada una incluye descripción, ventaja/riesgo y una etiqueta de "recomendado" en el modelo federado.
   * **Título:** Eligiendo nuestro Modelo Operativo.
-  * **Contenido:** Comparación rápida de los enfoques Centralizado, Descentralizado y Federado (Híbrido) para la toma de decisiones ágiles sobre datos en la institución pública.
+  * **Contenido:** Comparación de los enfoques Centralizado (control único, cuellos de botella), Descentralizado (autonomía total, silos) y Federado/Híbrido (balance ideal, directrices comunes con flexibilidad local).
 
 ---
 

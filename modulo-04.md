@@ -21,15 +21,22 @@ Este material se presentará como un paquete interactivo tipo SCORM que incluye 
 
 ### 2. Texto Didáctico Específico del Curso:
 
-#### La Analogía del Coche Nuevo y la Calidad del Dato
-Imagina que estás comprando un coche nuevo. Exiges que esté construido con materiales de primera, que sus funciones de seguridad operen a la perfección y que sea altamente fiable. Al plantearnos usar datos en el Estado para tomar decisiones o estructurar políticas públicas, también debemos exigir garantías mínimas y asegurar una alta calidad evaluando su completitud, exactitud, consistencia, validez, puntualidad e integridad. 
+#### La Analogía de la Planta de Tratamiento y la Calidad del Dato
+Imagina que llenas un vaso con agua directamente de un río turbio. Sin filtros, el agua está contaminada y no es apta para consumo. De la misma forma, si usamos datos sin aplicar controles de calidad, las decisiones y políticas públicas que diseñemos llegarán "contaminadas" al ciudadano.
 
-Si ingresamos "basura" a nuestros sistemas, las políticas públicas que diseñemos serán "basura" (efecto GIGO - *Garbage In, Garbage Out*). En el sector público, esto tiene un impacto directo y doloroso en el ciudadano. Por ejemplo, si en la lista de beneficiarios de un Bono de asistencia el nombre de un ciudadano tiene un error de tipeo y no coincide con su DNI, ese ciudadano no podrá cobrar el subsidio, afectando su bienestar. 
+El **estándar ISO/IEC 25000** define el modelo general de calidad de datos, estableciendo las dimensiones que todo dato debe cumplir: exactitud, completitud, consistencia, validez, oportunidad y unicidad. En el Perú, el **Eje 2 de la Estrategia Nacional de Gobierno de Datos 2026-2030** exige que toda entidad pública implemente controles de calidad en origen.
 
-Para evitar esto, los programas de calidad de datos ayudan a garantizar que los usuarios reciban información completa, precisa y a tiempo. Además, las entidades deben implantar controles para asegurar:
-1. **La validez:** Detectando errores operativos de introducción manual de datos.
-2. **La coherencia:** Garantizando que el dato sea el mismo en todos los sistemas.
-3. **La integridad:** Monitorizando posibles errores técnicos mientras el dato viaja.
+Los filtros de calidad —basados en el **PI-59 de Osinergmin** y en el marco internacional— transforman el dato crudo en información confiable. Si ingresamos "basura" a nuestros sistemas, las decisiones serán "basura" (efecto GIGO - *Garbage In, Garbage Out*). En el sector público, esto tiene un impacto directo en el ciudadano: un error de tipeo en un DNI puede bloquear la entrega de un bono de asistencia.
+
+#### Las Seis Dimensiones de Calidad
+Para evaluar la calidad de un dato, debemos medirlo contra seis dimensiones:
+
+1. **Exactitud:** ¿El dato refleja correctamente la realidad? Ejemplo: las coordenadas GPS de una estación de servicio no deben apuntar al mar si la estación está en una avenida.
+2. **Completitud:** ¿Falta algún campo obligatorio? Ejemplo: un expediente de reclamo sin número de teléfono de contacto del ciudadano.
+3. **Consistencia:** ¿El dato coincide en todos los sistemas? Ejemplo: un operador que figura como "Habilitado" en Fiscalización pero como "Inactivo" en Administración.
+4. **Oportunidad:** ¿El dato está disponible a tiempo para la toma de decisiones? Ejemplo: querer analizar el precio de combustibles de esta semana pero tener datos de hace 3 años.
+5. **Validez:** ¿El formato y tipo de dato son correctos? Ejemplo: un campo RUC que permite guardar solo 5 dígitos en lugar de los 11 obligatorios.
+6. **Unicidad:** ¿Hay registros duplicados? Ejemplo: una misma estación de servicio registrada dos veces con IDs distintos en la base de datos.
 
 #### De la Corrección Manual a la Automatización Escalar
 Históricamente, las entidades públicas corrigen los errores a mano en hojas de cálculo una vez que se han detectado (enfoque reactivo). Los expertos en gobernanza de datos advierten que esto no es sostenible ni escalable a largo plazo. 
@@ -40,18 +47,26 @@ La gestión de la calidad de datos debe realizarse mediante la creación de regl
 
 ### 3. Contenido Visual del Curso (Mockup):
 
-* **Pantalla 1:**
-  * **Visual:** Un coche deportivo brillante vs. un coche averiado o un ciudadano frustrado en una ventanilla de atención.
-  * **Título:** ¿Conducirías a ciegas? El Impacto de la Mala Calidad.
-  * **Contenido:** Así como al buscar un coche nuevo el requisito mínimo es la alta calidad y fiabilidad, al utilizar datos para Osinergmin debemos exigir garantías. Tomar decisiones con datos sin evaluar es como conducir un coche averiado. Un error de tipeo no es solo un problema técnico; es un trámite rechazado, una subvención no cobrada y una insatisfacción directa del ciudadano.
-* **Pantalla 2:**
-  * **Visual:** Un panel de control de un auto con 6 medidores iluminados.
-  * **Título:** El Tablero de la Calidad (Dimensiones).
-  * **Contenido:** Todo dato estratégico debe pasar la revisión de nuestros medidores: ¿Es exacto y completo? ¿Cumple con la validez de formato (ej. RUC de 11 dígitos)? ¿Mantiene su integridad y coherencia lógica al viajar por los distintos sistemas de la entidad?
-* **Pantalla 3:**
-  * **Visual:** Un robot escaneando un radar en una fábrica vs. una persona barriendo con una escoba.
-  * **Título:** Automatizar para Escalar (Mejora Continua).
-  * **Contenido:** No podemos depender de correcciones manuales eternas. Para que la calidad del dato crezca, debemos usar soluciones automatizadas que detecten valores nulos de forma proactiva, perfilen la base de datos y reporten excepciones atacando siempre la causa raíz del error.
+* **Pantalla 1 (Slide 3) - La Calidad y el Impacto en el Ciudadano:**
+  * **Visual:** Analogía de la Planta de Tratamiento de Agua. Izquierda: ícono de agua turbia (río) → filtros → agua potable. Derecha: dos tarjetas con ISO/IEC 25000 y Eje 2 de la Estrategia Nacional de Gobierno de Datos 2026-2030.
+  * **Título:** La Calidad y el Impacto en el Ciudadano
+  * **Contenido:** El dato crudo es como agua turbia de río. Sin filtros de calidad (PI-59, ISO 25000, Eje 2), las decisiones públicas llegan contaminadas al ciudadano.
+* **Pantalla 2 (Slide 4) - De la Corrección Manual a la Automatización Escalar:**
+  * **Visual:** Dos columnas: Controles Clave (Validez, Coherencia, Integridad) vs. Mejores Prácticas de Automatización.
+  * **Título:** De la Corrección Manual a la Automatización Escalar
+  * **Contenido:** Se deben definir reglas de calidad y perfilamientos automatizados que descubran anomalías en origen.
+* **Pantalla 3 (Slide 5) - ¿Conducirías a ciegas?:**
+  * **Visual:** Imagen de un coche deportivo brillante vs. coche averiado.
+  * **Título:** ¿Conducirías a ciegas? El Impacto de la Mala Calidad
+  * **Contenido:** Tomar decisiones con datos sin evaluar es como conducir un coche averiado. Un error de tipeo no es solo un problema técnico; es un trámite rechazado.
+* **Pantalla 4 (Slide 6) - El Tablero de la Calidad (Dimensiones):**
+  * **Visual:** Grilla de 6 tarjetas (Exactitud, Completitud, Consistencia, Oportunidad, Validez, Unicidad) cada una con un ejemplo concreto de Osinergmin. Debajo, un interactivo embebido "Diagnóstico Rápido: ¿Qué dimensión falla?" con 3 casos (A = Validez, B = Consistencia, C = Exactitud) y botones de selección que dan feedback inmediato.
+  * **Título:** El Tablero de la Calidad (Dimensiones)
+  * **Contenido:** Las 6 dimensiones de ISO 25000 con ejemplos prácticos. El interactivo permite al usuario diagnosticar fallas de calidad en escenarios reales.
+* **Pantalla 5 (Slide 7) - Automatizar para Escalar (Mejora Continua):**
+  * **Visual:** Robot escaneando un radar vs. persona barriendo con escoba.
+  * **Título:** Automatizar para Escalar (Mejora Continua)
+  * **Contenido:** Debemos usar soluciones automatizadas que perfilen la base de datos y reporten excepciones atacando siempre la causa raíz.
 
 ---
 
@@ -59,11 +74,13 @@ La gestión de la calidad de datos debe realizarse mediante la creación de regl
 
 ### Ejercicio 1: Nivel Comprender - "Los Medidores del Coche" (Drag & Drop)
 * **Instrucción:** Arrastra la situación de negocio hacia la dimensión o tipo de falla de calidad que representa.
-* **Asociaciones:**
+* **Asociaciones (6 dimensiones):**
   * *El sistema de registro de estaciones de servicio acepta que el usuario guarde el campo de correo electrónico sin el símbolo @ y permite ingresar un RUC de solo 5 dígitos en lugar de 11.* $\rightarrow$ **Falla de Validez**
-  * *Al contrastar el padrón de empresas autorizadas, la Gerencia de Fiscalización encuentra que un mismo operador aparece activo con el estado de "Habilitado", pero en el sistema de Administración figura como "Inactivo".* $\rightarrow$ **Falla de Coherencia**
-  * *Durante la migración nocturna de los expedientes de sanciones hacia el repositorio central, el proceso falló a la mitad, dejando registros huérfanos sin su respectivo historial de resoluciones adjunto.* $\rightarrow$ **Falla de Integridad**
+  * *Al contrastar el padrón de empresas autorizadas, la Gerencia de Fiscalización encuentra que un mismo operador aparece activo con el estado de "Habilitado", pero en el sistema de Administración figura como "Inactivo".* $\rightarrow$ **Falla de Consistencia**
+  * *Al revisar el padrón de estaciones de servicio, el analista detecta que la "Estación Los Olivos" aparece registrada 3 veces con códigos distintos y direcciones ligeramente diferentes.* $\rightarrow$ **Falla de Unicidad**
   * *El equipo de analítica necesita calcular el índice de variación del precio de los combustibles de esta semana para un reporte de la Alta Dirección, pero la última actualización de la base de datos es de hace tres meses.* $\rightarrow$ **Falla de Oportunidad**
+  * *El equipo de catastro encuentra que las coordenadas GPS registradas para 15 estaciones de servicio apuntan al océano Pacífico, a 3 km de la ubicación real verificada en campo.* $\rightarrow$ **Falla de Exactitud**
+  * *Al revisar la base de datos de reclamos, el analista descubre que el campo "Dirección del Domicilio del Reclamante" está vacío en el 40% de los registros del último trimestre.* $\rightarrow$ **Falla de Completitud**
 
 ### Ejercicio 2: Nivel Aplicar - "Escalando la Calidad" (Rellenar espacios en blanco)
 * **Texto a completar:**
@@ -78,6 +95,14 @@ La gestión de la calidad de datos debe realizarse mediante la creación de regl
   * **Opción B:** Analizo la causa raíz y coordino con TI para parametrizar el formulario de ingreso del sistema web con un calendario desplegable obligatorio (regla de validez de formato), impidiendo que el error entre al sistema desde la ventanilla origen.
     * *Feedback (Correcto/Seguro):* ¡Excelente! Has aplicado control de calidad en el origen. Has garantizado la dimensión de "Validez" y evitado futuros reprocesos mediante un control preventivo automatizado.
 
+### Interactivo Embebido en Slide 6: Diagnóstico Rápido de Dimensiones (Nivel Comprender/Aplicar)
+* **Descripción:** Durante la navegación del Slide 6 ("El Tablero de la Calidad"), el usuario encuentra 3 tarjetas de casos reales y 6 botones de dimensión. Debe seleccionar un caso y luego la dimensión correcta.
+* **Casos:**
+  * **Caso A (Respuesta: Validez):** "El formulario web de registro de estaciones permite guardar el campo 'RUC' aunque tenga solo 5 dígitos."
+  * **Caso B (Respuesta: Consistencia):** "Un operador logístico figura como 'Habilitado' en Fiscalización pero como 'Inactivo' en Administración."
+  * **Caso C (Respuesta: Exactitud):** "Las coordenadas GPS de una estación de servicio apuntan al océano Pacífico en vez de la Av. Principal registrada en el expediente."
+* **Feedback:** Correcto: tarjeta se vuelve verde. Incorrecto: tarjeta parpadea rojo y permite reintentar. Al completar los 3: mensaje de celebración.
+
 ---
 
 ## COMPONENTE 3: BANCO DE PREGUNTAS TIPO EXAMEN (Pool para LMS)
@@ -85,11 +110,11 @@ La gestión de la calidad de datos debe realizarse mediante la creación de regl
 El sistema seleccionará 5 preguntas al azar por cada intento del usuario.
 
 #### Pregunta 1
-Utilizando la analogía de la compra de un coche nuevo, ¿qué debemos exigir al momento de plantearnos usar datos en nuestra organización?
-* a) Que los datos se almacenen en servidores físicos desconectados de internet.
-* **b) Asegurar una alta calidad evaluando la completitud, la exactitud, la consistencia, la validez, la puntualidad y la integridad.** (Correcta)
-* c) Que los datos sean propiedad exclusiva del departamento de TI.
-* d) Que todos los datos se recopilen de forma manual sin intervención de software.
+Utilizando la analogía de la planta de tratamiento de agua, ¿qué debemos hacer con los datos antes de usarlos para tomar decisiones en nuestra organización?
+* a) Almacenarlos en servidores físicos desconectados de internet.
+* **b) Aplicar filtros de calidad evaluando exactitud, completitud, consistencia, oportunidad, validez y unicidad.** (Correcta)
+* c) Entregarlos al departamento de TI sin ningún tratamiento previo.
+* d) Recopilarlos todos de forma manual sin intervención de software.
 
 #### Pregunta 2
 De acuerdo con los estándares internacionales de calidad de datos, ¿qué dimensión se encarga específicamente de garantizar que el dato sea exactamente el mismo en todos los sistemas de la empresa (evitando contradicciones)?
@@ -136,7 +161,7 @@ En el contexto del sector público (Eje 2 de la Estrategia Nacional), ¿qué imp
 #### Pregunta 8
 Si en el formulario oficial de denuncias en línea el ciudadano deja en blanco el campo obligatorio "Dirección del Incidente", estamos ante un problema de:
 * a) Consistencia.
-* **b) Completitud / Integridad.** (Correcta)
+* **b) Completitud.** (Correcta)
 * c) Seguridad.
 * d) Trazabilidad.
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>01. Estructura del Curso - Gobierno de Datos | Osinergmin</title>
-    <meta name="description" content="Sección 01: Estructura del curso de Estrategia y Gestión de Activos de Información - Universidad Corporativa Osinergmin.">
+    <meta name="description" content="Sección 01: Estructura del curso de Gobierno de Datos: Fundamentos y Aplicaciones - Universidad Corporativa Osinergmin.">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/theme.js"></script>
@@ -315,7 +315,7 @@
                     <i class="fa-solid fa-database hero-center-icon"></i>
                     <div class="hero-bottom">
                         <span class="hero-badge">Programa de Inducción - Nuestra Energía por el Perú</span>
-                        <h2>Estrategia y Gestión de Activos de Información</h2>
+                        <h2>Gobierno de Datos: Fundamentos y Aplicaciones</h2>
                         <p class="hero-sub">Curso desarrollado por la Oficina de Gobierno de Datos para Osinergmin</p>
                         <div class="hero-progress-row">
                             <div class="hero-bar"><div class="hero-bar-fill" style="width:15%;"></div></div>
@@ -368,7 +368,7 @@
                         En el contexto actual, donde la transformación digital del Estado avanza de manera acelerada, los datos se han convertido en el activo estratégico más valioso de las organizaciones públicas. Osinergmin, como organismo regulador del sector energético y minero, genera y gestiona grandes volúmenes de información que requieren ser tratados con rigor, coherencia y criterios técnicos bien definidos.
                     </p>
                     <p class="block-text">
-                        El curso de <strong>Estrategia y Gestión de Activos de Información</strong> ha sido diseñado para dotar a los colaboradores de Osinergmin con los conocimientos y herramientas necesarios para comprender qué es el Gobierno de Datos, por qué es prioritario en el marco normativo peruano vigente y cómo se implementa de forma práctica en una institución pública. Al concluir este recorrido formativo, cada participante estará en condiciones de contribuir activamente a una cultura organizacional basada en datos de calidad y uso responsable de la información.
+                        El curso de <strong>Gobierno de Datos: Fundamentos y Aplicaciones</strong> ha sido diseñado para dotar a los colaboradores de Osinergmin con los conocimientos y herramientas necesarios para comprender qué es el Gobierno de Datos, por qué es prioritario en el marco normativo peruano vigente y cómo se implementa de forma práctica en una institución pública. Al concluir este recorrido formativo, cada participante estará en condiciones de contribuir activamente a una cultura organizacional basada en datos de calidad y uso responsable de la información.
                     </p>
                 </div>
 
@@ -431,19 +431,26 @@
 </footer>
 
 <!-- Floating buttons -->
-<div class="float-btns">
-    <button class="float-btn up" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba">
-        <i class="fa-solid fa-chevron-up"></i>
-    </button>
-    <button class="float-btn expand" title="Pantalla completa">
-        <i class="fa-solid fa-expand"></i>
-    </button>
-    <button class="float-btn help" title="Ayuda">
-        <i class="fa-solid fa-question"></i>
-    </button>
-</div>
+    <div class="float-btns">
+        <button class="float-btn tts-btn" onclick="TTS.toggle(TTS.getPageText())" title="Escuchar contenido" style="background:#059669;">
+            <i class="fa-solid fa-volume-high"></i>
+        </button>
+        <button class="float-btn up" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba">
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
+        <button class="float-btn expand" title="Pantalla completa">
+            <i class="fa-solid fa-expand"></i>
+        </button>
+        <button class="float-btn help" title="Ayuda">
+            <i class="fa-solid fa-question"></i>
+        </button>
+        <button class="float-btn" onclick="TTS.configure()" title="Configurar TTS" style="background:#4b5563;">
+            <i class="fa-solid fa-gear"></i>
+        </button>
+    </div>
 
-<script>
+    <script src="js/tts.js"></script>
+    <script>
     function toggleSection(el) {
         el.classList.toggle('open');
         const body = el.nextElementSibling;

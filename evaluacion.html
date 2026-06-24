@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evaluación - Gobierno de Datos | Osinergmin</title>
-    <meta name="description" content="Evaluación de refuerzo del curso de Estrategia y Gestión de Activos de Información - Universidad Corporativa Osinergmin.">
+    <meta name="description" content="Evaluación de refuerzo del curso de Gobierno de Datos: Fundamentos y Aplicaciones - Universidad Corporativa Osinergmin.">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/theme.js"></script>
@@ -818,6 +818,36 @@
                     opts: ["El consumo de datos por parte de Científicos de Datos para modelos predictivos, analítica avanzada, Inteligencia Artificial y Dashboards directivos.", "La recepción de datos crudos (Raw Data) desde las ventanillas de atención.", "Archivar expedientes físicos inactivos o listos para destrucción.", "Alojar copias de seguridad de sistemas legados."],
                     correct: 0,
                     feedback: "La Capa Azul (Oro) contiene los Productos de Datos terminados y optimizados listos para su explotación inteligente analítica."
+                },
+                {
+                    q: "¿Qué plataforma tecnológica del Estado peruano permite el intercambio automático y seguro de datos entre los sistemas de diferentes instituciones públicas?",
+                    opts: ["La Plataforma Nacional de Datos Abiertos (PNDA).", "GeoPerú.", "La Plataforma de Interoperabilidad del Estado (PIDE).", "El Sistema Nacional de Archivos."],
+                    correct: 2,
+                    feedback: "La PIDE es la plataforma central de interoperabilidad que conecta los sistemas de las entidades del Estado peruano de forma automática y segura mediante APIs."
+                },
+                {
+                    q: "Si una entidad pública necesita realizar un análisis territorial y cruzar capas de información geoespacial (como ubicación de hospitales y carreteras), ¿qué plataforma nacional debe alimentar o consultar?",
+                    opts: ["PIDE.", "El portal de Datos Abiertos.", "GeoPerú.", "El catálogo de Datos Maestros de la SUNAT."],
+                    correct: 2,
+                    feedback: "GeoPerú es la plataforma nacional de análisis territorial que integra capas geoespaciales para visualizar y cruzar información sobre el mapa del Perú."
+                },
+                {
+                    q: "En el contexto de la interoperabilidad técnica y los servicios web (APIs), ¿cuáles son los formatos estándar abiertos más utilizados para intercambiar información estructurada?",
+                    opts: ["Archivos PDF y documentos DOCX de Word.", "Archivos JSON y documentos XML.", "Formatos de video MP4 y AVI.", "Archivos CAD y ejecutables EXE."],
+                    correct: 1,
+                    feedback: "JSON y XML son los formatos de texto universales y ligeros que permiten el intercambio estructurado de datos entre sistemas a través de APIs."
+                },
+                {
+                    q: "Según la normativa peruana, ¿qué entidad es la administradora dueña del Dato Maestro referente a la 'Actividad Económica' y los códigos de 'Ubigeo'?",
+                    opts: ["El Registro Nacional de Identificación y Estado Civil (RENIEC).", "La Superintendencia Nacional de Aduanas y de Administración Tributaria (SUNAT).", "El Instituto Nacional de Estadística e Informática (INEI).", "El Ministerio de Economía y Finanzas."],
+                    correct: 2,
+                    feedback: "El INEI es la entidad rectora del Dato Maestro de Ubigeo y los códigos de actividad económica a nivel nacional."
+                },
+                {
+                    q: "¿Cuál es el beneficio de publicar bases de datos en la Plataforma Nacional de Datos Abiertos (PNDA) para el ecosistema tecnológico?",
+                    opts: ["Ocultar la información ante auditorías o revisiones periodísticas.", "Limitar las descargas únicamente a empresas internacionales autorizadas.", "Democratizar la información, permitiendo que investigadores, la academia y el sector privado reutilicen los datos para crear soluciones que generen valor público.", "Asegurar que solo el área de TI pueda leer la base de datos institucional."],
+                    correct: 2,
+                    feedback: "La PNDA permite que la información pública no confidencial sea reutilizada por la sociedad para generar innovación, investigación y valor público."
                 }
             ]
         },
@@ -869,7 +899,7 @@
                 },
                 {
                     q: "Si en el formulario oficial de denuncias en línea el ciudadano deja en blanco el campo obligatorio \"Dirección del Incidente\", estamos ante un problema de:",
-                    opts: ["Consistencia.", "Completitud / Integridad.", "Seguridad.", "Trazabilidad."],
+                    opts: ["Consistencia.", "Completitud.", "Seguridad.", "Trazabilidad."],
                     correct: 1,
                     feedback: "Completitud exige que la información obligatoria requerida esté efectivamente registrada en las bases de datos."
                 },
@@ -1373,7 +1403,7 @@
 
     function simulateDownload(title) {
         const filename = title.replace(/[^a-zA-Z0-9]/g, '_') + '.pdf';
-        const blob = new Blob([`Mockup PDF de descarga para: ${title}\nUniversidad Corporativa Osinergmin\nCurso: Estrategia y Gestión de Activos de Información (Gobierno de Datos)`], { type: 'text/plain' });
+        const blob = new Blob([`Mockup PDF de descarga para: ${title}\nUniversidad Corporativa Osinergmin\nCurso: Gobierno de Datos: Fundamentos y Aplicaciones (Gobierno de Datos)`], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
